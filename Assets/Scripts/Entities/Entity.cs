@@ -78,6 +78,9 @@ public class Entity : MonoBehaviour
 
     public bool IsAlive => !IsDead;
 
+    /// <summary>
+    /// Get the level, Set the Level and scales states accordingly. 
+    /// </summary>
     public virtual float EntityLevel
     {
         get => level;
@@ -98,12 +101,13 @@ public class Entity : MonoBehaviour
             MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
             CritChance = BaseCritChance * multiplier + bonusCritChance;
 
-
             level = value;
         }
     }
-    
-    
+    /// <summary>
+    /// Deal damage to the Entity if it is not on cooldown and used in other Entity for example Player, GameObject and Enemies.
+    /// </summary>
+    /// <param name="damageTaken">Damage you deal to Entity</param>
     
     public virtual void TakeDamage(float damageTaken)
     {
