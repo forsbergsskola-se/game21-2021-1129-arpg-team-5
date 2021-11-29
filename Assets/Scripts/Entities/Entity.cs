@@ -115,6 +115,7 @@ public class Entity : MonoBehaviour
         
         StartCoroutine(DamageCooldown());
         health -= damageTaken * damageResistance;
+        Debug.Log(damageTaken*damageResistance);
     }
 
     private IEnumerator DamageCooldown()
