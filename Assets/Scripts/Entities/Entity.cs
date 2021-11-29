@@ -37,6 +37,9 @@ public class Entity : MonoBehaviour
         damageCooldownTime = BaseDamageCooldown;
     }
 
+    /// <summary>
+    /// Reset the entity to its base statistics. Does not include it's level.
+    /// </summary>
     public virtual void ResetEntity()
     {
         maxHealth = BaseMaxHealth;
@@ -45,8 +48,13 @@ public class Entity : MonoBehaviour
         MovementSpeed = BaseMovementSpeed;
         CritChance = BaseCritChance;
         damageCooldownTime = BaseDamageCooldown;
+        
+        gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Sets or gets the entity's health. Will set it to inactive if the health reaches 0.
+    /// </summary>
     public virtual float Health
     {
         get => health;
