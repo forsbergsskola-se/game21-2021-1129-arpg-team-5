@@ -114,7 +114,7 @@ public class Entity : MonoBehaviour
         if (takeDamageOnCooldown) return;
         
         StartCoroutine(DamageCooldown());
-        health -= damageTaken * damageResistance;
+        Health -= damageTaken * damageResistance;
         Debug.Log(damageTaken*damageResistance);
     }
 
