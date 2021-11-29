@@ -12,6 +12,8 @@ namespace Team5.Combat
         float weaponRange = 2f;
         [SerializeField]
         float timeBetweenAttacks = 1f;
+        [SerializeField]
+        float weaponDamage = 1f;
         float timeSinceLastAttack;
         Transform target;
         private void Update()
@@ -40,11 +42,18 @@ namespace Team5.Combat
         {
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                GetComponent<Animator>().SetTrigger("attack");
+                GetComponent<Animator>().SetTrigger("attack"); //triggering Hit() from animation
                 timeSinceLastAttack = 0;
+              
             }
             
            
+        }
+        // Animation Event 
+        void Hit()
+        {
+            Health healthComponent = target.GetComponent<Health>();
+            healthComponent.TakeDamage(weaponDamage);
         }
 
         private bool GetIsInRange()
@@ -63,10 +72,6 @@ namespace Team5.Combat
             target = null;
         }
 
-        // Animation Event 
-        void Hit() 
-        {
-
-        }
+       
     }
 }
