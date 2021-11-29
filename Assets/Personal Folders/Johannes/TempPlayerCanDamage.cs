@@ -10,12 +10,12 @@ public class TempPlayerCanDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position= Vector3.MoveTowards(transform.position, Enemies.transform.position, 0.001f);
+        transform.position= Vector3.MoveTowards(transform.position, Enemies.transform.position, 0.003f);
     }
 
     private void OnCollisionStay(Collision other)
     {
-        Debug.Log("hej");
+        // Debug.Log("hej");
         other.gameObject.GetComponent<Entity>().TakeDamage(10);
         
     }
