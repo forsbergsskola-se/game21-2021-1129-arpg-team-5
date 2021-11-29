@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DemoMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Camera cam;
+    public NavMeshAgent player;
+    public GameObject targetDest;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitPoint;
+
+            if (Physics.Raycast(ray, out hitPoint))
+            {
+                targetDest.transform.position = hitPoint.point;
+                player.SetDestination(hitPoint.point);
+            }
+        }
     }
 }
+
