@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floor : MonoBehaviour
+public class Floor : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnHover()
     {
-        
+        Debug.Log("I hover over the Floor");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnClick()
     {
-        
+        Debug.Log("I clicked on the Floor");
     }
 }

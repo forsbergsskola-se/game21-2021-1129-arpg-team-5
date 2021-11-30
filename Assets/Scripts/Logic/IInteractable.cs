@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractabe
+public interface IInteractable
 {
     /// <summary>
     /// Implement your OnHover method. If the mouse sprite should change, access a sprite variable in the MouseControl script. LAST PART NOT IMPLEMENTED YET, MIGHT CHANGE!
