@@ -15,7 +15,7 @@ namespace Team5.Combat
         [SerializeField]
         float weaponDamage = 1f;
         float timeSinceLastAttack;
-        Transform target;
+        Health target;
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -24,12 +24,15 @@ namespace Team5.Combat
             {
                 return;
             }
-                
-           
+
+            if (target.IsDead())
+            {
+                return;
+            }
 
             if (!GetIsInRange())
             {
-                GetComponent<Move>().MoveTo(target.position);
+                GetComponent<Move>().MoveTo(target.transform.position);
             }
             else
             {
@@ -52,23 +55,24 @@ namespace Team5.Combat
         // Animation Event 
         void Hit()
         {
-            Health healthComponent = target.GetComponent<Health>();
-            healthComponent.TakeDamage(weaponDamage);
+            
+            target.TakeDamage(weaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel()
         {
+            GetComponent<Animator>().SetTrigger("stopAttack");
             target = null;
         }
 
