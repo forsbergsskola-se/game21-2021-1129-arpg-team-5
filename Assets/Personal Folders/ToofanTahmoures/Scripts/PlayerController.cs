@@ -52,7 +52,7 @@ namespace Team5.Control
             bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
             if (hasHit)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     GetComponent<Move>().StartMoveAction(hitInfo.point);
                 }
