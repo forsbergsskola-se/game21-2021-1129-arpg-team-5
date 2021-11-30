@@ -1486,6 +1486,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a58cb74134202c245ababad0515c32ba, type: 3}
+      propertyPath: m_Name
+      value: Player Model
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58cb74134202c245ababad0515c32ba, type: 3}
 --- !u!1 &1391680792 stripped
@@ -1535,6 +1539,7 @@ MonoBehaviour:
   cam: {fileID: 2048442868}
   player: {fileID: 1391680796}
   targetDest: {fileID: 421518794}
+  movementSpeed: 28
 --- !u!136 &1391680798
 CapsuleCollider:
   m_ObjectHideFlags: 0
