@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour, IInteractable
 {
-    public void OnHover()
+    public Texture2D cursorTexture;
+    public void OnHover(MouseController mouseController)
     {
+        mouseController.CursorSet(cursorTexture);
         Debug.Log("I hover over the Floor");
     }
-    public void OnClick()
+    public void OnClick(MouseController mouseController)
     {
         Debug.Log("I clicked on the Floor");
     }

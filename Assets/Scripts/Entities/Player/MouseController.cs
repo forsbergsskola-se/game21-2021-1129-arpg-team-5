@@ -8,6 +8,9 @@ public class MouseController : MonoBehaviour
     private Ray ray;
 
     private Camera camera;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector3 hotSpot = Vector3.zero;
+    
     private void Start()
     {
         // TODO: Look into getting the interactables only once instead, saving performance.
@@ -19,18 +22,25 @@ public class MouseController : MonoBehaviour
         ray = camera.ScreenPointToRay(Input.mousePosition);
 
         if (!Physics.Raycast(ray, out RaycastHit hit))
+        {
+            CursorSet(null);
             return;
+        }
         
-        if (hit.collider.gameObject.TryGetComponent(out IInteractable iInteractable))
+        if (hit.collider.gameObject.TryGetComponent(out IInteractable Interact))
         {
             if (Input.GetMouseButtonDown(0))
             {
-                iInteractable.OnClick();
+                Interact.OnClick(this);
             }
             else
             {
-                iInteractable.OnHover();
+                Interact.OnHover(this);
             }
         }
+    }
+    public void CursorSet(Texture2D texture2D)
+    {
+        Cursor.SetCursor(texture2D, hotSpot,cursorMode);
     }
 }
