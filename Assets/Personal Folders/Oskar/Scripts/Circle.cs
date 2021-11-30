@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Entities.Player;
+using Logic;
 using UnityEngine;
 
-public class Circle : MonoBehaviour, IInteractable
+namespace Personal_Folders.Oskar.Scripts
 {
-    public Texture2D mouseTexture => cursorTexture;
-    public Texture2D cursorTexture;
-    public void OnHover(MouseController mouseController)
+    public class Circle : MonoBehaviour, IInteractable
     {
-        Debug.Log("I hover over the Circle");
-    }
-    public void OnClick(MouseController mouseController)
-    {
-        Debug.Log("I clicked on the Circle");
+        public Texture2D mouseTexture => cursorTexture;
+        public Texture2D cursorTexture;
+        public void OnHover()
+        {
+            Debug.Log("I hover over the Circle");
+        }
+        public void OnClick()
+        {
+            Debug.Log("I clicked on the Circle");
+        }
     }
 }
