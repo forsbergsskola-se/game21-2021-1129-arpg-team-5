@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [HideInInspector] public float MovementSpeed;
     [HideInInspector] public float CritChance;
