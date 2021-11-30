@@ -46,17 +46,24 @@ namespace Team5.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                GetComponent<Animator>().SetTrigger("attack"); //triggering Hit() from animation
+                TriggerAttack(); 
                 timeSinceLastAttack = 0;
-              
+
             }
-            
-           
+
+
         }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");//triggering Hit() from animation
+        }
+
         // Animation Event 
         void Hit()
         {
-            
+            if (target == null) return;   //Bug fixed!
             target.TakeDamage(weaponDamage);
         }
 
@@ -83,10 +90,15 @@ namespace Team5.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttack();
             target = null;
         }
 
-       
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
     }
 }
