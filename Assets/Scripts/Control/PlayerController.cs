@@ -48,17 +48,17 @@ namespace Team5.Control
         }
         private bool InteractWithMovement()
         {
-            RaycastHit hitInfo;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
-            if (hasHit)
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    GetComponent<Move>().StartMoveAction(hitInfo.point);
-                }
-
-                return true;
-            }
+            // RaycastHit hitInfo;
+            // bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
+            // if (hasHit)
+            // {
+            //     if (Input.GetMouseButton(0))
+            //     {
+            //         GetComponent<Move>().StartMoveAction(hitInfo.point);
+            //     }
+            //
+            //     return true;
+            // }
             return false;
         }
 

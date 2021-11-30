@@ -11,9 +11,9 @@ namespace Entities.Player
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
 
-        private void Start() 
+        private void Start()
         {
-            cameraObject = FindObjectOfType<Camera>();
+            cameraObject = gameObject.GetComponent<Camera>();
         }
 
         private void Update() 
