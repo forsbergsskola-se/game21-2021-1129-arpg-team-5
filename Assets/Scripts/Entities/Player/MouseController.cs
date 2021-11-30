@@ -1,51 +1,48 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Logic;
 using UnityEngine;
 
-public class MouseController : MonoBehaviour
+namespace Entities.Player
 {
-    private Ray ray;
-
-    private Camera camera;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector3 hotSpot = Vector3.zero;
+    public class MouseController : MonoBehaviour
+    {
+        private Ray ray;
+        private Camera cameraObject;
     
-    private void Start()
-    {
-        // TODO: Look into getting the interactables only once instead, saving performance.
-        camera = GameObject.FindObjectOfType<Camera>();
-    }
-
-    private void Update()
-    {
-        ray = camera.ScreenPointToRay(Input.mousePosition);
-
-        if (!Physics.Raycast(ray, out RaycastHit hit))
+        public CursorMode cursorMode = CursorMode.Auto;
+        public Vector3 hotSpot = Vector3.zero;
+    
+        private void Start() 
         {
-            Cursor.SetCursor(null, hotSpot, cursorMode);
-            return;
+            cameraObject = FindObjectOfType<Camera>();
         }
+
+        private void Update() 
+        {
+            ray = cameraObject.ScreenPointToRay(Input.mousePosition);
+
+            if (!Physics.Raycast(ray, out var hit)) 
+            {
+                SetCursorTexture(null);
+                return;
+            }
         
-        if (hit.collider.gameObject.TryGetComponent(out IInteractable Interact))
-        {
-            Cursor.SetCursor(Interact.mouseTexture, hotSpot, cursorMode);
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable interact))
             {
-                Interact.OnClick(this);
+                SetCursorTexture(interact.mouseTexture);
+            
+                if (Input.GetMouseButtonDown(0)) 
+                    interact.OnClick();
+                else 
+                    interact.OnHover();
             }
-            else
-            {
-                Interact.OnHover(this);
+            else {
+                SetCursorTexture(null);
             }
         }
-        else
+
+        private void SetCursorTexture(Texture2D texture)
         {
-            Cursor.SetCursor(null, hotSpot, cursorMode);
+            Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
     }
-    // public void CursorSet(Texture2D texture2D)
-    // {
-    //     Cursor.SetCursor(texture2D, hotSpot,cursorMode);
-    // }
 }
