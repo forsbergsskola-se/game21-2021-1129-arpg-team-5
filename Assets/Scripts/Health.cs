@@ -7,11 +7,30 @@ namespace Team5.Combat
     public class Health : MonoBehaviour
     {
         [SerializeField]
-        float health = 100f;
+        float healthPoint = 100f;
+        bool isDead = false;
+        public bool IsDead() 
+        {
+            return isDead;
+        }
         public void TakeDamage(float damage)
         {
-            health = Mathf.Max(health - damage, 0);
-            Debug.Log(health);
+            healthPoint = Mathf.Max(healthPoint - damage, 0);
+            if(healthPoint <= 0)
+            {
+                Death();
+            }
+            Debug.Log(healthPoint);
+        }
+
+        public void Death()
+        {
+            if (isDead)
+            {
+                return;
+            }
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("die"); 
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Team5.Combat
 {
+    [RequireComponent(typeof(Health))]
     public class CombatTarget : MonoBehaviour
     {
 
