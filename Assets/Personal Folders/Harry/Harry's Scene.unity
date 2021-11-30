@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c151c836403774285ad949d5324acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1859162508}
+  cam: {fileID: 2048442868}
   player: {fileID: 1391680796}
   targetDest: {fileID: 421518794}
 --- !u!136 &1391680798
@@ -1969,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1859162506
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &2048442867
 AudioListener:
   m_ObjectHideFlags: 0
