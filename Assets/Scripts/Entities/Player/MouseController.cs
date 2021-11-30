@@ -10,7 +10,7 @@ namespace Entities.Player
     
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
-    
+
         private void Start() 
         {
             cameraObject = FindObjectOfType<Camera>();
@@ -31,7 +31,7 @@ namespace Entities.Player
                 SetCursorTexture(interact.mouseTexture);
             
                 if (Input.GetMouseButtonDown(0)) 
-                    interact.OnClick();
+                    interact.OnClick(hit.point);
                 else 
                     interact.OnHover();
             }
@@ -39,6 +39,7 @@ namespace Entities.Player
                 SetCursorTexture(null);
             }
         }
+
 
         private void SetCursorTexture(Texture2D texture)
         {

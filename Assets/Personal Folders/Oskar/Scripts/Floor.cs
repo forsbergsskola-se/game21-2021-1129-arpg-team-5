@@ -1,4 +1,3 @@
-using Entities.Player;
 using Logic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace Personal_Folders.Oskar.Scripts
         {
             Debug.Log("I hover over the Floor");
         }
-        public void OnClick()
+        public void OnClick(Vector3 mouseClickVector)
         {
             Debug.Log("I clicked on the Floor");
         }

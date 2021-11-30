@@ -1,4 +1,3 @@
-using Entities.Player;
 using UnityEngine;
 
 namespace Logic
@@ -18,6 +17,6 @@ namespace Logic
         /// <summary>
         /// Implement your OnClick method. This is called if your object is clicked, so implement any logic that should happen if a object is clicked here.
         /// </summary>
-        public void OnClick();
+        public void OnClick(Vector3 mouseClickVector);
     }
 }
