@@ -1,70 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
+using Entities.Player;
 using Team5.Movement;
 using UnityEngine;
 using Team5.Combat;
+using UnityEngine.AI;
 
 
 namespace Team5.Control
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Entity
+
     {
-        void Start()
-        {
+    void Start()
+    {
+        GetComponent<NavMeshAgent>().speed = MovementSpeed;
+    }
 
+    void Update()
+    {
+        if (InteractWithCombat())
+        {
+            return;
         }
 
-        void Update()
+        if (InteractWithMovement())
         {
-            if (InteractWithCombat()) 
+            return;
+        }
+
+    }
+
+    private bool InteractWithCombat()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+        foreach (RaycastHit hit in hits)
+        {
+            CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+            if (target == null)
             {
-                return;
+                continue;
             }
-            if (InteractWithMovement())
+
+            if (Input.GetMouseButtonDown(0))
             {
-                return;
+                GetComponent<Fighter>().Attack(target);
             }
-            
+
+            return true;
         }
 
-        private bool InteractWithCombat()
-        {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (RaycastHit hit in hits)
-            {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if(target == null)
-                {
-                    continue;
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    GetComponent<Fighter>().Attack(target);
-                    
-                }
-                return true;
-            }
-            return false;
-        }
-        private bool InteractWithMovement()
-        {
-            // RaycastHit hitInfo;
-            // bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
-            // if (hasHit)
-            // {
-            //     if (Input.GetMouseButton(0))
-            //     {
-            //         GetComponent<Move>().StartMoveAction(hitInfo.point);
-            //     }
-            //
-            //     return true;
-            // }
-            return false;
-        }
+        return false;
+    }
 
-        private static Ray GetMouseRay()
+    private bool InteractWithMovement()
+    {
+        /*RaycastHit hitInfo;
+        bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
+        if (hasHit)
         {
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
-        }
+            if (Input.GetMouseButton(0))
+            {
+                GetComponent<Move>().StartMoveAction(hitInfo.point);
+            }
+
+            return true;
+        }*/
+
+        return false;
+    }
+
+    private static Ray GetMouseRay()
+    {
+        return Camera.main.ScreenPointToRay(Input.mousePosition);
+    }
     }
 }
