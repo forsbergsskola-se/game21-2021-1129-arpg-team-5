@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1125661663715692297, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8936a963b72cacc408c73e9864f52d80, type: 2}
+      objectReference: {fileID: 9100000, guid: 942c68f26cab68d4393d8445d1adb1d1, type: 2}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -21,11 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.7925353
+      value: 0.19999981
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.21
+      value: 3.0600014
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -103,18 +103,6 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 1
---- !u!114 &6684573836609936295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725765147854792357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3dd7bba528131a4d8c5be8e79ed9cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1352414544204959589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,4 +115,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5c6579300052841b010dd30b6c2c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  healthPoint: 100
+--- !u!114 &6684573836609936295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725765147854792357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dd7bba528131a4d8c5be8e79ed9cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 0
+  CritChance: 0
+  BaseMaxHealth: 100
+  BaseArmor: 0
+  BaseMovementSpeed: 0
+  BaseCritChance: 0
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0
