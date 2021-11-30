@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Box : MonoBehaviour, IInteractable
 {
+    public Texture2D mouseTexture => cursorTexture;
+    public Texture2D cursorTexture;
     public void OnHover(MouseController mouseController)
     {
         Debug.Log("I hover over the Box");

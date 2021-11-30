@@ -23,12 +23,13 @@ public class MouseController : MonoBehaviour
 
         if (!Physics.Raycast(ray, out RaycastHit hit))
         {
-            CursorSet(null);
+            Cursor.SetCursor(null, hotSpot, cursorMode);
             return;
         }
         
         if (hit.collider.gameObject.TryGetComponent(out IInteractable Interact))
         {
+            Cursor.SetCursor(Interact.mouseTexture, hotSpot, cursorMode);
             if (Input.GetMouseButtonDown(0))
             {
                 Interact.OnClick(this);
@@ -38,9 +39,13 @@ public class MouseController : MonoBehaviour
                 Interact.OnHover(this);
             }
         }
+        else
+        {
+            Cursor.SetCursor(null, hotSpot, cursorMode);
+        }
     }
-    public void CursorSet(Texture2D texture2D)
-    {
-        Cursor.SetCursor(texture2D, hotSpot,cursorMode);
-    }
+    // public void CursorSet(Texture2D texture2D)
+    // {
+    //     Cursor.SetCursor(texture2D, hotSpot,cursorMode);
+    // }
 }

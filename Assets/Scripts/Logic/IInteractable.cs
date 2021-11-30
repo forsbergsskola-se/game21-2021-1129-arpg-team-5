@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
+    
+    public Texture2D mouseTexture { get; }
     /// <summary>
     /// Implement your OnHover method. If the mouse sprite should change, access a sprite variable in the MouseControl script. LAST PART NOT IMPLEMENTED YET, MIGHT CHANGE!
     /// </summary>
