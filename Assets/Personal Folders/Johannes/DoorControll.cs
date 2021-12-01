@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Entities.Player;
 using Logic;
+using Team5.Movement;
 using UnityEngine;
 
 public class DoorControll : MonoBehaviour , IInteractable
@@ -15,7 +16,18 @@ public class DoorControll : MonoBehaviour , IInteractable
     private bool isOpen;
     private bool isLocked = true;
 
+    private MouseController mouseController;
+
     private static readonly int IsOpen = Animator.StringToHash("isOpen");
+
+
+
+
+    [SerializeField] private float DistanceToOpenDoor;
+    [SerializeField] private float TimeToOpenDoor;
+    
+    
+    
     
     
     void Awake()
@@ -23,9 +35,19 @@ public class DoorControll : MonoBehaviour , IInteractable
         Dooropen = gameObject.GetComponent<Animator>();
         
         
+        // Get the mousecontoller and subscribe to their event.
+        mouseController = FindObjectOfType<MouseController>();
+        mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
         
-        // TEMPORARY FOR TESTING
         StartCoroutine(UnlockDoor());
+
+
+
+        temp2 = GoThroughDoor();
+        
+        
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     
 
@@ -49,20 +71,39 @@ public class DoorControll : MonoBehaviour , IInteractable
         if (isLocked)
             return;
         
-        if (!isOpen)
+        // if (!isOpen)
+        // {
+        //     isOpen = true;
+        //     Dooropen.SetBool(IsOpen, true);
+        //     Debug.Log("does this work");
+        // }
+        // else
+        // {
+        //     isOpen = false;
+        //     Dooropen.SetBool(IsOpen, false);
+        //     Debug.Log("does this work");
+        // }
+
+        if (Vector3.Distance(player.transform.position, this.transform.position) < DistanceToOpenDoor)
         {
-            isOpen = true;
-            Dooropen.SetBool(IsOpen, true);
-            Debug.Log("does this work");
+            if (!isOpen)
+            {
+                isOpen = true;
+                Dooropen.SetBool(IsOpen, true);
+                Debug.Log("does this work");
+            }
+            else
+            {
+                isOpen = false;
+                Dooropen.SetBool(IsOpen, false);
+                Debug.Log("does this work");
+            }
         }
         else
         {
-            isOpen = false;
-            Dooropen.SetBool(IsOpen, false);
-            Debug.Log("does this work");
+            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(mouseClickVector);
+            StartCoroutine(temp2);
         }
-        
-        
         
         // Check player distance to door.
         
@@ -82,16 +123,27 @@ public class DoorControll : MonoBehaviour , IInteractable
         // When the player has moved through the door
         // Close the door behind them.
     }
-    
-    
-    
-    // TEMPORARY TIMER FOR UNLOCK!
-    IEnumerator UnlockDoor()
+
+    private IEnumerator temp2;
+
+    private static IEnumerator GoThroughDoor()
     {
-        yield return new WaitForSeconds(10);
-        isLocked = false;
+        // Gör saker.
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Debug.Log("Hi times up");
+        }
     }
 
+
+    void ChangedTarget(object sender, bool temp)
+    {
+        Debug.Log("Changed target!");
+        // isLocked = false;
+        StopCoroutine(temp2);
+    }
+    
 
     private bool waitForSound;
     IEnumerator WaitForSound()
@@ -99,5 +151,14 @@ public class DoorControll : MonoBehaviour , IInteractable
         waitForSound = true;
         yield return new WaitForSeconds(1);
         waitForSound = false;
+    }
+    
+    
+    
+    // TEMPORARY TIMER FOR UNLOCK!
+    IEnumerator UnlockDoor()
+    {
+        yield return new WaitForSeconds(1);
+        isLocked = false;
     }
 }
