@@ -1,10 +1,17 @@
+using Team5.Combat;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySearchFindDestroy : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Transform player;
+    public Transform playerPosition; 
+    public float entityHealth;
+    public float entityPatrolSpeed;
+    public float entityPatrolDefaultSpeed= 3f;
+    public float entityChaseSpeed = 5f;
+
     public LayerMask whatIsGround, whatIsPlayer;
     
     //Patroling
@@ -23,21 +30,47 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        playerPosition = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        
-        // needs to grab entity health -> corpse doesn't move if 0
+        //entityHealth = this.GetOrAddComponent<Entity>().Health;
+        entityPatrolSpeed = GetComponent<NavMeshAgent>().speed;
+
+
+
+        // needs to grab  health from health.cs -> corpse doesn't move if 0
+
+        // grab move speed value from NavMeshAgent augment it based on (1) patrol and (2) chase and (3) death
     }
 
     private void Update()
     {
+        Debug.Log(entityHealth);
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            Patroling();
+            entityPatrolSpeed = entityPatrolDefaultSpeed;
+        }
+
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            ChasePlayer();
+            entityPatrolSpeed = entityChaseSpeed;
+        }
+
+        if (playerInAttackRange && playerInSightRange)
+        {
+            AttackPlayer();
+        }
+        
+        
+        if (entityHealth <= 0)
+        {
+            CorpseStay();
+        }
     }
 
     private void Patroling()
@@ -70,10 +103,8 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
-        
+        agent.SetDestination(playerPosition.position);
         Debug.Log("Am Chasing");
-
     }
 
     private void AttackPlayer()
@@ -81,7 +112,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
         //This makes sure enemy doesn't move, but looks at player while attacking 
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(playerPosition);
 
         if (!alreadyAttacked)
         {
@@ -115,7 +146,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void CorpseStay()
     {
-        
+        entityPatrolSpeed = 0;
     }
 
     
