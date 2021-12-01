@@ -7,41 +7,97 @@ using UnityEngine;
 
 public class DoorControll : MonoBehaviour , IInteractable
 {
+    [SerializeField] private Texture2D lockedCursor;
+    [SerializeField] private Texture2D unlockedCursor;
+
     private Animator Dooropen;
-    bool isOpen = false;
     private GameObject player;
-    // public GameObject cube;
-    private readonly bool dooropenBool = false;
-    // Start is called before the first frame update
+    private bool isOpen;
+    private bool isLocked = true;
+
+    private static readonly int IsOpen = Animator.StringToHash("isOpen");
+    
+    
     void Awake()
     {
         Dooropen = gameObject.GetComponent<Animator>();
+        
+        
+        
+        // TEMPORARY FOR TESTING
+        StartCoroutine(UnlockDoor());
     }
     
 
-    public Texture2D mouseTexture { get; }
+    public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
+
+
     public void OnHover()
     {
-        Debug.Log("works");
+        if (isLocked)
+        {
+            if (!waitForSound)
+            {
+                GetComponent<AudioSource>().Play();
+                StartCoroutine(WaitForSound());
+            }
+        }
     }
 
     public void OnClick(Vector3 mouseClickVector)
     {
+        if (isLocked)
+            return;
+        
         if (!isOpen)
         {
             isOpen = true;
-            GetComponent<Animator>().SetBool("isOpen", true);
+            Dooropen.SetBool(IsOpen, true);
             Debug.Log("does this work");
         }
         else
         {
             isOpen = false;
-            GetComponent<Animator>().SetBool("isOpen", false);
+            Dooropen.SetBool(IsOpen, false);
             Debug.Log("does this work");
         }
-       
-        // Yes!
-       
+        
+        
+        
+        // Check player distance to door.
+        
+        // If door is close
+        // Open door
+        
+        // If door not close
+        
+        // Tell stupid player to get closer to door.
+        
+        // Then if player is close enough to door
+        // Open door
+        
+        // When door is open
+        // Tell player to move through the door
+        
+        // When the player has moved through the door
+        // Close the door behind them.
+    }
+    
+    
+    
+    // TEMPORARY TIMER FOR UNLOCK!
+    IEnumerator UnlockDoor()
+    {
+        yield return new WaitForSeconds(10);
+        isLocked = false;
+    }
 
+
+    private bool waitForSound;
+    IEnumerator WaitForSound()
+    {
+        waitForSound = true;
+        yield return new WaitForSeconds(1);
+        waitForSound = false;
     }
 }
