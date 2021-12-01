@@ -8,7 +8,7 @@ using UnityEngine;
 public class DoorControll : MonoBehaviour , IInteractable
 {
     private Animator Dooropen;
-
+    bool isOpen = false;
     private GameObject player;
     // public GameObject cube;
     private readonly bool dooropenBool = false;
@@ -32,9 +32,22 @@ public class DoorControll : MonoBehaviour , IInteractable
 
     public void OnClick(Vector3 mouseClickVector)
     {
-        Debug.Log("does this work");
-        // GameObject.Find("GateTurnPosition").GetComponent<Animator>().SetTrigger("openDoor");
-        // Dooropen.Play("DoorAnimation", 0, 0.0f);
+        if (!isOpen)
+        {
+            isOpen = true;
+            GetComponent<Animator>().SetBool("isOpen", true);
+            Debug.Log("does this work");
+        }
+        else
+        {
+            isOpen = false;
+            GetComponent<Animator>().SetBool("isOpen", false);
+            Debug.Log("does this work");
+        }
+       
+        // Yes!
+       
+
     }
 
     private void OnCollisionEnter(Collision other)
