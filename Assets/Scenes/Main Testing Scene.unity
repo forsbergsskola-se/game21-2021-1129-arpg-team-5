@@ -1607,6 +1607,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7733661034245680324, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: chaseDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3222672916921693173, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_Name
       value: Enemy_TF
@@ -1666,6 +1670,14 @@ PrefabInstance:
     - target: {fileID: 3222672916921959391, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222672916930887961, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 942c68f26cab68d4393d8445d1adb1d1, type: 2}
+    - target: {fileID: 3478711646702444154, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: m_Speed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
@@ -2508,6 +2520,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4893563477891806906, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4893563477891808438, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2880,6 +2896,10 @@ PrefabInstance:
     - target: {fileID: 4893563477891806906, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
       propertyPath: m_Name
       value: Tormented Soul
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893563477891806906, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4893563477891872566, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
       propertyPath: m_IsActive
@@ -3416,9 +3436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
+  weaponRange: 10
   timeBetweenAttacks: 1
-  weaponDamage: 1
+  weaponDamage: 25
 --- !u!1 &2124469708
 GameObject:
   m_ObjectHideFlags: 0

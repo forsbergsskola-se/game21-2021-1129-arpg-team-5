@@ -29,6 +29,7 @@ namespace Team5.Control
             {
                 fighter.Cancel();
             }
+           
         }
 
         private bool InAttackRange()
