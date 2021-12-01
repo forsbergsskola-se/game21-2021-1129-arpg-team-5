@@ -1618,6 +1618,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+--- !u!195 &1244983090 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 6851813623103609653, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+  m_PrefabInstance: {fileID: 1631794573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244983093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244983074}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439a2f917fceba546bd8470cef3a4ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1244983090}
+  player: {fileID: 1277130531}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 100
+  timeBetweenAttacks: 2
+  sightRange: 40
+  attackRange: 10
+  playerInSightRange: 0
+  playerInAttackRange: 0
+--- !u!4 &1277130531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6725765147854548615, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+  m_PrefabInstance: {fileID: 2000351586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1371810847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2159,6 +2196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1244983083, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4893563477882520662, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2222,6 +2263,14 @@ PrefabInstance:
     - target: {fileID: 4893563477892040336, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848843794876011771, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851813623103609653, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
@@ -2333,7 +2382,7 @@ GameObject:
   - component: {fileID: 1799507618}
   - component: {fileID: 1799507619}
   - component: {fileID: 1799507620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NavMesh Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
