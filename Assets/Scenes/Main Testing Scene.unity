@@ -1623,6 +1623,11 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6851813623103609653, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
   m_PrefabInstance: {fileID: 1631794573}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1244983091 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4893563477882520662, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
+  m_PrefabInstance: {fileID: 1631794573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1244983093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,11 +1641,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1244983090}
+  animator: {fileID: 1244983091}
   playerPosition: {fileID: 1277130531}
   entityHealth: 100
   entityPatrolSpeed: 0
   entityPatrolDefaultSpeed: 3
   entityChaseSpeed: 5
+  isDead: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256

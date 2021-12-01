@@ -1,16 +1,19 @@
 using Team5.Combat;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySearchFindDestroy : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public Animator animator;
     public Transform playerPosition; 
     public float entityHealth;
     public float entityPatrolSpeed;
     public float entityPatrolDefaultSpeed= 3f;
     public float entityChaseSpeed = 5f;
+    public bool isDead = false;
 
     public LayerMask whatIsGround, whatIsPlayer;
     
@@ -34,11 +37,9 @@ public class EnemySearchFindDestroy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //entityHealth = this.GetOrAddComponent<Entity>().Health;
         entityPatrolSpeed = GetComponent<NavMeshAgent>().speed;
-
-
+        animator = this.GetComponent<Animator>();
 
         // needs to grab  health from health.cs -> corpse doesn't move if 0
-
         // grab move speed value from NavMeshAgent augment it based on (1) patrol and (2) chase and (3) death
     }
 
@@ -49,26 +50,24 @@ public class EnemySearchFindDestroy : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange)
+        if (!playerInSightRange && !playerInAttackRange && isDead == false)
         {
             Patroling();
-            entityPatrolSpeed = entityPatrolDefaultSpeed;
         }
 
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && isDead == false)
         {
             ChasePlayer();
-            entityPatrolSpeed = entityChaseSpeed;
         }
 
-        if (playerInAttackRange && playerInSightRange)
+        if (playerInAttackRange && playerInSightRange && isDead == false)
         {
             AttackPlayer();
         }
         
-        
-        if (entityHealth <= 0)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
+            Debug.Log("I'm Dead");
             CorpseStay();
         }
     }
@@ -81,6 +80,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
             agent.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        entityPatrolSpeed = entityPatrolDefaultSpeed;
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
@@ -104,6 +104,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(playerPosition.position);
+        entityPatrolSpeed = entityChaseSpeed;
         Debug.Log("Am Chasing");
     }
 
@@ -146,7 +147,11 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void CorpseStay()
     {
-        entityPatrolSpeed = 0;
+        isDead = true;
+        entityPatrolSpeed = 0f;
+        entityChaseSpeed = 0f;
+        Debug.Log("I'm staying still");
+
     }
 
     
@@ -154,8 +159,6 @@ public class EnemySearchFindDestroy : MonoBehaviour
     {
         Destroy(gameObject);
         
-        Debug.Log("Goodbye world");
-
     }
 
     private void ReturnToStartPos()
