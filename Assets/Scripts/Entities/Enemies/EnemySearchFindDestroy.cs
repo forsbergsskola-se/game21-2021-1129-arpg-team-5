@@ -9,7 +9,6 @@ public class EnemySearchFindDestroy : MonoBehaviour
     public NavMeshAgent agent;
     public Animator animator;
     public Transform playerPosition; 
-    public float entityHealth;
     public float entityPatrolSpeed;
     public float entityPatrolDefaultSpeed= 3f;
     public float entityChaseSpeed = 5f;
@@ -35,7 +34,6 @@ public class EnemySearchFindDestroy : MonoBehaviour
     {
         playerPosition = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        //entityHealth = this.GetOrAddComponent<Entity>().Health;
         entityPatrolSpeed = GetComponent<NavMeshAgent>().speed;
         animator = this.GetComponent<Animator>();
 
@@ -45,7 +43,6 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(entityHealth);
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
