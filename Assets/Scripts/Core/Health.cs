@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Team5.Combat
+namespace Team5.Core
 {
     public class Health : MonoBehaviour
     {
@@ -30,7 +30,8 @@ namespace Team5.Combat
                 return;
             }
             isDead = true;
-            GetComponent<Animator>().SetTrigger("die"); 
+            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }

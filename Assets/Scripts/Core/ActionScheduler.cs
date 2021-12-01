@@ -19,6 +19,13 @@ namespace Team5.Core
             
             currentAction = action;
         }
+
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
+
+    
 
 }

@@ -14,7 +14,7 @@ namespace Team5.Combat
         float timeBetweenAttacks = 1f;
         [SerializeField]
         float weaponDamage = 1f;
-        float timeSinceLastAttack;
+        float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         private void Update()
         {

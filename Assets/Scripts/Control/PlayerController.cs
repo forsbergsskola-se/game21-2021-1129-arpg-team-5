@@ -5,20 +5,23 @@ using Team5.Movement;
 using UnityEngine;
 using Team5.Combat;
 using UnityEngine.AI;
-
+using Team5.Core;
 
 namespace Team5.Control
 {
-    public class PlayerController : Entity
-
-    {
+  public class PlayerController : Entity
+  {
+     Health health;
     void Start()
     {
-        GetComponent<NavMeshAgent>().speed = MovementSpeed;
+            health = GetComponent<Health>();
+            GetComponent<NavMeshAgent>().speed = MovementSpeed;
+        
     }
-
     void Update()
     {
+        if (health.IsDead()) return;
+
         if (InteractWithCombat())
         {
             return;
@@ -79,5 +82,5 @@ namespace Team5.Control
     {
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
-    }
+  }
 }
