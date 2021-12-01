@@ -17,12 +17,7 @@ public class DoorControll : MonoBehaviour , IInteractable
     {
         Dooropen = gameObject.GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public Texture2D mouseTexture { get; }
     public void OnHover()
@@ -48,19 +43,5 @@ public class DoorControll : MonoBehaviour , IInteractable
         // Yes!
        
 
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("works");
-            GetComponent<Animator>().SetTrigger("openDoor");
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
     }
 }
