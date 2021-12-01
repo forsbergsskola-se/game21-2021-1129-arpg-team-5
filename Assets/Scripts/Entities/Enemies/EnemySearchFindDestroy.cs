@@ -6,8 +6,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
-
+    
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -26,6 +25,8 @@ public class EnemySearchFindDestroy : MonoBehaviour
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
+        
+        // needs to grab entity health
     }
 
     private void Update()
