@@ -1,3 +1,4 @@
+using System;
 using Logic;
 using UnityEngine;
 
@@ -29,9 +30,14 @@ namespace Entities.Player
             if (hit.collider.gameObject.TryGetComponent(out IInteractable interact))
             {
                 SetCursorTexture(interact.mouseTexture);
-            
-                if (Input.GetMouseButtonDown(0)) 
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    // Invoke a event to signify for others that the player switched to a different target.
+                    ChangedTarget?.Invoke(this, true);
+                    
                     interact.OnClick(hit.point);
+                }
                 else 
                     interact.OnHover();
             }
@@ -45,5 +51,10 @@ namespace Entities.Player
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
+
+        /// <summary>
+        /// Invoked with a true when the player switch target by pressing a interactable object.
+        /// </summary>
+        public event EventHandler<bool> ChangedTarget;
     }
 }
