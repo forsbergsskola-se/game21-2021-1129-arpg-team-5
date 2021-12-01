@@ -15,7 +15,7 @@ public class EnemySearchFindDestroy : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+    // public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
@@ -23,10 +23,10 @@ public class EnemySearchFindDestroy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         
-        // needs to grab entity health
+        // needs to grab entity health -> corpse doesn't move if 0
     }
 
     private void Update()
@@ -52,6 +52,9 @@ public class EnemySearchFindDestroy : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+        
+        Debug.Log("Am Patroling");
+
     }
     private void SearchWalkPoint()
     {
@@ -68,46 +71,70 @@ public class EnemySearchFindDestroy : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        
+        Debug.Log("Am Chasing");
+
     }
 
     private void AttackPlayer()
     {
-        //This makes sure enemy deosn't move, but looks at player while attacking 
+        //This makes sure enemy doesn't move, but looks at player while attacking 
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            /// Need to add attack here
+            // Need to add attack here from Entity
+            
+            // Add projectile or other attack method
             
             
-            
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);*/
             
             
-            ///End of attack code
+            // End of attack code
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            
         }
+        
+        Debug.Log("Am Attacking");
+
     }
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        
+        Debug.Log("Can attack again");
+
     }
 
-    public void TakeDamage(int damage)
+    private void CorpseStay()
     {
-        // take damagic logic 
+        
     }
+
     
-    
-    /*private void DestroyEnemy()
+    private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }*/
+        
+        Debug.Log("Goodbye world");
+
+    }
+
+    private void ReturnToStartPos()
+    {
+        
+    }
+
+    private void CancelChase()
+    {
+        
+    }
 
 }
