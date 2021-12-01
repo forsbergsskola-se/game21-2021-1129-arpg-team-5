@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Team5.Combat;
 using UnityEngine;
 
 namespace Team5.Control
@@ -8,19 +9,36 @@ namespace Team5.Control
     {
         [SerializeField]
         float chaseDistance = 5f;
+        Fighter fighter;
+        GameObject player;
+
+        private void Start()
+        {
+            fighter = GetComponent<Fighter>();
+            player = GameObject.FindWithTag("Player");
+
+        }
         private void Update()
         {
-            if(DistanceWithPlayer() < chaseDistance)
+            if (InAttackRange() && fighter.CanAttack(player))
             {
-                Debug.Log(gameObject.name +" Chase starts!");
+                Debug.Log("Attack!");
+                fighter.Attack(player);
             }
-            
+            else
+            {
+                fighter.Cancel();
+            }
         }
 
-        private float DistanceWithPlayer()
+        private bool InAttackRange()
         {
-            GameObject player = GameObject.FindWithTag("Player");
-            return Vector3.Distance(player.transform.position, transform.position);
+            float distanceWithPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+            return distanceWithPlayer < chaseDistance;
+
         }
+
     }
 }
+
