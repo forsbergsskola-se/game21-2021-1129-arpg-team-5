@@ -6,13 +6,12 @@ using UnityEngine;
 
 public class DoorControll : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Transform playerTargetPosition;
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
 
 
-
+    private Transform playerTargetPosition;
     private IOpenLogic openLogicScript;
     private GameObject player;
     private bool isLocked = true;
@@ -22,26 +21,23 @@ public class DoorControll : MonoBehaviour, IInteractable
     
     
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
-    
-    
-    
-    void Awake()
+
+
+    private void Awake()
     {
-        goThroughDoor = GoThroughDoor();
+        goToAndOpen = GoToAndOpen();
         player = GameObject.FindGameObjectWithTag("Player");
-        
         
         // Get the mousecontroller and subscribe to their event.
         mouseController = FindObjectOfType<MouseController>();
         mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
-
-
+        
         openLogicScript = GetComponent<IOpenLogic>();
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         
         
         
-        // Temporary
+        // Temporary 
         StartCoroutine(UnlockDoor());
     }
 
@@ -63,15 +59,15 @@ public class DoorControll : MonoBehaviour, IInteractable
         if (isLocked)
             return;
         
-        StartCoroutine(goThroughDoor);
-        if (Vector3.Distance(player.transform.position, this.transform.position) > distanceToOpenDoor)
+        StartCoroutine(goToAndOpen);
+        if (Vector3.Distance(player.transform.position, transform.position) > distanceToOpenDoor)
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(playerTargetPosition.position);
     }
 
     
     
-    private IEnumerator goThroughDoor;
-    private IEnumerator GoThroughDoor()
+    private IEnumerator goToAndOpen;
+    private IEnumerator GoToAndOpen()
     {
         for (int i = 0; i < 100; i++)
         {
@@ -95,7 +91,7 @@ public class DoorControll : MonoBehaviour, IInteractable
     // Event subscriber that will stop the system for entering the door, if the player clicked something else.
     void ChangedTarget(object sender, bool temp)
     {
-        StopCoroutine(goThroughDoor);
+        StopCoroutine(goToAndOpen);
     }
     
     
@@ -112,7 +108,7 @@ public class DoorControll : MonoBehaviour, IInteractable
     // TEMPORARY TIMER FOR UNLOCKING!
     IEnumerator UnlockDoor()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         isLocked = false;
     }
 }
