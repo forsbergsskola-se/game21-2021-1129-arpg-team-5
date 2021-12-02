@@ -11,12 +11,15 @@ namespace Team5.Control
     {
         [SerializeField]
         float chaseDistance = 5f;
+        [SerializeField]
+        float suspicionTime = 3f;
         Fighter fighter;
         Move move;
         Health health;
         GameObject player;
 
         Vector3 gaurdLocation;
+        float timeScinseLastSawPlayer = Mathf.Infinity;
 
         private void Start()
         {
@@ -33,14 +36,35 @@ namespace Team5.Control
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
+                timeScinseLastSawPlayer = 0;
                 Debug.Log("Attack!");
-                fighter.Attack(player);
+                AttackBehaviour();
+            }
+            else if (timeScinseLastSawPlayer < suspicionTime)
+            {
+                SuspiciousBehaviour();
             }
             else
             {
-                move.StartMoveAction(gaurdLocation);
+                GaurdBehaviour();
             }
+            timeScinseLastSawPlayer += Time.deltaTime;
            
+        }
+
+        private void GaurdBehaviour()
+        {
+            move.StartMoveAction(gaurdLocation);
+        }
+
+        private void SuspiciousBehaviour()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void AttackBehaviour()
+        {
+            fighter.Attack(player);
         }
 
         private bool InAttackRange()
