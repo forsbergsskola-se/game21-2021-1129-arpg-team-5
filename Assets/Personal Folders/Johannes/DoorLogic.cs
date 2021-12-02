@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorLogic : MonoBehaviour, IOpenLogic
@@ -7,7 +6,8 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
     [SerializeField] private float rotationSpeed;
 
     private bool isOpen;
-    // Method to open door:
+    
+    
     public void Open()
     {
         if (isOpen) 
@@ -22,12 +22,6 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
     private IEnumerator OpeningAnimation()
     {
         Debug.Log("Hello");
-        // transform.Rotate(Vector3.up, -45f);
-        //
-        // while (this.transform.rotation.y)
-        // {
-        //     
-        // }
 
         for (int angle = 0; angle < 90; angle++)
         {
@@ -35,7 +29,5 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
             transform.Rotate(Vector3.up, -1);
         }
         
-        
-
     }
 }
