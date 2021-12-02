@@ -1,4 +1,5 @@
 using Team5.Combat;
+using Team5.Core;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Team5.Harry
         public float entityPatrolSpeed;
         public float entityPatrolDefaultSpeed = 3f;
         public float entityChaseSpeed = 5f;
-        public bool isDead = false;
+        private Health health;
 
         public LayerMask whatIsGround, whatIsPlayer;
 
@@ -38,6 +39,7 @@ namespace Team5.Harry
             agent = GetComponent<NavMeshAgent>();
             entityPatrolSpeed = GetComponent<NavMeshAgent>().speed;
             animator = this.GetComponent<Animator>();
+            health = GetComponent<Health>();
 
             // needs to grab  health from health.cs -> corpse doesn't move if 0
             // grab move speed value from NavMeshAgent augment it based on (1) patrol and (2) chase and (3) death
@@ -49,27 +51,22 @@ namespace Team5.Harry
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            if (!playerInSightRange && !playerInAttackRange && isDead == false)
+            if (!playerInSightRange && !playerInAttackRange && !health.IsDead())
             {
                 Patroling();
             }
 
-            if (playerInSightRange && !playerInAttackRange && isDead == false)
+            if (playerInSightRange && !playerInAttackRange && !health.IsDead())
             {
                 ChasePlayer();
             }
 
-            if (playerInAttackRange && playerInSightRange && isDead == false)
+            if (playerInAttackRange && playerInSightRange && !health.IsDead())
             {
                 AttackPlayer();
             }
-
-            SomeAnimatorMethode();
-        }
-
-        private void SomeAnimatorMethode()
-        {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+            
+            if (this.health.IsDead())
             {
                 Debug.Log("I'm Dead");
                 CorpseStay();
@@ -151,7 +148,7 @@ namespace Team5.Harry
 
         private void CorpseStay()
         {
-            isDead = true;
+            this.health.IsDead();
             entityPatrolSpeed = 0f;
             entityChaseSpeed = 0f;
             Debug.Log("I'm staying still");
