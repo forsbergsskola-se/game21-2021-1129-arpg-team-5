@@ -91,7 +91,7 @@ namespace Team5.Core
         {
             yield return new WaitForSeconds(3);
             this.healthPoint = maxHealth;
-            GetComponent<Animator>().SetTrigger("revive");
+            
             
             Debug.Log($"{this.name} resurrected at timestamp: {Time.time} with {maxHealth} health!");
                 
@@ -106,6 +106,7 @@ namespace Team5.Core
             Debug.Log(!Agent.isActiveAndEnabled);
             revive = true;
             isDead = false;
+            GetComponent<Animator>().SetTrigger("revive");
             GetComponent<Animator>().SetBool("isDead", false);
             reviveCounter++;
         }
