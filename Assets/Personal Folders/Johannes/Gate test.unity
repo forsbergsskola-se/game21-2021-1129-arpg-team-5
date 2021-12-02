@@ -1695,7 +1695,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390392847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6b102e1654cbbed48b3e8c666854613d, type: 2}
   m_CullingMode: 0
@@ -1740,7 +1740,6 @@ MonoBehaviour:
   DistanceToOpenDoor: 10
   TimeBeforeEnter: 0
   TimeToCloseDoor: 3
-  animation: {fileID: 0}
 --- !u!65 &1390392851
 BoxCollider:
   m_ObjectHideFlags: 0
