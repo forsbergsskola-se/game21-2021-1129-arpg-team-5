@@ -51,7 +51,12 @@ namespace Team5.Movement
             animator.SetFloat("forwardSpeed", speed);
         }
 
-       
+        public bool TargetReachable(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(destination, path);
+            return path.status != NavMeshPathStatus.PathPartial;
+        }
     }
 
 }
