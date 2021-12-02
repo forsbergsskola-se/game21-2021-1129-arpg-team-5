@@ -16,7 +16,7 @@ public class DoorControll : MonoBehaviour, IInteractable
     
     
     // private Animator Dooropen;
-    [SerializeField] private GameObject animation;
+    [SerializeField] private IOpenLogic openLogicScript;
     
     private GameObject player;
     private bool isLocked = true;
@@ -58,6 +58,10 @@ public class DoorControll : MonoBehaviour, IInteractable
         // Get the mousecontroller and subscribe to their event.
         mouseController = FindObjectOfType<MouseController>();
         mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
+
+
+        openLogicScript = GetComponent<IOpenLogic>();
+        
         
         
         
@@ -100,11 +104,15 @@ public class DoorControll : MonoBehaviour, IInteractable
 
             if (Vector3.Distance(player.transform.position, this.transform.position) < DistanceToOpenDoor)
             {
-                OpenAndCloseDoor();
-                
+                // OpenAndCloseDoor();
+                openLogicScript.Open();
                 // TODO: Somewhere here we need to move the player to the other side of the door.
+
+                unlockedCursor = null;
+                lockedCursor = null;
                 
-                StopCoroutine(goThroughDoor);
+                break;
+                // StopCoroutine(goThroughDoor);
             }
         }
     }
