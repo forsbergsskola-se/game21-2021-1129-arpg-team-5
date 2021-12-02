@@ -12,12 +12,15 @@ public class DoorControll : MonoBehaviour, IInteractable
 
 
     private Transform playerTargetPosition;
+    private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
     private GameObject player;
     private bool isLocked = true;
     private MouseController mouseController;
     private bool waitForSound;
-    
+
+
+    private Vector3 TargetPosition;
     
     
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
@@ -34,6 +37,7 @@ public class DoorControll : MonoBehaviour, IInteractable
         
         openLogicScript = GetComponent<IOpenLogic>();
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
+        playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
         
         
@@ -59,9 +63,36 @@ public class DoorControll : MonoBehaviour, IInteractable
         if (isLocked)
             return;
         
+
+
+        // #############################################################################################################
+        // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
+        // Very ugly
+        // Very inefficient
+        // Very very bad
+
+        var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
+        var reachableTwo = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPositionTwo.position);
+
+        if (reachable && reachableTwo)
+        {
+            var distance = Vector3.Distance(player.transform.position, playerTargetPosition.position);
+            var distanceTwo = Vector3.Distance(player.transform.position, playerTargetPositionTwo.position);
+
+            TargetPosition = distance < distanceTwo ? playerTargetPosition.position : playerTargetPositionTwo.position;
+        }
+        else if (reachable)
+            TargetPosition = playerTargetPosition.position;
+        else if (reachableTwo)
+            TargetPosition = playerTargetPositionTwo.position;
+
+        // #############################################################################################################
+        
+        
+        
         StartCoroutine(goToAndOpen);
-        if (Vector3.Distance(player.transform.position, transform.position) > distanceToOpenDoor)
-            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(playerTargetPosition.position);
+        if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToOpenDoor)
+            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
 
     
@@ -74,7 +105,7 @@ public class DoorControll : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(0.25f);
             Debug.Log("Hi times up");
 
-            if (Vector3.Distance(player.transform.position, playerTargetPosition.position) < distanceToOpenDoor)
+            if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
                 openLogicScript.Open();
 
