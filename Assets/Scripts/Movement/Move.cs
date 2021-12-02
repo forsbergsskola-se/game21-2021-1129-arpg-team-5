@@ -11,14 +11,17 @@ namespace Team5.Movement
     {
         Animator animator;
         NavMeshAgent agent;
+        Health health;
         private void Start()
         {
+            health = GetComponent<Health>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
         }
 
         void Update()
         {
+            agent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
