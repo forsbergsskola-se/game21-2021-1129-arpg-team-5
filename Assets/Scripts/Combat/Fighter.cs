@@ -21,7 +21,7 @@ namespace Team5.Combat
         private float critAttackMultiplier = 1.2f;
         private int critChance;
         private int accuracyChance;
-        public float accuracyPercent = 8f; // on a scale of 0-9 this equals 90% chance
+        public float accuracyPercent = 9f; // 90% chance
         
         Health target;
 
@@ -73,11 +73,11 @@ namespace Team5.Combat
 
             
             // random values for critical hit and accuracy between 0 and 9
-            critChance = Random.Range(0, 10);
-            accuracyChance = 9 - (Random.Range(0, 10));
+            critChance = Random.Range(1, 11);
+            accuracyChance = 10 - (Random.Range(1, 11));
 
-            // attack with critical hit if it returns 0 or 1 (20% chance)
-            if (critChance < 2)
+            // attack with critical hit if it returns 1 or 2 (20% chance)
+            if (critChance < 3)
             {
                 var totalAttackValue = weaponDamage * critAttackMultiplier;
                 // hit accuracy higher than chance, can attack
@@ -85,7 +85,7 @@ namespace Team5.Combat
                 {
                     Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}% chance");
 
-                    Debug.Log($"{this.name} landed a critical hit worth {totalAttackValue}");
+                    Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
                     target.TakeDamage(totalAttackValue);
                 }
 
@@ -97,12 +97,14 @@ namespace Team5.Combat
                 }
             }
             
+            
             // attack without critical hit
             else
             {
                 if (accuracyPercent > accuracyChance)
                 {
                     Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}0% chance");
+                    Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
                     target.TakeDamage(weaponDamage);
                 }
                 
