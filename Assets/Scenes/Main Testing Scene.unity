@@ -1610,6 +1610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 50
   maxHealth: 0
+  Player: {fileID: 0}
+  Agent: {fileID: 0}
+  revive: 0
+  reviveCounter: 0
 --- !u!1 &473021352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2514,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6224f5cd288b6184c8085295aa115596, type: 3}
+--- !u!1 &989690471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6725765147854792357, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+  m_PrefabInstance: {fileID: 2000351586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &989690478 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 4731403018539584298, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+  m_PrefabInstance: {fileID: 2000351586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038415728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5760,12 +5774,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: Agent
+      value: 
+      objectReference: {fileID: 989690478}
+    - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 989690471}
+    - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: maxHealth
       value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: healthPoint
       value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731403018539584298, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6725765147854509711, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: m_RootOrder

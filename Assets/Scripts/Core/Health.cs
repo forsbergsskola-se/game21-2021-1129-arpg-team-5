@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Team5.Movement;
+using UnityEngine.AI;
 
 namespace Team5.Core
 {
@@ -11,10 +13,25 @@ namespace Team5.Core
         public float healthPoint;
         bool isDead = false;
         public float maxHealth;
-
+        public GameObject Player;
+        public NavMeshAgent Agent;
+        public bool revive = false;
+        public int reviveCounter = 0;
+        
         private void Awake()
         {
             this.healthPoint = maxHealth;
+        }
+
+        private void Update()
+        {
+            if (revive == true)
+            {
+                // prints revive count
+                Agent.enabled = true;
+                Debug.Log($"Number of revives: {reviveCounter}");
+                revive = false;
+            }
         }
 
         public bool IsDead() 
@@ -57,6 +74,7 @@ namespace Team5.Core
         // Revive Player
         public void Revive()
         {
+            Agent.enabled = false;
             Debug.Log($"{this.name} will resurrect in 3 seconds...");
             StartCoroutine(WaitToRevive());
         }
@@ -69,6 +87,18 @@ namespace Team5.Core
             this.healthPoint = maxHealth;
             GetComponent<Animator>().SetTrigger("revive");
             Debug.Log($"{this.name} resurrected at timestamp: {Time.time} with {maxHealth} health!");
+                
+            
+            // attempts to reset navmesh agent
+            
+            yield return new WaitForSeconds(5);
+            Debug.Log("Player is active");
+            Agent.enabled = true; 
+            Agent.ResetPath();
+            Debug.Log(Agent.isActiveAndEnabled);
+            Debug.Log(!Agent.isActiveAndEnabled);
+            revive = true;
+            reviveCounter++;
         }
     }
 }
