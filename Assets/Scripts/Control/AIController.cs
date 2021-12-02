@@ -17,6 +17,8 @@ namespace Team5.Control
         PatrolPath patrolPath;
         [SerializeField]
         float waypointTolerence = 1f;
+        [SerializeField]
+        float waypointWaitingTime = 1f;
         Fighter fighter;
         Move move;
         Health health;
@@ -24,6 +26,7 @@ namespace Team5.Control
 
         Vector3 gaurdLocation;
         float timeScinseLastSawPlayer = Mathf.Infinity;
+        float timeScinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
 
         private void Start()
@@ -41,7 +44,7 @@ namespace Team5.Control
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
-                timeScinseLastSawPlayer = 0;
+                
                 Debug.Log("Attack!");
                 AttackBehaviour();
             }
@@ -53,8 +56,14 @@ namespace Team5.Control
             {
                 PatrolBehaviour();
             }
+            UpdateTimers();
+
+        }
+
+        private void UpdateTimers()
+        {
             timeScinseLastSawPlayer += Time.deltaTime;
-           
+            timeScinceArrivedAtWaypoint += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
@@ -64,11 +73,17 @@ namespace Team5.Control
             {
                 if (InWaypoint())
                 {
+                    timeScinceArrivedAtWaypoint = 0;
                     FollowWaypoint();
                 }
                 nextPos = GetCurrentWaypoint();
             }
-            move.StartMoveAction(nextPos);
+            if(timeScinceArrivedAtWaypoint > waypointWaitingTime)
+            {
+                move.StartMoveAction(nextPos);
+                
+            }
+            
         }
         private bool InWaypoint()
         {
@@ -92,6 +107,7 @@ namespace Team5.Control
 
         private void AttackBehaviour()
         {
+            timeScinseLastSawPlayer = 0;
             fighter.Attack(player);
         }
 
