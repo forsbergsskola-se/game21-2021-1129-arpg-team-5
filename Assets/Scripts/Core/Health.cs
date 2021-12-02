@@ -20,7 +20,7 @@ namespace Team5.Core
             {
                 Death();
             }
-            Debug.Log(healthPoint);
+            Debug.Log($"{this.name}'s current health: {this.healthPoint}");
         }
 
         public void Death()
