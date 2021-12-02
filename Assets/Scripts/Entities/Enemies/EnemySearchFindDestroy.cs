@@ -1,3 +1,4 @@
+using System.Collections;
 using Team5.Combat;
 using Team5.Core;
 using Unity.VisualScripting;
@@ -68,8 +69,9 @@ namespace Team5.Harry
             
             if (this.health.IsDead())
             {
-                Debug.Log("I'm Dead");
+                Debug.Log($"{this.name}: I am Dead");
                 CorpseStay();
+                StartCoroutine(WaitToDestroy());
             }
         }
 
@@ -87,7 +89,7 @@ namespace Team5.Harry
             if (distanceToWalkPoint.magnitude < 1f)
                 walkPointSet = false;
 
-            Debug.Log("Am Patroling");
+            Debug.Log($"{this.name}: I am Patrolling");
 
         }
         private void SearchWalkPoint()
@@ -106,7 +108,7 @@ namespace Team5.Harry
         {
             agent.SetDestination(playerPosition.position);
             entityPatrolSpeed = entityChaseSpeed;
-            Debug.Log("Am Chasing");
+            Debug.Log($"{this.name}: I am chasing {GameObject.Find("Player").name}");
         }
 
         private void AttackPlayer()
@@ -135,14 +137,14 @@ namespace Team5.Harry
 
             }
 
-            Debug.Log("Am Attacking");
+            Debug.Log($"{this.name}: I am attacking {GameObject.Find("Player").name}");
 
         }
         private void ResetAttack()
         {
             alreadyAttacked = false;
 
-            Debug.Log("Can attack again");
+            Debug.Log($"{this.name}: I can attack {GameObject.Find("Player").name} again");
 
         }
 
@@ -151,24 +153,30 @@ namespace Team5.Harry
             this.health.IsDead();
             entityPatrolSpeed = 0f;
             entityChaseSpeed = 0f;
-            Debug.Log("I'm staying still");
-
+            Debug.Log($"{this.name}: I'm staying still");
         }
-
-
-        private void DestroyEnemy()
+        
+        private IEnumerator WaitToDestroy()
         {
-            Destroy(gameObject);
+            Debug.Log($"Destroy {this.name} in 10 seconds");
 
+            yield return new WaitForSeconds(10);
+            Debug.Log($"Destroyed {this.name} at timestamp : " + Time.time);
+            Destroy(gameObject);
         }
+
 
         private void ReturnToStartPos()
         {
+            
+            Debug.Log($"{this.name}: I am returning to start position");
+
 
         }
 
         private void CancelChase()
         {
+            Debug.Log($"{this.name}: I am leaving {GameObject.Find("Player").name} alone");
 
         }
 

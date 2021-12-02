@@ -6016,26 +6016,6 @@ MonoBehaviour:
   m_Area: 3
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!1 &2088041850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3222672916921693173, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
-  m_PrefabInstance: {fileID: 1163004162}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2088041859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088041850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRange: 10
-  timeBetweenAttacks: 1
-  weaponDamage: 25
 --- !u!1 &2107038970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3779745573541866595, guid: 7d55cf275a4401945a90e4be7cc95eee, type: 3}
