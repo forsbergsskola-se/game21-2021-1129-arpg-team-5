@@ -16,7 +16,8 @@ public class DoorControll : MonoBehaviour, IInteractable
     
     
     // private Animator Dooropen;
-    [SerializeField] private IOpenLogic openLogicScript;
+    private IOpenLogic openLogicScript;
+    [SerializeField] private Transform playerTargetPosition;
     
     private GameObject player;
     private bool isLocked = true;
@@ -61,7 +62,7 @@ public class DoorControll : MonoBehaviour, IInteractable
 
 
         openLogicScript = GetComponent<IOpenLogic>();
-        
+        playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         
         
         
@@ -89,7 +90,7 @@ public class DoorControll : MonoBehaviour, IInteractable
         
         StartCoroutine(goThroughDoor);
         if (Vector3.Distance(player.transform.position, this.transform.position) > DistanceToOpenDoor)
-            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(mouseClickVector);
+            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(playerTargetPosition.position);
     }
 
     
@@ -102,7 +103,7 @@ public class DoorControll : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(0.25f);
             Debug.Log("Hi times up");
 
-            if (Vector3.Distance(player.transform.position, this.transform.position) < DistanceToOpenDoor)
+            if (Vector3.Distance(player.transform.position, playerTargetPosition.position) < DistanceToOpenDoor)
             {
                 // OpenAndCloseDoor();
                 openLogicScript.Open();

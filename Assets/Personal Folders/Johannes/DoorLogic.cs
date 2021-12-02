@@ -22,12 +22,20 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
     private IEnumerator OpeningAnimation()
     {
         Debug.Log("Hello");
-        transform.Rotate(Vector3.up, -45f);
+        // transform.Rotate(Vector3.up, -45f);
+        //
         // while (this.transform.rotation.y)
         // {
         //     
         // }
-        yield return new WaitForSeconds(1f);
-        transform.Rotate(Vector3.up, -45f);
+
+        for (int angle = 0; angle < 90; angle++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            transform.Rotate(Vector3.up, -1);
+        }
+        
+        
+
     }
 }
