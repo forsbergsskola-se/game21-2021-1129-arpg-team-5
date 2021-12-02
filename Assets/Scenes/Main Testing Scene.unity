@@ -1609,6 +1609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 50
+  maxHealth: 0
 --- !u!1 &473021352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3105,10 @@ PrefabInstance:
       propertyPath: waypointTolerence
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -5151628112007746493, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3222672916921693173, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_Name
       value: War Chief
@@ -3407,6 +3412,7 @@ MonoBehaviour:
   suspicionTime: 3
   patrolPath: {fileID: 0}
   waypointTolerence: 1
+  waypointWaitingTime: 1
 --- !u!195 &1244983090 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6851813623103609653, guid: 9d1ad429b65b4a34d9af1942d4c27604, type: 3}
@@ -5753,6 +5759,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: maxHealth
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: healthPoint
       value: 101

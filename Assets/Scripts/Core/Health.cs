@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,15 @@ namespace Team5.Core
     public class Health : MonoBehaviour
     {
         [SerializeField]
-        float healthPoint = 100f;
+        public float healthPoint;
         bool isDead = false;
-        
-        
+        public float maxHealth;
+
+        private void Awake()
+        {
+            this.healthPoint = maxHealth;
+        }
+
         public bool IsDead() 
         {
             return isDead;
@@ -41,14 +47,28 @@ namespace Team5.Core
             GetComponent<ActionScheduler>().CancelCurrentAction();
 
             
-            // Player was killed 
+            // check if Player was killed 
             if (this.name == "Player")
             {
-                Debug.Log($"{this.name} doesn't know how to resurrect yet so GameOver :(");
+                Revive();
             }
-            
-            // Add resurrect logic here later
-            
+        }
+        
+        // Revive Player
+        public void Revive()
+        {
+            Debug.Log($"{this.name} will resurrect in 3 seconds...");
+            StartCoroutine(WaitToRevive());
+        }
+        
+        
+        // Revival wait time
+        private IEnumerator WaitToRevive()
+        {
+            yield return new WaitForSeconds(3);
+            this.healthPoint = maxHealth;
+            GetComponent<Animator>().SetTrigger("revive");
+            Debug.Log($"{this.name} resurrected at timestamp: {Time.time} with {maxHealth} health!");
         }
     }
 }
