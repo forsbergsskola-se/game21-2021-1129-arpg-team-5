@@ -21,7 +21,7 @@ namespace Team5.Movement
 
         void Update()
         {
-            //agent.enabled = !health.IsDead();
+            agent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
