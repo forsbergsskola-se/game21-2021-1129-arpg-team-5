@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Team5.Movement;
 using Team5.Core;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Team5.Combat
 {
@@ -15,7 +17,14 @@ namespace Team5.Combat
         [SerializeField]
         float weaponDamage = 1f;
         float timeSinceLastAttack = Mathf.Infinity;
+
+        private float critAttackMultiplier = 1.2f;
+        private int critChance;
+        private int accuracyChance;
+        public float accuracyPercent = 8f; // on a scale of 0-9 this equals 90% chance
+        
         Health target;
+
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -48,10 +57,7 @@ namespace Team5.Combat
             {
                 TriggerAttack(); 
                 timeSinceLastAttack = 0;
-
             }
-
-
         }
 
         private void TriggerAttack()
@@ -59,12 +65,54 @@ namespace Team5.Combat
             GetComponent<Animator>().ResetTrigger("stopAttack");
             GetComponent<Animator>().SetTrigger("attack");//triggering Hit() from animation
         }
-
+ 
         // Animation Event 
         void Hit()
         {
             if (target == null) return;   //Bug fixed!
-            target.TakeDamage(weaponDamage);
+
+            
+            // random values for critical hit and accuracy between 0 and 9
+            critChance = Random.Range(0, 10);
+            accuracyChance = 9 - (Random.Range(0, 10));
+
+            // attack with critical hit if it returns 0 or 1 (20% chance)
+            if (critChance < 2)
+            {
+                var totalAttackValue = weaponDamage * critAttackMultiplier;
+                // hit accuracy higher than chance, can attack
+                if (accuracyPercent > accuracyChance)
+                {
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}% chance");
+
+                    Debug.Log($"{this.name} landed a critical hit worth {totalAttackValue}");
+                    target.TakeDamage(totalAttackValue);
+                }
+
+                //  misses attack due to low accuracy
+                else
+                {
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}% chance");
+                    Debug.Log($"{this.name}'s attack missed {target.name}!");
+                }
+            }
+            
+            // attack without critical hit
+            else
+            {
+                if (accuracyPercent > accuracyChance)
+                {
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}0% chance");
+                    target.TakeDamage(weaponDamage);
+                }
+                
+                //  misses attack due to low accuracy
+                else
+                {
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
+                    Debug.Log($"{this.name}'s attack missed {target.name}!");
+                }
+            }
         }
 
         private bool GetIsInRange()
@@ -99,6 +147,6 @@ namespace Team5.Combat
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
-
+        
     }
 }
