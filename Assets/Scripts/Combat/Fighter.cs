@@ -34,10 +34,13 @@ namespace Team5.Combat
                 return;
             }
 
+            // print enemy death
             if (target.IsDead())
             {
+                Debug.Log($"{target.name} was defeated by {this.name}");
                 return;
             }
+            
 
             if (!GetIsInRange())
             {
@@ -74,7 +77,7 @@ namespace Team5.Combat
             
             // random values for critical hit and accuracy between 0 and 9
             critChance = Random.Range(1, 11);
-            accuracyChance = 10 - (Random.Range(1, 11));
+            accuracyChance = 11 - (Random.Range(1, 11));
 
             // attack with critical hit if it returns 1 or 2 (20% chance)
             if (critChance < 3)
@@ -83,7 +86,7 @@ namespace Team5.Combat
                 // hit accuracy higher than chance, can attack
                 if (accuracyPercent > accuracyChance)
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}% chance");
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}0% chance");
 
                     Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
                     target.TakeDamage(totalAttackValue);
@@ -92,7 +95,7 @@ namespace Team5.Combat
                 //  misses attack due to low accuracy
                 else
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}% chance");
+                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
                     Debug.Log($"{this.name}'s attack missed {target.name}!");
                 }
             }
