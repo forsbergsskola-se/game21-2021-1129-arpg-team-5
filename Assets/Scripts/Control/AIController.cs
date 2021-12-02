@@ -13,6 +13,10 @@ namespace Team5.Control
         float chaseDistance = 5f;
         [SerializeField]
         float suspicionTime = 3f;
+        [SerializeField]
+        PatrolPath patrolPath;
+        [SerializeField]
+        float waypointTolerence = 1f;
         Fighter fighter;
         Move move;
         Health health;
@@ -20,6 +24,7 @@ namespace Team5.Control
 
         Vector3 gaurdLocation;
         float timeScinseLastSawPlayer = Mathf.Infinity;
+        int currentWaypointIndex = 0;
 
         private void Start()
         {
@@ -46,17 +51,40 @@ namespace Team5.Control
             }
             else
             {
-                GaurdBehaviour();
+                PatrolBehaviour();
             }
             timeScinseLastSawPlayer += Time.deltaTime;
            
         }
 
-        private void GaurdBehaviour()
+        private void PatrolBehaviour()
         {
-            move.StartMoveAction(gaurdLocation);
+            Vector3 nextPos = gaurdLocation;
+            if(patrolPath != null)
+            {
+                if (InWaypoint())
+                {
+                    FollowWaypoint();
+                }
+                nextPos = GetCurrentWaypoint();
+            }
+            move.StartMoveAction(nextPos);
+        }
+        private bool InWaypoint()
+        {
+            float distnaceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
+            return distnaceToWaypoint < waypointTolerence;
         }
 
+        private void FollowWaypoint()
+        {
+            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        private Vector3 GetCurrentWaypoint()
+        {
+            return patrolPath.GetWayPoint(currentWaypointIndex);
+        }
         private void SuspiciousBehaviour()
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
