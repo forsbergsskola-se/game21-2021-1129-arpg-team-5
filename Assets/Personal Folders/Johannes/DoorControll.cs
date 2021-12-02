@@ -6,7 +6,7 @@ using Logic;
 using Team5.Movement;
 using UnityEngine;
 
-public class DoorControll : MonoBehaviour , IInteractable
+public class DoorControll : MonoBehaviour, IInteractable
 {
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
@@ -15,7 +15,9 @@ public class DoorControll : MonoBehaviour , IInteractable
     [SerializeField] private float TimeToCloseDoor;
     
     
-    private Animator Dooropen;
+    // private Animator Dooropen;
+    [SerializeField] private GameObject animation;
+    
     private GameObject player;
     private bool isLocked = true;
     private MouseController mouseController;
@@ -50,7 +52,8 @@ public class DoorControll : MonoBehaviour , IInteractable
     {
         goThroughDoor = GoThroughDoor();
         player = GameObject.FindGameObjectWithTag("Player");
-        Dooropen = gameObject.GetComponent<Animator>();
+        
+        // Dooropen = gameObject.GetComponent<Animator>();
         
         // Get the mousecontroller and subscribe to their event.
         mouseController = FindObjectOfType<MouseController>();
@@ -119,14 +122,19 @@ public class DoorControll : MonoBehaviour , IInteractable
     IEnumerator CloseDoorOnTimer(float time)
     {
         yield return new WaitForSeconds(time);
-        Dooropen.SetBool(IsOpenId, false);
+        
+        
+        // Dooropen.SetBool(IsOpenId, false);
     }
 
     
     
     void OpenAndCloseDoor()
     {
-        Dooropen.SetBool(IsOpenId, true);
+        // Dooropen.SetBool(IsOpenId, true);
+        
+        
+        
         StartCoroutine(CloseDoorOnTimer(TimeToCloseDoor));
     }
     
