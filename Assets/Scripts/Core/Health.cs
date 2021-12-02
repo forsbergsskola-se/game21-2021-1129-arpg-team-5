@@ -14,7 +14,7 @@ namespace Team5.Core
         bool isDead = false;
         public float maxHealth;
         public GameObject Player;
-        public NavMeshAgent Agent;
+        NavMeshAgent Agent;
         public bool revive = false;
         public int reviveCounter = 0;
         
@@ -22,7 +22,10 @@ namespace Team5.Core
         {
             this.healthPoint = maxHealth;
         }
-
+        private void Start()
+        {
+            Agent = GetComponent<NavMeshAgent>();
+        }
         private void Update()
         {
             if (revive == true)
@@ -65,7 +68,7 @@ namespace Team5.Core
 
             
             // check if Player was killed 
-            if (this.name == "Player")
+            if (this.tag == "Player")
             {
                 Revive();
             }
@@ -74,9 +77,12 @@ namespace Team5.Core
         // Revive Player
         public void Revive()
         {
-            Agent.enabled = false;
+            
+            Agent.enabled = true;
+            if (Agent.enabled) Debug.Log("Agent enabled");
             Debug.Log($"{this.name} will resurrect in 3 seconds...");
             StartCoroutine(WaitToRevive());
+            //GetComponent<ActionScheduler>().StartAction(this);
         }
         
         
@@ -86,6 +92,7 @@ namespace Team5.Core
             yield return new WaitForSeconds(3);
             this.healthPoint = maxHealth;
             GetComponent<Animator>().SetTrigger("revive");
+            
             Debug.Log($"{this.name} resurrected at timestamp: {Time.time} with {maxHealth} health!");
                 
             
@@ -98,6 +105,8 @@ namespace Team5.Core
             Debug.Log(Agent.isActiveAndEnabled);
             Debug.Log(!Agent.isActiveAndEnabled);
             revive = true;
+            isDead = false;
+            GetComponent<Animator>().SetBool("isDead", false);
             reviveCounter++;
         }
     }
