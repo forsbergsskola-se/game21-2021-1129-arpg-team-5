@@ -6,17 +6,33 @@ namespace Team5.Control
 {
     public class PatrolPath : MonoBehaviour
     {
-        const float waypointGizmoRadius = 3f;
+        const float waypointGizmoRadius = 1f;
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             for (int i = 0; i < transform.childCount; i++)
             {
-                Gizmos.DrawSphere(transform.GetChild(i).position, waypointGizmoRadius);
-                
+                int j = GetNextIndex(i);
+                Gizmos.DrawSphere(GetWayPoint(i), waypointGizmoRadius);
+                Gizmos.DrawLine(GetWayPoint(i), GetWayPoint(j));
+
             }
-            
-            
+
+
+        }
+
+        private  int GetNextIndex(int i)
+        {
+            if(i+1== transform.childCount)
+            {
+                return 0;
+            }
+            return i + 1;
+        }
+
+        private Vector3 GetWayPoint(int i)
+        {
+            return transform.GetChild(i).position;
         }
     }
 }
