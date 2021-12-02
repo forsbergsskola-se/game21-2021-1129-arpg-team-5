@@ -834,7 +834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db612e3916ede244296ba3e1a28dfb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTargetPosition: {fileID: 0}
   lockedCursor: {fileID: 2800000, guid: f7dfef14387dcc242b5774d87e0bb6d9, type: 3}
   unlockedCursor: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
   distanceToOpenDoor: 1
@@ -1222,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642760207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8, y: -5, z: -6.03}
+  m_LocalPosition: {x: 7.09, y: -5, z: 5.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1851,39 +1850,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390392849}
-  - component: {fileID: 1390392848}
   - component: {fileID: 1390392850}
   - component: {fileID: 1390392854}
   - component: {fileID: 1390392851}
-  - component: {fileID: 1390392852}
   - component: {fileID: 1390392853}
   m_Layer: 0
-  m_Name: DoorTurnPosition
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1390392848
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390392847}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b102e1654cbbed48b3e8c666854613d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1390392849
 Transform:
   m_ObjectHideFlags: 0
@@ -1891,13 +1868,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390392847}
-  m_LocalRotation: {x: -0, y: 0.00000008940696, z: -0, w: 1}
-  m_LocalPosition: {x: 9.28, y: 6, z: 19.33}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.04, y: 6.3, z: 19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1771922752}
   - {fileID: 642760208}
+  - {fileID: 1989966696}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1913,7 +1891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db612e3916ede244296ba3e1a28dfb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTargetPosition: {fileID: 0}
   lockedCursor: {fileID: 2800000, guid: f7dfef14387dcc242b5774d87e0bb6d9, type: 3}
   unlockedCursor: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
   distanceToOpenDoor: 1
@@ -1930,22 +1907,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 1}
   m_Center: {x: 4.55, y: 0, z: 0}
---- !u!208 &1390392852
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390392847}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!82 &1390392853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2054,7 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0029a476c41b30947b3df66db047decf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
+  timeToOpen: 0.2
 --- !u!1 &1391680792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: a58cb74134202c245ababad0515c32ba, type: 3}
@@ -2687,7 +2648,7 @@ GameObject:
   - component: {fileID: 1771922754}
   - component: {fileID: 1771922756}
   m_Layer: 0
-  m_Name: Door
+  m_Name: DoorObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4346,6 +4307,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1989966695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989966696}
+  m_Layer: 0
+  m_Name: PlayerTargetPositionTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1989966696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989966695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.49, y: -5, z: -5.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1390392849}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2000351586
 PrefabInstance:
   m_ObjectHideFlags: 0
