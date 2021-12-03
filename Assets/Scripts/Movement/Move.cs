@@ -1,28 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Entities.Player;
 using Team5.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 namespace Team5.Movement
 {
     public class Move : MonoBehaviour, IAction
     {
+        private GameObject targetDest;
+        private GameObject player;
+        public AudioSource audio;
+        public AudioClip destReached;
+        
+
         Animator animator;
         NavMeshAgent agent;
         Health health;
+        
         private void Start()
         {
             health = GetComponent<Health>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            player = GameObject.FindWithTag("Player");
+            targetDest = GameObject.Find("Navigation Sphere");
+            audio = player.GetComponent<AudioSource>();
         }
 
         void Update()
         {
             agent.enabled = !health.IsDead();
             UpdateAnimator();
+            if (player.transform.position.x == targetDest.transform.position.x)
+            {
+                targetDest.transform.position = new Vector3(0, -50, 0);
+                audio.PlayOneShot(destReached);
+                Debug.Log("target reach");
+            }
         }
 
         public void StartMoveAction(Vector3 destination)
@@ -50,6 +68,11 @@ namespace Team5.Movement
             {
                 agent.destination = destination;  // Move agent to the target position
                 agent.isStopped = false;
+                
+                if (agent.tag == "Player")
+                {
+                    targetDest.transform.position = destination;
+                }
             }
         }
 
