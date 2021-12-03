@@ -20,8 +20,9 @@ namespace Team5.Combat
 
         private float critAttackMultiplier = 1.2f;
         private int critChance;
+        public float critPercent = 30f; // 20% chance 
         private int accuracyChance;
-        public float accuracyPercent = 9f; // 90% chance
+        public float accuracyPercent = 90f; // 90% chance
         
         Health target;
 
@@ -34,10 +35,8 @@ namespace Team5.Combat
                 return;
             }
 
-            // print enemy death
             if (target.IsDead())
             {
-                Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
                 return;
             }
             
@@ -73,21 +72,21 @@ namespace Team5.Combat
         void Hit()
         {
             if (target == null) return;   //Bug fixed!
-
+            Debug.Log($"{this.name} new attack");
             
             // random values for critical hit and accuracy between 0 and 9
-            critChance = Random.Range(1, 11);
+            critChance = 11 - Random.Range(1, 11);
             accuracyChance = 11 - (Random.Range(1, 11));
 
-            // attack with critical hit if it returns 1 or 2 (20% chance)
-            if (critChance < 3)
+            // attack with critical hit if lower than critPercent value
+            if (critChance >= critPercent/10)
             {
                 var totalAttackValue = weaponDamage * critAttackMultiplier;
-                // hit accuracy higher than chance, can attack
-                if (accuracyPercent > accuracyChance)
+                Debug.Log($"{this.name} can land critical hit");
+                // hit accuracy higher than chance, can attack with critical hit
+                if (accuracyChance > accuracyPercent/10)
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}0% chance");
-
+                    //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
                     target.TakeDamage(totalAttackValue);
                 }
@@ -95,28 +94,35 @@ namespace Team5.Combat
                 //  misses attack due to low accuracy
                 else
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
-                    Debug.Log($"{this.name}'s attack missed {target.name}!");
+                    //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy < {accuracyChance}0% chance");
+                    Debug.Log($"{this.name}'s critical hit missed {target.name}!");
                 }
             }
-            
-            
+
             // attack without critical hit
-            else
+            else if (critChance <= critPercent/10)
             {
                 if (accuracyPercent > accuracyChance)
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy > {accuracyChance}0% chance");
+                    //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
                     target.TakeDamage(weaponDamage);
                 }
                 
                 //  misses attack due to low accuracy
                 else
+
                 {
-                    Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
+                    //Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
                     Debug.Log($"{this.name}'s attack missed {target.name}!");
                 }
+            }
+
+            // Print death
+            if (target.IsDead())
+            {
+                Debug.Log($"{target.name}'s current health: {target.healthPoint}");
+                Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
             }
         }
 
@@ -152,6 +158,5 @@ namespace Team5.Combat
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
-        
     }
 }

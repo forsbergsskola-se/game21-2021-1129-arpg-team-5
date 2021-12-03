@@ -1612,6 +1612,7 @@ MonoBehaviour:
   maxHealth: 0
   Player: {fileID: 0}
   revive: 0
+  reviveWaitTime: 8
   reviveCounter: 0
 --- !u!1 &473021352
 GameObject:
@@ -3106,6 +3107,14 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 324519727}
+    - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: critPercent
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: accuracyPercent
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3222672916921693173, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_Name
       value: War Chief
@@ -5736,6 +5745,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -71393938720496325, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: critPercent
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: Agent
       value: 
