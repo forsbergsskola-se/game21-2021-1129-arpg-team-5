@@ -34,8 +34,15 @@ namespace Team5.Movement
 
         public void MoveTo(Vector3 destination)
         {
-            agent.destination = destination;  // Move agent to the target position
-            agent.isStopped = false;
+            if (!this.health.IsDead())
+            {
+                agent.destination = destination;  // Move agent to the target position
+                agent.isStopped = false;
+            }
+            else
+            {
+                Debug.Log("Can't move yet bro, I'm dead");
+            }
         }
 
         public void Cancel()
