@@ -4,7 +4,7 @@ using Logic;
 using Team5.Movement;
 using UnityEngine;
 
-public class DoorControll : MonoBehaviour, IInteractable
+public class InteractableBarrierController : MonoBehaviour, IInteractable
 {
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
