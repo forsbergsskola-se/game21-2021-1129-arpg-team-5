@@ -77,6 +77,7 @@ namespace Team5.Core
         // Start revival process
         public void Revive()
         {
+            Agent.enabled = true;
             Debug.Log($"{this.name} will resurrect in 8 seconds...");
             StartCoroutine(WaitToRevive());
         }

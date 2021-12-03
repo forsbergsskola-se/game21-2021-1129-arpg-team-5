@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Team5.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,20 +29,28 @@ namespace Team5.Movement
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-           
             MoveTo(destination);
         }
 
         public void MoveTo(Vector3 destination)
         {
-            if (!this.health.IsDead())
+            // can't move if dead
+            if (this.health.IsDead())
+            {
+                Debug.Log("Can't move yet bro, I'm dead");
+
+            }
+            // can't move if reviving and standing up
+            else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))
+            {
+                agent.isStopped = true;
+                Debug.Log("Can't move yet bro, I'm reviving");
+            }
+            //otherwise can move
+            else
             {
                 agent.destination = destination;  // Move agent to the target position
                 agent.isStopped = false;
-            }
-            else
-            {
-                Debug.Log("Can't move yet bro, I'm dead");
             }
         }
 
@@ -65,5 +74,4 @@ namespace Team5.Movement
             return path.status != NavMeshPathStatus.PathPartial;
         }
     }
-
 }
