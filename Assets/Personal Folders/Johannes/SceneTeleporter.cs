@@ -23,6 +23,6 @@ public class SceneTeleporter : MonoBehaviour, IInteractable
     private void OnTriggerStay(Collider other)
     {
         Debug.Log("Hello");
-        // SceneManager.LoadScene(SceneToLoad);
+        SceneManager.LoadScene(SceneToLoad);
     }
 }
