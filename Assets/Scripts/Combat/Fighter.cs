@@ -37,7 +37,7 @@ namespace Team5.Combat
             // print enemy death
             if (target.IsDead())
             {
-                Debug.Log($"{target.name} was defeated by {this.name}");
+                Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
                 return;
             }
             
