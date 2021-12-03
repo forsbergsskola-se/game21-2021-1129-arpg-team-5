@@ -114,9 +114,7 @@ namespace Team5.Control
         private bool InAttackRange()
         {
             float distanceWithPlayer = Vector3.Distance(player.transform.position, transform.position);
-
             return distanceWithPlayer < chaseDistance;
-
         }
 
         private void OnDrawGizmosSelected()
