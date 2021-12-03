@@ -16,6 +16,7 @@ namespace Team5.Core
         public GameObject Player;
         NavMeshAgent Agent;
         public bool revive = false;
+        public int reviveWaitTime = 8;
         public int reviveCounter = 0;
         
         private void Awake()
@@ -66,48 +67,40 @@ namespace Team5.Core
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
 
-            
-            // check if Player was killed 
-            if (this.tag == "Player")
+            // check if Player was killed so they can be revived
+            if (this.tag == "Player") // can add special enemies here also
             {
                 Revive();
             }
         }
         
-        // Revive Player
+        // Start revival process
         public void Revive()
         {
-            
-            Agent.enabled = true;
-            if (Agent.enabled) Debug.Log("Agent enabled");
-            Debug.Log($"{this.name} will resurrect in 3 seconds...");
+            Debug.Log($"{this.name} will resurrect in 8 seconds...");
             StartCoroutine(WaitToRevive());
-            //GetComponent<ActionScheduler>().StartAction(this);
         }
-        
-        
+
         // Revival wait time
         private IEnumerator WaitToRevive()
         {
-            yield return new WaitForSeconds(3);
-            this.healthPoint = maxHealth;
+            // keeps navmesh agent active
             
-            
-            Debug.Log($"{this.name} resurrected at timestamp: {Time.time} with {maxHealth} health!");
-                
-            
-            // attempts to reset navmesh agent
-            
-            yield return new WaitForSeconds(5);
-            Debug.Log("Player is active");
+            yield return new WaitForSeconds(reviveWaitTime);
+            Debug.Log("Player resurrecting");
             Agent.enabled = true; 
             Agent.ResetPath();
-            Debug.Log(Agent.isActiveAndEnabled);
-            Debug.Log(!Agent.isActiveAndEnabled);
+            Debug.Log($"{this.name} agent enabled: {Agent.isActiveAndEnabled}");
+
+            // resets health and starts revive animation
+            this.healthPoint = maxHealth;
             revive = true;
             isDead = false;
             GetComponent<Animator>().SetTrigger("revive");
             GetComponent<Animator>().SetBool("isDead", false);
+            
+            // revival debug + add to counter
+            Debug.Log($"{this.name} successfully resurrected at timestamp: {Time.time} with {maxHealth} health!");
             reviveCounter++;
         }
     }
