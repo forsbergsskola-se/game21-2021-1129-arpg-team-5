@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 namespace Team5.Movement
 {
     public class Move : MonoBehaviour, IAction
