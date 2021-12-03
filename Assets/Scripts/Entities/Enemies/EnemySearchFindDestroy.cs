@@ -89,7 +89,7 @@ namespace Team5.Harry
             if (distanceToWalkPoint.magnitude < 1f)
                 walkPointSet = false;
 
-            Debug.Log($"{this.name}: I am Patrolling");
+            //Debug.Log($"{this.name}: I am Patrolling");
 
         }
         private void SearchWalkPoint()

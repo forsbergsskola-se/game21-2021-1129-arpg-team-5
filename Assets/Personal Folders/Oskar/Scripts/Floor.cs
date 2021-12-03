@@ -10,7 +10,7 @@ namespace Personal_Folders.Oskar.Scripts
         public Texture2D cursorTexture;
         public void OnHover()
         {
-            Debug.Log("I hover over the Floor");
+            //Debug.Log("I hover over the Floor");
         }
         public void OnClick(Vector3 mouseClickVector)
         {

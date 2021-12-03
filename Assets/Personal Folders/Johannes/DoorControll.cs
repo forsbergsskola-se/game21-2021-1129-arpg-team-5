@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Entities.Player;
 using Logic;
 using Team5.Movement;
@@ -10,63 +8,40 @@ public class DoorControll : MonoBehaviour, IInteractable
 {
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
-    [SerializeField] private float DistanceToOpenDoor;
-    [SerializeField] private float TimeBeforeEnter; // TODO: To be used to make the player wait a little before entering the new area.
-    [SerializeField] private float TimeToCloseDoor;
-    
-    
-    // private Animator Dooropen;
+    [SerializeField] private float distanceToOpenDoor;
+
+
+    private Transform playerTargetPosition;
+    private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
-    [SerializeField] private Transform playerTargetPosition;
-    
     private GameObject player;
     private bool isLocked = true;
     private MouseController mouseController;
-    private static readonly int IsOpenId = Animator.StringToHash("isOpen");
+    private bool waitForSound;
+
+
+    private Vector3 TargetPosition;
     
     
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
 
 
-    // TODO LIST:
-    // Check player distance to door. [DONE]
-        
-    // If door is close [DONE]
-    // Open door [DONE]
-        
-    // If door not close [DONE]
-        
-    // Tell stupid player to get closer to door. [DONE]
-        
-    // Then if player is close enough to door [DONE]
-    // Open door [DONE]
-        
-    // When door is open []
-    // Tell player to move through the door []
-        
-    // When the player has moved through the door []
-    // Close the door behind them. [Kind of done, it's on a timer.]
-    
-    
-    
-    void Awake()
+    private void Awake()
     {
-        goThroughDoor = GoThroughDoor();
+        goToAndOpen = GoToAndOpen();
         player = GameObject.FindGameObjectWithTag("Player");
-        
-        // Dooropen = gameObject.GetComponent<Animator>();
         
         // Get the mousecontroller and subscribe to their event.
         mouseController = FindObjectOfType<MouseController>();
         mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
-
-
+        
         openLogicScript = GetComponent<IOpenLogic>();
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
+        playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
         
         
-        // Temporary
+        // Temporary 
         StartCoroutine(UnlockDoor());
     }
 
@@ -88,32 +63,56 @@ public class DoorControll : MonoBehaviour, IInteractable
         if (isLocked)
             return;
         
-        StartCoroutine(goThroughDoor);
-        if (Vector3.Distance(player.transform.position, this.transform.position) > DistanceToOpenDoor)
-            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(playerTargetPosition.position);
+
+
+        // #############################################################################################################
+        // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
+        // Very ugly
+        // Very inefficient
+        // Very very bad
+
+        var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
+        var reachableTwo = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPositionTwo.position);
+
+        if (reachable && reachableTwo)
+        {
+            var distance = Vector3.Distance(player.transform.position, playerTargetPosition.position);
+            var distanceTwo = Vector3.Distance(player.transform.position, playerTargetPositionTwo.position);
+
+            TargetPosition = distance < distanceTwo ? playerTargetPosition.position : playerTargetPositionTwo.position;
+        }
+        else if (reachable)
+            TargetPosition = playerTargetPosition.position;
+        else if (reachableTwo)
+            TargetPosition = playerTargetPositionTwo.position;
+
+        // #############################################################################################################
+        
+        
+        
+        StartCoroutine(goToAndOpen);
+        if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToOpenDoor)
+            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
 
     
     
-    private IEnumerator goThroughDoor;
-    private IEnumerator GoThroughDoor()
+    private IEnumerator goToAndOpen;
+    private IEnumerator GoToAndOpen()
     {
         for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.25f);
             Debug.Log("Hi times up");
 
-            if (Vector3.Distance(player.transform.position, playerTargetPosition.position) < DistanceToOpenDoor)
+            if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
-                // OpenAndCloseDoor();
                 openLogicScript.Open();
-                // TODO: Somewhere here we need to move the player to the other side of the door.
 
                 unlockedCursor = null;
                 lockedCursor = null;
                 
                 break;
-                // StopCoroutine(goThroughDoor);
             }
         }
     }
@@ -123,33 +122,11 @@ public class DoorControll : MonoBehaviour, IInteractable
     // Event subscriber that will stop the system for entering the door, if the player clicked something else.
     void ChangedTarget(object sender, bool temp)
     {
-        StopCoroutine(goThroughDoor);
-    }
-
-    
-    
-    IEnumerator CloseDoorOnTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        
-        
-        // Dooropen.SetBool(IsOpenId, false);
-    }
-
-    
-    
-    void OpenAndCloseDoor()
-    {
-        // Dooropen.SetBool(IsOpenId, true);
-        
-        
-        
-        StartCoroutine(CloseDoorOnTimer(TimeToCloseDoor));
+        StopCoroutine(goToAndOpen);
     }
     
     
-
-    private bool waitForSound;
+    
     IEnumerator WaitForSound()
     {
         waitForSound = true;
@@ -162,7 +139,7 @@ public class DoorControll : MonoBehaviour, IInteractable
     // TEMPORARY TIMER FOR UNLOCKING!
     IEnumerator UnlockDoor()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         isLocked = false;
     }
 }

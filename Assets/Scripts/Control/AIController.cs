@@ -13,6 +13,12 @@ namespace Team5.Control
         float chaseDistance = 5f;
         [SerializeField]
         float suspicionTime = 3f;
+        [SerializeField]
+        PatrolPath patrolPath;
+        [SerializeField]
+        float waypointTolerence = 1f;
+        [SerializeField]
+        float waypointWaitingTime = 1f;
         Fighter fighter;
         Move move;
         Health health;
@@ -20,6 +26,8 @@ namespace Team5.Control
 
         Vector3 gaurdLocation;
         float timeScinseLastSawPlayer = Mathf.Infinity;
+        float timeScinceArrivedAtWaypoint = Mathf.Infinity;
+        int currentWaypointIndex = 0;
 
         private void Start()
         {
@@ -36,7 +44,7 @@ namespace Team5.Control
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
-                timeScinseLastSawPlayer = 0;
+                
                 Debug.Log("Attack!");
                 AttackBehaviour();
             }
@@ -46,17 +54,52 @@ namespace Team5.Control
             }
             else
             {
-                GaurdBehaviour();
+                PatrolBehaviour();
             }
-            timeScinseLastSawPlayer += Time.deltaTime;
-           
+            UpdateTimers();
+
         }
 
-        private void GaurdBehaviour()
+        private void UpdateTimers()
         {
-            move.StartMoveAction(gaurdLocation);
+            timeScinseLastSawPlayer += Time.deltaTime;
+            timeScinceArrivedAtWaypoint += Time.deltaTime;
         }
 
+        private void PatrolBehaviour()
+        {
+            Vector3 nextPos = gaurdLocation;
+            if(patrolPath != null)
+            {
+                if (InWaypoint())
+                {
+                    timeScinceArrivedAtWaypoint = 0;
+                    FollowWaypoint();
+                }
+                nextPos = GetCurrentWaypoint();
+            }
+            if(timeScinceArrivedAtWaypoint > waypointWaitingTime)
+            {
+                move.StartMoveAction(nextPos);
+                
+            }
+            
+        }
+        private bool InWaypoint()
+        {
+            float distnaceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
+            return distnaceToWaypoint < waypointTolerence;
+        }
+
+        private void FollowWaypoint()
+        {
+            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        private Vector3 GetCurrentWaypoint()
+        {
+            return patrolPath.GetWayPoint(currentWaypointIndex);
+        }
         private void SuspiciousBehaviour()
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
@@ -64,6 +107,7 @@ namespace Team5.Control
 
         private void AttackBehaviour()
         {
+            timeScinseLastSawPlayer = 0;
             fighter.Attack(player);
         }
 
