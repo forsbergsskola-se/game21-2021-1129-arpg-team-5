@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Entities.Player;
 using Team5.Core;
 using Unity.VisualScripting;
@@ -13,22 +14,38 @@ namespace Team5.Movement
     {
         private GameObject targetDest;
         private GameObject player;
-        public AudioSource audio;
-        public AudioClip destReached;
-        
+        private GameObject enemy;
+        private GameObject enemy2;
+
+        private AudioSource audio;
+        private AudioClip destReached;
+        private Material enemyMaterial;
+        private Material waypointMaterial;
 
         Animator animator;
         NavMeshAgent agent;
         Health health;
+        private Transform enemyPosition;
         
         private void Start()
         {
             health = GetComponent<Health>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            
             player = GameObject.FindWithTag("Player");
+            audio = player.GetComponent<AudioSource>();
+            destReached = gameObject.GetComponent<AudioClip>();
+            
+            
+            enemy = GameObject.FindGameObjectWithTag("Enemy");
+            enemy2 = GameObject.FindGameObjectWithTag("Enemy2");
+
+
             targetDest = GameObject.Find("Navigation Sphere");
             audio = player.GetComponent<AudioSource>();
+            enemyMaterial = (Material) Resources.Load("EnemyIndicator");
+            waypointMaterial = (Material) Resources.Load("Waypoint");
         }
 
         void Update()
@@ -40,6 +57,15 @@ namespace Team5.Movement
                 targetDest.transform.position = new Vector3(0, -50, 0);
                 audio.PlayOneShot(destReached);
                 Debug.Log("target reach");
+            }
+            else if (targetDest.transform.position.x == enemy.transform.position.x 
+                     || targetDest.transform.position.x == enemy2.transform.position.x)
+            {
+                targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
+            }
+            else
+            {
+                targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
             }
         }
 
