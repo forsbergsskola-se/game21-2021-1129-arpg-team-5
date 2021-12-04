@@ -45,7 +45,7 @@ namespace Team5.Control
             if (InAttackRange() && fighter.CanAttack(player))
             {
                 
-                Debug.Log("Attack!");
+                Debug.Log($"{this.name}: Attack!");
                 AttackBehaviour();
             }
             else if (timeScinseLastSawPlayer < suspicionTime)

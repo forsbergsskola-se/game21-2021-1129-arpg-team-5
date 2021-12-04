@@ -23,14 +23,14 @@ namespace Team5.Combat
         public float critPercent = 30f; // 20% chance 
         private int accuracyChance;
         public float accuracyPercent = 90f; // 90% chance
-        private GameObject enemySphere;
         private GameObject player;
+        private GameObject enemyIndicator;
+        
         
         Health target;
 
         private void Start()
         {
-            enemySphere = GameObject.Find("Enemy Sphere");
             player = GameObject.FindWithTag("Player");
         }
 
@@ -47,6 +47,7 @@ namespace Team5.Combat
             {
                 return;
             }
+            
 
             if (!GetIsInRange())
             {
@@ -57,12 +58,20 @@ namespace Team5.Combat
                 GetComponent<Move>().Cancel();
                 AttackBehaviour();
             }
-
-            if (!target == player)
+            
+            
+            if (target.gameObject != player)
             {
-                Debug.Log("Move enemy sphere");
-                enemySphere.transform.position = target.transform.position + new Vector3(0, 10, 0);
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(true);
             }
+
+            else if (target.gameObject == player)
+            {
+                enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(true);
+            }
+
         }
 
         private void AttackBehaviour()
