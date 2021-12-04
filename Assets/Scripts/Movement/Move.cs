@@ -16,7 +16,6 @@ namespace Team5.Movement
         private GameObject player;
 
         private AudioSource audio;
-        private AudioClip destReached;
         private Material enemyMaterial;
         private Material waypointMaterial;
 
@@ -33,7 +32,6 @@ namespace Team5.Movement
             
             player = GameObject.FindWithTag("Player");
             audio = player.GetComponent<AudioSource>();
-            destReached = gameObject.GetComponent<AudioClip>();
 
 
             targetDest = GameObject.Find("Navigation Sphere");
@@ -49,7 +47,7 @@ namespace Team5.Movement
             if (player.transform.position.x == targetDest.transform.position.x)
             {
                 targetDest.transform.position = new Vector3(0, -50, 0);
-                audio.PlayOneShot(destReached);
+                audio.Play();
                 Debug.Log("target reach");
             }
 

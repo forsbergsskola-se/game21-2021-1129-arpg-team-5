@@ -45,6 +45,18 @@ namespace Team5.Combat
 
             if (target.IsDead())
             {
+                if (this.gameObject != player )
+                {
+                    enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
+                    enemyIndicator.SetActive(false); 
+                }
+
+                else if (this.gameObject == player )
+                {
+                    enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                    enemyIndicator.SetActive(false); 
+                }
+                
                 return;
             }
             
