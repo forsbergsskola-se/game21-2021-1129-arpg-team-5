@@ -74,7 +74,6 @@ namespace Team5.Combat
             // Activates Enemy Indicator if Player targets enemy
             if (target.gameObject != player)
             {
-                playerTargetingEnemy = true;
                 EnemyIndicatorActiveTarget();
             }
 
@@ -195,7 +194,7 @@ namespace Team5.Combat
         //Set enemy indicator active
         public void EnemyIndicatorActive()
         {
-            enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
             enemyIndicator.SetActive(true); 
         }
         public void EnemyIndicatorActiveTarget()
@@ -207,13 +206,18 @@ namespace Team5.Combat
         //Set enemy indicator inactive
         public void EnemyIndicatorInactive()
         {
-            enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
-            enemyIndicator.SetActive(false); 
+            if (this.gameObject != player)
+            {
+                enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+                enemyIndicator.SetActive(false);
+            } 
         }
         public void EnemyIndicatorInactiveTarget()
         {
-            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-            enemyIndicator.SetActive(false); 
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(false); 
+            }
         }
     }
 }

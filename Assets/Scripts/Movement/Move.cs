@@ -16,13 +16,9 @@ namespace Team5.Movement
         private GameObject player;
 
         private AudioSource audio;
-        private Material enemyMaterial;
-        private Material waypointMaterial;
-
         Animator animator;
         NavMeshAgent agent;
         Health health;
-        private Transform enemyPosition;
         
         private void Start()
         {
@@ -36,24 +32,20 @@ namespace Team5.Movement
 
             targetDest = GameObject.Find("Navigation Sphere");
             audio = player.GetComponent<AudioSource>();
-            enemyMaterial = (Material) Resources.Load("EnemyIndicator");
-            waypointMaterial = (Material) Resources.Load("Waypoint");
         }
 
         void Update()
         {
             agent.enabled = !health.IsDead();
+
             UpdateAnimator();
+            
+            // indicates where player is going with sound and visual
             if (player.transform.position.x == targetDest.transform.position.x)
             {
                 targetDest.transform.position = new Vector3(0, -50, 0);
                 audio.Play();
                 Debug.Log("target reach");
-            }
-
-            else
-            {
-                targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
             }
         }
 

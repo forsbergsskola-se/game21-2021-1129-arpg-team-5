@@ -28,6 +28,9 @@ namespace Team5.Control
         float timeScinseLastSawPlayer = Mathf.Infinity;
         float timeScinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
+        private GameObject enemyIndicator;
+        private GameObject enemyIndicator2;
+
 
         private void Start()
         {
@@ -51,11 +54,21 @@ namespace Team5.Control
             else if (timeScinseLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
-                StartCoroutine(SetEnemyIndicatorInactive());
+                enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+                if (enemyIndicator == enabled)
+                {
+                    enemyIndicator.SetActive(false);
+                }
             }
             else
             {
                 PatrolBehaviour();
+                enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+                if (enemyIndicator2 == enabled)
+                {
+                    enemyIndicator2.SetActive(false);
+                }
+
             }
             UpdateTimers();
 
@@ -122,12 +135,6 @@ namespace Team5.Control
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
-        }
-        
-        IEnumerator SetEnemyIndicatorInactive()
-        {
-            yield return new WaitForSeconds(5);
-            GetComponent<Fighter>().EnemyIndicatorInactive();
         }
     }
 }
