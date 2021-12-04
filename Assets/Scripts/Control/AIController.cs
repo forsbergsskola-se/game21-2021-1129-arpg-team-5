@@ -51,6 +51,7 @@ namespace Team5.Control
             else if (timeScinseLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
+                StartCoroutine(SetEnemyIndicatorInactive());
             }
             else
             {
@@ -122,7 +123,12 @@ namespace Team5.Control
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
-
+        
+        IEnumerator SetEnemyIndicatorInactive()
+        {
+            yield return new WaitForSeconds(5);
+            GetComponent<Fighter>().EnemyIndicatorInactive();
+        }
     }
 }
 

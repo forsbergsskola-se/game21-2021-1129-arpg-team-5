@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Team5.Movement;
 using Team5.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,10 +24,10 @@ namespace Team5.Combat
         public float critPercent = 30f; // 20% chance 
         private int accuracyChance;
         public float accuracyPercent = 90f; // 90% chance
+        
         private GameObject player;
         private GameObject enemyIndicator;
-        
-        
+        private bool playerTargetingEnemy;
         Health target;
 
         private void Start()
@@ -36,31 +37,14 @@ namespace Team5.Combat
 
         private void Update()
         {
+            playerTargetingEnemy = false;
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null)
             {
                 return;
             }
-
-            if (target.IsDead())
-            {
-                if (this.gameObject != player )
-                {
-                    enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
-                    enemyIndicator.SetActive(false); 
-                }
-
-                else if (this.gameObject == player )
-                {
-                    enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                    enemyIndicator.SetActive(false); 
-                }
-                
-                return;
-            }
             
-
             if (!GetIsInRange())
             {
                 GetComponent<Move>().MoveTo(target.transform.position);
@@ -71,19 +55,34 @@ namespace Team5.Combat
                 AttackBehaviour();
             }
             
+            if (target.IsDead())
+            {
+                // Disables enemy indicator if enemy dies
+                if (this.gameObject != player )
+                {
+                    EnemyIndicatorInactive();
+                }
+
+                // Disables enemy indicator if player dies
+                else if (this.gameObject == player )
+                {
+                    EnemyIndicatorInactiveTarget();
+                }
+                return;
+            }
             
+            // Activates Enemy Indicator if Player targets enemy
             if (target.gameObject != player)
             {
-                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(true);
+                playerTargetingEnemy = true;
+                EnemyIndicatorActiveTarget();
             }
 
-            else if (target.gameObject == player)
+            // Activates Enemy Indicator if Enemy targets players
+            if (target.gameObject == player)
             {
-                enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(true);
+                EnemyIndicatorActive();
             }
-
         }
 
         private void AttackBehaviour()
@@ -191,6 +190,30 @@ namespace Team5.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        //Set enemy indicator active
+        public void EnemyIndicatorActive()
+        {
+            enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator.SetActive(true); 
+        }
+        public void EnemyIndicatorActiveTarget()
+        {
+            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator.SetActive(true); 
+        }
+        
+        //Set enemy indicator inactive
+        public void EnemyIndicatorInactive()
+        {
+            enemyIndicator = this.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator.SetActive(false); 
+        }
+        public void EnemyIndicatorInactiveTarget()
+        {
+            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator.SetActive(false); 
         }
     }
 }
