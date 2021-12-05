@@ -71,6 +71,7 @@ namespace Team5.Combat
                 return;
             }
             
+            
             // Activates Enemy Indicator if Player targets enemy
             if (target.gameObject != player)
             {
@@ -82,6 +83,8 @@ namespace Team5.Combat
             {
                 EnemyIndicatorActive();
             }
+            
+            // need to add logic for small enemy indicator to go away
         }
 
         private void AttackBehaviour()

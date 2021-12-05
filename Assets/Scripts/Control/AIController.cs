@@ -43,7 +43,13 @@ namespace Team5.Control
         }
         private void Update()
         {
-            if (health.IsDead()) return;
+            enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+
+            if (health.IsDead())
+            {
+                enemyIndicator2.SetActive(false);
+                return;
+            }
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
@@ -54,7 +60,6 @@ namespace Team5.Control
             else if (timeScinseLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
-                enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
                 if (enemyIndicator == enabled)
                 {
                     enemyIndicator.SetActive(false);
