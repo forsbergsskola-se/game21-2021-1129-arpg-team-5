@@ -27,7 +27,6 @@ namespace Team5.Combat
         
         private GameObject player;
         private GameObject enemyIndicator;
-        private bool playerTargetingEnemy;
         Health target;
 
         private void Start()
@@ -37,7 +36,6 @@ namespace Team5.Combat
 
         private void Update()
         {
-            playerTargetingEnemy = false;
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null)

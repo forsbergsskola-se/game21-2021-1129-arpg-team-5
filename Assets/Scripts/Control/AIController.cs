@@ -38,13 +38,16 @@ namespace Team5.Control
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             player = GameObject.FindWithTag("Player");
-
             gaurdLocation = transform.position;
+
+            if (this.gameObject != player)
+            {
+                enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+            }
         }
         private void Update()
         {
-            enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
-
             if (health.IsDead())
             {
                 enemyIndicator2.SetActive(false);
@@ -68,7 +71,6 @@ namespace Team5.Control
             else
             {
                 PatrolBehaviour();
-                enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
                 if (enemyIndicator2 == enabled)
                 {
                     enemyIndicator2.SetActive(false);
