@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -19,6 +20,8 @@ namespace Team5.Movement
         Animator animator;
         NavMeshAgent agent;
         Health health;
+        private Material enemyMaterial;
+        private Material waypointMaterial;
         
         private void Start()
         {
@@ -28,6 +31,8 @@ namespace Team5.Movement
             
             player = GameObject.FindWithTag("Player");
             audio = player.GetComponent<AudioSource>();
+            enemyMaterial = (Material) Resources.Load("EnemyIndicator");
+            waypointMaterial = (Material) Resources.Load("Waypoint");
 
 
             targetDest = GameObject.Find("Navigation Sphere");
@@ -46,6 +51,18 @@ namespace Team5.Movement
                 targetDest.transform.position = new Vector3(0, -50, 0);
                 audio.Play();
                 Debug.Log("target reach");
+            }
+
+            else if (this.gameObject != player)
+            {
+                var targetDestLocation = Math.Round(targetDest.transform.position.x, 1);
+                var enemyLocation = Math.Round(this.gameObject.transform.position.x, 1);
+
+                if (enemyLocation == targetDestLocation)
+                {
+                    targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
+                    Debug.Log("Target: Enemy");
+                }
             }
         }
 
