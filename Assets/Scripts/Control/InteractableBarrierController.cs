@@ -1,5 +1,5 @@
 using System.Collections;
-using Entities.Player;
+using Control;
 using Logic;
 using Team5.Movement;
 using UnityEngine;
