@@ -14,7 +14,7 @@ namespace Personal_Folders.Oskar.Scripts
         }
         public void OnClick(Vector3 mouseClickVector)
         {
-            Debug.Log("I clicked on the Floor");
+            // Debug.Log("I clicked on the Floor");
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(mouseClickVector);
         }
     }
