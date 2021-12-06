@@ -6,7 +6,7 @@ using UnityEngine;
 public class GateLogic : MonoBehaviour, IOpenLogic
 {
     [SerializeField] private float timeToGoUpp;
-    [SerializeField] private float openDegrees;
+    [SerializeField] private float distanceToOpen;
     private float totalAntationFrames;
     private const float AnimationFramerate = 60;
     private float frameTime;
@@ -16,7 +16,7 @@ public class GateLogic : MonoBehaviour, IOpenLogic
     private void Awake()
     {
         totalAntationFrames = Mathf.Round(timeToGoUpp * AnimationFramerate);
-        movementUpPerFrame = openDegrees / totalAntationFrames;
+        movementUpPerFrame = distanceToOpen / totalAntationFrames;
         frameTime = 1 / AnimationFramerate;
     }
 

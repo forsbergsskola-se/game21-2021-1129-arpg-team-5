@@ -16,22 +16,17 @@ namespace Team5.Control
     {
             health = GetComponent<Health>();
             GetComponent<NavMeshAgent>().speed = MovementSpeed;
-        
     }
     void Update()
     {
-        if (health.IsDead()) return;
-
-        if (InteractWithCombat())
-        {
+        if (health.IsDead()) 
             return;
-        }
 
-        if (InteractWithMovement())
-        {
+        if (InteractWithCombat()) 
             return;
-        }
-
+        
+        if (InteractWithMovement()) 
+            return;
     }
 
     private bool InteractWithCombat()
@@ -40,27 +35,20 @@ namespace Team5.Control
         foreach (RaycastHit hit in hits)
         {
             CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (target == null)
-                {
-                    continue;
-                }
                 
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
-                {
-                    continue;
-                }
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);
-                }
+            if (target == null) 
+                continue;
+            
+            if (!GetComponent<Fighter>().CanAttack(target.gameObject)) 
+                continue;
+            
+            if (Input.GetMouseButtonDown(0)) 
+                GetComponent<Fighter>().Attack(target.gameObject);
 
             return true;
         }
-
         return false;
     }
-
     private bool InteractWithMovement()
     {
         /*RaycastHit hitInfo;
@@ -77,7 +65,6 @@ namespace Team5.Control
 
         return false;
     }
-
     private static Ray GetMouseRay()
     {
         return Camera.main.ScreenPointToRay(Input.mousePosition);

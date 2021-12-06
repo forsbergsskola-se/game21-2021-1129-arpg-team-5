@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Team5.Movement;
 using UnityEngine.AI;
 
 namespace Team5.Core
@@ -22,9 +20,11 @@ namespace Team5.Core
         
         NavMeshAgent Agent;
         private bool revive = false;
-        
-        
-        
+        private static readonly int Die = Animator.StringToHash("die");
+        private static readonly int Revive1 = Animator.StringToHash("revive");
+        private static readonly int Dead = Animator.StringToHash("isDead");
+
+
         private void Awake()
         {
             this.healthPoint = maxHealth;
@@ -37,7 +37,7 @@ namespace Team5.Core
         {
             currentHealth = this.healthPoint;
 
-            if (revive == true)
+            if (revive)
             {
                 // prints revive count
                 Agent.enabled = true;
@@ -46,7 +46,7 @@ namespace Team5.Core
                 // increments player health until it reaches max health
                 if (!currentHealth.Equals(maxHealth))
                 {
-                    StartCoroutine(addHealth());
+                    StartCoroutine(AddHealth());
                 }
                 revive = false;
             }
@@ -78,11 +78,11 @@ namespace Team5.Core
                 return;
             }
             isDead = true;
-            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<Animator>().SetTrigger(Die);
             GetComponent<ActionScheduler>().CancelCurrentAction();
 
             // check if Player was killed so they can be revived
-            if (this.tag == "Player") // can add special enemies here also
+            if (this.CompareTag("Player")) // can add special enemies here also
             {
                 Revive();
             }
@@ -112,8 +112,8 @@ namespace Team5.Core
             Debug.Log($"Revival Health: {this.healthPoint}");
             revive = true;
             isDead = false;
-            GetComponent<Animator>().SetTrigger("revive");
-            GetComponent<Animator>().SetBool("isDead", false);
+            GetComponent<Animator>().SetTrigger(Revive1);
+            GetComponent<Animator>().SetBool(Dead, false);
             
             // revival debug + add to counter
             Debug.Log($"{this.name} successfully resurrected at timestamp: {Time.time} with {this.healthPoint} health!");
@@ -121,7 +121,7 @@ namespace Team5.Core
         }
         
         // Revive health method
-        IEnumerator addHealth()
+        IEnumerator AddHealth()
         {
             float time1 = Time.time; // start time
             while (this.healthPoint < maxHealth){ // while health < 101.

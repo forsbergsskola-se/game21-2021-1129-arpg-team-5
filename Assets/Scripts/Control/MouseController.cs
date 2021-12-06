@@ -17,10 +17,8 @@ namespace Control
         {
             cameraObject = gameObject.GetComponent<Camera>();
         }
-
         
         // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
-        
         private void Update()
         {
             bool mouseClicked;
@@ -32,17 +30,19 @@ namespace Control
                 ChangedTarget?.Invoke(this, true);
             }
             else
+            {
                 mouseClicked = false;
-            
-            
+            }
             
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
             if (!Physics.Raycast(ray, out var hit)) 
             {
                 SetCursorTexture(null);
+                
                 if (Input.GetMouseButtonDown(0))
                     GameObject.Find("Player").GetComponent<Move>().Cancel();
+                
                 return;
             }
         
@@ -55,16 +55,16 @@ namespace Control
                 else 
                     interact.OnHover();
             }
-            else 
+            else
+            {
                 SetCursorTexture(null);
+            }
         }
-
-
         private void SetCursorTexture(Texture2D texture)
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
-
+        
         /// <summary>
         /// Invoked with a true when the player switch target by pressing a interactable object.
         /// </summary>

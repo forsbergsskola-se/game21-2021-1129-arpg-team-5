@@ -4101,7 +4101,7 @@ PrefabInstance:
       objectReference: {fileID: 324519727}
     - target: {fileID: -7733661034245680324, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: waypointTolerance
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: critPercent
@@ -4176,6 +4176,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 749483838}
+    - target: {fileID: -7733661034245680324, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: waypointTolerance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: critPercent
       value: 20
@@ -5904,6 +5908,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2208963561206085859, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
+      propertyPath: openDegrees
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208963561206085859, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
+      propertyPath: timeToGoUpp
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2208963561206085862, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
       propertyPath: m_RootOrder
       value: 1
