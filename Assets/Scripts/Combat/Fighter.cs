@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Team5.Movement;
 using Team5.Core;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -28,6 +24,8 @@ namespace Team5.Combat
         private GameObject player;
         private GameObject enemyIndicator;
         Health target;
+        private static readonly int Attack1 = Animator.StringToHash("attack");
+        private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
         private void Start()
         {
@@ -100,8 +98,8 @@ namespace Team5.Combat
 
         private void TriggerAttack()
         {
-            GetComponent<Animator>().ResetTrigger("stopAttack");
-            GetComponent<Animator>().SetTrigger("attack");//triggering Hit() from animation
+            GetComponent<Animator>().ResetTrigger(StopAttack1);
+            GetComponent<Animator>().SetTrigger(Attack1);//triggering Hit() from animation
         }
  
         // Animation Event 
@@ -191,8 +189,8 @@ namespace Team5.Combat
 
         private void StopAttack()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            GetComponent<Animator>().ResetTrigger(Attack1);
+            GetComponent<Animator>().SetTrigger(StopAttack1);
         }
 
         //Set enemy indicator active
