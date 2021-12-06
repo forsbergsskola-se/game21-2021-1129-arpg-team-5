@@ -1,8 +1,9 @@
 using System;
 using Logic;
+using Team5.Movement;
 using UnityEngine;
 
-namespace Entities.Player
+namespace Control
 {
     public class MouseController : MonoBehaviour
     {
@@ -17,13 +18,31 @@ namespace Entities.Player
             cameraObject = gameObject.GetComponent<Camera>();
         }
 
-        private void Update() 
+        
+        // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
+        
+        private void Update()
         {
+            bool mouseClicked;
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseClicked = true;
+                GameObject.Find("Player").GetComponent<Move>().Cancel();
+                // Invoke a event to signify for others that the player clicked something.
+                ChangedTarget?.Invoke(this, true);
+            }
+            else
+                mouseClicked = false;
+            
+            
+            
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
             if (!Physics.Raycast(ray, out var hit)) 
             {
                 SetCursorTexture(null);
+                if (Input.GetMouseButtonDown(0))
+                    GameObject.Find("Player").GetComponent<Move>().Cancel();
                 return;
             }
         
@@ -31,19 +50,13 @@ namespace Entities.Player
             {
                 SetCursorTexture(interact.mouseTexture);
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // Invoke a event to signify for others that the player switched to a different target.
-                    ChangedTarget?.Invoke(this, true);
-                    
+                if (mouseClicked)
                     interact.OnClick(hit.point);
-                }
                 else 
                     interact.OnHover();
             }
-            else {
+            else 
                 SetCursorTexture(null);
-            }
         }
 
 
