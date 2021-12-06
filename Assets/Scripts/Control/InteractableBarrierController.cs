@@ -9,23 +9,19 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
-
-
+    
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
     private GameObject player;
-    private bool isLocked = true;
     private MouseController mouseController;
-    private bool waitForSound;
-
-
+    
     private Vector3 TargetPosition;
     
-    
+    private bool isLocked = true;
+    private bool waitForSound;
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
-
-
+    
     private void Awake()
     {
         goToAndOpen = GoToAndOpen();
@@ -39,14 +35,9 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
-        
-        
         // Temporary 
         StartCoroutine(UnlockDoor());
     }
-
-    
-    
     public void OnHover()
     {
         if (isLocked && !waitForSound)
@@ -55,16 +46,11 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             StartCoroutine(WaitForSound());
         }
     }
-
-    
-    
     public void OnClick(Vector3 mouseClickVector)
     {
         if (isLocked)
             return;
         
-
-
         // #############################################################################################################
         // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
         // Very ugly
@@ -88,15 +74,11 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
 
         // #############################################################################################################
         
-        
-        
         StartCoroutine(goToAndOpen);
+        
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToOpenDoor)
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
-
-    
-    
     private IEnumerator goToAndOpen;
     private IEnumerator GoToAndOpen()
     {
@@ -115,27 +97,18 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             }
         }
     }
-
-    
     
     // Event subscriber that will stop the system for entering the door, if the player clicked something else.
     void ChangedTarget(object sender, bool temp)
     {
         StopCoroutine(goToAndOpen);
     }
-    
-    
-    
     IEnumerator WaitForSound()
     {
         waitForSound = true;
         yield return new WaitForSeconds(1);
         waitForSound = false;
     }
-    
-    
-    
-    // TEMPORARY TIMER FOR UNLOCKING!
     IEnumerator UnlockDoor()
     {
         yield return new WaitForSeconds(2);

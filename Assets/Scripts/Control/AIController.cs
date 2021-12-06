@@ -12,6 +12,7 @@ namespace Team5.Control
         [SerializeField] private PatrolPath patrolPath;
         [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] private float waypointWaitingTime = 1f;
+        
         private Fighter fighter;
         private Move move;
         private Health health;
@@ -23,8 +24,7 @@ namespace Team5.Control
         private int currentWaypointIndex = 0;
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
-
-
+        
         private void Start()
         {
             move = GetComponent<Move>();
@@ -34,6 +34,7 @@ namespace Team5.Control
             guardLocation = transform.position;
 
             if (this.gameObject == player) return;
+            
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
         }
@@ -47,40 +48,34 @@ namespace Team5.Control
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
-                
                 Debug.Log($"{this.name}: Attack!");
                 AttackBehaviour();
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
+
                 if (enemyIndicator == enabled)
-                {
                     enemyIndicator.SetActive(false);
-                }
             }
             else
             {
                 PatrolBehaviour();
                 if (enemyIndicator2 == enabled)
-                {
                     enemyIndicator2.SetActive(false);
-                }
-
             }
+            
             UpdateTimers();
-
         }
-
         private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
-
         private void PatrolBehaviour()
         {
             Vector3 nextPos = guardLocation;
+            
             if(patrolPath != null)
             {
                 if (InWaypoint())
@@ -88,14 +83,12 @@ namespace Team5.Control
                     timeSinceArrivedAtWaypoint = 0;
                     FollowWaypoint();
                 }
+                
                 nextPos = GetCurrentWaypoint();
             }
-            if(timeSinceArrivedAtWaypoint > waypointWaitingTime)
-            {
-                move.StartMoveAction(nextPos);
-                
-            }
             
+            if(timeSinceArrivedAtWaypoint > waypointWaitingTime)
+                move.StartMoveAction(nextPos);
         }
         private bool InWaypoint()
         {
@@ -107,7 +100,6 @@ namespace Team5.Control
         {
             currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
         }
-
         private Vector3 GetCurrentWaypoint()
         {
             return patrolPath.GetWayPoint(currentWaypointIndex);
@@ -116,19 +108,16 @@ namespace Team5.Control
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
-
         private void AttackBehaviour()
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
         }
-
         private bool InAttackRange()
         {
             float distanceWithPlayer = Vector3.Distance(player.transform.position, transform.position);
             return distanceWithPlayer < chaseDistance;
         }
-
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
