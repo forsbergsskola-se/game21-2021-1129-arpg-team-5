@@ -2,7 +2,7 @@ using Logic;
 using Team5.Movement;
 using UnityEngine;
 
-namespace Personal_Folders.Oskar.Scripts
+namespace World
 {
     public class Floor : MonoBehaviour, IInteractable
     {
