@@ -1,6 +1,7 @@
 using Team5.Combat;
 using Team5.Core;
 using Team5.Movement;
+using TMPro;
 using UnityEngine;
 
 namespace Team5.Control
@@ -24,6 +25,7 @@ namespace Team5.Control
         private int currentWaypointIndex = 0;
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
+        private TMP_Text healthText;
         
         private void Start()
         {
@@ -37,12 +39,14 @@ namespace Team5.Control
             
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+            healthText = this.GetComponentInChildren<TMP_Text>();
         }
         private void Update()
         {
             if (health.IsDead())
             {
                 enemyIndicator2.SetActive(false);
+                healthText.enabled = false;
                 return;
             }
 
