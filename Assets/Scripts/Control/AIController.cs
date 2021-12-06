@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Team5.Combat;
 using Team5.Core;
 using Team5.Movement;
@@ -9,25 +7,20 @@ namespace Team5.Control
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField]
-        float chaseDistance = 5f;
-        [SerializeField]
-        float suspicionTime = 3f;
-        [SerializeField]
-        PatrolPath patrolPath;
-        [SerializeField]
-        float waypointTolerence = 1f;
-        [SerializeField]
-        float waypointWaitingTime = 1f;
-        Fighter fighter;
-        Move move;
-        Health health;
-        GameObject player;
+        [SerializeField] private float chaseDistance = 5f;
+        [SerializeField] private float suspicionTime = 3f;
+        [SerializeField] private PatrolPath patrolPath;
+        [SerializeField] private float waypointTolerance = 1f;
+        [SerializeField] private float waypointWaitingTime = 1f;
+        private Fighter fighter;
+        private Move move;
+        private Health health;
+        private GameObject player;
 
-        Vector3 gaurdLocation;
-        float timeScinseLastSawPlayer = Mathf.Infinity;
-        float timeScinceArrivedAtWaypoint = Mathf.Infinity;
-        int currentWaypointIndex = 0;
+        private Vector3 guardLocation;
+        private float timeSinceLastSawPlayer = Mathf.Infinity;
+        private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        private int currentWaypointIndex = 0;
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
 
@@ -38,13 +31,11 @@ namespace Team5.Control
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             player = GameObject.FindWithTag("Player");
-            gaurdLocation = transform.position;
+            guardLocation = transform.position;
 
-            if (this.gameObject != player)
-            {
-                enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
-            }
+            if (this.gameObject == player) return;
+            enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
         }
         private void Update()
         {
@@ -60,7 +51,7 @@ namespace Team5.Control
                 Debug.Log($"{this.name}: Attack!");
                 AttackBehaviour();
             }
-            else if (timeScinseLastSawPlayer < suspicionTime)
+            else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
                 if (enemyIndicator == enabled)
@@ -83,23 +74,23 @@ namespace Team5.Control
 
         private void UpdateTimers()
         {
-            timeScinseLastSawPlayer += Time.deltaTime;
-            timeScinceArrivedAtWaypoint += Time.deltaTime;
+            timeSinceLastSawPlayer += Time.deltaTime;
+            timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
         {
-            Vector3 nextPos = gaurdLocation;
+            Vector3 nextPos = guardLocation;
             if(patrolPath != null)
             {
                 if (InWaypoint())
                 {
-                    timeScinceArrivedAtWaypoint = 0;
+                    timeSinceArrivedAtWaypoint = 0;
                     FollowWaypoint();
                 }
                 nextPos = GetCurrentWaypoint();
             }
-            if(timeScinceArrivedAtWaypoint > waypointWaitingTime)
+            if(timeSinceArrivedAtWaypoint > waypointWaitingTime)
             {
                 move.StartMoveAction(nextPos);
                 
@@ -108,8 +99,8 @@ namespace Team5.Control
         }
         private bool InWaypoint()
         {
-            float distnaceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
-            return distnaceToWaypoint < waypointTolerence;
+            float distanceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
+            return distanceToWaypoint < waypointTolerance;
         }
 
         private void FollowWaypoint()
@@ -128,7 +119,7 @@ namespace Team5.Control
 
         private void AttackBehaviour()
         {
-            timeScinseLastSawPlayer = 0;
+            timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
         }
 
