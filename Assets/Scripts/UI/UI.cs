@@ -11,6 +11,9 @@ public class UI : MonoBehaviour
 {
     private TMP_Text reviveText;
     private int reviveCount;
+    private TMP_Text healthText;
+
+    private float healthCount;
     
     private void Update()
     {
@@ -19,5 +22,10 @@ public class UI : MonoBehaviour
         reviveCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().reviveCounter;
         reviveText = FindObjectOfType<HUD>().ReviveText;
         reviveText.text = "Revivals: " + reviveCount;
+        
+        healthCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthPoint;
+        healthText = FindObjectOfType<HUD>().HealthText;
+        healthText.text = "Health: " + healthCount;
+        
     }
 }
