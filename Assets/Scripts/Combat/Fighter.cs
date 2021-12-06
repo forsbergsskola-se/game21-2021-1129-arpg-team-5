@@ -90,8 +90,11 @@ namespace Team5.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                TriggerAttack(); 
-                timeSinceLastAttack = 0;
+                if (!target.IsDead())
+                {
+                    TriggerAttack();
+                    timeSinceLastAttack = 0;
+                }
             }
         }
 

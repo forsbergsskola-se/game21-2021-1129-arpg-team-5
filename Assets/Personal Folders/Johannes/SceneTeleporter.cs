@@ -14,15 +14,19 @@ public class SceneTeleporter : MonoBehaviour, IInteractable
     {
         //Debug.Log("I hover over the Floor");
     }
+    
     public void OnClick(Vector3 mouseClickVector)
     {
         Debug.Log("I clicked on the Floor");
         GameObject.Find("Player").GetComponent<Move>().StartMoveAction(mouseClickVector);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider collidedObject)
     {
-        Debug.Log("Hello");
-        SceneManager.LoadScene(SceneToLoad);
+        if (collidedObject.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player entered the teleporter!");
+            SceneManager.LoadScene(SceneToLoad);
+        }
     }
 }

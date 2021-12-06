@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class DoorLogic : MonoBehaviour, IOpenLogic
 {
     [SerializeField] private float timeToOpen;
-    [SerializeField] private float OpenDegrees;
+    [SerializeField] private float openDegrees;
     
     private bool isOpen;
     private float movementPerFrame;
@@ -16,7 +18,7 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
     private void Awake()
     {
         totalAnimationFrames = Mathf.Round(timeToOpen * AnimationFramerate);
-        movementPerFrame = OpenDegrees / totalAnimationFrames;
+        movementPerFrame = openDegrees / totalAnimationFrames;
         frameTime = 1 / AnimationFramerate;
     }
 
@@ -35,6 +37,18 @@ public class DoorLogic : MonoBehaviour, IOpenLogic
             yield return new WaitForSeconds(frameTime);
             transform.Rotate(Vector3.up, movementPerFrame);
         }
+    }
+
+    
+    // Draw a line indicating where the door will stop when opened. Only visible if gizmos are enabled.
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+
+        Vector3 doorEndPosition = transform.Find("DoorEndMarker").transform.localPosition;
+
+        Vector3 target = Quaternion.Euler(0, openDegrees, 0) * doorEndPosition;
         
+        Gizmos.DrawLine(transform.position, transform.TransformPoint(target)); 
     }
 }

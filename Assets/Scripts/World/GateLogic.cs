@@ -14,9 +14,6 @@ public class GateLogic : MonoBehaviour, IOpenLogic
         if (isOpen)
             return;
         StartCoroutine(OpeningAnimation());
-        Debug.Log("this goes up");
-
-
     }
 
     private IEnumerator OpeningAnimation()

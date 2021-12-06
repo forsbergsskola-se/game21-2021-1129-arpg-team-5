@@ -1,5 +1,5 @@
 using System.Collections;
-using Entities.Player;
+using Control;
 using Logic;
 using Team5.Movement;
 using UnityEngine;
@@ -103,7 +103,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.25f);
-            Debug.Log("Hi times up");
 
             if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
