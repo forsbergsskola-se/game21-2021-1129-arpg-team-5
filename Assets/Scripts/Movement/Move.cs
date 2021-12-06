@@ -84,6 +84,7 @@ namespace Team5.Movement
 
         public void Cancel()
         {
+            targetDest.transform.position = new Vector3(0, -50, 0);
             agent.isStopped = true;
         }
 
