@@ -13,11 +13,17 @@ namespace Team5.Core
         public float healthPoint;
         bool isDead = false;
         public float maxHealth;
-        public GameObject Player;
-        NavMeshAgent Agent;
-        public bool revive = false;
+        private float currentHealth;
+        
+        public float revivalHealth; 
+        public float reviveHealthRegenPerSecond;
         public int reviveWaitTime = 8;
         public int reviveCounter = 0;
+        
+        NavMeshAgent Agent;
+        private bool revive = false;
+        
+        
         
         private void Awake()
         {
@@ -29,11 +35,19 @@ namespace Team5.Core
         }
         private void Update()
         {
+            currentHealth = this.healthPoint;
+
             if (revive == true)
             {
                 // prints revive count
                 Agent.enabled = true;
                 Debug.Log($"Number of revives: {reviveCounter}");
+                
+                // increments player health until it reaches max health
+                if (!currentHealth.Equals(maxHealth))
+                {
+                    StartCoroutine(addHealth());
+                }
                 revive = false;
             }
         }
@@ -94,15 +108,30 @@ namespace Team5.Core
             Debug.Log($"{this.name} agent enabled: {Agent.isActiveAndEnabled}");
 
             // resets health and starts revive animation
-            this.healthPoint = maxHealth;
+            this.healthPoint = this.revivalHealth;
+            Debug.Log($"Revival Health: {this.healthPoint}");
             revive = true;
             isDead = false;
             GetComponent<Animator>().SetTrigger("revive");
             GetComponent<Animator>().SetBool("isDead", false);
             
             // revival debug + add to counter
-            Debug.Log($"{this.name} successfully resurrected at timestamp: {Time.time} with {maxHealth} health!");
+            Debug.Log($"{this.name} successfully resurrected at timestamp: {Time.time} with {this.healthPoint} health!");
             reviveCounter++;
         }
+        
+        // Revive health method
+        IEnumerator addHealth()
+        {
+            float time1 = Time.time; // start time
+            while (this.healthPoint < maxHealth){ // while health < 101.
+                healthPoint += 1; // increase health and wait the specified time
+                yield return new WaitForSeconds(reviveHealthRegenPerSecond);
+            }
+            float time2 = Time.time; // end time
+            // how long process took in total:
+            Debug.Log($"{this.name}: Health restored in {Math.Round(time2 - time1)} seconds");
+        }
     }
+    
 }

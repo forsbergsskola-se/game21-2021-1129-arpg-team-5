@@ -6615,6 +6615,14 @@ PrefabInstance:
       propertyPath: healthPoint
       value: 101
       objectReference: {fileID: 0}
+    - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: revivalHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: reviveHealthRegenPerSecond
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4731403018539584298, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: m_Enabled
       value: 1
