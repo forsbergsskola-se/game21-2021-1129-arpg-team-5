@@ -5914,7 +5914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2208963561206085859, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
       propertyPath: timeToGoUpp
-      value: 1.2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208963561206085859, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
+      propertyPath: distanceToOpen
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2208963561206085862, guid: 4d482a43e84586e428fcd125ff337fee, type: 3}
       propertyPath: m_RootOrder
