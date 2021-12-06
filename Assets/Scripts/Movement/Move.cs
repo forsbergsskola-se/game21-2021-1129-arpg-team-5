@@ -78,7 +78,6 @@ namespace Team5.Movement
             if (this.health.IsDead())
             {
                 Debug.Log("Can't move yet bro, I'm dead");
-
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))
@@ -102,7 +101,15 @@ namespace Team5.Movement
         public void Cancel()
         {
             targetDest.transform.position = new Vector3(0, -50, 0);
-            agent.isStopped = true;
+            
+            if (this.health.IsDead())
+            {
+                Debug.Log("Still dead");
+            }
+            else
+            {
+                agent.isStopped = true;
+            }
         }
 
         public void UpdateAnimator()
