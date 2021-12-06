@@ -28,6 +28,9 @@ namespace Team5.Control
         float timeScinseLastSawPlayer = Mathf.Infinity;
         float timeScinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
+        private GameObject enemyIndicator;
+        private GameObject enemyIndicator2;
+
 
         private void Start()
         {
@@ -35,26 +38,44 @@ namespace Team5.Control
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             player = GameObject.FindWithTag("Player");
-
             gaurdLocation = transform.position;
+
+            if (this.gameObject != player)
+            {
+                enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+            }
         }
         private void Update()
         {
-            if (health.IsDead()) return;
+            if (health.IsDead())
+            {
+                enemyIndicator2.SetActive(false);
+                return;
+            }
 
             if (InAttackRange() && fighter.CanAttack(player))
             {
                 
-                Debug.Log("Attack!");
+                Debug.Log($"{this.name}: Attack!");
                 AttackBehaviour();
             }
             else if (timeScinseLastSawPlayer < suspicionTime)
             {
                 SuspiciousBehaviour();
+                if (enemyIndicator == enabled)
+                {
+                    enemyIndicator.SetActive(false);
+                }
             }
             else
             {
                 PatrolBehaviour();
+                if (enemyIndicator2 == enabled)
+                {
+                    enemyIndicator2.SetActive(false);
+                }
+
             }
             UpdateTimers();
 
@@ -122,7 +143,6 @@ namespace Team5.Control
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
-
     }
 }
 

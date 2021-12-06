@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Team5.Movement;
 using Team5.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,7 +25,14 @@ namespace Team5.Combat
         private int accuracyChance;
         public float accuracyPercent = 90f; // 90% chance
         
+        private GameObject player;
+        private GameObject enemyIndicator;
         Health target;
+
+        private void Start()
+        {
+            player = GameObject.FindWithTag("Player");
+        }
 
         private void Update()
         {
@@ -34,13 +42,7 @@ namespace Team5.Combat
             {
                 return;
             }
-
-            if (target.IsDead())
-            {
-                return;
-            }
             
-
             if (!GetIsInRange())
             {
                 GetComponent<Move>().MoveTo(target.transform.position);
@@ -50,6 +52,37 @@ namespace Team5.Combat
                 GetComponent<Move>().Cancel();
                 AttackBehaviour();
             }
+            
+            if (target.IsDead())
+            {
+                // Disables enemy indicator if enemy dies
+                if (this.gameObject != player )
+                {
+                    EnemyIndicatorInactive();
+                }
+
+                // Disables enemy indicator if player dies
+                else if (this.gameObject == player )
+                {
+                    EnemyIndicatorInactiveTarget();
+                }
+                return;
+            }
+            
+            
+            // Activates Enemy Indicator if Player targets enemy
+            if (target.gameObject != player)
+            {
+                EnemyIndicatorActiveTarget();
+            }
+
+            // Activates Enemy Indicator if Enemy targets players
+            if (target.gameObject == player)
+            {
+                EnemyIndicatorActive();
+            }
+            
+            // need to add logic for small enemy indicator to go away
         }
 
         private void AttackBehaviour()
@@ -157,6 +190,35 @@ namespace Team5.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        //Set enemy indicator active
+        public void EnemyIndicatorActive()
+        {
+            enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+            enemyIndicator.SetActive(true); 
+        }
+        public void EnemyIndicatorActiveTarget()
+        {
+            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator.SetActive(true); 
+        }
+        
+        //Set enemy indicator inactive
+        public void EnemyIndicatorInactive()
+        {
+            if (this.gameObject != player)
+            {
+                enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+                enemyIndicator.SetActive(false);
+            } 
+        }
+        public void EnemyIndicatorInactiveTarget()
+        {
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(false); 
+            }
         }
     }
 }

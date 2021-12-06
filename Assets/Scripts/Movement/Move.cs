@@ -1,28 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Entities.Player;
 using Team5.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 namespace Team5.Movement
 {
     public class Move : MonoBehaviour, IAction
     {
+        private GameObject targetDest;
+        private GameObject player;
+
+        private AudioSource audio;
         Animator animator;
         NavMeshAgent agent;
         Health health;
+        
         private void Start()
         {
             health = GetComponent<Health>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            
+            player = GameObject.FindWithTag("Player");
+            audio = player.GetComponent<AudioSource>();
+
+
+            targetDest = GameObject.Find("Navigation Sphere");
+            audio = player.GetComponent<AudioSource>();
         }
 
         void Update()
         {
             agent.enabled = !health.IsDead();
+
             UpdateAnimator();
+            
+            // indicates where player is going with sound and visual
+            if (player.transform.position.x == targetDest.transform.position.x)
+            {
+                targetDest.transform.position = new Vector3(0, -50, 0);
+                audio.Play();
+                Debug.Log("target reach");
+            }
         }
 
         public void StartMoveAction(Vector3 destination)
@@ -50,6 +74,11 @@ namespace Team5.Movement
             {
                 agent.destination = destination;  // Move agent to the target position
                 agent.isStopped = false;
+                
+                if (agent.tag == "Player")
+                {
+                    targetDest.transform.position = destination;
+                }
             }
         }
 
