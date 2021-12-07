@@ -5,8 +5,8 @@ using UnityEngine;
 public class Destructible : MonoBehaviour
 {
     public GameObject destroyedVersion;
-   
-    void OnMouseDown ()
+
+    public void OnMouseDown ()
     {
 
 
