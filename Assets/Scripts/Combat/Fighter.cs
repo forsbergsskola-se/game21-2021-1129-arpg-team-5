@@ -1,5 +1,6 @@
 using Team5.Movement;
 using Team5.Core;
+using Team5.EntityBase;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,7 +25,7 @@ namespace Team5.Combat
         
         private GameObject player;
         private GameObject enemyIndicator;
-        Health target;
+        private Entity target;
         private static readonly int Attack1 = Animator.StringToHash("attack");
         private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
@@ -52,7 +53,7 @@ namespace Team5.Combat
                 AttackBehaviour();
             }
             
-            if (target.IsDead())
+            if (target.IsDead)
             {
                 // Disables enemy indicator if enemy dies
                 if (this.gameObject != player )
@@ -89,7 +90,7 @@ namespace Team5.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                if (!target.IsDead())
+                if (!target.IsDead)
                 {
                     TriggerAttack();
                     timeSinceLastAttack = 0;
@@ -154,9 +155,9 @@ namespace Team5.Combat
             }
 
             // Print death
-            if (target.IsDead())
+            if (target.IsDead)
             {
-                Debug.Log($"{target.name}'s current health: {target.healthPoint}");
+                Debug.Log($"{target.name}'s current health: {target.Health}");
                 Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
 
                 if (this.gameObject == player)
@@ -184,7 +185,7 @@ namespace Team5.Combat
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.GetComponent<Health>();
+            target = combatTarget.GetComponent<Entity>();
         }
 
         public void Cancel()

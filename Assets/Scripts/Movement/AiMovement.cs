@@ -24,6 +24,7 @@ namespace Team5.Movement
 
         private int currentWaypointIndex = 0;
         private float timeSinceLastSawPlayer;
+        private float timeSinceArrivedAtWaypoint;
         private Vector3 guardPosition;
 
         private void Start()
@@ -38,21 +39,31 @@ namespace Team5.Movement
 
         private void Update()
         {
+            
             if (entity.IsDead)
                 return;
             
             if (CheckAttackRange() && fighter.CanAttack(player))
             {
-                fighter.Attack(player);
+                AttackBehaviour();
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 GetComponent<ActionScheduler>().CancelCurrentAction();
+                Debug.Log("Temp");
             }
             else
             {
                 PatrolBehaviour();
             }
+            
+            UpdateTimer();
+        }
+
+        private void AttackBehaviour()
+        {
+            fighter.Attack(player);
+            timeSinceLastSawPlayer = 0;
         }
 
         private void PatrolBehaviour()
@@ -63,14 +74,14 @@ namespace Team5.Movement
             {
                 if (WaypointReached())
                 {
+                    timeSinceArrivedAtWaypoint = 0;
                     CycleWaypoint();
                 }
 
                 nextPos = GetWaypoint();
             }
-
-            Debug.Log("Temp");
-            move.StartMoveAction(nextPos);
+            if(timeSinceArrivedAtWaypoint > waypointWaitingTime)
+                move.StartMoveAction(nextPos);
         }
 
         private bool CheckAttackRange()
@@ -93,7 +104,11 @@ namespace Team5.Movement
             return patrolPath.GetWayPoint(currentWaypointIndex);
         }
 
-
+        void UpdateTimer()
+        {
+            timeSinceLastSawPlayer += Time.deltaTime;
+            timeSinceArrivedAtWaypoint += Time.deltaTime;
+        }
 
 
 
