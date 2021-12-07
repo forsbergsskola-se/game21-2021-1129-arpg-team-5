@@ -20,7 +20,7 @@ namespace Team5.Combat
         public float critPercent = 30f; // 20% chance 
         private int accuracyChance;
         public float accuracyPercent = 90f; // 90% chance
-        public int killCounter = 0;
+        public int killCount = 0;
         
         private GameObject player;
         private GameObject enemyIndicator;
@@ -161,7 +161,7 @@ namespace Team5.Combat
 
                 if (this.gameObject == player)
                 {
-                    killCounter++;
+                    killCount++;
                 }
             }
         }
