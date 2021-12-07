@@ -2769,6 +2769,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2676337891085272742}
+  - component: {fileID: 1592342192}
+  - component: {fileID: 1592342191}
   m_Layer: 0
   m_Name: Vase_fix
   m_TagString: Untagged
@@ -2866,6 +2868,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1592342192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346055283229989916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.05268092, z: 1}
+  m_Center: {x: 0, y: -0.4736596, z: 0}
+--- !u!114 &1592342191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346055283229989916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613afaf5b157bb54a85aca50cf4e3a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
 --- !u!1 &3458172986933557584
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,36 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 using Logic;
+using Team5.Core;
 
 
-public class Destructible : MonoBehaviour, IInteractable
+public class Destructible : Entity, IInteractable
 {
     public GameObject destroyedVersion;
 
-    public Texture2D mouseTexture
-    {
-        get => cursorTexture;
-        set => cursorTexture = value;
-    }
-
+    public Texture2D mouseTexture=> cursorTexture;
+    
     public Texture2D cursorTexture;
-
-    private MeshRenderer gameObjectMesh;
-    public Texture2D newCursor;
-    private BoxCollider GameObjectCollider;
+    
     private bool IsDestroyed=true;
+
     
+    // private GameObject player;
+    //
+    // private void Start()
+    // {
+    //     player= GameObject.FindWithTag("Player");
+    // }
     
+
     public void OnClick(Vector3 mouseClickVector)
     {
         if (IsDestroyed== true)
         {
-            gameObjectMesh = GetComponent<MeshRenderer>();
-            gameObjectMesh.enabled = !gameObjectMesh.enabled;
-            GameObjectCollider = GetComponent<BoxCollider>();
-            GameObjectCollider.enabled = !GameObjectCollider.enabled;
+            gameObject.SetActive(false);
             Instantiate(destroyedVersion, transform.position, transform.rotation);
             IsDestroyed = false;
         }
@@ -39,9 +39,6 @@ public class Destructible : MonoBehaviour, IInteractable
 
     public void OnHover()
     {
-        if (IsDestroyed== false)
-        {
-            mouseTexture = newCursor;
-        }
+        
     }
 }
