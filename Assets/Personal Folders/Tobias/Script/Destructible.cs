@@ -14,8 +14,7 @@ public class Destructible : MonoBehaviour, IInteractable
     public void OnClick(Vector3 mouseClickVector)
     {
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        GameObject.set
-
+        //GameObject.set
     }
 
     public void OnHover()
