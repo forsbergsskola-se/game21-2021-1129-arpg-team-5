@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Team5.Entities.Player;
 using Team5.Core;
+using Team5.EntityBase;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,13 +20,15 @@ namespace Team5.Movement
         private AudioSource audio;
         Animator animator;
         NavMeshAgent agent;
-        Health health;
+        // Health health;
+        private Entity entity;
         private Material enemyMaterial;
         private Material waypointMaterial;
         
         private void Start()
         {
-            health = GetComponent<Health>();
+            // health = GetComponent<Health>();
+            entity = GetComponent<Entity>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             
@@ -41,7 +44,7 @@ namespace Team5.Movement
 
         void Update()
         {
-            agent.enabled = !health.IsDead();
+            agent.enabled = !entity.IsDead;
 
             UpdateAnimator();
             
@@ -75,7 +78,7 @@ namespace Team5.Movement
         public void MoveTo(Vector3 destination)
         {
             // can't move if dead
-            if (this.health.IsDead())
+            if (this.entity.IsDead)
             {
                 Debug.Log("Can't move yet bro, I'm dead");
             }
@@ -102,7 +105,7 @@ namespace Team5.Movement
         {
             targetDest.transform.position = new Vector3(0, -50, 0);
             
-            if (this.health.IsDead())
+            if (this.entity.IsDead)
             {
                 Debug.Log("Still dead");
             }

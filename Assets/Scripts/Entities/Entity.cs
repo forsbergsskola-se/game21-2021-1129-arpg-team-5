@@ -1,4 +1,5 @@
 using System.Collections;
+using Team5.Core;
 using UnityEngine;
 
 namespace Team5.EntityBase
@@ -20,14 +21,13 @@ namespace Team5.EntityBase
         private float health;
         private float armor;
         private float damageCooldownTime;
-        private bool isDead;
         private bool isAlive;
 
         protected float damageResistance;
         protected float maxHealth;
         protected float level;
-    
-    
+        
+        public bool IsDead;
 
         private void Awake()
         {
@@ -65,6 +65,7 @@ namespace Team5.EntityBase
                 health = value;
                 if (health <= 0)
                 {
+                    OnDeath();
                     gameObject.SetActive(false);
                 }
             }
@@ -76,9 +77,17 @@ namespace Team5.EntityBase
             set => damageResistance = (100 - value) / 100;
         }
 
-        public bool IsDead => health <= 0;
+        // public bool IsDead => health <= 0;
 
-        public bool IsAlive => !IsDead;
+        public virtual void OnDeath()
+        {
+            if (IsDead)
+                return;
+            IsDead = true;
+            
+            GetComponent<Animator>().SetTrigger("Die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
 
         /// <summary>
         /// Get the level, Set the Level and scales states accordingly. 

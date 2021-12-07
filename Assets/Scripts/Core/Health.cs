@@ -56,6 +56,7 @@ namespace Team5.Core
         {
             return isDead;
         }
+        
         public void TakeDamage(float damage)
         {
             healthPoint = Mathf.Max(healthPoint - damage, 0);
