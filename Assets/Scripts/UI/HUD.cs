@@ -8,5 +8,4 @@ public class HUD : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text CashText;
     public TMP_Text KillCountText;
-
 }

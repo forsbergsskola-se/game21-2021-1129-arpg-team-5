@@ -5,14 +5,19 @@ using Team5.Core;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public float damageHealthDecay = 0.5f;
     private Health healthStats;
     private float maxHealth;
     private float health;
+    private float oldHealth;
     private float damage;
     private float hurtHealth;
+    private bool trigger;
+    
     [SerializeField]
     public TMP_Text healthTextIndicator;
     [SerializeField]
@@ -23,20 +28,40 @@ public class EnemyHealth : MonoBehaviour
     {
         healthStats = this.GetComponent<Health>();
         maxHealth = healthStats.maxHealth;
+        damage = healthStats.damageAmount;
+        oldHealth = maxHealth;
+        hurtHealthTextIndicator.text = "";
     }
-
-
     void Update()
     {
+        // Updates enemy health indicator
         health = healthStats.healthPoint;
         healthTextIndicator.text = "" + health;
-        hurtHealthTextIndicator.text = "";
 
-        if (health < maxHealth)
+        // Tiggers enemy take damage value
+        if (oldHealth != health)
         {
             damage = healthStats.damageAmount;
-            hurtHealth = damage;
+            hurtHealth = damage;;
             hurtHealthTextIndicator.text = "-" + hurtHealth;
+            hurtHealthTextIndicator.enabled = true;
+            trigger = true;
+            oldHealth = health;
         }
+        
+        // Calls disable take damage
+        if (trigger == true)
+        {
+            Debug.Log($"Wait {damageHealthDecay} second(s)");
+            StartCoroutine(WaitAndDisable());
+            trigger = false;
+        }
+    }
+    
+    // Wait time to disable take damage
+    IEnumerator WaitAndDisable()
+    {
+        yield return new WaitForSeconds(damageHealthDecay);
+        hurtHealthTextIndicator.enabled = false;
     }
 }

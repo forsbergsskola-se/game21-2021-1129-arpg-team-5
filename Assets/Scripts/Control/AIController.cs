@@ -52,7 +52,7 @@ namespace Team5.Control
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
-                hurtHealthText.enabled = false;
+                //hurtHealthText.enabled = false; //handled by EnemyHealth now
                 return;
             }
 
