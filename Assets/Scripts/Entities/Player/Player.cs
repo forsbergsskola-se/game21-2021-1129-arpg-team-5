@@ -1,6 +1,6 @@
-using EntityBase;
+using Team5.EntityBase;
 
-namespace Entities.Player
+namespace Team5.Entities.Player
 {
     public class Player : Entity
     {

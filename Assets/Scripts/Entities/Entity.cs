@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace EntityBase
+namespace Team5.EntityBase
 {
     public abstract class Entity : MonoBehaviour
     {

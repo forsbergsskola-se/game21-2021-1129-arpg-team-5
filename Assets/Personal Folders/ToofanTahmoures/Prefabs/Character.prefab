@@ -1809,6 +1809,7 @@ GameObject:
   - component: {fileID: 1396328571035324522}
   - component: {fileID: 2115861893407760292}
   - component: {fileID: 8055982380540889789}
+  - component: {fileID: 691413800807857698}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1914,6 +1915,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3675a7a5d85769439af3bbd1553dff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &691413800807857698
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125661663725305317}
+  m_Enabled: 1
 --- !u!1 &1125661663725305425
 GameObject:
   m_ObjectHideFlags: 0
