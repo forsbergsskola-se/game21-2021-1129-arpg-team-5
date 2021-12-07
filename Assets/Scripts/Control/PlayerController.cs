@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Entities.Player;
+using Team5.Entities.Player;
 using Team5.Movement;
 using UnityEngine;
 using Team5.Combat;
 using UnityEngine.AI;
 using Team5.Core;
+using Team5.EntityBase;
 
 namespace Team5.Control
 {
