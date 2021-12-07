@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Team5.Core;
@@ -6,14 +7,20 @@ using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private Health healthStats;
     private float health;
     private TMP_Text healthText;
-    
+
+    private void Start()
+    {
+        healthStats = this.GetComponent<Health>();
+        healthText = this.GetComponentInChildren<TMP_Text>();
+    }
+
 
     void Update()
     {
-        health = this.GetComponent<Health>().healthPoint;
-        healthText = this.GetComponentInChildren<TMP_Text>();
+        health = healthStats.healthPoint;
         healthText.text = "" + health;
     }
 }
