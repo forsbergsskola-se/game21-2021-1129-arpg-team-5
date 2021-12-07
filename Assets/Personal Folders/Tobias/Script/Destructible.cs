@@ -9,18 +9,16 @@ public class Destructible : MonoBehaviour, IInteractable
 {
     public GameObject destroyedVersion;
 
-    public Texture2D mouseTexture => cursorTexture;
-    public Texture2D cursorTexture;
+    public Texture2D mouseTexture => throw new System.NotImplementedException();
+
     public void OnClick(Vector3 mouseClickVector)
     {
-        Debug.Log("Onclick on vase");
-        gameObject.SetActive(false);
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        
+        //GameObject.set
     }
 
     public void OnHover()
     {
-        
+        throw new System.NotImplementedException();
     }
 }
