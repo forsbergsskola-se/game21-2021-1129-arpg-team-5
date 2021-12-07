@@ -1907,6 +1907,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1592342192, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.11802938
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592342192, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
+      propertyPath: m_Center.y
+      value: -0.4409854
+      objectReference: {fileID: 0}
     - target: {fileID: 2676337891085272742, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1955,7 +1963,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vase_fix
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1592342192, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
 --- !u!1001 &632058088
 PrefabInstance:
@@ -4498,6 +4507,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3346055283229989916, guid: 5406d9f2667dc9f40b741896f8c6ee2e, type: 3}
   m_PrefabInstance: {fileID: 614107006}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1592342192
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592342189}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 0}
 --- !u!1 &1594055834
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,9 +6172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51892306ac86a464bac45d908eec5d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementSpeed: 0
+  CritChance: 0
+  BaseMaxHealth: 0
+  BaseArmor: 0
+  BaseMovementSpeed: 0
+  BaseCritChance: 0
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0
   destroyedVersion: {fileID: 1592342189}
   cursorTexture: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
-  newCursor: {fileID: 2800000, guid: c8cd74c00861eda438ad41d2365c7c1e, type: 3}
 --- !u!65 &2129559940
 BoxCollider:
   m_ObjectHideFlags: 0
