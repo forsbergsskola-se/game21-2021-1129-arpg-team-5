@@ -8,37 +8,37 @@ namespace UI
 {
     public class PlayerUI : MonoBehaviour
     {
-        private TMP_Text reviveText;
-        private int reviveCount;
-    
         private TMP_Text healthText;
-        private Health playerHealth;
-        private float healthCount;
-    
+        private TMP_Text reviveText;
         private TMP_Text killText;
+        
+        private Health health;
+        private float healthCount;        
+        private int reviveCount;
+
+        private Fighter fighter;
         private int killCount;
-        private Fighter kills;
 
         private void Start()
         {
-            playerHealth = this.GetComponent<Health>();
-            kills = this.GetComponent<Fighter>();
+            health = this.GetComponent<Health>();
+            fighter = this.GetComponent<Fighter>();
             
-            reviveText = FindObjectOfType<HUD>().ReviveText;
             healthText = FindObjectOfType<HUD>().HealthText;
+            reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
         }
 
         void Update()
         {
-            healthCount = playerHealth.healthPoint;
+            healthCount = health.healthPoint;
             healthText.text = "Health: " + healthCount;
 
-            killCount = kills.killCounter;
-            killText.text = "Kills: " + killCount;
-            
-            reviveCount = playerHealth.reviveCounter;
+            reviveCount = health.reviveCounter;
             reviveText.text = "Revivals: " + reviveCount;
+            
+            killCount = fighter.killCounter;
+            killText.text = "Kills: " + killCount;
         }
     }
 }
