@@ -1,26 +1,26 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Team5.Core;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+namespace UI
 {
-    private Health healthStats;
-    private float health;
-    private TMP_Text healthText;
-
-    private void Start()
+    public class EnemyHealth : MonoBehaviour
     {
-        healthStats = this.GetComponent<Health>();
-        healthText = this.GetComponentInChildren<TMP_Text>();
-    }
+        private Health healthStats;
+        private float health;
+        private TMP_Text healthText;
+
+        private void Start()
+        {
+            healthStats = this.GetComponent<Health>();
+            healthText = this.GetComponentInChildren<TMP_Text>();
+        }
 
 
-    void Update()
-    {
-        health = healthStats.healthPoint;
-        healthText.text = "" + health;
+        void Update()
+        {
+            health = healthStats.healthPoint;
+            healthText.text = "" + health;
+        }
     }
 }
