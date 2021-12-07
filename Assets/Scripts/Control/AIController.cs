@@ -25,7 +25,9 @@ namespace Team5.Control
         private int currentWaypointIndex = 0;
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
+        private EnemyHealth enemyHealth;
         private TMP_Text healthText;
+        private TMP_Text hurtHealthText;
         
         private void Start()
         {
@@ -39,7 +41,10 @@ namespace Team5.Control
             
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
-            healthText = this.GetComponentInChildren<TMP_Text>();
+            enemyHealth = this.GetComponent<EnemyHealth>();
+            healthText = enemyHealth.healthTextIndicator;
+            hurtHealthText = enemyHealth.hurtHealthTextIndicator;
+
         }
         private void Update()
         {
@@ -47,6 +52,7 @@ namespace Team5.Control
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
+                hurtHealthText.enabled = false;
                 return;
             }
 
