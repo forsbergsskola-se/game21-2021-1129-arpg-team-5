@@ -1,4 +1,4 @@
-using EntityBase;
+using Team5.EntityBase;
 
 namespace Enemies
 {

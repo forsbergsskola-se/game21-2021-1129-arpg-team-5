@@ -1,3 +1,4 @@
+using Team5.EntityBase;
 using UnityEngine;
 
 public class TempPlayerCanDamage : MonoBehaviour
