@@ -11,6 +11,7 @@ namespace Team5.Core
         public float healthPoint;
         bool isDead = false;
         public float maxHealth;
+        public float damageAmount; // for enemy Health Script
         private float currentHealth;
         
         public float revivalHealth; 
@@ -69,6 +70,8 @@ namespace Team5.Core
             {
                 Debug.Log($"{this.name}'s current health: {this.healthPoint}");
             }
+            // Gets value for Enemy Health script
+            damageAmount = damage;
         }
 
         public void Death()
