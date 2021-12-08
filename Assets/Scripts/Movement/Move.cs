@@ -22,6 +22,10 @@ namespace Team5.Movement
         Health health;
         private Material enemyMaterial;
         private Material waypointMaterial;
+        private Quaternion oldPlayerRotation;
+        private static Quaternion newPlayerRotation;
+        private float oldPlayerZAxis;
+        private static float newPlayerZAxis;
         
         private void Start()
         {
@@ -33,8 +37,6 @@ namespace Team5.Movement
             audio = player.GetComponent<AudioSource>();
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
-
-
             targetDest = GameObject.Find("Navigation Sphere");
             audio = player.GetComponent<AudioSource>();
         }
@@ -42,17 +44,19 @@ namespace Team5.Movement
         void Update()
         {
             agent.enabled = !health.IsDead();
-
             UpdateAnimator();
             
-            // indicates where player is going with sound and visual
+            // indicates player has reached destinaton with sound and visual
             if (player.transform.position.x == targetDest.transform.position.x)
             {
+                oldPlayerRotation = newPlayerRotation;
+
                 targetDest.transform.position = new Vector3(0, -50, 0);
                 audio.Play();
                 Debug.Log("target reach");
             }
 
+            // changes destinaton colour if enemy
             else if (this.gameObject != player)
             {
                 var targetDestLocation = Math.Round(targetDest.transform.position.x, 1);
@@ -62,6 +66,10 @@ namespace Team5.Movement
                 {
                     targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
                     Debug.Log("Target: Enemy");
+                }
+                else
+                {
+                    targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
                 }
             }
         }
@@ -93,7 +101,11 @@ namespace Team5.Movement
                 
                 if (agent.tag == "Player")
                 {
+                    
+                    oldPlayerRotation = this.gameObject.transform.rotation;
+                    
                     targetDest.transform.position = destination;
+                    newPlayerRotation = oldPlayerRotation;
                 }
             }
         }

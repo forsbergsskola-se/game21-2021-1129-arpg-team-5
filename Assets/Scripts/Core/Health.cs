@@ -18,7 +18,7 @@ namespace Team5.Core
         public float reviveHealthRegenPerSecond;
         public int reviveWaitTime = 8;
         public int reviveCounter = 0;
-        
+
         NavMeshAgent Agent;
         private bool revive = false;
         private static readonly int Die = Animator.StringToHash("die");
@@ -43,11 +43,14 @@ namespace Team5.Core
                 // prints revive count
                 Agent.enabled = true;
                 Debug.Log($"Number of revives: {reviveCounter}");
-                
-                // increments player health until it reaches max health
-                if (!currentHealth.Equals(maxHealth))
+
+                if (this.gameObject.tag == "Player")
                 {
-                    StartCoroutine(AddHealth());
+                    // increments player health until it reaches max health
+                    if (!currentHealth.Equals(maxHealth))
+                    {
+                        StartCoroutine(AddHealth());
+                    }
                 }
                 revive = false;
             }
