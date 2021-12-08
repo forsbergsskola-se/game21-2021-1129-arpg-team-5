@@ -7,7 +7,7 @@ using Logic;
 using Team5.Core;
 
 
-public class Destructible : Entity, IInteractable
+public class Destructible : MonoBehaviour, IInteractable
 {
     public GameObject destroyedVersion;
 
@@ -24,17 +24,12 @@ public class Destructible : Entity, IInteractable
     // {
     //     player= GameObject.FindWithTag("Player");
     // }
-    
 
     public void OnClick(Vector3 mouseClickVector)
     {
-        if (IsDestroyed== true)
-        {
-            gameObject.SetActive(false);
-            Instantiate(destroyedVersion, transform.position, transform.rotation);
-            IsDestroyed = false;
-        }
-        
+        gameObject.SetActive(false);
+        Instantiate(destroyedVersion, transform.position, transform.rotation);
+        IsDestroyed = false;
     }
 
     public void OnHover()
