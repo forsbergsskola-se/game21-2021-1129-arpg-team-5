@@ -11,6 +11,7 @@ namespace UI
         private TMP_Text healthText;
         private TMP_Text reviveText;
         private TMP_Text killText;
+        private TMP_Text lvlText;
         
         private Health health;
         private float healthCount;        
@@ -18,6 +19,7 @@ namespace UI
 
         private Fighter fighter;
         private int killCount;
+        public int expLevel = 1;
 
         private void Start()
         {
@@ -27,6 +29,7 @@ namespace UI
             healthText = FindObjectOfType<HUD>().HealthText;
             reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
+            lvlText = FindObjectOfType<HUD>().LvlText;
         }
 
         void Update()
@@ -39,6 +42,18 @@ namespace UI
             
             killCount = fighter.killCounter;
             killText.text = "Kills: " + killCount;
+
+            if (killCount == 2 && expLevel == 1)
+            {
+                lvlText.text = "EXP LVL: " + "2";
+                expLevel++;
+            }
+
+            if (expLevel == 2)
+            {
+                health.maxHealth = 350;
+                health.healthPoint = health.maxHealth;
+            }
         }
     }
 }
