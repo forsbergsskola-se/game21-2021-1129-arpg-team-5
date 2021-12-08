@@ -50,8 +50,6 @@ namespace Team5.EntityBase
             MovementSpeed = BaseMovementSpeed;
             CritChance = BaseCritChance;
             damageCooldownTime = BaseDamageCooldown;
-        
-            gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -66,7 +64,6 @@ namespace Team5.EntityBase
                 if (health <= 0)
                 {
                     OnDeath();
-                    gameObject.SetActive(false);
                 }
             }
         }
@@ -76,21 +73,24 @@ namespace Team5.EntityBase
             get => armor;
             set => damageResistance = (100 - value) / 100;
         }
-
-        // public bool IsDead => health <= 0;
-
+        
+        /// <summary>
+        /// Function called on death of a entity. Override to add additional changes on death.
+        /// </summary>
         public virtual void OnDeath()
         {
             if (IsDead)
                 return;
             IsDead = true;
+
+            Debug.Log($"{name} is now dead!");
             
-            GetComponent<Animator>().SetTrigger("Die");
+            GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         /// <summary>
-        /// Get the level, Set the Level and scales states accordingly. 
+        /// Get: the level, Set: the Level and scale stats accordingly. 
         /// </summary>
         public virtual float EntityLevel
         {
@@ -115,11 +115,11 @@ namespace Team5.EntityBase
                 level = value;
             }
         }
+        
         /// <summary>
         /// Deal damage to the Entity if it is not on cooldown and used in other Entity for example Player, GameObject and Enemies.
         /// </summary>
         /// <param name="damageTaken">Damage you deal to Entity</param>
-    
         public virtual void TakeDamage(float damageTaken)
         {
             if (takeDamageOnCooldown) return;
