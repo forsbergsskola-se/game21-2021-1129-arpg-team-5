@@ -22,6 +22,8 @@ public class Destructible : MonoBehaviour, IInteractable
     private GameObject player;
     
     //TODO Animations Reference For Explosion. 
+
+    public GameObject explosion;
     //TODO Animations Reference For after the Explosion
     
     private void Start()
@@ -45,8 +47,7 @@ public class Destructible : MonoBehaviour, IInteractable
         //TODO Explosion if it happened and its on idle after explosion you can walk though ruble.   
         
         gameObject.SetActive(false);
-        Instantiate(destroyedVersion, transform.position, transform.rotation);
-        IsDestroyed = false;
+        Instantiate(explosion, transform.position, transform.rotation);
     }
 
     
