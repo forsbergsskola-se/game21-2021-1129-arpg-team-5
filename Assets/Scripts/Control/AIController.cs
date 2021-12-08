@@ -3,6 +3,7 @@ using Team5.Combat;
 using Team5.Core;
 using Team5.Movement;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Team5.Control
@@ -19,7 +20,10 @@ namespace Team5.Control
         private Move move;
         private Health health;
         private GameObject player;
-        public float CorpseStayTime;
+        public SkinnedMeshRenderer mesh;
+        public float dustSpawnTime;
+        public float corpseStayTime;
+        public GameObject dustPrefab;
 
         private Vector3 guardLocation;
         private float timeSinceLastSawPlayer = Mathf.Infinity;
@@ -29,8 +33,7 @@ namespace Team5.Control
         private GameObject enemyIndicator2;
         private EnemyHealth enemyHealth;
         private TMP_Text healthText;
-        private TMP_Text hurtHealthText;
-        
+
         private void Start()
         {
             move = GetComponent<Move>();
@@ -45,7 +48,6 @@ namespace Team5.Control
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             enemyHealth = this.GetComponent<EnemyHealth>();
             healthText = enemyHealth.healthTextIndicator;
-            hurtHealthText = enemyHealth.hurtHealthTextIndicator;
 
         }
         private void Update()
@@ -54,8 +56,9 @@ namespace Team5.Control
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
-                //hurtHealthText.enabled = false; //handled by EnemyHealth now
-                StartCoroutine(WaitToDestroy());
+                
+                // enables dust cloud and disables mesh & game object
+                StartCoroutine(WaitToDisable());
                 return;
             }
 
@@ -137,12 +140,22 @@ namespace Team5.Control
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
         
-        private IEnumerator WaitToDestroy()
+        private IEnumerator WaitToDisable()
         {
             Debug.Log($"Destroy {this.name} in 10 seconds");
 
-            yield return new WaitForSeconds(CorpseStayTime);
+            // Dust cloud spawns
+            yield return new WaitForSeconds(dustSpawnTime);
+            dustPrefab.SetActive(true);
+            dustPrefab.transform.position = this.gameObject.transform.position;
+            
+            // Enemy mesh is disabled
+            yield return new WaitForSeconds(corpseStayTime);
             Debug.Log($"Destroyed {this.name} at timestamp : " + Time.time);
+            mesh.GetComponent<Renderer>().enabled = false;
+
+            // Enemy game object fully disabled
+            yield return new WaitForSeconds(10);
             this.gameObject.SetActive(false);
         }
     }
