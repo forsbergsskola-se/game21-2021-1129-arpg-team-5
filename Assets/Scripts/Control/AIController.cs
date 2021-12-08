@@ -151,7 +151,6 @@ namespace Team5.Control
             
             // Enemy mesh is disabled
             yield return new WaitForSeconds(corpseStayTime);
-            Debug.Log($"Destroyed {this.name} at timestamp : " + Time.time);
             mesh.GetComponent<Renderer>().enabled = false;
 
             // Enemy game object fully disabled

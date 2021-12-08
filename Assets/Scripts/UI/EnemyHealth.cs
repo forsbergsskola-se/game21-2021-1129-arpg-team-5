@@ -22,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
     public TMP_Text healthTextIndicator;
     [SerializeField]
     public TMP_Text hurtHealthTextIndicator;
+    [SerializeField] public GameObject blood;
+
 
 
     private void Start()
@@ -52,6 +54,7 @@ public class EnemyHealth : MonoBehaviour
         // Calls disable take damage
         if (trigger == true)
         {
+            blood.SetActive(true);
             Debug.Log($"Wait {damageHealthDecay} second(s)");
             StartCoroutine(WaitAndDisable());
             trigger = false;
@@ -63,5 +66,6 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(damageHealthDecay);
         hurtHealthTextIndicator.enabled = false;
+        blood.SetActive(false);
     }
 }
