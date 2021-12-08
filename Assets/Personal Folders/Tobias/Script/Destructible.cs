@@ -16,14 +16,15 @@ public class Destructible : MonoBehaviour, IInteractable
     public Texture2D cursorTexture;
     
     private bool IsDestroyed=true;
-
     
-    // private GameObject player;
-    //
-    // private void Start()
-    // {
-    //     player= GameObject.FindWithTag("Player");
-    // }
+    
+    private GameObject player;
+    
+    private void Start()
+    {
+        player= GameObject.FindWithTag("Player");
+        Vector3.Distance(player.transform.position, transform.position);
+    }
 
     public void OnClick(Vector3 mouseClickVector)
     {
