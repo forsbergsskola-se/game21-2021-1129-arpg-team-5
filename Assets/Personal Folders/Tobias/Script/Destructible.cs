@@ -17,22 +17,40 @@ public class Destructible : MonoBehaviour, IInteractable
     
     private bool IsDestroyed=true;
     
+    //TODO Public Health to make it accessible to the designers.  
     
     private GameObject player;
     
+    //TODO Animations Reference For Explosion. 
+    //TODO Animations Reference For after the Explosion
+    
     private void Start()
     {
+        //TODO get the health component
+        
+        
+        //TODO Check for distance between Player and vase.
+        
         player= GameObject.FindWithTag("Player");
         Vector3.Distance(player.transform.position, transform.position);
     }
 
     public void OnClick(Vector3 mouseClickVector)
     {
+        //TODO If distance between the object are to big you cant run the animation, You start to run closer to the vase to destroy it.
+
+        //TODO Explosion Animation Run. 
+        
+        //TODO Idle After the Explosion should run.
+        //TODO Explosion if it happened and its on idle after explosion you can walk though ruble.   
+        
         gameObject.SetActive(false);
         Instantiate(destroyedVersion, transform.position, transform.rotation);
         IsDestroyed = false;
     }
 
+    
+    
     public void OnHover()
     {
         

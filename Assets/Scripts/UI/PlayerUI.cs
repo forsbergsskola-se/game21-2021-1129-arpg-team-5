@@ -39,9 +39,12 @@ namespace UI
 
             reviveCount = health.reviveCounter;
             reviveText.text = "Revivals: " + reviveCount;
-            
+
             killCount = fighter.killCounter;
             killText.text = "Kills: " + killCount;
+
+
+            // temp level up logic 
 
             if (killCount == 2 && expLevel == 1)
             {
