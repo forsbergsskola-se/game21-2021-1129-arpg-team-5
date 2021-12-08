@@ -1,3 +1,4 @@
+using System.Collections;
 using Team5.Combat;
 using Team5.Core;
 using Team5.Movement;
@@ -18,6 +19,7 @@ namespace Team5.Control
         private Move move;
         private Health health;
         private GameObject player;
+        public float CorpseStayTime;
 
         private Vector3 guardLocation;
         private float timeSinceLastSawPlayer = Mathf.Infinity;
@@ -53,6 +55,7 @@ namespace Team5.Control
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
                 //hurtHealthText.enabled = false; //handled by EnemyHealth now
+                StartCoroutine(WaitToDestroy());
                 return;
             }
 
@@ -132,6 +135,15 @@ namespace Team5.Control
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
+        
+        private IEnumerator WaitToDestroy()
+        {
+            Debug.Log($"Destroy {this.name} in 10 seconds");
+
+            yield return new WaitForSeconds(CorpseStayTime);
+            Debug.Log($"Destroyed {this.name} at timestamp : " + Time.time);
+            this.gameObject.SetActive(false);
         }
     }
 }
