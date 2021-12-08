@@ -2204,6 +2204,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: c8cd74c00861eda438ad41d2365c7c1e, type: 3}
+--- !u!1001 &701394916
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1268889296}
+    m_Modifications:
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.010999429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08700054
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99325925
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1150621
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000063329935
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.014032891
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 13.213
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793392, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.641
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793394, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793394, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793394, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.30252096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793394, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793394, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793399, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_Name
+      value: Blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327086297693793399, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
 --- !u!1 &749483837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2556,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorMode: 0
   hotSpot: {x: 0, y: 0, z: 0}
+--- !u!1 &969499833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7327086297693793399, guid: de8caf1d7dba7fe48ac2344e14d64a39, type: 3}
+  m_PrefabInstance: {fileID: 701394916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &990989008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,7 +3467,7 @@ GameObject:
   - component: {fileID: 1276227814}
   - component: {fileID: 1276227813}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3489,8 +3575,8 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
-  prewarm: 1
+  looping: 0
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -3664,7 +3750,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3773585, g: 0, b: 0, a: 1}
+      maxColor: {r: 0.38039216, g: 0, b: 0.30588236, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10880,6 +10966,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2096999738, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 1276227811}
+    - target: {fileID: 2096999738, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: damageHealthDecay
       value: 1
       objectReference: {fileID: 0}
@@ -11086,6 +11176,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2036517835, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 969499833}
     - target: {fileID: 1489711003772099134, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: mesh
       value: 
