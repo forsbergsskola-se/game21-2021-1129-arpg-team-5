@@ -9,10 +9,7 @@ using Team5.Core;
 
 public class Destructible : MonoBehaviour, IInteractable
 {
-    public GameObject destroyedVersion;
-
     public Texture2D mouseTexture=> cursorTexture;
-    
     public Texture2D cursorTexture;
     
     private bool IsDestroyed=true;
@@ -25,7 +22,7 @@ public class Destructible : MonoBehaviour, IInteractable
 
     public GameObject explosion;
     //TODO Animations Reference For after the Explosion
-    
+    public ParticleSystem SmokeSystem;
     private void Start()
     {
         //TODO get the health component
@@ -47,6 +44,7 @@ public class Destructible : MonoBehaviour, IInteractable
         //TODO Explosion if it happened and its on idle after explosion you can walk though ruble.   
         
         gameObject.SetActive(false);
+        Instantiate(SmokeSystem, transform.position, transform.rotation);
         Instantiate(explosion, transform.position, transform.rotation);
     }
 
