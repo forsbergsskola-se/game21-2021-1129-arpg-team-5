@@ -17,7 +17,8 @@ public class Destructible : MonoBehaviour, IInteractable
     //TODO Public Health to make it accessible to the designers.  
     
     private GameObject player;
-    
+
+    private float tempHealth;
     //TODO Animations Reference For Explosion. 
 
     public GameObject explosion;
