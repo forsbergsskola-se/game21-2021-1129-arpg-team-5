@@ -8,19 +8,36 @@ namespace Team5.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField]
-        float weaponRange = 2f;
-        [SerializeField]
-        float timeBetweenAttacks = 1f;
-        [SerializeField]
-        float weaponDamage = 1f;
-        float timeSinceLastAttack = Mathf.Infinity;
-
-        private float critAttackMultiplier = 1.2f;
-        private int critChance;
-        public float critPercent = 30f; // 20% chance 
-        private int accuracyChance;
-        public float accuracyPercent = 90f; // 90% chance
+        [SerializeField] private float baseAccuracyPercentage;
+        [SerializeField] private float baseCriticalChance;
+        [SerializeField] private float criticalDamageMultiplier;
+        [SerializeField] private float timeBetweenAttacks = 1f;
+        [SerializeField] private float weaponRange = 2f;
+        [SerializeField] private float weaponDamage = 1f;
+        
+        public float CriticalChance
+        {
+            get => criticalChance;
+            set => criticalChance = Mathf.Min(value, 100);
+        }
+        
+        public float AccuracyPercentage
+        {
+            get => accuracyPercentage;
+            set => accuracyPercentage = Mathf.Min(value, 100);
+        }
+        
+        
+        private float accuracyPercentage;
+        private float criticalChance;
+        
+        
+        private float timeSinceLastAttack = Mathf.Infinity;
+        // private float critAttackMultiplier = 1.2f;
+        // private int critChance;
+        // public float critPercent = 30f; // 20% chance 
+        // private int accuracyChance;
+        // public float accuracyPercent = 90f; // 90% chance
         public int killCount = 0;
         
         private GameObject player;
@@ -32,6 +49,9 @@ namespace Team5.Combat
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
+
+            AccuracyPercentage = baseAccuracyPercentage;
+            CriticalChance = baseCriticalChance;
         }
 
         private void Update()
@@ -107,20 +127,20 @@ namespace Team5.Combat
         // Animation Event 
         void Hit()
         {
-            if (target == null) return;   //Bug fixed!
+            if (target == null) return;
             Debug.Log($"{this.name} new attack");
             
             // random values for critical hit and accuracy between 0 and 9
-            critChance = 11 - Random.Range(1, 11);
-            accuracyChance = 11 - (Random.Range(1, 11));
+            // critChance = 11 - Random.Range(1, 11);
+            // accuracyChance = 11 - Random.Range(1, 11);
 
             // attack with critical hit if lower than critPercent value
-            if (critChance >= critPercent/10)
+            if (Random.Range(0, 100) < CriticalChance)
             {
-                var totalAttackValue = weaponDamage * critAttackMultiplier;
+                var totalAttackValue = weaponDamage * criticalDamageMultiplier;
                 Debug.Log($"{this.name} can land critical hit");
                 // hit accuracy higher than chance, can attack with critical hit
-                if (accuracyChance > accuracyPercent/10)
+                if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
@@ -134,11 +154,10 @@ namespace Team5.Combat
                     Debug.Log($"{this.name}'s critical hit missed {target.name}!");
                 }
             }
-
             // attack without critical hit
-            else if (critChance <= critPercent/10)
+            else
             {
-                if (accuracyPercent > accuracyChance)
+                if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
@@ -178,8 +197,8 @@ namespace Team5.Combat
             {
                 return false;
             }
-            Health targetToTest = combatTarget.GetComponent<Health>();
-            return targetToTest != null && !targetToTest.IsDead() ;
+            Entity targetToTest = combatTarget.GetComponent<Entity>();
+            return targetToTest != null && !targetToTest.IsDead;
         }
 
         public void Attack(GameObject combatTarget)

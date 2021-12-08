@@ -24,8 +24,8 @@ namespace Team5.Control
             if (InteractWithCombat()) 
                 return;
         
-            if (InteractWithMovement()) 
-                return;
+            // if (InteractWithMovement()) 
+            //     return;
         }
 
         private bool InteractWithCombat()

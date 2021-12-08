@@ -6,17 +6,16 @@ namespace Team5.EntityBase
 {
     public abstract class Entity : MonoBehaviour
     {
+        [HideInInspector] public bool IsDead;
         [HideInInspector] public float MovementSpeed;
-        [HideInInspector] public float CritChance;
 
         [SerializeField] private int BaseMaxHealth;
         [SerializeField] private int BaseArmor;
         [SerializeField] private float BaseMovementSpeed;
-        [SerializeField] private float BaseCritChance;
         [SerializeField] private float BaseDamageCooldown;
         [SerializeField] private float EntityLevelValueMuliplier;
 
-        private bool takeDamageOnCooldown;
+        protected bool takeDamageOnCooldown;
 
         private float health;
         private float armor;
@@ -27,7 +26,7 @@ namespace Team5.EntityBase
         protected float maxHealth;
         protected float level;
         
-        public bool IsDead;
+        
 
         private void Awake()
         {
@@ -35,7 +34,6 @@ namespace Team5.EntityBase
             Health = maxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
-            CritChance = BaseCritChance;
             damageCooldownTime = BaseDamageCooldown;
         }
 
@@ -48,7 +46,6 @@ namespace Team5.EntityBase
             Health = maxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
-            CritChance = BaseCritChance;
             damageCooldownTime = BaseDamageCooldown;
         }
 
@@ -58,7 +55,7 @@ namespace Team5.EntityBase
         public virtual float Health
         {
             get => health;
-            private set
+            protected set
             {
                 health = value;
                 if (health <= 0)
@@ -102,15 +99,13 @@ namespace Team5.EntityBase
                 var bonusMaxHealth = maxHealth - BaseMaxHealth * oldMultiplier;
                 var bonusArmor = Armor - BaseArmor * oldMultiplier;
                 var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
-                var bonusCritChance = CritChance - BaseCritChance * oldMultiplier;
-            
-            
+
+
                 var multiplier = EntityLevelValueMuliplier * value;
             
                 maxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
                 Armor = BaseArmor * multiplier + bonusArmor;
                 MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
-                CritChance = BaseCritChance * multiplier + bonusCritChance;
 
                 level = value;
             }
@@ -126,7 +121,7 @@ namespace Team5.EntityBase
         
             StartCoroutine(DamageCooldown());
             Health -= damageTaken * damageResistance;
-            Debug.Log(damageTaken*damageResistance);
+            Debug.Log(name + " took " + damageTaken*damageResistance + " damage!");
         }
 
         private IEnumerator DamageCooldown()

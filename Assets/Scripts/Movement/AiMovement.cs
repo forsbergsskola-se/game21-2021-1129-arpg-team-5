@@ -50,7 +50,6 @@ namespace Team5.Movement
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 GetComponent<ActionScheduler>().CancelCurrentAction();
-                Debug.Log("Temp");
             }
             else
             {
