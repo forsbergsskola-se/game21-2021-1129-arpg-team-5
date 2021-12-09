@@ -28,10 +28,11 @@ namespace Team5.EntityBase
         
         
 
-        private void Awake()
+        protected virtual void Awake()
         {
             maxHealth = BaseMaxHealth;
             Health = maxHealth;
+            Debug.Log("Hej jag kör " + name);
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;

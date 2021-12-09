@@ -3545,6 +3545,18 @@ PrefabInstance:
       propertyPath: accuracyPercent
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: baseCriticalChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: baseAccuracyPercentage
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088041859, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+      propertyPath: criticalDamageMultiplier
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3222672916921693173, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_Name
       value: TestEnemy1
@@ -3559,7 +3571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222672916921959391, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.9
+      value: 76.8
       objectReference: {fileID: 0}
     - target: {fileID: 3222672916921959391, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3567,7 +3579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222672916921959391, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 122.6
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 3222672916921959391, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3599,6 +3611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7733661034245680324, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
+    - {fileID: -5151628112007746493, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e551bb9881da0ea4f8b640a091f27502, type: 3}
 --- !u!1 &943365709 stripped
 GameObject:
@@ -3623,7 +3636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 20
-  suspicionTime: 5
+  suspicionTime: 4
   patrolPath: {fileID: 324519727}
   waypointTolerance: 10
   waypointWaitingTime: 3
@@ -3639,15 +3652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60959850cc7f0dd4583dacb4e34d87fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDead: 0
   MovementSpeed: 0
-  CritChance: 0
-  BaseMaxHealth: 100
+  BaseMaxHealth: 150
   BaseArmor: 5
   BaseMovementSpeed: 10
-  BaseCritChance: 0
   BaseDamageCooldown: 0
   EntityLevelValueMuliplier: 0
-  IsDead: 0
+  temp: {fileID: 2800000, guid: 8f3e0210e0c6c7447805dccdf6eb2701, type: 3}
 --- !u!1 &989690471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6725765147854792357, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
@@ -3754,6 +3766,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &989690494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989690471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39010ce8efaa18549911b6e1bb111f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  MovementSpeed: 0
+  BaseMaxHealth: 50
+  BaseArmor: 0
+  BaseMovementSpeed: 5.66
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0
+  healthOnRevive: 20
+  healthRegenPerSecond: 2
+  timeToRevive: 6
 --- !u!1 &990989008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8079,8 +8113,20 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -71393938720496325, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: baseCriticalChance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -71393938720496325, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: timeBetweenAttacks
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -71393938720496325, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: baseAccuracyPercentage
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: -71393938720496325, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: criticalDamageMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: Agent
@@ -8134,6 +8180,10 @@ PrefabInstance:
       propertyPath: WaypointMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ce62ade0777f6da408f62e28da0931f0, type: 2}
+    - target: {fileID: 6684573836609936295, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6725765147854509711, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8182,7 +8232,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1352414544204959589, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
+    - {fileID: 6684573836609936295, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a00db0534c2bfd345af969a84201e2c7, type: 3}
 --- !u!1 &2009161101
 GameObject:

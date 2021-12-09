@@ -8,12 +8,27 @@ namespace Team5.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
+        [HideInInspector] public int killCount;
+        
         [SerializeField] private float baseAccuracyPercentage;
         [SerializeField] private float baseCriticalChance;
         [SerializeField] private float criticalDamageMultiplier;
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float weaponDamage = 1f;
+
+        private float accuracyPercentage;
+        private float criticalChance;
+        private float timeSinceLastAttack = Mathf.Infinity;
+
+        private GameObject player;
+        private GameObject enemyIndicator;
+        private Entity target;
+        
+        private static readonly int Attack1 = Animator.StringToHash("attack");
+        private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
+
+        
         
         public float CriticalChance
         {
@@ -28,24 +43,7 @@ namespace Team5.Combat
         }
         
         
-        private float accuracyPercentage;
-        private float criticalChance;
         
-        
-        private float timeSinceLastAttack = Mathf.Infinity;
-        // private float critAttackMultiplier = 1.2f;
-        // private int critChance;
-        // public float critPercent = 30f; // 20% chance 
-        // private int accuracyChance;
-        // public float accuracyPercent = 90f; // 90% chance
-        public int killCount = 0;
-        
-        private GameObject player;
-        private GameObject enemyIndicator;
-        private Entity target;
-        private static readonly int Attack1 = Animator.StringToHash("attack");
-        private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
-
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
@@ -54,6 +52,8 @@ namespace Team5.Combat
             CriticalChance = baseCriticalChance;
         }
 
+        
+        
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -105,6 +105,8 @@ namespace Team5.Combat
             // need to add logic for small enemy indicator to go away
         }
 
+        
+        
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
@@ -118,12 +120,16 @@ namespace Team5.Combat
             }
         }
 
+        
+        
         private void TriggerAttack()
         {
             GetComponent<Animator>().ResetTrigger(StopAttack1);
             GetComponent<Animator>().SetTrigger(Attack1);//triggering Hit() from animation
         }
  
+        
+        
         // Animation Event 
         void Hit()
         {
@@ -186,11 +192,15 @@ namespace Team5.Combat
             }
         }
 
+        
+        
         private bool GetIsInRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
+        
+        
         public bool CanAttack(GameObject combatTarget)
         {
             if(combatTarget == null)
@@ -201,35 +211,48 @@ namespace Team5.Combat
             return targetToTest != null && !targetToTest.IsDead;
         }
 
+        
+        
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Entity>();
         }
 
+        
+        
         public void Cancel()
         {
             StopAttack();
             target = null;
         }
 
+        
+        
         private void StopAttack()
         {
             GetComponent<Animator>().ResetTrigger(Attack1);
             GetComponent<Animator>().SetTrigger(StopAttack1);
         }
 
+        
+        
         //Set enemy indicator active
         public void EnemyIndicatorActive()
         {
             enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
             enemyIndicator.SetActive(true); 
         }
+        
+        
+        
         public void EnemyIndicatorActiveTarget()
         {
             enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator.SetActive(true); 
         }
+        
+        
         
         //Set enemy indicator inactive
         public void EnemyIndicatorInactive()
@@ -240,6 +263,9 @@ namespace Team5.Combat
                 enemyIndicator.SetActive(false);
             } 
         }
+        
+        
+        
         public void EnemyIndicatorInactiveTarget()
         {
             {

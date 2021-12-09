@@ -3,7 +3,6 @@ using UnityEngine.AI;
 using UnityEngine;
 using Team5.Combat;
 using Team5.EntityBase;
-using UnityEngine.Assertions.Must;
 
 
 namespace Team5.Entities.Player
@@ -18,11 +17,12 @@ namespace Team5.Entities.Player
         private Animator animator;
         
         
-        void Start()
+        protected override void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            agent.speed = MovementSpeed;
             animator = GetComponent<Animator>();
+            base.Awake();
+            agent.speed = MovementSpeed;
         }
         
         
@@ -51,7 +51,6 @@ namespace Team5.Entities.Player
         private void Revive()
         {
             agent.enabled = true;
-            Debug.Log("Started revive");
             StartCoroutine(WaitToRevive());
         }
 
@@ -59,8 +58,6 @@ namespace Team5.Entities.Player
         {
             yield return new WaitForSeconds(timeToRevive);
 
-            Debug.Log("Revive time over.");
-            
             agent.enabled = true;
             agent.ResetPath();
 
@@ -77,12 +74,9 @@ namespace Team5.Entities.Player
         {
             while (Health < maxHealth && !takeDamageOnCooldown)
             {
-                Health += healthRegenPerSecond;
-                Debug.Log("Added health");
                 yield return new WaitForSeconds(1);
+                Health += healthRegenPerSecond;
             }
-
-            Debug.Log("Player health no longer regenerating at " + Health + " health.");
         }
         
         

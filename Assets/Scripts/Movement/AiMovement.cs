@@ -1,7 +1,9 @@
+using System;
 using Team5.Combat;
 using Team5.Control;
 using Team5.Core;
 using Team5.EntityBase;
+using TMPro;
 using UnityEngine;
 
 
@@ -21,12 +23,19 @@ namespace Team5.Movement
         private Fighter fighter;
         private Move move;
         private GameObject player;
+        
+        // Ui stuff
+        private GameObject enemyIndicator;
+        private GameObject enemyIndicator2;
+        private TMP_Text healthText;
 
         private int currentWaypointIndex = 0;
+        private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
         private float timeSinceArrivedAtWaypoint;
-        private Vector3 guardPosition;
 
+        
+        
         private void Start()
         {
             entity = GetComponent<Entity>();
@@ -34,15 +43,25 @@ namespace Team5.Movement
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
 
+            
+            enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+            enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+            healthText = this.GetComponentInChildren<TMP_Text>();
+            
+            
             guardPosition = transform.position;
         }
 
         private void Update()
         {
-            
+
             if (entity.IsDead)
+            {
+                enemyIndicator2.SetActive(false);
+                healthText.enabled = false;
                 return;
-            
+            }
+
             if (CheckAttackRange() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
@@ -50,10 +69,15 @@ namespace Team5.Movement
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 GetComponent<ActionScheduler>().CancelCurrentAction();
+                
+                if (enemyIndicator == enabled)
+                    enemyIndicator.SetActive(false);
             }
             else
             {
                 PatrolBehaviour();
+                if (enemyIndicator2 == enabled)
+                    enemyIndicator2.SetActive(false);
             }
             
             UpdateTimer();

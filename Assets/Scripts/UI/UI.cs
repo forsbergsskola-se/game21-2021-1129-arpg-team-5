@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Team5.Combat;
-using Team5.Control;
-using Team5.Core;
+using Team5.EntityBase;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
@@ -21,11 +16,11 @@ public class UI : MonoBehaviour
     {
         // Keeps track of Revivals on Canvas
         
-        reviveCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().reviveCounter;
-        reviveText = FindObjectOfType<HUD>().ReviveText;
-        reviveText.text = "Revivals: " + reviveCount;
+        // reviveCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().reviveCounter;
+        // reviveText = FindObjectOfType<HUD>().ReviveText;
+        // reviveText.text = "Revivals: " + reviveCount;
         
-        healthCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthPoint;
+        healthCount = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Health;
         healthText = FindObjectOfType<HUD>().HealthText;
         healthText.text = "Health: " + healthCount;
         
