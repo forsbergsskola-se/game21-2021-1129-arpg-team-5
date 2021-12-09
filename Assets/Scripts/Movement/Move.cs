@@ -64,7 +64,7 @@ namespace Team5.Movement
                 if (enemyLocation == targetDestLocation)
                 {
                     targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
-                    Debug.Log("Target: Enemy");
+                    // Debug.Log("Target: Enemy");
                 }
             }
         }

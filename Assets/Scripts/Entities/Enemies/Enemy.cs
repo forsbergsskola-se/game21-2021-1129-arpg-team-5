@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEngine;
 
 namespace Team5.EntityBase
 {
@@ -13,7 +12,6 @@ namespace Team5.EntityBase
             get => base.Health;
             protected set
             {
-                Debug.Log("Hello I took damage.");
                 healthText.SetText(value.ToString());
                 base.Health = value;
             }
@@ -21,15 +19,9 @@ namespace Team5.EntityBase
 
         protected override void Awake()
         {
-            Debug.Log("Works!!!");
             healthText = GetComponentInChildren<TMP_Text>();
             base.Awake();
         }
-
-        // {
-        //     Debug.Log("Works!!!");
-        //     healthText = GetComponentInChildren<TMP_Text>();
-        // }
     }
 }
 

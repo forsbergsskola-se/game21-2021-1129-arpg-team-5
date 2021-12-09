@@ -134,7 +134,7 @@ namespace Team5.Combat
         void Hit()
         {
             if (target == null) return;
-            Debug.Log($"{this.name} new attack");
+            // Debug.Log($"{this.name} new attack");
             
             // random values for critical hit and accuracy between 0 and 9
             // critChance = 11 - Random.Range(1, 11);
@@ -182,8 +182,8 @@ namespace Team5.Combat
             // Print death
             if (target.IsDead)
             {
-                Debug.Log($"{target.name}'s current health: {target.Health}");
-                Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
+                // Debug.Log($"{target.name}'s current health: {target.Health}");
+                // Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
 
                 if (this.gameObject == player)
                 {

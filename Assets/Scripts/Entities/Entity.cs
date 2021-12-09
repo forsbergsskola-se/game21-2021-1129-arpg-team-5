@@ -27,12 +27,14 @@ namespace Team5.EntityBase
         protected float level;
         
         
-
+        
+        /// <summary>
+        /// Override this to set gameobjects and similar in child classes.. Then call base when you want the values to be set.
+        /// </summary>
         protected virtual void Awake()
         {
             maxHealth = BaseMaxHealth;
             Health = maxHealth;
-            Debug.Log("Hej jag kör " + name);
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
@@ -121,8 +123,8 @@ namespace Team5.EntityBase
             if (takeDamageOnCooldown) return;
         
             StartCoroutine(DamageCooldown());
-            Health -= damageTaken * damageResistance;
             Debug.Log(name + " took " + damageTaken*damageResistance + " damage!");
+            Health -= damageTaken * damageResistance;
         }
 
         private IEnumerator DamageCooldown()
