@@ -1718,6 +1718,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499759533}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &503428979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3851750723848475682, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+  m_PrefabInstance: {fileID: 7503732708136911845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &503428980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503428979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39010ce8efaa18549911b6e1bb111f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  MovementSpeed: 0
+  BaseMaxHealth: 100
+  BaseArmor: 10
+  BaseMovementSpeed: 5.66
+  BaseDamageCooldown: 0.5
+  EntityLevelValueMuliplier: 0.02
+  healthOnRevive: 25
+  healthRegenPerSecond: 10
+  timeToRevive: 8
 --- !u!1 &524038608
 GameObject:
   m_ObjectHideFlags: 0
@@ -10965,6 +10992,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 749483838}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: temp
+      value: 
+      objectReference: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: BaseArmor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: BaseDamageCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2096999738, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: blood
       value: 
@@ -11112,6 +11155,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: maxHealth
       value: 300
       objectReference: {fileID: 0}
@@ -11167,7 +11214,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6684573835187694277, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684573835187694277, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: BaseMaxHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: baseCriticalChance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: baseAccuracyPercentage
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: criticalDamageMultiplier
+      value: 1.25
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+    - {fileID: 6684573835187694277, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
 --- !u!1001 &9049025175246073752
 PrefabInstance:
@@ -11200,6 +11269,10 @@ PrefabInstance:
       propertyPath: corpseStayTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 324519727}
     - target: {fileID: 5849511270623630703, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_Name
       value: War Chief
@@ -11247,6 +11320,18 @@ PrefabInstance:
     - target: {fileID: 5849511270623880517, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: temp
+      value: 
+      objectReference: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: BaseMaxHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: BaseDamageCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b19b125adbad14f95b45be19026999, type: 3}
