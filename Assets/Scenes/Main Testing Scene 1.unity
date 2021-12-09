@@ -11232,7 +11232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: criticalDamageMultiplier
-      value: 1.25
+      value: 2522
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
@@ -11273,9 +11273,21 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 324519727}
+    - target: {fileID: 5849511270623620143, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5849511270623630703, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_Name
       value: War Chief
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849511270623631067, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849511270623698625, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5849511270623880517, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_RootOrder
@@ -11328,6 +11340,18 @@ PrefabInstance:
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: BaseMaxHealth
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: OutlineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: OutlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: OutlineColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: BaseDamageCooldown
