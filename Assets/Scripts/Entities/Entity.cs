@@ -60,7 +60,7 @@ namespace Team5.EntityBase
             get => health;
             protected set
             {
-                health = value;
+                health = Mathf.Clamp(value, 0, maxHealth);
                 if (health <= 0)
                 {
                     OnDeath();
@@ -77,7 +77,7 @@ namespace Team5.EntityBase
         /// <summary>
         /// Function called on death of a entity. Override to add additional changes on death.
         /// </summary>
-        public virtual void OnDeath()
+        protected virtual void OnDeath()
         {
             if (IsDead)
                 return;

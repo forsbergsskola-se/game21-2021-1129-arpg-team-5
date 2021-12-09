@@ -40,7 +40,7 @@ namespace Team5.Entities.Player
         }
 
 
-        public override void OnDeath()
+        protected override void OnDeath()
         {
             Debug.Log("Player died!");
             base.OnDeath();
@@ -50,6 +50,7 @@ namespace Team5.Entities.Player
 
         private void Revive()
         {
+            Debug.Log("Player reviving");
             agent.enabled = true;
             StartCoroutine(WaitToRevive());
         }
@@ -58,6 +59,8 @@ namespace Team5.Entities.Player
         {
             yield return new WaitForSeconds(timeToRevive);
 
+            Debug.Log("Player wakes up");
+            
             agent.enabled = true;
             agent.ResetPath();
 
@@ -72,11 +75,14 @@ namespace Team5.Entities.Player
 
         private IEnumerator PlayerRegenHealth()
         {
+            // TODO: Fix health regen not stopping after taking damage.
             while (Health < maxHealth && !takeDamageOnCooldown)
             {
                 yield return new WaitForSeconds(1);
                 Health += healthRegenPerSecond;
             }
+
+            Debug.Log("Player finished regen.");
         }
         
         

@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEngine;
 
 namespace Team5.EntityBase
 {
@@ -12,8 +13,9 @@ namespace Team5.EntityBase
             get => base.Health;
             protected set
             {
-                healthText.SetText(value.ToString());
                 base.Health = value;
+                healthText.SetText(Health.ToString());
+                Debug.Log("Hej health texten är ändrad");
             }
         }
 

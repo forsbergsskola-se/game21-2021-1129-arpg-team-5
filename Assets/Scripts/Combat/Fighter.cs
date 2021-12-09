@@ -133,7 +133,7 @@ namespace Team5.Combat
         // Animation Event 
         void Hit()
         {
-            if (target == null) return;
+            if (target == null || target.IsDead) return;
             // Debug.Log($"{this.name} new attack");
             
             // random values for critical hit and accuracy between 0 and 9
