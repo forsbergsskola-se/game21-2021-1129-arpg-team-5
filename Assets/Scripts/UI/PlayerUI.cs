@@ -1,5 +1,6 @@
 using Team5.Combat;
 using Team5.Core;
+using Team5.EntityBase;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace UI
         private TMP_Text killText;
         private TMP_Text lvlText;
         
-        private Health health;
+        private Entity entity;
         private float healthCount;        
         private int reviveCount;
 
@@ -23,7 +24,7 @@ namespace UI
 
         private void Start()
         {
-            health = this.GetComponent<Health>();
+            entity = this.GetComponent<Entity>();
             fighter = this.GetComponent<Fighter>();
             
             healthText = FindObjectOfType<HUD>().HealthText;
@@ -34,29 +35,28 @@ namespace UI
 
         void Update()
         {
-            healthCount = health.healthPoint;
-            healthText.text = "Health: " + healthCount;
+            healthText.text = "Health: " + entity.Health;
 
-            reviveCount = health.reviveCounter;
-            reviveText.text = "Revivals: " + reviveCount;
+            // reviveCount = entity.reviveCounter;
+            // reviveText.text = "Revivals: " + reviveCount;
+            
+            killText.text = "Kills: " + fighter.killCount;
 
-            killCount = fighter.killCounter;
-            killText.text = "Kills: " + killCount;
-
+            lvlText.text = "EXP LVL: " + entity.EntityLevel;
 
             // temp level up logic 
 
-            if (killCount == 2 && expLevel == 1)
-            {
-                lvlText.text = "EXP LVL: " + "2";
-                expLevel++;
-            }
-
-            if (expLevel == 2)
-            {
-                health.maxHealth = 350;
-                health.healthPoint = health.maxHealth;
-            }
+            // if (killCount == 2 && expLevel == 1)
+            // {
+            //     lvlText.text = "EXP LVL: " + "2";
+            //     expLevel++;
+            // }
+            //
+            // if (expLevel == 2)
+            // {
+            //     entity.maxHealth = 350;
+            //     entity.healthPoint = entity.maxHealth;
+            // }
         }
     }
 }

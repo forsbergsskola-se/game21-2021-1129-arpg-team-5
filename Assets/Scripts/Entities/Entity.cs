@@ -1,127 +1,143 @@
 using System.Collections;
+using Team5.Core;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+namespace Team5.EntityBase
 {
-    [HideInInspector] public float MovementSpeed;
-    [HideInInspector] public float CritChance;
-
-    [SerializeField] private int BaseMaxHealth;
-    [SerializeField] private int BaseArmor;
-    [SerializeField] private float BaseMovementSpeed;
-    [SerializeField] private float BaseCritChance;
-    [SerializeField] private float BaseDamageCooldown;
-    [SerializeField] private float EntityLevelValueMuliplier;
-
-    private bool takeDamageOnCooldown;
-
-    private float health;
-    private float armor;
-    private float damageCooldownTime;
-    private bool isDead;
-    private bool isAlive;
-
-    protected float damageResistance;
-    protected float maxHealth;
-    protected float level;
-    
-    
-
-    private void Awake()
+    public abstract class Entity : MonoBehaviour
     {
-        maxHealth = BaseMaxHealth;
-        Health = maxHealth;
-        Armor = BaseArmor;
-        MovementSpeed = BaseMovementSpeed;
-        CritChance = BaseCritChance;
-        damageCooldownTime = BaseDamageCooldown;
-    }
+        [HideInInspector] public bool IsDead;
+        [HideInInspector] public float MovementSpeed;
 
-    /// <summary>
-    /// Reset the entity to its base statistics. Does not include it's level.
-    /// </summary>
-    public virtual void ResetEntity()
-    {
-        maxHealth = BaseMaxHealth;
-        Health = maxHealth;
-        Armor = BaseArmor;
-        MovementSpeed = BaseMovementSpeed;
-        CritChance = BaseCritChance;
-        damageCooldownTime = BaseDamageCooldown;
+        [SerializeField] private int BaseMaxHealth;
+        [SerializeField] private int BaseArmor;
+        [SerializeField] private float BaseMovementSpeed;
+        [SerializeField] private float BaseDamageCooldown;
+        [SerializeField] private float EntityLevelValueMuliplier;
+
+        protected bool takeDamageOnCooldown;
+
+        private float health;
+        private float armor;
+        private float damageCooldownTime;
+        private bool isAlive;
+
+        protected float damageResistance;
+        protected float maxHealth;
+        protected float level = 1;
         
-        gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// Sets or gets the entity's health. Will set it to inactive if the health reaches 0.
-    /// </summary>
-    public virtual float Health
-    {
-        get => health;
-        private set
+        
+        
+        /// <summary>
+        /// Override this to set gameobjects and similar in child classes.. Then call base when you want the values to be set.
+        /// </summary>
+        protected virtual void Awake()
         {
-            health = value;
-            if (health <= 0)
+            maxHealth = BaseMaxHealth;
+            Health = maxHealth;
+            Armor = BaseArmor;
+            MovementSpeed = BaseMovementSpeed;
+            damageCooldownTime = BaseDamageCooldown;
+        }
+
+        /// <summary>
+        /// Reset the entity to its base statistics. Does not include it's level.
+        /// </summary>
+        public virtual void ResetEntity()
+        {
+            maxHealth = BaseMaxHealth;
+            Health = maxHealth;
+            Armor = BaseArmor;
+            MovementSpeed = BaseMovementSpeed;
+            damageCooldownTime = BaseDamageCooldown;
+        }
+
+        /// <summary>
+        /// Sets or gets the entity's health. Will set it to inactive if the health reaches 0.
+        /// </summary>
+        public virtual float Health
+        {
+            get => health;
+            protected set
             {
-                gameObject.SetActive(false);
+                health = Mathf.Clamp(value, 0, maxHealth);
+                if (health <= 0)
+                {
+                    OnDeath();
+                }
             }
         }
-    }
 
-    public virtual float Armor
-    {
-        get => armor;
-        set => damageResistance = (100 - value) / 100;
-    }
-
-    public bool IsDead => health <= 0;
-
-    public bool IsAlive => !IsDead;
-
-    /// <summary>
-    /// Get the level, Set the Level and scales states accordingly. 
-    /// </summary>
-    public virtual float EntityLevel
-    {
-        get => level;
-        set
+        public virtual float Armor
         {
-            var oldMultiplier = EntityLevelValueMuliplier * value;
-            
-            var bonusMaxHealth = maxHealth - BaseMaxHealth * oldMultiplier;
-            var bonusArmor = Armor - BaseArmor * oldMultiplier;
-            var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
-            var bonusCritChance = CritChance - BaseCritChance * oldMultiplier;
-            
-            
-            var multiplier = EntityLevelValueMuliplier * value;
-            
-            maxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
-            Armor = BaseArmor * multiplier + bonusArmor;
-            MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
-            CritChance = BaseCritChance * multiplier + bonusCritChance;
+            get => armor;
+            set => damageResistance = (100 - value) / 100;
+        }
+        
+        /// <summary>
+        /// Function called on death of a entity. Override to add additional changes on death.
+        /// </summary>
+        protected virtual void OnDeath()
+        {
+            if (IsDead)
+                return;
+            IsDead = true;
 
-            level = value;
+            Debug.Log($"{name} is now dead!");
+            
+            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        /// <summary>
+        /// Get: the level, Set: the Level and scale stats accordingly. 
+        /// </summary>
+        public virtual float EntityLevel
+        {
+            get => level;
+            set
+            {
+                var oldMultiplier = EntityLevelValueMuliplier * level;
+            
+                var bonusMaxHealth = maxHealth - BaseMaxHealth * oldMultiplier;
+                var bonusArmor = Armor - BaseArmor * oldMultiplier;
+                var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
+
+
+                // TODO: FINISH THIS: ----------------------------------------------------------------------------------
+                // The level multiplier is set wrongly, it doubles the entire value instead of only the decimals.
+                var multiplier = EntityLevelValueMuliplier * value;
+            
+                maxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
+                Armor = BaseArmor * multiplier + bonusArmor;
+                MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
+
+                Debug.Log(maxHealth + " MAXHEALTH");
+                
+                level = value;
+            }
+        }
+        
+        /// <summary>
+        /// Deal damage to the Entity if it is not on cooldown and used in other Entity for example Player, GameObject and Enemies.
+        /// </summary>
+        /// <param name="damageTaken">Damage you deal to Entity</param>
+        public virtual void TakeDamage(float damageTaken)
+        {
+            if (takeDamageOnCooldown) return;
+        
+            StartCoroutine(DamageCooldown());
+            Debug.Log(name + " took " + damageTaken*damageResistance + " damage!");
+            Health -= damageTaken * damageResistance;
+        }
+
+        private IEnumerator DamageCooldown()
+        {
+            takeDamageOnCooldown = true;
+            yield return new WaitForSeconds(damageCooldownTime);
+            takeDamageOnCooldown = false;
         }
     }
-    /// <summary>
-    /// Deal damage to the Entity if it is not on cooldown and used in other Entity for example Player, GameObject and Enemies.
-    /// </summary>
-    /// <param name="damageTaken">Damage you deal to Entity</param>
-    
-    public virtual void TakeDamage(float damageTaken)
-    {
-        if (takeDamageOnCooldown) return;
-        
-        StartCoroutine(DamageCooldown());
-        Health -= damageTaken * damageResistance;
-        Debug.Log(damageTaken*damageResistance);
-    }
 
-    private IEnumerator DamageCooldown()
-    {
-        takeDamageOnCooldown = true;
-        yield return new WaitForSeconds(damageCooldownTime);
-        takeDamageOnCooldown = false;
-    }
 }
+

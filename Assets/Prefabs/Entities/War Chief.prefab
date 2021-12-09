@@ -716,55 +716,6 @@ CapsuleCollider:
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &1489711003772099134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849511270623630703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b9e7ce5e8e4ba4994bbc8ce5fbed90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseDistance: 20
-  suspicionTime: 5
-  patrolPath: {fileID: 0}
-  waypointTolerance: 10
-  waypointWaitingTime: 1
-  CorpseStayTime: 5
---- !u!114 &1647000754757595378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849511270623630703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f354162d073a149a022bda93bb4605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4071743923852059969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849511270623630703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5c6579300052841b010dd30b6c2c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoint: 100
-  maxHealth: 100
-  damageAmount: 0
-  revivalHealth: 0
-  reviveHealthRegenPerSecond: 0
-  reviveWaitTime: 8
-  reviveCounter: 0
 --- !u!114 &958854273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,13 +728,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 10
+  killCount: 0
+  baseAccuracyPercentage: 80
+  baseCriticalChance: 20
+  criticalDamageMultiplier: 1.3
   timeBetweenAttacks: 1
+  weaponRange: 12
   weaponDamage: 25
-  critPercent: 40
-  accuracyPercent: 80
-  killCounter: 0
---- !u!114 &2036517835
+--- !u!114 &1647000754757595378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -792,9 +744,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 5849511270623630703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dea0282b4b6704cbed1c486944cf36, type: 3}
+  m_Script: {fileID: 11500000, guid: 30f354162d073a149a022bda93bb4605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageHealthDecay: 0.5
-  healthTextIndicator: {fileID: 1427911747}
-  hurtHealthTextIndicator: {fileID: 2076512836}
+--- !u!114 &5072401180383167900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849511270623630703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 25
+  suspicionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 10
+  waypointWaitingTime: 0
+--- !u!114 &5925378897288872597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849511270623630703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60959850cc7f0dd4583dacb4e34d87fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  MovementSpeed: 0
+  BaseMaxHealth: 100
+  BaseArmor: 0
+  BaseMovementSpeed: 5
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0
+  temp: {fileID: 0}

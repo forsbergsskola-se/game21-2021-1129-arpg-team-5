@@ -1,5 +1,6 @@
 using Team5.Movement;
 using Team5.Core;
+using Team5.EntityBase;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,32 +8,52 @@ namespace Team5.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField]
-        float weaponRange = 2f;
-        [SerializeField]
-        float timeBetweenAttacks = 1f;
-        [SerializeField]
-        float weaponDamage = 1f;
-        float timeSinceLastAttack = Mathf.Infinity;
-
-        private float critAttackMultiplier = 1.2f;
-        private int critChance;
-        public float critPercent = 30f; // 20% chance 
-        private int accuracyChance;
-        public float accuracyPercent = 90f; // 90% chance
-        public int killCounter = 0;
+        [HideInInspector] public int killCount;
         
+        [SerializeField] private float baseAccuracyPercentage;
+        [SerializeField] private float baseCriticalChance;
+        [SerializeField] private float criticalDamageMultiplier;
+        [SerializeField] private float timeBetweenAttacks = 1f;
+        [SerializeField] private float weaponRange = 2f;
+        [SerializeField] private float weaponDamage = 1f;
+
+        private float accuracyPercentage;
+        private float criticalChance;
+        private float timeSinceLastAttack = Mathf.Infinity;
+
         private GameObject player;
         private GameObject enemyIndicator;
-        Health target;
+        private Entity target;
+        
         private static readonly int Attack1 = Animator.StringToHash("attack");
         private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
+        
+        
+        public float CriticalChance
+        {
+            get => criticalChance;
+            set => criticalChance = Mathf.Min(value, 100);
+        }
+        
+        public float AccuracyPercentage
+        {
+            get => accuracyPercentage;
+            set => accuracyPercentage = Mathf.Min(value, 100);
+        }
+        
+        
+        
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
+
+            AccuracyPercentage = baseAccuracyPercentage;
+            CriticalChance = baseCriticalChance;
         }
 
+        
+        
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -52,7 +73,7 @@ namespace Team5.Combat
                 AttackBehaviour();
             }
             
-            if (target.IsDead())
+            if (target.IsDead)
             {
                 // Disables enemy indicator if enemy dies
                 if (this.gameObject != player )
@@ -84,12 +105,14 @@ namespace Team5.Combat
             // need to add logic for small enemy indicator to go away
         }
 
+        
+        
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                if (!target.IsDead())
+                if (!target.IsDead)
                 {
                     TriggerAttack();
                     timeSinceLastAttack = 0;
@@ -97,29 +120,33 @@ namespace Team5.Combat
             }
         }
 
+        
+        
         private void TriggerAttack()
         {
             GetComponent<Animator>().ResetTrigger(StopAttack1);
             GetComponent<Animator>().SetTrigger(Attack1);//triggering Hit() from animation
         }
  
+        
+        
         // Animation Event 
         void Hit()
         {
-            if (target == null) return;   //Bug fixed!
-            Debug.Log($"{this.name} new attack");
+            if (target == null || target.IsDead) return;
+            // Debug.Log($"{this.name} new attack");
             
             // random values for critical hit and accuracy between 0 and 9
-            critChance = 11 - Random.Range(1, 11);
-            accuracyChance = 11 - (Random.Range(1, 11));
+            // critChance = 11 - Random.Range(1, 11);
+            // accuracyChance = 11 - Random.Range(1, 11);
 
             // attack with critical hit if lower than critPercent value
-            if (critChance >= critPercent/10)
+            if (Random.Range(0, 100) < CriticalChance)
             {
-                var totalAttackValue = weaponDamage * critAttackMultiplier;
+                var totalAttackValue = weaponDamage * criticalDamageMultiplier;
                 Debug.Log($"{this.name} can land critical hit");
                 // hit accuracy higher than chance, can attack with critical hit
-                if (accuracyChance > accuracyPercent/10)
+                if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
@@ -133,11 +160,10 @@ namespace Team5.Combat
                     Debug.Log($"{this.name}'s critical hit missed {target.name}!");
                 }
             }
-
             // attack without critical hit
-            else if (critChance <= critPercent/10)
+            else
             {
-                if (accuracyPercent > accuracyChance)
+                if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
@@ -154,62 +180,79 @@ namespace Team5.Combat
             }
 
             // Print death
-            if (target.IsDead())
+            if (target.IsDead)
             {
-                Debug.Log($"{target.name}'s current health: {target.healthPoint}");
-                Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
+                // Debug.Log($"{target.name}'s current health: {target.Health}");
+                // Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
 
                 if (this.gameObject == player)
                 {
-                    killCounter++;
+                    killCount++;
                 }
             }
         }
 
+        
+        
         private bool GetIsInRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
+        
+        
         public bool CanAttack(GameObject combatTarget)
         {
             if(combatTarget == null)
             {
                 return false;
             }
-            Health targetToTest = combatTarget.GetComponent<Health>();
-            return targetToTest != null && !targetToTest.IsDead() ;
+            Entity targetToTest = combatTarget.GetComponent<Entity>();
+            return targetToTest != null && !targetToTest.IsDead;
         }
 
+        
+        
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.GetComponent<Health>();
+            target = combatTarget.GetComponent<Entity>();
         }
 
+        
+        
         public void Cancel()
         {
             StopAttack();
             target = null;
         }
 
+        
+        
         private void StopAttack()
         {
             GetComponent<Animator>().ResetTrigger(Attack1);
             GetComponent<Animator>().SetTrigger(StopAttack1);
         }
 
+        
+        
         //Set enemy indicator active
         public void EnemyIndicatorActive()
         {
             enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
             enemyIndicator.SetActive(true); 
         }
+        
+        
+        
         public void EnemyIndicatorActiveTarget()
         {
             enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator.SetActive(true); 
         }
+        
+        
         
         //Set enemy indicator inactive
         public void EnemyIndicatorInactive()
@@ -220,6 +263,9 @@ namespace Team5.Combat
                 enemyIndicator.SetActive(false);
             } 
         }
+        
+        
+        
         public void EnemyIndicatorInactiveTarget()
         {
             {

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Team5.Core;
+using UnityEngine;
+using Team5.EntityBase;
 
 namespace Team5.Combat
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Entity))]
     public class CombatTarget : MonoBehaviour
     {
 
