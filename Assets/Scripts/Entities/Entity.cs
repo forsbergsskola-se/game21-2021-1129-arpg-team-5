@@ -24,7 +24,7 @@ namespace Team5.EntityBase
 
         protected float damageResistance;
         protected float maxHealth;
-        protected float level;
+        protected float level = 1;
         
         
         
@@ -97,19 +97,23 @@ namespace Team5.EntityBase
             get => level;
             set
             {
-                var oldMultiplier = EntityLevelValueMuliplier * value;
+                var oldMultiplier = EntityLevelValueMuliplier * level;
             
                 var bonusMaxHealth = maxHealth - BaseMaxHealth * oldMultiplier;
                 var bonusArmor = Armor - BaseArmor * oldMultiplier;
                 var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
 
 
+                // TODO: FINISH THIS: ----------------------------------------------------------------------------------
+                // The level multiplier is set wrongly, it doubles the entire value instead of only the decimals.
                 var multiplier = EntityLevelValueMuliplier * value;
             
                 maxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
                 Armor = BaseArmor * multiplier + bonusArmor;
                 MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
 
+                Debug.Log(maxHealth + " MAXHEALTH");
+                
                 level = value;
             }
         }

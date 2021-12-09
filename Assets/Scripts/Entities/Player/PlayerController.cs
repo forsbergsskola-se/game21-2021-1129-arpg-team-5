@@ -42,6 +42,7 @@ namespace Team5.Entities.Player
 
         protected override void OnDeath()
         {
+            EntityLevel += 1;
             Debug.Log("Player died!");
             base.OnDeath();
             Revive();
