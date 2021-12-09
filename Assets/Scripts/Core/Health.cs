@@ -11,13 +11,14 @@ namespace Team5.Core
         public float healthPoint;
         bool isDead = false;
         public float maxHealth;
+        public float damageAmount; // for enemy Health Script
         private float currentHealth;
         
         public float revivalHealth; 
         public float reviveHealthRegenPerSecond;
         public int reviveWaitTime = 8;
         public int reviveCounter = 0;
-        
+
         NavMeshAgent Agent;
         private bool revive = false;
         private static readonly int Die = Animator.StringToHash("die");
@@ -42,11 +43,14 @@ namespace Team5.Core
                 // prints revive count
                 Agent.enabled = true;
                 Debug.Log($"Number of revives: {reviveCounter}");
-                
-                // increments player health until it reaches max health
-                if (!currentHealth.Equals(maxHealth))
+
+                if (this.gameObject.tag == "Player")
                 {
-                    StartCoroutine(AddHealth());
+                    // increments player health until it reaches max health
+                    if (!currentHealth.Equals(maxHealth))
+                    {
+                        StartCoroutine(AddHealth());
+                    }
                 }
                 revive = false;
             }
@@ -70,6 +74,8 @@ namespace Team5.Core
             {
                 Debug.Log($"{this.name}'s current health: {this.healthPoint}");
             }
+            // Gets value for Enemy Health script
+            damageAmount = damage;
         }
 
         public void Death()
