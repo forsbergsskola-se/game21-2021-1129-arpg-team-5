@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Team5.Core;
+using Team5.Ui;
 
 namespace Team5.World.Interactables
 {
@@ -44,6 +45,8 @@ namespace Team5.World.Interactables
                 yield return new WaitForSeconds(frameTime);
                 transform.Translate(movementUpPerFrame*Vector3.up);
             }
+
+            GetComponent<OutlineController>().DisableOutlineController();
         }
     }
 }
