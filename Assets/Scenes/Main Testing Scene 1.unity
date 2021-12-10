@@ -123,6 +123,27 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6887095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5442421198350804659, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+  m_PrefabInstance: {fileID: 803815652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6887101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978dbc6fb56581540977d81204b586f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  OutlineColor: {r: 0, g: 0.14433026, b: 1, a: 1}
+  OutlineWidth: 5
+  EnemyIsClicked: 0
 --- !u!1 &31303024
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +1010,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165025869}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &210383976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5849511270623630703, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+  m_PrefabInstance: {fileID: 9049025175246073752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &265421682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3851750723848233992, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
@@ -3482,6 +3508,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5849511270623880517, guid: 27b19b125adbad14f95b45be19026999, type: 3}
   m_PrefabInstance: {fileID: 9049025175246073752}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1268889306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210383976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978dbc6fb56581540977d81204b586f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  OutlineColor: {r: 1, g: 0, b: 0, a: 1}
+  OutlineWidth: 5
+  EnemyIsClicked: 0
 --- !u!1 &1276227811
 GameObject:
   m_ObjectHideFlags: 0
@@ -10666,6 +10708,11 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &2052915626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 386447684907741953, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+  m_PrefabInstance: {fileID: 3019043352454419024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2080044965
 GameObject:
   m_ObjectHideFlags: 0
@@ -10815,6 +10862,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 386447684908008235, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
   m_PrefabInstance: {fileID: 3019043352454419024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2096999738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052915626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978dbc6fb56581540977d81204b586f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  OutlineColor: {r: 0, g: 1, b: 0.051640034, a: 1}
+  OutlineWidth: 5
+  EnemyIsClicked: 0
 --- !u!1 &2136941648
 GameObject:
   m_ObjectHideFlags: 0
@@ -11337,6 +11400,10 @@ PrefabInstance:
       propertyPath: temp
       value: 
       objectReference: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: OutlineWidth
+      value: 4.02
+      objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: BaseMaxHealth
       value: 200
