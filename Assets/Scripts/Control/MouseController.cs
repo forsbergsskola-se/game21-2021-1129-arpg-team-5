@@ -13,10 +13,14 @@ namespace Control
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
 
+        
+        
         private void Start()
         {
             cameraObject = gameObject.GetComponent<Camera>();
         }
+        
+        
         
         // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
         private void Update()
@@ -40,8 +44,8 @@ namespace Control
             {
                 SetCursorTexture(null);
                 
-                if (Input.GetMouseButtonDown(0))
-                    GameObject.Find("Player").GetComponent<Move>().Cancel();
+                // if (Input.GetMouseButtonDown(0))
+                //     GameObject.Find("Player").GetComponent<Move>().Cancel();
                 
                 return;
             }
@@ -51,7 +55,13 @@ namespace Control
                 SetCursorTexture(interact.mouseTexture);
 
                 if (mouseClicked)
+                {
                     interact.OnClick(hit.point);
+                    // if (hit.collider.TryGetComponent(out Outlining outlining))
+                    // {
+                    //     outlining.OnClick();
+                    // }
+                }
                 else 
                     interact.OnHover();
             }
@@ -60,10 +70,15 @@ namespace Control
                 SetCursorTexture(null);
             }
         }
+        
+        
+        
         private void SetCursorTexture(Texture2D texture)
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
+        
+        
         
         /// <summary>
         /// Invoked with a true when the player switch target by pressing a interactable object.
