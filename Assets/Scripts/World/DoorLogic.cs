@@ -4,7 +4,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using Team5.Core;
 
-namespace World
+namespace Team5.World.Interactables
 {
     public class DoorLogic : MonoBehaviour, IOpenLogic
     {
