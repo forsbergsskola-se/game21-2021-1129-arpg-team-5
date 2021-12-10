@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_TOP (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
 --- !u!4 &7646799465338714357 stripped
@@ -284,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
       propertyPath: m_Name
       value: Wall_TOP
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
