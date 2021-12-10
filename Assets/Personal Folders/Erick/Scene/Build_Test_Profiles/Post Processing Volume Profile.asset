@@ -22,45 +22,11 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.1
+    value: 0.3
   fastMode:
     overrideState: 0
     value: 0
---- !u!114 &-395392150934877363
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
-  m_Name: LensDistortion
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: -15
-  intensityX:
-    overrideState: 0
-    value: 1
-  intensityY:
-    overrideState: 0
-    value: 1
-  centerX:
-    overrideState: 0
-    value: 0
-  centerY:
-    overrideState: 0
-    value: 0
-  scale:
-    overrideState: 0
-    value: 1
---- !u!114 &-207960730830456368
+--- !u!114 &-2650968445010739026
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,11 +43,11 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 0
+    overrideState: 1
     value: 1
   externalLut:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 11700000, guid: 000710d28aa152e4ab3ec45c444b43e6, type: 2}
     defaultState: 1
   tonemapper:
     overrideState: 1
@@ -116,58 +82,58 @@ MonoBehaviour:
     value: -12
   tint:
     overrideState: 1
-    value: 5
+    value: 17
   colorFilter:
-    overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
-  hueShift:
     overrideState: 1
-    value: -5
+    value: {r: 1, g: 0.86332095, b: 0.8528302, a: 1}
+  hueShift:
+    overrideState: 0
+    value: 0
   saturation:
     overrideState: 1
-    value: 10
+    value: -17
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 1
+    value: 0.25
   contrast:
     overrideState: 1
-    value: 38
+    value: 14
   mixerRedOutRedIn:
     overrideState: 1
-    value: 104
+    value: 100
   mixerRedOutGreenIn:
     overrideState: 1
-    value: 12
+    value: 0
   mixerRedOutBlueIn:
     overrideState: 1
-    value: 9
+    value: 0
   mixerGreenOutRedIn:
     overrideState: 1
-    value: 10
+    value: 0
   mixerGreenOutGreenIn:
     overrideState: 1
-    value: 83
+    value: 100
   mixerGreenOutBlueIn:
     overrideState: 1
-    value: 5
+    value: 0
   mixerBlueOutRedIn:
     overrideState: 1
-    value: 38
+    value: -50
   mixerBlueOutGreenIn:
     overrideState: 1
-    value: -12
+    value: 50
   mixerBlueOutBlueIn:
     overrideState: 1
-    value: 49
+    value: 100
   lift:
     overrideState: 0
-    value: {x: 1, y: 0.90885246, z: 0.9809951, w: 0}
+    value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
-    overrideState: 1
-    value: {x: 0.862368, y: 0.88831705, z: 1, w: 0}
+    overrideState: 0
+    value: {x: 1, y: 1, z: 1, w: 0}
   gain:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -949,7 +915,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
   hueVsSatCurve:
-    overrideState: 1
+    overrideState: 0
     value:
       curve:
         serializedVersion: 2
@@ -1371,6 +1337,40 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
+--- !u!114 &-395392150934877363
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: -15
+  intensityX:
+    overrideState: 0
+    value: 1
+  intensityY:
+    overrideState: 0
+    value: 1
+  centerX:
+    overrideState: 0
+    value: 0
+  centerY:
+    overrideState: 0
+    value: 0
+  scale:
+    overrideState: 0
+    value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1387,9 +1387,9 @@ MonoBehaviour:
   - {fileID: 3495100506395671548}
   - {fileID: -3669912832646889480}
   - {fileID: 1505044352951338332}
-  - {fileID: -207960730830456368}
   - {fileID: 7254601896260971196}
   - {fileID: -395392150934877363}
+  - {fileID: -2650968445010739026}
 --- !u!114 &1505044352951338332
 MonoBehaviour:
   m_ObjectHideFlags: 3
