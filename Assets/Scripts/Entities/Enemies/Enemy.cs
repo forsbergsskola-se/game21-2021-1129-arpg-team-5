@@ -1,3 +1,4 @@
+using Team5.Ui;
 using TMPro;
 
 namespace Team5.EntityBase
@@ -23,6 +24,16 @@ namespace Team5.EntityBase
         {
             healthText = GetComponentInChildren<TMP_Text>();
             base.Awake();
+        }
+
+        protected override void OnDeath()
+        {
+            //gameObject.GetComponent<OutlineController>().DisableOutlineController();
+
+            if (gameObject.TryGetComponent(out OutlineController outlineController))
+                outlineController.DisableOutlineController();
+            
+            base.OnDeath();
         }
     }
 }
