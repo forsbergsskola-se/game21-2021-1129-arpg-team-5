@@ -1,6 +1,7 @@
 using System;
 using Team5.Core;
 using Team5.Movement;
+using Team5.Ui;
 using UnityEngine;
 
 namespace Control
@@ -57,10 +58,10 @@ namespace Control
                 if (mouseClicked)
                 {
                     interact.OnClick(hit.point);
-                    // if (hit.collider.TryGetComponent(out Outlining outlining))
-                    // {
-                    //     outlining.OnClick();
-                    // }
+                     if (hit.collider.TryGetComponent(out OutlineController outlining))
+                     {
+                         outlining.OnClick();
+                     }
                 }
                 else 
                     interact.OnHover();
