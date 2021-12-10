@@ -92,9 +92,9 @@ namespace Team5.EntityBase
             IsDead = true;
 
             Debug.Log($"{name} is now dead!");
-            
-            GetComponent<Animator>().SetTrigger("die");
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+
+            if (TryGetComponent(out Animator animator)) animator.SetTrigger("die");
+            if (TryGetComponent(out ActionScheduler actionScheduler)) actionScheduler.CancelCurrentAction();
         }
 
         
