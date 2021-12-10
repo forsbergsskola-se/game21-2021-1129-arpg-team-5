@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
-using Logic;
+using Team5.Core;
 using Team5.Core;
 using Team5.EntityBase;
 

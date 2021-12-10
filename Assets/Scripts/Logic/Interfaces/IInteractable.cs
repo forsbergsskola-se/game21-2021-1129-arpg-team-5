@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Logic
+namespace Team5.Core
 {
     public interface IInteractable
     {
