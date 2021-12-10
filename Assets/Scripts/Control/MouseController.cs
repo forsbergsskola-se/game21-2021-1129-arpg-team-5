@@ -58,10 +58,10 @@ namespace Control
                 if (mouseClicked)
                 {
                     interact.OnClick(hit.point);
-                     if (hit.collider.TryGetComponent(out OutlineController outlining))
-                     {
-                         outlining.OnClick();
-                     }
+                    if (hit.collider.TryGetComponent(out OutlineController outlineController))
+                    {
+                        outlineController.OnClick();
+                    }
                 }
                 else 
                     interact.OnHover();

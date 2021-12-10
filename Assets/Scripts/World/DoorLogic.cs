@@ -3,6 +3,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using Team5.Core;
+using Team5.Ui;
 
 namespace Team5.World.Interactables
 {
@@ -46,6 +47,8 @@ namespace Team5.World.Interactables
                 yield return new WaitForSeconds(frameTime);
                 transform.Rotate(Vector3.up, movementPerFrame);
             }
+
+            GetComponent<OutlineController>().DisableOutlineController();
         }
 
     

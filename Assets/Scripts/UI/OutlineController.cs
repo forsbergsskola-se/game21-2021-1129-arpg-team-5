@@ -74,5 +74,11 @@ namespace Team5.Ui
                     outline.enabled = false;
             }
         }
+
+        public void DisableOutlineController()
+        {
+            enabled = false;
+            outline.enabled = false;
+        }
     }
 }
