@@ -22,7 +22,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.2
+    value: 0.1
   fastMode:
     overrideState: 0
     value: 0
@@ -125,22 +125,22 @@ MonoBehaviour:
     value: -5
   saturation:
     overrideState: 1
-    value: 11
+    value: 10
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.8
+    value: 1
   contrast:
     overrideState: 1
-    value: 13
+    value: 38
   mixerRedOutRedIn:
     overrideState: 1
-    value: 108
+    value: 104
   mixerRedOutGreenIn:
     overrideState: 1
-    value: 4
+    value: 12
   mixerRedOutBlueIn:
     overrideState: 1
     value: 9
@@ -155,19 +155,19 @@ MonoBehaviour:
     value: 5
   mixerBlueOutRedIn:
     overrideState: 1
-    value: 24
+    value: 38
   mixerBlueOutGreenIn:
     overrideState: 1
     value: -12
   mixerBlueOutBlueIn:
     overrideState: 1
-    value: 75
+    value: 49
   lift:
     overrideState: 0
     value: {x: 1, y: 0.90885246, z: 0.9809951, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 0.9550501, y: 0.9548582, z: 1, w: 0}
+    value: {x: 0.862368, y: 0.88831705, z: 1, w: 0}
   gain:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -949,7 +949,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
   hueVsSatCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
@@ -1411,10 +1411,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.05
+    value: 0.1
   size:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 1.37
   lumContrib:
     overrideState: 0
     value: 0.8
@@ -1480,10 +1480,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 2
+    value: 1.5
   threshold:
     overrideState: 0
-    value: 1
+    value: 0.1
   softKnee:
     overrideState: 0
     value: 0
@@ -1498,14 +1498,14 @@ MonoBehaviour:
     value: -1
   color:
     overrideState: 1
-    value: {r: 1, g: 0.64666677, b: 0, a: 1}
+    value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 0
     value: 0
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 8279120499888f0459f22a619fc51ab6, type: 3}
     defaultState: 1
   dirtIntensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 5

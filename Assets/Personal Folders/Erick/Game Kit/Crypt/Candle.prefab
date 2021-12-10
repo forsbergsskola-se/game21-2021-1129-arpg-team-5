@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 3737550298500563632
+    rid: 3737550324394885817
   m_Size: {x: 0.16211128, y: 0.5125874, z: 0.2119379}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3737550298500563632
+    - rid: 3737550324394885817
       type: {class: Cylinder, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_AxisDivisions: 20
@@ -2154,11 +2154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859877950223463028, guid: 7121ea60cc7bb184abc9e3e9504e4f2f, type: 3}
       propertyPath: m_Range
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7859877950223463028, guid: 7121ea60cc7bb184abc9e3e9504e4f2f, type: 3}
       propertyPath: m_Intensity
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7859877950223463028, guid: 7121ea60cc7bb184abc9e3e9504e4f2f, type: 3}
       propertyPath: m_Lightmapping
