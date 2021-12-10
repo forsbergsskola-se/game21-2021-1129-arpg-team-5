@@ -15,7 +15,6 @@ namespace Team5.EntityBase
             {
                 base.Health = value;
                 healthText.SetText(Health.ToString());
-                Debug.Log("Hej health texten är ändrad");
             }
         }
         
