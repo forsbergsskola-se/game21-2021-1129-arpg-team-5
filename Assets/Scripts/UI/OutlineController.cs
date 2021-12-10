@@ -4,6 +4,7 @@ using Control;
 using Team5.Core;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Team5.Ui
 {
@@ -18,8 +19,8 @@ namespace Team5.Ui
         private Color OutlineColor = Color.red;
         [SerializeField, Range(0f, 10f)]
         private float OutlineWidth = 5f;
-        public bool EnemyIsClicked = false;
-        public Texture2D mouseTexture { get; }
+        [FormerlySerializedAs("IsClicked")]
+        public bool IsClicked = false;
         private void Start()
         {
             outline = gameObject.AddComponent<Outline>();
@@ -39,27 +40,39 @@ namespace Team5.Ui
 
         void ChangedTarget(object sender, bool temp)
         {
-            outline.enabled = false;
-            EnemyIsClicked = false;
+            if (this.enabled)
+            {
+                outline.enabled = false;
+                IsClicked = false;
+            }
         }
 
         public void OnClick()
         {
-            outline.enabled = true;
-            EnemyIsClicked = true;
+            if (this.enabled)
+            {
+                outline.enabled = true;
+                IsClicked = true;
+            }
         }
 
 
         public void OnMouseEnter()
         {
-            outline.enabled = true;
+            if (this.enabled)
+            {
+                outline.enabled = true;
+            }
         }
 
 
         public void OnMouseExit()
         {
-            if (!EnemyIsClicked)
-                outline.enabled = false;
+            if (this.enabled)
+            {
+                if (!IsClicked)
+                    outline.enabled = false;
+            }
         }
     }
 }
