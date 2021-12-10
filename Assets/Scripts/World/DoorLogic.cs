@@ -18,6 +18,8 @@ namespace World
 
         private const float AnimationFramerate = 60;
 
+        
+        
         private void Awake()
         {
             totalAnimationFrames = Mathf.Round(timeToOpen * AnimationFramerate);
@@ -25,6 +27,8 @@ namespace World
             frameTime = 1 / AnimationFramerate;
         }
 
+        
+        
         public void Open()
         {
             if (isOpen) 
@@ -33,6 +37,8 @@ namespace World
             StartCoroutine(OpeningAnimation());
         }
 
+        
+        
         private IEnumerator OpeningAnimation()
         {
             for (int i = 0; i < totalAnimationFrames; i++)
@@ -43,6 +49,7 @@ namespace World
         }
 
     
+        
         // Draw a line indicating where the door will stop when opened. Only visible if gizmos are enabled.
         private void OnDrawGizmos()
         {
