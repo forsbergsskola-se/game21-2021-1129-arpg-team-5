@@ -18,6 +18,8 @@ namespace Team5.EntityBase
                 Debug.Log("Hej health texten är ändrad");
             }
         }
+        
+        
 
         protected override void Awake()
         {

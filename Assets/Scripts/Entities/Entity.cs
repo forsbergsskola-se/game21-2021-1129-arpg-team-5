@@ -40,6 +40,8 @@ namespace Team5.EntityBase
             damageCooldownTime = BaseDamageCooldown;
         }
 
+        
+        
         /// <summary>
         /// Reset the entity to its base statistics. Does not include it's level.
         /// </summary>
@@ -52,6 +54,8 @@ namespace Team5.EntityBase
             damageCooldownTime = BaseDamageCooldown;
         }
 
+        
+        
         /// <summary>
         /// Sets or gets the entity's health. Will set it to inactive if the health reaches 0.
         /// </summary>
@@ -68,11 +72,15 @@ namespace Team5.EntityBase
             }
         }
 
+        
+        
         public virtual float Armor
         {
             get => armor;
             set => damageResistance = (100 - value) / 100;
         }
+        
+        
         
         /// <summary>
         /// Function called on death of a entity. Override to add additional changes on death.
@@ -89,6 +97,8 @@ namespace Team5.EntityBase
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
+        
+        
         /// <summary>
         /// Get: the level, Set: the Level and scale stats accordingly. 
         /// </summary>
@@ -118,6 +128,8 @@ namespace Team5.EntityBase
             }
         }
         
+        
+        
         /// <summary>
         /// Deal damage to the Entity if it is not on cooldown and used in other Entity for example Player, GameObject and Enemies.
         /// </summary>
@@ -131,6 +143,8 @@ namespace Team5.EntityBase
             Health -= damageTaken * damageResistance;
         }
 
+        
+        
         private IEnumerator DamageCooldown()
         {
             takeDamageOnCooldown = true;
