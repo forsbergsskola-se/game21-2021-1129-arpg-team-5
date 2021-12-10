@@ -15,19 +15,17 @@ namespace Team5.EntityBase
         [SerializeField] private float BaseDamageCooldown;
         [SerializeField] private float EntityLevelValueMuliplier;
 
-        protected bool takeDamageOnCooldown;
-
-        private float health;
         private float armor;
         private float damageCooldownTime;
-        private bool isAlive;
+        private float health;
+        private float level = 1;
 
         protected float damageResistance;
         protected float maxHealth;
-        protected float level = 1;
+        protected bool takeDamageOnCooldown;
+
         
-        
-        
+
         /// <summary>
         /// Override this to set gameobjects and similar in child classes.. Then call base when you want the values to be set.
         /// </summary>
@@ -74,6 +72,9 @@ namespace Team5.EntityBase
 
         
         
+        /// <summary>
+        /// Sets entity armor value. Automatically scales the damage resistance too.
+        /// </summary>
         public virtual float Armor
         {
             get => armor;
@@ -122,8 +123,6 @@ namespace Team5.EntityBase
                 Armor = BaseArmor * multiplier + bonusArmor;
                 MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
 
-                Debug.Log(maxHealth + " MAXHEALTH");
-                
                 level = value;
             }
         }
