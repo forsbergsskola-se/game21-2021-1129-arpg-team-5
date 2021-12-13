@@ -48,15 +48,23 @@ namespace Team5.Movement
             agent.enabled = !entity.IsDead;
 
             UpdateAnimator();
-            
-            // indicates player has reached destinaton with sound and visual
-            if (player.transform.position.x == targetDest.transform.position.x)
+            if (agent.tag == "Player")
             {
-                oldPlayerRotation = newPlayerRotation;
+                Debug.Log(agent.angularSpeed);
+            }
+            // indicates player has reached destinaton with sound and visual
+            if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 2)
+            {
+                if (agent.tag == "Player")
+                    agent.angularSpeed = 10;
+                
+                    oldPlayerRotation = newPlayerRotation;
 
-                targetDest.transform.position = new Vector3(0, -50, 0);
-                audio.Play();
-                Debug.Log("target reach");
+                    //Hide click-marker when destination is met.
+                    targetDest.GetComponent<MeshRenderer>().enabled = false; 
+
+                    audio.Play();
+                    Debug.Log("target reach");
             }
 
             // changes destination colour if enemy
@@ -73,6 +81,15 @@ namespace Team5.Movement
                 else
                 {
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
+                }
+            }
+            else
+            {
+                if (agent.tag == "Player")
+                {
+                    agent.angularSpeed = 5000;
+                    //enable click marker when player is at a higher distance from it.
+                    targetDest.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
         }
@@ -121,7 +138,7 @@ namespace Team5.Movement
 
         public void Cancel()
         {
-            targetDest.transform.position = new Vector3(0, -50, 0);
+            //targetDest.transform.position = new Vector3(0, -50, 0);
             
             if (this.entity.IsDead)
             {
