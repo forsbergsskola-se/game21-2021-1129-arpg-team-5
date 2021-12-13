@@ -51,6 +51,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         if (isLocked && !waitForSound)
         {
             GetComponent<AudioSource>().Play();
+            waitForSound = true;
             StartCoroutine(WaitForSound());
         }
     }
@@ -124,7 +125,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     IEnumerator WaitForSound()
     {
-        waitForSound = true;
         yield return new WaitForSeconds(1);
         waitForSound = false;
     }
@@ -133,7 +133,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     IEnumerator UnlockDoor()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         isLocked = false;
     }
 }
