@@ -4,7 +4,7 @@ using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
 
-namespace Control
+namespace Team5.Control
 {
     public class MouseController : MonoBehaviour
     {
@@ -39,9 +39,12 @@ namespace Control
                 mouseClicked = false;
             }
             
+            int layermask = 1 << 13;
+            layermask = ~layermask;
+            
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
-            if (!Physics.Raycast(ray, out var hit)) 
+            if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask)) 
             {
                 SetCursorTexture(null);
                 
