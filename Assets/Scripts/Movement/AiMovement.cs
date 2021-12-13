@@ -31,6 +31,7 @@ namespace Team5.Movement
         public float dustSpawnTime;
         public float corpseStayTime;
         private ParticleSystem deathCloud;
+        private int death = 0;
         
         // Ui stuff
         private GameObject enemyIndicator;
@@ -66,11 +67,15 @@ namespace Team5.Movement
 
             if (entity.IsDead)
             {
+                
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
                 
                 // TODO: MOVE - Starts death cloud
-                StartCoroutine(WaitToDisable());
+                if (death == 0)
+                {
+                    StartCoroutine(WaitToDisable());
+                }
                 return;
             }
 
@@ -157,7 +162,8 @@ namespace Team5.Movement
         // TODO: MOVE
         private IEnumerator WaitToDisable()
         {
-            Debug.Log($"Destroy {this.name} in 10 seconds");
+            Debug.Log($"Destroy {this.name} in {dustSpawnTime + corpseStayTime} seconds");
+            death++;
 
             // Dust cloud spawns
             yield return new WaitForSeconds(dustSpawnTime);
