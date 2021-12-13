@@ -26,6 +26,7 @@ namespace Team5.Movement
         private GameObject player;
         
         // death cloud
+        // TODO: MOVE 
         public SkinnedMeshRenderer mesh;
         public float dustSpawnTime;
         public float corpseStayTime;
@@ -66,6 +67,8 @@ namespace Team5.Movement
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
+                
+                // TODO: MOVE - Starts death cloud
                 StartCoroutine(WaitToDisable());
                 return;
             }
@@ -149,6 +152,8 @@ namespace Team5.Movement
             
         }
         
+        
+        // TODO: MOVE
         private IEnumerator WaitToDisable()
         {
             Debug.Log($"Destroy {this.name} in 10 seconds");
