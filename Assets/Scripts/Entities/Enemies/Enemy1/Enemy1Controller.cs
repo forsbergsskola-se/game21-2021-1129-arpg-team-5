@@ -4,7 +4,7 @@ using Team5.Core;
 using Team5.EntityBase;
 using UnityEngine;
 
-namespace Enemies
+namespace Team5.Entities.Enemies.Enemy1
 {
     public class Enemy1Controller : Enemy, IInteractable
     {
