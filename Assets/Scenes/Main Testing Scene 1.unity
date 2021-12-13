@@ -1582,6 +1582,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4908110803040342393, guid: 1e47316991a2621489461ed09bc9dd53, type: 3}
+      propertyPath: disableTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908110803040342393, guid: 1e47316991a2621489461ed09bc9dd53, type: 3}
+      propertyPath: destroyObject
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5250199998027914563, guid: 1e47316991a2621489461ed09bc9dd53, type: 3}
       propertyPath: m_Name
       value: Vase
@@ -9721,6 +9729,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Destructable
       objectReference: {fileID: 0}
+    - target: {fileID: 5486664256636617339, guid: 1e47316991a2621489461ed09bc9dd53, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8100082746466602097, guid: 1e47316991a2621489461ed09bc9dd53, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -10227,7 +10239,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: cf04a4fc04b57a944808e88f3848f791, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 25612260b3cc7a14c869bdc08843b3cd, type: 2}
 --- !u!114 &1799507620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10256,7 +10268,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 2
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: cc7da38fef96fa541a5838b5f3e942eb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 46fa44ec07512e94996a242ae83dfaa3, type: 2}
 --- !u!1 &1875206230
 GameObject:
   m_ObjectHideFlags: 0
