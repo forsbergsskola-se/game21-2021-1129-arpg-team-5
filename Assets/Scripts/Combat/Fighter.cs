@@ -181,7 +181,7 @@ namespace Team5.Combat
             }
 
             // Print death
-            if (target.IsDead)
+            if (target.IsDead && target.CompareTag("Enemy"))
             {
                 // Debug.Log($"{target.name}'s current health: {target.Health}");
                 // Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
@@ -249,8 +249,11 @@ namespace Team5.Combat
         
         public void EnemyIndicatorActiveTarget()
         {
-            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-            enemyIndicator.SetActive(true); 
+            if (this.target == gameObject.CompareTag("Enemy"))
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(true); 
+            }
         }
         
         
@@ -270,8 +273,12 @@ namespace Team5.Combat
         public void EnemyIndicatorInactiveTarget()
         {
             {
-                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(false); 
+
+                if (this.target == gameObject.CompareTag("Enemy"))
+                {
+                    enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                    enemyIndicator.SetActive(false); 
+                }
             }
         }
     }
