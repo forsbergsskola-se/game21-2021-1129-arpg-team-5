@@ -30,7 +30,7 @@ namespace Team5.Movement
         public SkinnedMeshRenderer mesh;
         public float dustSpawnTime;
         public float corpseStayTime;
-        public GameObject dustPrefab;
+        private ParticleSystem deathCloud;
         
         // Ui stuff
         private GameObject enemyIndicator;
@@ -50,6 +50,7 @@ namespace Team5.Movement
             fighter = GetComponent<Fighter>();
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
+            deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
 
             
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
@@ -160,8 +161,9 @@ namespace Team5.Movement
 
             // Dust cloud spawns
             yield return new WaitForSeconds(dustSpawnTime);
-            dustPrefab.SetActive(true);
-            dustPrefab.transform.position = this.gameObject.transform.position;
+            deathCloud.gameObject.SetActive(true);
+            deathCloud.Play();
+            deathCloud.transform.position = this.gameObject.transform.position;
             
             // Enemy mesh is disabled
             yield return new WaitForSeconds(corpseStayTime);
@@ -170,6 +172,7 @@ namespace Team5.Movement
             // Enemy game object fully disabled
             yield return new WaitForSeconds(10);
             this.gameObject.SetActive(false);
+            deathCloud.gameObject.SetActive(false);
         }
     }
 }
