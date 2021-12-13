@@ -103,6 +103,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
                 openLogicScript.Open();
+                GetComponent<BoxCollider>().enabled = false;
                 // player.gameObject.transform.LookAt(this.gameObject.transform.position);
 
                 unlockedCursor = null;
