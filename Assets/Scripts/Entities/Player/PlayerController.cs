@@ -15,6 +15,7 @@ namespace Team5.Entities.Player
 
         private NavMeshAgent agent;
         private Animator animator;
+        public int reviveCounter;
         
         
         protected override void Awake()
@@ -71,6 +72,7 @@ namespace Team5.Entities.Player
             
             animator.SetTrigger("revive");
             animator.SetBool("isDead", false);
+            reviveCounter++;
             
             StartCoroutine(PlayerRegenHealth());
         }

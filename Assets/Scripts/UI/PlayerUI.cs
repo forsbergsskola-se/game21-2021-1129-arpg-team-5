@@ -1,6 +1,7 @@
 using Team5.Combat;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Entities.Player;
 using TMPro;
 using UnityEngine;
 
@@ -36,8 +37,8 @@ namespace Team5.Ui
         {
             healthText.text = "Health: " + entity.Health;
 
-            // reviveCount = entity.reviveCounter;
-            // reviveText.text = "Revivals: " + reviveCount;
+            reviveCount = this.GetComponent<PlayerController>().reviveCounter;
+            reviveText.text = "Revivals: " + reviveCount;
             
             killText.text = "Kills: " + fighter.killCount;
 
