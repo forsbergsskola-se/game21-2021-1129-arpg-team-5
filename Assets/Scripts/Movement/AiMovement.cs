@@ -24,15 +24,7 @@ namespace Team5.Movement
         private Fighter fighter;
         private Move move;
         private GameObject player;
-        
-        // death cloud
-        // TODO: MOVE 
-        public SkinnedMeshRenderer mesh;
-        public float dustSpawnTime;
-        public float corpseStayTime;
-        private ParticleSystem deathCloud;
-        private int death = 0;
-        
+
         // Ui stuff
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
@@ -51,14 +43,10 @@ namespace Team5.Movement
             fighter = GetComponent<Fighter>();
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
-            deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
 
-            
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             healthText = this.GetComponentInChildren<TMP_Text>();
-            
-            
             guardPosition = transform.position;
         }
 
@@ -67,16 +55,8 @@ namespace Team5.Movement
 
             if (entity.IsDead)
             {
-                
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
-                
-                // TODO: MOVE - Starts death cloud
-                if (death == 0)
-                {
-                    StartCoroutine(WaitToDisable());
-                }
-                return;
             }
 
             if (CheckAttackRange() && fighter.CanAttack(player))
@@ -150,35 +130,10 @@ namespace Team5.Movement
             timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
-
-
         // TODO: Do stuffs
         public void Cancel()
         {
             
-        }
-        
-        
-        // TODO: MOVE
-        private IEnumerator WaitToDisable()
-        {
-            Debug.Log($"Destroy {this.name} in {dustSpawnTime + corpseStayTime} seconds");
-            death++;
-
-            // Dust cloud spawns
-            yield return new WaitForSeconds(dustSpawnTime);
-            deathCloud.gameObject.SetActive(true);
-            deathCloud.Play();
-            deathCloud.transform.position = this.gameObject.transform.position;
-            
-            // Enemy mesh is disabled
-            yield return new WaitForSeconds(corpseStayTime);
-            mesh.GetComponent<Renderer>().enabled = false;
-
-            // Enemy game object fully disabled
-            yield return new WaitForSeconds(10);
-            this.gameObject.SetActive(false);
-            deathCloud.gameObject.SetActive(false);
         }
     }
 }
