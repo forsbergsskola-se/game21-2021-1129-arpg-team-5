@@ -50,7 +50,7 @@ namespace Team5.Movement
             UpdateAnimator();
             
             // indicates player has reached destinaton with sound and visual
-            if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 2)
+            if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 0.2)
             {
                 if (agent.tag == "Player")
                     agent.angularSpeed = 10;
