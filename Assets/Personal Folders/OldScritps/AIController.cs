@@ -20,7 +20,7 @@ namespace Team5.Control
         private Move move;
         private Health health;
         private GameObject player;
-        public SkinnedMeshRenderer mesh;
+        
         public float dustSpawnTime;
         public float corpseStayTime;
         public GameObject dustPrefab;
@@ -149,12 +149,8 @@ namespace Team5.Control
             dustPrefab.SetActive(true);
             dustPrefab.transform.position = this.gameObject.transform.position;
             
-            // Enemy mesh is disabled
+            // Enemy is disabled
             yield return new WaitForSeconds(corpseStayTime);
-            mesh.GetComponent<Renderer>().enabled = false;
-
-            // Enemy game object fully disabled
-            yield return new WaitForSeconds(10);
             this.gameObject.SetActive(false);
         }
     }
