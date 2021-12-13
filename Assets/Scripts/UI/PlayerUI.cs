@@ -1,6 +1,6 @@
 using Team5.Combat;
 using Team5.Core;
-using Team5.EntityBase;
+using Team5.Entities;
 using TMPro;
 using UnityEngine;
 
