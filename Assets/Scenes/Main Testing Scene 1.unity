@@ -9920,7 +9920,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 1
+  m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: cf04a4fc04b57a944808e88f3848f791, type: 2}
 --- !u!114 &1799507620
@@ -10962,9 +10962,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1736894717}
+    - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: dustPrefab
+      value: 
+      objectReference: {fileID: 1213659792}
+    - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 749483838}
+    - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: dustSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5214115363596631666, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: corpseStayTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: temp
       value: 
@@ -11239,9 +11255,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1787091294}
+    - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: dustPrefab
+      value: 
+      objectReference: {fileID: 1893966872}
+    - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 324519727}
+    - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: dustSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072401180383167900, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: corpseStayTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5849511270623620143, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_IsActive
       value: 0

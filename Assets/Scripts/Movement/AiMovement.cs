@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Team5.Combat;
 using Team5.Control;
 using Team5.Core;
@@ -23,6 +24,12 @@ namespace Team5.Movement
         private Fighter fighter;
         private Move move;
         private GameObject player;
+        
+        // death cloud
+        public SkinnedMeshRenderer mesh;
+        public float dustSpawnTime;
+        public float corpseStayTime;
+        public GameObject dustPrefab;
         
         // Ui stuff
         private GameObject enemyIndicator;
@@ -59,6 +66,7 @@ namespace Team5.Movement
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
+                StartCoroutine(WaitToDisable());
                 return;
             }
 
@@ -139,6 +147,24 @@ namespace Team5.Movement
         public void Cancel()
         {
             
+        }
+        
+        private IEnumerator WaitToDisable()
+        {
+            Debug.Log($"Destroy {this.name} in 10 seconds");
+
+            // Dust cloud spawns
+            yield return new WaitForSeconds(dustSpawnTime);
+            dustPrefab.SetActive(true);
+            dustPrefab.transform.position = this.gameObject.transform.position;
+            
+            // Enemy mesh is disabled
+            yield return new WaitForSeconds(corpseStayTime);
+            mesh.GetComponent<Renderer>().enabled = false;
+
+            // Enemy game object fully disabled
+            yield return new WaitForSeconds(10);
+            this.gameObject.SetActive(false);
         }
     }
 }
