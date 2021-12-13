@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Team5.Entities.Player;
 using Team5.Core;
-using Team5.EntityBase;
-using Unity.VisualScripting;
+using Team5.Entities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +15,6 @@ namespace Team5.Movement
         private AudioSource audio;
         Animator animator;
         NavMeshAgent agent;
-        // Health health;
         private Entity entity;
         private Material enemyMaterial;
         private Material waypointMaterial;
@@ -29,9 +23,10 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         
+        
+        
         private void Start()
         {
-            // health = GetComponent<Health>();
             entity = GetComponent<Entity>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
@@ -46,6 +41,8 @@ namespace Team5.Movement
             audio = player.GetComponent<AudioSource>();
         }
 
+        
+        
         void Update()
         {
             agent.enabled = !entity.IsDead;
@@ -62,7 +59,7 @@ namespace Team5.Movement
                 Debug.Log("target reach");
             }
 
-            // changes destinaton colour if enemy
+            // changes destination colour if enemy
             else if (this.gameObject != player)
             {
                 var targetDestLocation = Math.Round(targetDest.transform.position.x, 1);
@@ -80,12 +77,16 @@ namespace Team5.Movement
             }
         }
 
+        
+        
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
         }
 
+        
+        
         public void MoveTo(Vector3 destination)
         {
             // can't move if dead
@@ -115,6 +116,8 @@ namespace Team5.Movement
                 }
             }
         }
+        
+        
 
         public void Cancel()
         {
@@ -130,6 +133,8 @@ namespace Team5.Movement
             }
         }
 
+        
+        
         public void UpdateAnimator()
         {
             Vector3 velocity = agent.velocity;
@@ -138,6 +143,8 @@ namespace Team5.Movement
             animator.SetFloat("forwardSpeed", speed);
         }
 
+        
+        
         public bool TargetReachable(Vector3 destination)
         {
             NavMeshPath path = new NavMeshPath();

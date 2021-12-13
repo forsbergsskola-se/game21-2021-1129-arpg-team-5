@@ -2,8 +2,10 @@ using System.Collections;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
+using Team5.Core;
+using Team5.Ui;
 
-namespace World
+namespace Team5.World.Interactables
 {
     public class DoorLogic : MonoBehaviour, IOpenLogic
     {
@@ -17,6 +19,8 @@ namespace World
 
         private const float AnimationFramerate = 60;
 
+        
+        
         private void Awake()
         {
             totalAnimationFrames = Mathf.Round(timeToOpen * AnimationFramerate);
@@ -24,6 +28,8 @@ namespace World
             frameTime = 1 / AnimationFramerate;
         }
 
+        
+        
         public void Open()
         {
             if (isOpen) 
@@ -32,6 +38,8 @@ namespace World
             StartCoroutine(OpeningAnimation());
         }
 
+        
+        
         private IEnumerator OpeningAnimation()
         {
             for (int i = 0; i < totalAnimationFrames; i++)
@@ -39,9 +47,12 @@ namespace World
                 yield return new WaitForSeconds(frameTime);
                 transform.Rotate(Vector3.up, movementPerFrame);
             }
+
+            GetComponent<OutlineController>().DisableOutlineController();
         }
 
     
+        
         // Draw a line indicating where the door will stop when opened. Only visible if gizmos are enabled.
         private void OnDrawGizmos()
         {

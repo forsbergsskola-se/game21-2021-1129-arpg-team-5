@@ -126,7 +126,12 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: VaseExplosion
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: initialShadingGroup
+    second: {fileID: 2100000, guid: 7695ad498258a8b4c93245111fc6c027, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

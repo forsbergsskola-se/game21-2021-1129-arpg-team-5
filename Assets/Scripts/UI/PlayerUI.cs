@@ -1,11 +1,11 @@
 using Team5.Combat;
 using Team5.Core;
-using Team5.EntityBase;
+using Team5.Entities;
+using Team5.Entities.Player;
 using TMPro;
-using UI;
 using UnityEngine;
 
-namespace UI
+namespace Team5.Ui
 {
     public class PlayerUI : MonoBehaviour
     {
@@ -37,8 +37,8 @@ namespace UI
         {
             healthText.text = "Health: " + entity.Health;
 
-            // reviveCount = entity.reviveCounter;
-            // reviveText.text = "Revivals: " + reviveCount;
+            reviveCount = this.GetComponent<PlayerController>().reviveCounter;
+            reviveText.text = "Revivals: " + reviveCount;
             
             killText.text = "Kills: " + fighter.killCount;
 

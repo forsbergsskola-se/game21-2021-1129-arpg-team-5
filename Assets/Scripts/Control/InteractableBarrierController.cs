@@ -1,6 +1,6 @@
 using System.Collections;
-using Control;
-using Logic;
+using Team5.Control;
+using Team5.Core;
 using Team5.Movement;
 using UnityEngine;
 
