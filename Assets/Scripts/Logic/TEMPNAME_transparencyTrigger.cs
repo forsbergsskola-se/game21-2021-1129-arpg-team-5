@@ -30,9 +30,6 @@ public class TEMPNAME_transparencyTrigger : MonoBehaviour
 
         // layermask = ~layermask;
 
-        Debug.Log("Hello");
-        
-        
         ray = new Ray(transform.position, transform.position - cameraObject.transform.position);
         
         // Gizmos.DrawLine(transform.position, transform.position - cameraObject.transform.position);
