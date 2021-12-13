@@ -11129,12 +11129,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1736894717}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: temp
       value: 
       objectReference: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
     - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: BaseArmor
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: dustSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
+      propertyPath: corpseStayTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3912248657770116217, guid: 56b6e1de26b4ce4468860122fd4f50a2, type: 3}
       propertyPath: BaseDamageCooldown
@@ -11286,6 +11298,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1309850160470361694, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: BaseMaxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -11355,6 +11371,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: weaponDamage
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151978097879815257, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: baseCriticalChance
       value: 25
       objectReference: {fileID: 0}
@@ -11421,6 +11441,10 @@ PrefabInstance:
       propertyPath: corpseStayTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5849511270623579147, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5849511270623620143, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11482,6 +11506,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1787091294}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: temp
       value: 
       objectReference: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
@@ -11494,6 +11522,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: dustSpawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: OutlineColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -11503,6 +11535,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
       propertyPath: OutlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
+      propertyPath: corpseStayTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925378897288872597, guid: 27b19b125adbad14f95b45be19026999, type: 3}
