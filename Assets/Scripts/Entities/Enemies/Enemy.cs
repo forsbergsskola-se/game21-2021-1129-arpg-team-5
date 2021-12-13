@@ -24,12 +24,12 @@ namespace Team5.EntityBase
                 hurtText.SetText(temp.ToString());
                 healthText.SetText(Health.ToString());
                 
+                blood.gameObject.SetActive(true);
                 blood.Play();
                 hurtText.enabled = true;
                 StartCoroutine(WaitAndDisable());
             }
         }
-        
         
         protected override void Awake()
         {
@@ -55,6 +55,7 @@ namespace Team5.EntityBase
             yield return new WaitForSeconds(damageHealthDecay);
             hurtText.enabled = false;
             blood.Stop();
+            blood.gameObject.SetActive(false);
         }
     }
 }
