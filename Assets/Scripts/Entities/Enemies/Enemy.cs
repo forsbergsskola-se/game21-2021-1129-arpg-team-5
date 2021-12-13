@@ -18,6 +18,7 @@ namespace Team5.Entities.Enemies
         private ParticleSystem deathCloud;
         public SkinnedMeshRenderer mesh;
         private MeshRenderer enemyIndicator2;
+        private MeshRenderer enemyIndicator1;
 
 
 
@@ -44,6 +45,7 @@ namespace Team5.Entities.Enemies
             hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
             deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
+            enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
             enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
         }
@@ -55,9 +57,11 @@ namespace Team5.Entities.Enemies
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
 
+            
             if (enemyIndicator2.enabled == true)
             {
                 enemyIndicator2.enabled = false;
+                enemyIndicator1.enabled = false;
             }
             
             StartCoroutine(WaitAndDisableDeath());
@@ -75,7 +79,7 @@ namespace Team5.Entities.Enemies
         private IEnumerator WaitAndDisableDeath()
         {
             Debug.Log($"Destroy {this.name} in {dustSpawnTime + corpseStayTime} seconds");
-
+            
             // Dust cloud spawns
             yield return new WaitForSeconds(dustSpawnTime);
             deathCloud.gameObject.SetActive(true);
