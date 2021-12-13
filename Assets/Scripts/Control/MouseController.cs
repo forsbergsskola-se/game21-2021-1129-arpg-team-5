@@ -4,7 +4,7 @@ using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
 
-namespace Control
+namespace Team5.Control
 {
     public class MouseController : MonoBehaviour
     {

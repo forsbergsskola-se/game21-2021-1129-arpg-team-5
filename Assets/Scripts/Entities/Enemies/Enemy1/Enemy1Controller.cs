@@ -1,5 +1,5 @@
 using System;
-using Control;
+using Team5.Control;
 using Team5.Core;
 using Team5.EntityBase;
 using UnityEngine;
