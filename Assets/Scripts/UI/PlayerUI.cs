@@ -2,10 +2,9 @@ using Team5.Combat;
 using Team5.Core;
 using Team5.EntityBase;
 using TMPro;
-using UI;
 using UnityEngine;
 
-namespace UI
+namespace Team5.Ui
 {
     public class PlayerUI : MonoBehaviour
     {
