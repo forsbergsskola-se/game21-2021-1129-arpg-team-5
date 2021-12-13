@@ -249,11 +249,8 @@ namespace Team5.Combat
         
         public void EnemyIndicatorActiveTarget()
         {
-            if (this.target == gameObject.CompareTag("Enemy"))
-            {
                 enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
                 enemyIndicator.SetActive(true); 
-            }
         }
         
         
@@ -273,7 +270,6 @@ namespace Team5.Combat
         public void EnemyIndicatorInactiveTarget()
         {
             {
-
                 if (this.target == gameObject.CompareTag("Enemy"))
                 {
                     enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
