@@ -3,7 +3,7 @@ using Team5.Ui;
 using TMPro;
 using UnityEngine;
 
-namespace Team5.EntityBase
+namespace Team5.Entities
 {
     public abstract class Enemy : Entity
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
 using Team5.Combat;
-using Team5.EntityBase;
+using Team5.Entities;
 
 
 namespace Team5.Entities.Player

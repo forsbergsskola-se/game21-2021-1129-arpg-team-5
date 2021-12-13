@@ -1,6 +1,6 @@
 using System;
 using Team5.Core;
-using Team5.EntityBase;
+using Team5.Entities;
 using UnityEngine;
 using UnityEngine.AI;
 
