@@ -48,10 +48,7 @@ namespace Team5.Movement
             agent.enabled = !entity.IsDead;
 
             UpdateAnimator();
-            if (agent.tag == "Player")
-            {
-                Debug.Log(agent.angularSpeed);
-            }
+            
             // indicates player has reached destinaton with sound and visual
             if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 2)
             {
