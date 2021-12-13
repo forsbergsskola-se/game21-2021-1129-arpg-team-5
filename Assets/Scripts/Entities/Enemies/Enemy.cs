@@ -12,22 +12,29 @@ namespace Team5.EntityBase
         private TMP_Text hurtText;
         private ParticleSystem blood;
         public float damageHealthDecay = 0.5f;
-
         
+        public float dustSpawnTime;
+        public float corpseStayTime;
+        private ParticleSystem deathCloud;
+        public SkinnedMeshRenderer mesh;
+        private MeshRenderer enemyIndicator2;
+
+
+
         public override float Health
         {
             get => base.Health;
             protected set
             {
-                float temp = (base.Health - value);
+                float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(temp.ToString());
+                hurtText.SetText(hurt.ToString());
                 healthText.SetText(Health.ToString());
                 
                 blood.gameObject.SetActive(true);
                 blood.Play();
                 hurtText.enabled = true;
-                StartCoroutine(WaitAndDisable());
+                StartCoroutine(WaitAndDisableHurtHealth());
             }
         }
         
@@ -36,7 +43,8 @@ namespace Team5.EntityBase
             healthText = GetComponentInChildren<TMP_Text>();
             hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
-
+            deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
+            enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
         }
 
@@ -46,16 +54,42 @@ namespace Team5.EntityBase
 
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
+
+            if (enemyIndicator2.enabled == true)
+            {
+                enemyIndicator2.enabled = false;
+            }
             
+            StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
         }
         
-        IEnumerator WaitAndDisable()
+        IEnumerator WaitAndDisableHurtHealth()
         {
             yield return new WaitForSeconds(damageHealthDecay);
             hurtText.enabled = false;
             blood.Stop();
             blood.gameObject.SetActive(false);
+        }
+        
+        private IEnumerator WaitAndDisableDeath()
+        {
+            Debug.Log($"Destroy {this.name} in {dustSpawnTime + corpseStayTime} seconds");
+
+            // Dust cloud spawns
+            yield return new WaitForSeconds(dustSpawnTime);
+            deathCloud.gameObject.SetActive(true);
+            deathCloud.Play();
+            deathCloud.transform.position = this.gameObject.transform.position;
+            
+            // Enemy mesh is disabled
+            yield return new WaitForSeconds(corpseStayTime);
+            mesh.GetComponent<Renderer>().enabled = false;
+
+            // Enemy game object fully disabled
+            yield return new WaitForSeconds(10);
+            this.gameObject.SetActive(false);
+            deathCloud.gameObject.SetActive(false);
         }
     }
 }
