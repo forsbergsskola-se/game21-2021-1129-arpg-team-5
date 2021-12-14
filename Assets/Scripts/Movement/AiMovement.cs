@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
 using Team5.Combat;
 using Team5.Control;
 using Team5.Core;
-using Team5.EntityBase;
+using Team5.Entities;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace Team5.Movement
         private Fighter fighter;
         private Move move;
         private GameObject player;
-        
+
         // Ui stuff
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
@@ -43,12 +44,9 @@ namespace Team5.Movement
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
 
-            
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             healthText = this.GetComponentInChildren<TMP_Text>();
-            
-            
             guardPosition = transform.position;
         }
 
@@ -59,7 +57,6 @@ namespace Team5.Movement
             {
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
-                return;
             }
 
             if (CheckAttackRange() && fighter.CanAttack(player))
@@ -132,8 +129,6 @@ namespace Team5.Movement
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
-
-
 
         // TODO: Do stuffs
         public void Cancel()

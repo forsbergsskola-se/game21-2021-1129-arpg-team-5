@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
 using Team5.Combat;
-using Team5.EntityBase;
+using Team5.Entities;
 
 
 namespace Team5.Entities.Player
@@ -15,6 +15,7 @@ namespace Team5.Entities.Player
 
         private NavMeshAgent agent;
         private Animator animator;
+        public int reviveCounter;
         
         
         protected override void Awake()
@@ -45,6 +46,7 @@ namespace Team5.Entities.Player
             EntityLevel += 1;
             Debug.Log("Player died!");
             base.OnDeath();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/TempDeath");
             Revive();
         }
 
@@ -70,6 +72,7 @@ namespace Team5.Entities.Player
             
             animator.SetTrigger("revive");
             animator.SetBool("isDead", false);
+            reviveCounter++;
             
             StartCoroutine(PlayerRegenHealth());
         }
@@ -77,7 +80,7 @@ namespace Team5.Entities.Player
         private IEnumerator PlayerRegenHealth()
         {
             // TODO: Fix health regen not stopping after taking damage.
-            while (Health < maxHealth && !takeDamageOnCooldown)
+            while (Health < MaxHealth && !takeDamageOnCooldown)
             {
                 yield return new WaitForSeconds(1);
                 Health += healthRegenPerSecond;
@@ -110,9 +113,19 @@ namespace Team5.Entities.Player
             return false;
         }
 
+        
+        
         private static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+
+
+        public void AddHealth(int value)
+        {
+            Debug.Log($"+{value} health");
+            Health += value;
         }
     }
 }

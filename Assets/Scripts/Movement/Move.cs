@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Team5.Entities.Player;
 using Team5.Core;
-using Team5.EntityBase;
-using Unity.VisualScripting;
+using Team5.Entities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +15,6 @@ namespace Team5.Movement
         private AudioSource audio;
         Animator animator;
         NavMeshAgent agent;
-        // Health health;
         private Entity entity;
         private Material enemyMaterial;
         private Material waypointMaterial;
@@ -29,9 +23,10 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         
+        
+        
         private void Start()
         {
-            // health = GetComponent<Health>();
             entity = GetComponent<Entity>();
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
@@ -46,6 +41,8 @@ namespace Team5.Movement
             audio = player.GetComponent<AudioSource>();
         }
 
+        
+        
         void Update()
         {
             agent.enabled = !entity.IsDead;
@@ -53,16 +50,21 @@ namespace Team5.Movement
             UpdateAnimator();
             
             // indicates player has reached destinaton with sound and visual
-            if (player.transform.position.x == targetDest.transform.position.x)
+            if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 0.2)
             {
-                oldPlayerRotation = newPlayerRotation;
+                if (agent.tag == "Player")
+                    agent.angularSpeed = 10;
+                
+                    oldPlayerRotation = newPlayerRotation;
 
-                targetDest.transform.position = new Vector3(0, -50, 0);
-                audio.Play();
-                Debug.Log("target reach");
+                    //Hide click-marker when destination is met.
+                    targetDest.GetComponent<MeshRenderer>().enabled = false; 
+
+                    audio.Play();
+                    Debug.Log("target reach");
             }
 
-            // changes destinaton colour if enemy
+            // changes destination colour if enemy
             else if (this.gameObject != player)
             {
                 var targetDestLocation = Math.Round(targetDest.transform.position.x, 1);
@@ -78,14 +80,27 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
                 }
             }
+            else
+            {
+                if (agent.tag == "Player")
+                {
+                    agent.angularSpeed = 5000;
+                    //enable click marker when player is at a higher distance from it.
+                    targetDest.GetComponent<MeshRenderer>().enabled = true;
+                }
+            }
         }
 
+        
+        
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
         }
 
+        
+        
         public void MoveTo(Vector3 destination)
         {
             // can't move if dead
@@ -115,10 +130,12 @@ namespace Team5.Movement
                 }
             }
         }
+        
+        
 
         public void Cancel()
         {
-            targetDest.transform.position = new Vector3(0, -50, 0);
+            //targetDest.transform.position = new Vector3(0, -50, 0);
             
             if (this.entity.IsDead)
             {
@@ -130,6 +147,8 @@ namespace Team5.Movement
             }
         }
 
+        
+        
         public void UpdateAnimator()
         {
             Vector3 velocity = agent.velocity;
@@ -138,6 +157,8 @@ namespace Team5.Movement
             animator.SetFloat("forwardSpeed", speed);
         }
 
+        
+        
         public bool TargetReachable(Vector3 destination)
         {
             NavMeshPath path = new NavMeshPath();

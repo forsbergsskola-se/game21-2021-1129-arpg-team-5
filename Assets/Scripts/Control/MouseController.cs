@@ -1,9 +1,10 @@
 using System;
-using Logic;
+using Team5.Core;
 using Team5.Movement;
+using Team5.Ui;
 using UnityEngine;
 
-namespace Control
+namespace Team5.Control
 {
     public class MouseController : MonoBehaviour
     {
@@ -13,10 +14,14 @@ namespace Control
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
 
+        
+        
         private void Start()
         {
             cameraObject = gameObject.GetComponent<Camera>();
         }
+        
+        
         
         // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
         private void Update()
@@ -34,14 +39,17 @@ namespace Control
                 mouseClicked = false;
             }
             
+            int layermask = 1 << 13;
+            layermask = ~layermask;
+            
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
-            if (!Physics.Raycast(ray, out var hit)) 
+            if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask)) 
             {
                 SetCursorTexture(null);
                 
-                if (Input.GetMouseButtonDown(0))
-                    GameObject.Find("Player").GetComponent<Move>().Cancel();
+                // if (Input.GetMouseButtonDown(0))
+                //     GameObject.Find("Player").GetComponent<Move>().Cancel();
                 
                 return;
             }
@@ -51,7 +59,13 @@ namespace Control
                 SetCursorTexture(interact.mouseTexture);
 
                 if (mouseClicked)
+                {
                     interact.OnClick(hit.point);
+                    if (hit.collider.TryGetComponent(out OutlineController outlineController))
+                    {
+                        outlineController.OnClick();
+                    }
+                }
                 else 
                     interact.OnHover();
             }
@@ -60,10 +74,15 @@ namespace Control
                 SetCursorTexture(null);
             }
         }
+        
+        
+        
         private void SetCursorTexture(Texture2D texture)
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
+        
+        
         
         /// <summary>
         /// Invoked with a true when the player switch target by pressing a interactable object.

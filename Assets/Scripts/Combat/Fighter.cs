@@ -1,6 +1,7 @@
 using Team5.Movement;
 using Team5.Core;
-using Team5.EntityBase;
+using Team5.Entities;
+using Team5.Ui;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -180,7 +181,7 @@ namespace Team5.Combat
             }
 
             // Print death
-            if (target.IsDead)
+            if (target.IsDead && target.CompareTag("Enemy"))
             {
                 // Debug.Log($"{target.name}'s current health: {target.Health}");
                 // Debug.Log($"{target.name} was defeated by {this.name} at {Time.time}");
@@ -248,8 +249,8 @@ namespace Team5.Combat
         
         public void EnemyIndicatorActiveTarget()
         {
-            enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-            enemyIndicator.SetActive(true); 
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(true); 
         }
         
         
@@ -268,10 +269,10 @@ namespace Team5.Combat
         
         public void EnemyIndicatorInactiveTarget()
         {
-            {
-                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(false); 
-            }
+           
+                    enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                    enemyIndicator.SetActive(false); 
+                
         }
     }
 }

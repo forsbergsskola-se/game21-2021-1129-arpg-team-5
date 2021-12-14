@@ -1,6 +1,6 @@
 using System.Collections;
-using Control;
-using Logic;
+using Team5.Control;
+using Team5.Core;
 using Team5.Movement;
 using UnityEngine;
 
@@ -51,6 +51,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         if (isLocked && !waitForSound)
         {
             GetComponent<AudioSource>().Play();
+            waitForSound = true;
             StartCoroutine(WaitForSound());
         }
     }
@@ -102,6 +103,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
                 openLogicScript.Open();
+                GetComponent<BoxCollider>().enabled = false;
                 // player.gameObject.transform.LookAt(this.gameObject.transform.position);
 
                 unlockedCursor = null;
@@ -124,7 +126,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     IEnumerator WaitForSound()
     {
-        waitForSound = true;
         yield return new WaitForSeconds(1);
         waitForSound = false;
     }
@@ -133,7 +134,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     IEnumerator UnlockDoor()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         isLocked = false;
     }
 }
