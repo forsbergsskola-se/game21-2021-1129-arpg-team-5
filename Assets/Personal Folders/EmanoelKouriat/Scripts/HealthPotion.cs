@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPotion : MonoBehaviour
+namespace team5.Inventory.Items.Consumables
 {
-    // Start is called before the first frame update
-    void Start()
+    public class HealthPotion : MonoBehaviour, IConsumable
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Consume()
+        {
+            Debug.Log("this");
+        }
     }
 }
