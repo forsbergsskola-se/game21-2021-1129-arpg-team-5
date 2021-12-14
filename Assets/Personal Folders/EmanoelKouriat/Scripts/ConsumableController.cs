@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsumableController : MonoBehaviour
+namespace Team5.Ui.Hotbar
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ConsumableController : MonoBehaviour
     {
-        
-    }
+        private List<GameObject> hotbarSlots = new();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            
+            // Get all the hotbar slots and put them inside a list.
+            Transform slotSearch = gameObject.transform;
+            for (int i = 0; slotSearch != null; i++)
+            {
+                slotSearch = transform.Find($"HotbarSlot{i}");
+                if (slotSearch != null)
+                    hotbarSlots.Add(slotSearch.gameObject);
+            }
+
+            foreach (var VARIABLE in hotbarSlots)
+            {
+                Debug.Log("Found: " + VARIABLE.name);
+            }
+        }
     }
 }
