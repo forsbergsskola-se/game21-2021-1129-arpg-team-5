@@ -21,9 +21,12 @@ public class InventoryTemp : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < keyInput.Length; i++)
         {
-            // if (Input.GetKeyDown()) 
+            if (Input.GetKeyDown(keyInput[i]))
+            {
+                Debug.Log($"Clicked hehe {keyInput[i]}");
+            }
         }
     }
 }
