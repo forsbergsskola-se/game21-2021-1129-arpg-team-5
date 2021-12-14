@@ -10,7 +10,6 @@ namespace Team5.Entities.Objects.DestroyableObject
         public Texture2D cursorTexture;
         public GameObject explosion;
         public ParticleSystem SmokeSystem;
-        
         private GameObject player;
         
         
@@ -25,7 +24,6 @@ namespace Team5.Entities.Objects.DestroyableObject
 
         protected override void OnDeath()
         {
-            // base.OnDeath();
             gameObject.SetActive(false);
             Instantiate(SmokeSystem, transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
