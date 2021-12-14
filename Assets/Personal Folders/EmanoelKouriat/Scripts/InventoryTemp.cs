@@ -27,8 +27,7 @@ public class InventoryTemp : MonoBehaviour
             if (Input.GetKeyDown(keyInput[i]))
             {
                 Debug.Log($"Clicked hehe {keyInput[i]}");
-                // TODO: Move the item to the slot corresponding to the key number.
-
+                
                 if (consumableController.hotbarSlots[i] != null)
                 {
                     item.transform.position = consumableController.hotbarSlots[i].transform.position;
