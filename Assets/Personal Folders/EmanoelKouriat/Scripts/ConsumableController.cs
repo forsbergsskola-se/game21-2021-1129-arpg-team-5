@@ -16,7 +16,7 @@ namespace Team5.Ui.Hotbar
             Transform slotSearch = gameObject.transform;
             for (int i = 0; slotSearch != null; i++)
             {
-                slotSearch = transform.Find($"Hotbar{i}");
+                slotSearch = transform.Find($"HotbarSlot{i}");
                 if (slotSearch != null)
                     hotbarSlots.Add(slotSearch.gameObject);
             }
