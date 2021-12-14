@@ -1,3 +1,4 @@
+using System;
 using Team5.Combat;
 using Team5.Core;
 using Team5.Entities;
@@ -13,10 +14,12 @@ namespace Team5.Ui
         private TMP_Text reviveText;
         private TMP_Text killText;
         private TMP_Text lvlText;
+        private TMP_Text scoreText;
         
         private Entity entity;
         private float healthCount;        
         private int reviveCount;
+        public int skullCount;
 
         private Fighter fighter;
         private int killCount;
@@ -31,7 +34,10 @@ namespace Team5.Ui
             reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
+            scoreText = FindObjectOfType<HUD>().ScoreText;
+
         }
+        
 
         void Update()
         {
@@ -43,6 +49,11 @@ namespace Team5.Ui
             killText.text = "Kills: " + fighter.killCount;
 
             lvlText.text = "EXP LVL: " + entity.EntityLevel;
+
+            if (skullCount > 0)
+            {
+                scoreText.text = "" + skullCount;
+            }
 
             // temp level up logic 
 
@@ -57,6 +68,28 @@ namespace Team5.Ui
             //     entity.maxHealth = 350;
             //     entity.healthPoint = entity.maxHealth;
             // }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("WhiteSkull"))
+            {
+                skullCount +=1;
+                Debug.Log($"{this.name} Picked up: {other.tag}");
+                other.gameObject.SetActive(false);
+            }
+            
+            else if (other.gameObject.CompareTag("RedSkull"))
+            {
+                skullCount +=2;
+                Debug.Log($"{this.name} Picked up: {other.tag}");
+                other.gameObject.SetActive(false);
+            }
+            
+            else
+            {
+                return;
+            }
         }
     }
 }
