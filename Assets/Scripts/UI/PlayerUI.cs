@@ -73,6 +73,14 @@ namespace Team5.Ui
                 sparkle.Play();
             }
             
+            else if (other.gameObject.CompareTag("PurpleSkull"))
+            {
+                skullCount +=10;
+                Debug.Log($"{this.name} Picked up: {other.tag}");
+                other.gameObject.SetActive(false);
+                sparkle.Play();
+            }
+            
             else
             {
                 return;
