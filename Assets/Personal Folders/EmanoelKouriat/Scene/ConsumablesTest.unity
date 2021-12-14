@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 353294400}
   - component: {fileID: 353294399}
   m_Layer: 5
-  m_Name: Hotbar (6)
+  m_Name: Hotbar6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 387918291}
   - component: {fileID: 387918290}
   m_Layer: 5
-  m_Name: Hotbar (5)
+  m_Name: Hotbar5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2184,7 +2184,7 @@ GameObject:
   - component: {fileID: 527021410}
   - component: {fileID: 527021409}
   m_Layer: 5
-  m_Name: Hotbar (4)
+  m_Name: Hotbar4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2925,7 +2925,7 @@ GameObject:
   - component: {fileID: 882430716}
   - component: {fileID: 882430715}
   m_Layer: 5
-  m_Name: Hotbar (1)
+  m_Name: Hotbar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3001,7 +3001,7 @@ GameObject:
   - component: {fileID: 957078011}
   - component: {fileID: 957078010}
   m_Layer: 5
-  m_Name: Hotbar (3)
+  m_Name: Hotbar3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9423,7 +9423,7 @@ GameObject:
   - component: {fileID: 1520902615}
   - component: {fileID: 1520902614}
   m_Layer: 5
-  m_Name: Hotbar (2)
+  m_Name: Hotbar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9938,6 +9938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658889017}
+  - component: {fileID: 1658889018}
   m_Layer: 5
   m_Name: Hotbar
   m_TagString: Untagged
@@ -9974,6 +9975,18 @@ RectTransform:
   m_AnchoredPosition: {x: -8, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1658889018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658889016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8effc8c9878003f4d9049c193bb57708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1667551544
 GameObject:
   m_ObjectHideFlags: 0
@@ -10287,7 +10300,7 @@ GameObject:
   - component: {fileID: 1720277627}
   - component: {fileID: 1720277626}
   m_Layer: 5
-  m_Name: Hotbar (0)
+  m_Name: Hotbar0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
