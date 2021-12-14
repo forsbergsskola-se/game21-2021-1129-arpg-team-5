@@ -7,7 +7,12 @@ public class InventoryTemp : MonoBehaviour
 {
     private GameObject item;
     private ConsumableController consumableController;
-    private List<KeyCode> keyInput = new List<KeyCode>(10);
+
+    private KeyCode[] keyInput =
+    {
+        KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6,
+        KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9
+    };
 
     private void Start()
     {
@@ -18,7 +23,7 @@ public class InventoryTemp : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            //if (Input.GetKeyDown()) 
+            // if (Input.GetKeyDown()) 
         }
     }
 }
