@@ -113,9 +113,18 @@ namespace Team5.Entities.Player
             return false;
         }
 
+        
+        
         private static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+
+
+        public void AddHealth(int value)
+        {
+            Health += value;
         }
     }
 }
