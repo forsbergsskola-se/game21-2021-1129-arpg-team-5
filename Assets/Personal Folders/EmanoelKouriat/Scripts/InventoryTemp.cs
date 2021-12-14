@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Team5.Ui.Hotbar;
+using Unity.VisualScripting;
+using UnityEditor;
 
 public class InventoryTemp : MonoBehaviour
 {
     private GameObject item;
     private ConsumableController consumableController;
+    public GameObject itemPrefab;
 
     private KeyCode[] keyInput =
     {
@@ -27,10 +30,15 @@ public class InventoryTemp : MonoBehaviour
             if (Input.GetKeyDown(keyInput[i]))
             {
                 Debug.Log($"Clicked hehe {keyInput[i]}");
-                // TODO: Move the item to the slot corresponding to the key number.
-
+                
                 if (consumableController.hotbarSlots[i] != null)
                 {
+                    if (item.IsDestroyed())
+                    {
+                        Instantiate(itemPrefab);
+                        item = GameObject.Find("Item(Clone)");
+                    }
+                    
                     item.transform.position = consumableController.hotbarSlots[i].transform.position;
                     item.transform.SetParent(consumableController.hotbarSlots[i].transform);
                 }
