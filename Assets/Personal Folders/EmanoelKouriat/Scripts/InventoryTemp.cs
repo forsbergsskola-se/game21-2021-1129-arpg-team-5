@@ -20,7 +20,9 @@ public class InventoryTemp : MonoBehaviour
     private void Start()
     {
         consumableController = FindObjectOfType<ConsumableController>();
-        item = GameObject.Find("Item");
+        item = Instantiate(itemPrefab);
+        item.transform.SetParent(this.transform);
+        item.transform.position = this.transform.position;
     }
 
     private void Update()
