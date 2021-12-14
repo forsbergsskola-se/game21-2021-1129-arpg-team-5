@@ -60,31 +60,26 @@ namespace Team5.Ui
             if (other.gameObject.CompareTag("WhiteSkull"))
             {
                 skullCount +=1;
-                Debug.Log($"{this.name} Picked up: {other.tag}");
-                other.gameObject.SetActive(false);
-                sparkle.Play();
             }
             
             else if (other.gameObject.CompareTag("RedSkull"))
             {
-                skullCount +=2;
-                Debug.Log($"{this.name} Picked up: {other.tag}");
-                other.gameObject.SetActive(false);
-                sparkle.Play();
+                skullCount +=5;
             }
             
             else if (other.gameObject.CompareTag("PurpleSkull"))
             {
                 skullCount +=10;
-                Debug.Log($"{this.name} Picked up: {other.tag}");
-                other.gameObject.SetActive(false);
-                sparkle.Play();
             }
             
-            else
+            else if (other.gameObject.CompareTag("GoldSkull"))
             {
-                return;
+                skullCount +=50;
             }
+            
+            Debug.Log($"{this.name} Picked up: {other.tag}");
+            other.gameObject.SetActive(false);
+            sparkle.Play();
         }
     }
 }
