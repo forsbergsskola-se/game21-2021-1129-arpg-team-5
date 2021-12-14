@@ -10,13 +10,14 @@ public class InventoryTemp : MonoBehaviour
 
     private KeyCode[] keyInput =
     {
-        KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6,
-        KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9
+        KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y,
+        KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P
     };
 
     private void Start()
     {
         consumableController = FindObjectOfType<ConsumableController>();
+        item = GameObject.Find("Item");
     }
 
     private void Update()
@@ -26,6 +27,12 @@ public class InventoryTemp : MonoBehaviour
             if (Input.GetKeyDown(keyInput[i]))
             {
                 Debug.Log($"Clicked hehe {keyInput[i]}");
+                // TODO: Move the item to the slot corresponding to the key number.
+
+                if (consumableController.hotbarSlots[i] != null)
+                {
+                    item.transform.position = consumableController.hotbarSlots[i].transform.position;
+                }
             }
         }
     }
