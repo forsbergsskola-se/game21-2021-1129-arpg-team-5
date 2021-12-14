@@ -1,8 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Team5.Entities.Player;
 
-public class Shackle : MonoBehaviour
+namespace Team5.Inventory.Items.Equipables
 {
-    
+    public class Shackle : MonoBehaviour, IEquipable
+    {
+
+        public void Equip()
+        {
+            
+        }
+        public void UnEquip()
+        {
+            
+        }
+    }
 }
