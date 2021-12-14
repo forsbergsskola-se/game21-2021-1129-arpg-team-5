@@ -14,10 +14,15 @@ namespace team5.Inventory.Items.Consumables
 
         public void Consume()
         {
-            if (player.Health != player.MaxHealth)
+            if (player.Health < player.MaxHealth)
+            {
                 player.AddHealth(50);
+                Destroy(this.gameObject);
+            }
             else
+            {
                 Debug.Log("Health is already full!");
+            }
         }
     }
 }
