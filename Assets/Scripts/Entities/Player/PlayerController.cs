@@ -80,7 +80,7 @@ namespace Team5.Entities.Player
         private IEnumerator PlayerRegenHealth()
         {
             // TODO: Fix health regen not stopping after taking damage.
-            while (Health < maxHealth && !takeDamageOnCooldown)
+            while (Health < MaxHealth && !takeDamageOnCooldown)
             {
                 yield return new WaitForSeconds(1);
                 Health += healthRegenPerSecond;

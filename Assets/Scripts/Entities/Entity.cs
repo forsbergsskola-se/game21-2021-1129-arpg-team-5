@@ -7,6 +7,7 @@ namespace Team5.Entities
     public abstract class Entity : MonoBehaviour
     {
         [HideInInspector] public bool IsDead;
+        [HideInInspector] public float MaxHealth;
         [HideInInspector] public float MovementSpeed;
 
         [SerializeField] private int BaseMaxHealth;
@@ -21,7 +22,6 @@ namespace Team5.Entities
         private float level = 1;
 
         protected float damageResistance;
-        protected float maxHealth;
         protected bool takeDamageOnCooldown;
 
         
@@ -31,8 +31,8 @@ namespace Team5.Entities
         /// </summary>
         protected virtual void Awake()
         {
-            maxHealth = BaseMaxHealth;
-            Health = maxHealth;
+            MaxHealth = BaseMaxHealth;
+            Health = MaxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
@@ -45,8 +45,8 @@ namespace Team5.Entities
         /// </summary>
         public virtual void ResetEntity()
         {
-            maxHealth = BaseMaxHealth;
-            Health = maxHealth;
+            MaxHealth = BaseMaxHealth;
+            Health = MaxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
@@ -62,7 +62,7 @@ namespace Team5.Entities
             get => health;
             protected set
             {
-                health = Mathf.Clamp(value, 0, maxHealth);
+                health = Mathf.Clamp(value, 0, MaxHealth);
                 if (health <= 0)
                 {
                     OnDeath();
@@ -110,7 +110,7 @@ namespace Team5.Entities
             {
                 var oldMultiplier = EntityLevelValueMuliplier * level;
             
-                var bonusMaxHealth = maxHealth - BaseMaxHealth * oldMultiplier;
+                var bonusMaxHealth = MaxHealth - BaseMaxHealth * oldMultiplier;
                 var bonusArmor = Armor - BaseArmor * oldMultiplier;
                 var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
 
@@ -119,7 +119,7 @@ namespace Team5.Entities
                 // The level multiplier is set wrongly, it doubles the entire value instead of only the decimals.
                 var multiplier = EntityLevelValueMuliplier * value;
             
-                maxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
+                MaxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
                 Armor = BaseArmor * multiplier + bonusArmor;
                 MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
 
