@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,12 @@ namespace Team5.Ui.Hotbar
     public class ConsumableController : MonoBehaviour
     {
         public List<GameObject> hotbarSlots = new();
+        
+        private KeyCode[] keyInput =
+        {
+            KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
+            KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9, KeyCode.Alpha0
+        };
 
         private void Start()
         {
@@ -22,6 +29,24 @@ namespace Team5.Ui.Hotbar
             foreach (var VARIABLE in hotbarSlots)
             {
                 Debug.Log("Found: " + VARIABLE.name);
+            }
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < keyInput.Length; i++)
+            {
+                if (Input.GetKeyDown(keyInput[i]))
+                {
+                    Debug.Log($"Clicked {keyInput[i]}");
+                    
+                    //TODO: Check if there is an item in slot
+                    
+                    //TODO: If there is an item in slot, do stuff
+                    
+                    //TODO: If there is not an item, do nothing
+                    
+                }
             }
         }
     }
