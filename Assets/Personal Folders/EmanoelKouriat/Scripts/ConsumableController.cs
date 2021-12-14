@@ -39,13 +39,16 @@ namespace Team5.Ui.Hotbar
                 if (Input.GetKeyDown(keyInput[i]))
                 {
                     Debug.Log($"Clicked {keyInput[i]}");
-                    
+
+                    if (hotbarSlots[i].transform.GetChild(0))
+                    {
+                        hotbarSlots[i].transform.GetChild(0).gameObject.GetComponent<IConsumable>().Consume();
+                    }
                     //TODO: Check if there is an item in slot
-                    
+
                     //TODO: If there is an item in slot, do stuff
-                    
+
                     //TODO: If there is not an item, do nothing
-                    
                 }
             }
         }
