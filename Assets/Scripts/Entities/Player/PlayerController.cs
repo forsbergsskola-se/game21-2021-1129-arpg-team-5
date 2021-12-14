@@ -124,6 +124,7 @@ namespace Team5.Entities.Player
 
         public void AddHealth(int value)
         {
+            Debug.Log($"+{value} health");
             Health += value;
         }
     }
