@@ -5,18 +5,19 @@ namespace team5.Inventory.Items.Consumables
 {
     public class HealthPotion : MonoBehaviour, IConsumable
     {
-        private GameObject player;
-
+        private PlayerController player;
+        
         private void Start()
         {
-            player = GameObject.FindWithTag("Player");
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
+
         public void Consume()
         {
-            
-            //TODO: Potion gives max hp + 10
-            player.GetComponent<PlayerController>().AddHealth(50);
-            Debug.Log("+50 HP");
+            if (player.Health != player.MaxHealth)
+                player.AddHealth(50);
+            else
+                Debug.Log("Health is already full!");
         }
     }
 }
