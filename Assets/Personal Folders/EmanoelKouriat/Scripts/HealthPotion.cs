@@ -6,6 +6,7 @@ namespace team5.Inventory.Items.Consumables
     public class HealthPotion : MonoBehaviour, IConsumable
     {
         private PlayerController player;
+        [SerializeField] private int healValue;
         
         private void Start()
         {
@@ -16,8 +17,8 @@ namespace team5.Inventory.Items.Consumables
         {
             if (player.Health < player.MaxHealth)
             {
-                player.AddHealth(50);
-                Destroy(this.gameObject);
+                player.AddHealth(healValue);
+                Destroy(gameObject);
             }
             else
             {
