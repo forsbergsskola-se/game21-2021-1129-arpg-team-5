@@ -29,8 +29,6 @@ namespace Team5.Combat
         private static readonly int Attack1 = Animator.StringToHash("attack");
         private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
-        
-        
         public float CriticalChance
         {
             get => criticalChance;
@@ -73,7 +71,7 @@ namespace Team5.Combat
                 GetComponent<Move>().Cancel();
                 AttackBehaviour();
             }
-            
+
             if (target.IsDead)
             {
                 // Disables enemy indicator if enemy dies
@@ -241,6 +239,8 @@ namespace Team5.Combat
         //Set enemy indicator active
         public void EnemyIndicatorActive()
         {
+            
+            
             enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
             enemyIndicator.SetActive(true); 
         }
@@ -249,8 +249,11 @@ namespace Team5.Combat
         
         public void EnemyIndicatorActiveTarget()
         {
+            if (target.CompareTag("Enemy"))
+            {
                 enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(true); 
+                enemyIndicator.SetActive(true);    
+            }
         }
         
         
@@ -258,7 +261,7 @@ namespace Team5.Combat
         //Set enemy indicator inactive
         public void EnemyIndicatorInactive()
         {
-            if (this.gameObject != player)
+            if (this.gameObject != player && target.CompareTag("Enemy"))
             {
                 enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
                 enemyIndicator.SetActive(false);
@@ -269,10 +272,11 @@ namespace Team5.Combat
         
         public void EnemyIndicatorInactiveTarget()
         {
-           
-                    enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                    enemyIndicator.SetActive(false); 
-                
+            if (target.CompareTag("Enemy"))
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(false);
+            }
         }
     }
 }
