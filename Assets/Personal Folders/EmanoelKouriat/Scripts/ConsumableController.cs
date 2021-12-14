@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +5,7 @@ namespace Team5.Ui.Hotbar
 {
     public class ConsumableController : MonoBehaviour
     {
-        private List<GameObject> hotbarSlots = new();
+        public List<GameObject> hotbarSlots = new();
 
         private void Start()
         {
