@@ -16,6 +16,7 @@ namespace Team5.World.Interactables
         private float movementPerFrame;
         private float totalAnimationFrames;
         private float frameTime;
+        public AudioSource Opening;
 
         private const float AnimationFramerate = 60;
 
@@ -35,6 +36,7 @@ namespace Team5.World.Interactables
             if (isOpen) 
                 return;
 
+            Opening.Play();
             StartCoroutine(OpeningAnimation());
         }
 

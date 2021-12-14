@@ -16,6 +16,7 @@ namespace Team5.World.Interactables
         private bool isOpen;
         private float movementUpPerFrame;
         private float totalAnimationFrames;
+        public AudioSource Opening;
     
     
     
@@ -33,6 +34,7 @@ namespace Team5.World.Interactables
         {
             if (isOpen)
                 return;
+            Opening.Play();
             StartCoroutine(OpeningAnimation());
         }
 
