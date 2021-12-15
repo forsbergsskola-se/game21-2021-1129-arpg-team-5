@@ -46,21 +46,21 @@ public class AccessoryController : MonoBehaviour
     // }
 
 
-    private GameObject accessory;
+    public GameObject accessory;
+
     public GameObject Accessory
     {
         set
-        {
-            if (accessory != null)
-            {
-                accessory.GetComponent<IAccessory>().UnEquip();
-                
-                // TODO: make this old accessory held by the mouse instead
-                Destroy(accessory);
-            }
-            value.transform.SetParent(transform);
-            value.transform.position = transform.position;
-            value.GetComponent<IAccessory>().Equip();
-        }
+        { if (accessory != null)
+          {
+              accessory.GetComponent<IAccessory>().UnEquip();
+
+              // TODO: make this old accessory held by the mouse instead
+              Destroy(accessory);
+          }
+          value.transform.SetParent(transform);
+          value.transform.position = transform.position;
+        accessory = value;
+        value.GetComponent<IAccessory>().Equip(); }
     }
 }
