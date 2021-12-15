@@ -42,7 +42,7 @@ namespace Team5.Ui.Drag
 
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position = eventData.position;
+            transform.position = eventData.position;//position of mouse pointer
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -52,13 +52,13 @@ namespace Team5.Ui.Drag
             transform.SetParent(originalParent, true);
 
             IDragDestination<T> container;
-            if (!EventSystem.current.IsPointerOverGameObject())
+            if (!EventSystem.current.IsPointerOverGameObject())//If the pointer is on UI game object dont mix it with gameobjects like player
             {
-                container = parentCanvas.GetComponent<IDragDestination<T>>();
+                container = parentCanvas.GetComponent<IDragDestination<T>>();//Drops the Item!
             }
             else
             {
-                container = GetContainer(eventData);
+                container = GetContainer(eventData);//checks if the new slot is the destination!
             }
 
             if (container != null)

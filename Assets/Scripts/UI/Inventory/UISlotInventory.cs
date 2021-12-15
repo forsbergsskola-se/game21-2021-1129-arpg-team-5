@@ -11,11 +11,13 @@ namespace Team5.Ui
         [SerializeField] ItemIconInventory icon = null;
         public void AddItems(Sprite item, int number)
         {
+            print(gameObject + "AddItem " + item);
             icon.SetItem(item);
         }
 
         public Sprite GetItem()
         {
+            print(gameObject + "GetItem " + icon.GetItem());
             return icon.GetItem();
         }
 
@@ -35,6 +37,7 @@ namespace Team5.Ui
 
         public void RemoveItems(int number)
         {
+            print(gameObject + "RemoveItem " + icon.GetItem());
             icon.SetItem(null);
         }
 
