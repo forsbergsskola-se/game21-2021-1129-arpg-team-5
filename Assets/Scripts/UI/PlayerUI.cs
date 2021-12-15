@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Team5.Combat;
 using Team5.Core;
 using Team5.Entities;
@@ -49,7 +50,7 @@ namespace Team5.Ui
 
             lvlText.text = "EXP LVL: " + entity.EntityLevel;
 
-            if (skullCount > 0)
+            if (skullCount >= 0)
             {
                 scoreText.text = "" + skullCount;
             }
@@ -82,9 +83,25 @@ namespace Team5.Ui
             sparkle.Play();
         }
 
-        public void lose22()
+        // temp values - no magic numbers later
+        public void AddSkulls()
         {
-            skullCount +=-22;
+            StartCoroutine(Wait(22, 1, 0.2f));
+        }
+        
+        // temp values - no magic numbers later
+        public void SubtractSkulls ()
+        {
+            StartCoroutine(Wait(22, -1, 0.2f));
+        }
+        
+        IEnumerator Wait(int value, int value2, float time )
+        {
+            for (var i= 0; i<value; i++)
+            {
+                skullCount += value2;
+                yield return new WaitForSeconds(time);
+            }
         }
     }
 }
