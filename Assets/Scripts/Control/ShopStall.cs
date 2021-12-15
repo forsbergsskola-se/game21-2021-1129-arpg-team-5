@@ -47,24 +47,27 @@ public class ShopStall : MonoBehaviour, IInteractable
 
             if (Skulls == 0)
             {
-                Dialogue.text = "Come back with skulls!";
+                Dialogue.text = "Welcome adventurer! Come back with some skulls if you want to trade!";
             }
             
             else if (Skulls == 22)
             {
-                Dialogue.text = "You win the golden skull!";
-                GoldenSkull.transform.position = new Vector3(239, 5, -100);
-                player.GetComponent<PlayerUI>().lose22();
+                Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
+                
+                // need to fix a way of specifying no. of skulls to subtract here:
+                player.GetComponent<PlayerUI>().SubtractSkulls();
+
+                StartCoroutine(Wait(5));
             }
 
             else if (Skulls > 0 && Skulls < 22)
             {
-                Dialogue.text = $"You need {(22 - Skulls)} more skulls!";
+                Dialogue.text = $"You've found some skulls! But you still need {(22 - Skulls)} more to trade!";
             }
 
             else
             {
-                Dialogue.text = "I'm fresh out of stock!";
+                Dialogue.text = "Sorry, but I'm fresh out of stock! Thanks for the spicy trade though... heheheh...";
             }
         }
     }
@@ -112,5 +115,12 @@ public class ShopStall : MonoBehaviour, IInteractable
         
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToShop)
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
+    }
+
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GoldenSkull.transform.position = new Vector3(239, 5, -100);
+        Dialogue.text = $"So ta-dah! One big shiny thing for lots of small shiny things. Enjoy, I guess?";
     }
 }
