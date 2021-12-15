@@ -16686,6 +16686,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &1471535502
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471535481}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 0
 --- !u!1001 &1475417973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23516,8 +23532,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2923896753283224843}
   m_HandleRect: {fileID: 3033170870490616639}
   m_Direction: 2
-  m_Value: -0.000024727258
-  m_Size: 0.9425529
+  m_Value: -0.00073852076
+  m_Size: 0.9423607
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24250,7 +24266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -570.74817}
+  m_AnchoredPosition: {x: -0.00012207031, y: -570.69525}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3032902594412409921
@@ -24681,6 +24697,10 @@ PrefabInstance:
       propertyPath: BaseMaxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: -1309850160470361694, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: BaseMovementSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 989690486, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: Loop
       value: 0
@@ -24716,6 +24736,14 @@ PrefabInstance:
     - target: {fileID: 1352414543515647495, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: healthPoint
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_Speed
+      value: 56.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_Acceleration
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3851750723848233992, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_RootOrder
