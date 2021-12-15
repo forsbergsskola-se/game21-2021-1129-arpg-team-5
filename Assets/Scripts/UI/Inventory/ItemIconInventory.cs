@@ -15,6 +15,7 @@ namespace Team5.Ui.Inventories
             if (item == null)
             {
                 iconImage.enabled = false;
+                
             }
             else
             {
