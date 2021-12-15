@@ -54,22 +54,28 @@ public class AccessoryController : MonoBehaviour
         { 
             if (accessory != null)
             {
+                accessory.GetComponent<IAccessory>().oldSlot = null;
                 accessory.GetComponent<IAccessory>().UnEquip();
 
                 // TODO: make this old accessory held by the mouse instead
                 // Destroy(accessory);
             }
-            value.transform.SetParent(transform);
-            value.transform.position = transform.position;
+
             accessory = value;
-
-            if (accessory.GetComponent<IAccessory>().oldSlot != null)
+            
+            if (value != null)
             {
-                accessory.GetComponent<IAccessory>().oldSlot.Accessory = null;
-            }
-            accessory.GetComponent<IAccessory>().oldSlot = this;
+                accessory.transform.SetParent(transform);
+                accessory.transform.position = transform.position;
 
-            value.GetComponent<IAccessory>().Equip(); 
+                if (accessory.GetComponent<IAccessory>().oldSlot != null)
+                {
+                    accessory.GetComponent<IAccessory>().oldSlot.Accessory = null;
+                }
+                accessory.GetComponent<IAccessory>().oldSlot = this;
+
+                accessory.GetComponent<IAccessory>().Equip(); 
+            }
         }
     }
 }
