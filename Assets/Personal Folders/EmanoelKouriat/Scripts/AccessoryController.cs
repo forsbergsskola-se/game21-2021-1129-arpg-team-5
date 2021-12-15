@@ -60,7 +60,7 @@ public class AccessoryController : MonoBehaviour
           }
           value.transform.SetParent(transform);
           value.transform.position = transform.position;
-        accessory = value;
-        value.GetComponent<IAccessory>().Equip(); }
+          accessory = value;
+          value.GetComponent<IAccessory>().Equip(); }
     }
 }
