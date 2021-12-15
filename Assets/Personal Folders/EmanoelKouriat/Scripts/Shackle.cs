@@ -24,7 +24,7 @@ namespace Team5.Inventory.Items.Accessories
             player.MaxHealth += healthValue;
             player.AddHealth(healthValue);
             
-            Debug.Log("new test equip" + player.Health);
+            // Debug.Log("new test equip" + player.Health);
         }
         
         
@@ -36,7 +36,7 @@ namespace Team5.Inventory.Items.Accessories
             player.MaxHealth -= healthValue;
             player.TakeDamage(healthValue);
 
-            Debug.Log("new test unequip" + player.Health);
+            // Debug.Log("new test unequip" + player.Health);
         }
     }
 }
