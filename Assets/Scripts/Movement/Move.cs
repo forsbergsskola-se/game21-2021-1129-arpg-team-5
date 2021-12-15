@@ -61,7 +61,7 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().enabled = false; 
 
                     audio.Play();
-                    Debug.Log("target reach");
+                   // Debug.Log("target reach");
             }
 
             // changes destination colour if enemy
