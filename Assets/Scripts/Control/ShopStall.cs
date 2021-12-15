@@ -47,24 +47,27 @@ public class ShopStall : MonoBehaviour, IInteractable
 
             if (Skulls == 0)
             {
-                Dialogue.text = "Come back with skulls!";
+                Dialogue.text = "Welcome adventurer! Come back with some skulls if you want to trade!";
             }
             
             else if (Skulls == 22)
             {
-                Dialogue.text = "You win the golden skull!";
+                Dialogue.text = $"A-ha so you've finally collected {Skulls}! Well, a deals a deal!";
+                
+                // need to fix a way of specifying no. of skulls to subtract here:
+                player.GetComponent<PlayerUI>().SubtractSkulls();
+                
                 GoldenSkull.transform.position = new Vector3(239, 5, -100);
-                player.GetComponent<PlayerUI>().lose22();
             }
 
             else if (Skulls > 0 && Skulls < 22)
             {
-                Dialogue.text = $"You need {(22 - Skulls)} more skulls!";
+                Dialogue.text = $"You've found some skulls! But you still need {(22 - Skulls)} more to trade!";
             }
 
             else
             {
-                Dialogue.text = "I'm fresh out of stock!";
+                Dialogue.text = "Sorry, but I'm fresh out of stock! Thanks for the trade though!";
             }
         }
     }
