@@ -7,12 +7,21 @@ namespace Team5.Inventory.Items.Accessories
     {
         public bool Equipped;
 
-        [SerializeField] private int Armor;
+        private PlayerController player;
+        [SerializeField] private int healthValue = 10;
 
+        private void Start()
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        }
 
         public void Equip()
         {
             Debug.Log("Equiped!");
+            player.MaxHealth += healthValue;
+            player.AddHealth(healthValue);
+            
+            Debug.Log("new test equip" + player.Health);
         }
         
         
@@ -20,6 +29,10 @@ namespace Team5.Inventory.Items.Accessories
         public void UnEquip()
         {
             Debug.Log("Unequiped!");
+           
+            player.RemoveHealth(healthValue);
+            player.MaxHealth -= healthValue;
+            Debug.Log("new test unequip" + player.Health);
         }
     }
 }
