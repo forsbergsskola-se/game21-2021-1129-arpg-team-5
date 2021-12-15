@@ -33,10 +33,12 @@ namespace Team5.Ui
             return 0;
         }
 
-        public void RemoveItem(int number)
+        public void RemoveItems(int number)
         {
             icon.SetItem(null);
         }
+
+        
 
         // Start is called before the first frame update
         void Start()
