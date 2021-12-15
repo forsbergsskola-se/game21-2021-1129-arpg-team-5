@@ -29,9 +29,11 @@ namespace Team5.Inventory.Items.Accessories
         public void UnEquip()
         {
             Debug.Log("Unequiped!");
-           
-            player.RemoveHealth(healthValue);
+
             player.MaxHealth -= healthValue;
+            player.TakeDamage(healthValue);
+            //player.RemoveHealth(healthValue);
+           
             Debug.Log("new test unequip" + player.Health);
         }
     }
