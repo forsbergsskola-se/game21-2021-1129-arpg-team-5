@@ -15,9 +15,12 @@ namespace Team5.Inventory.Items.Accessories
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
+        public AccessoryController oldSlot { get; set; }
+
         public void Equip()
         {
             Debug.Log("Equiped!");
+            
             player.MaxHealth += healthValue;
             player.AddHealth(healthValue);
             
@@ -32,8 +35,7 @@ namespace Team5.Inventory.Items.Accessories
 
             player.MaxHealth -= healthValue;
             player.TakeDamage(healthValue);
-            //player.RemoveHealth(healthValue);
-           
+
             Debug.Log("new test unequip" + player.Health);
         }
     }
