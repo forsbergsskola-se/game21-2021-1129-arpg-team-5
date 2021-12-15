@@ -13,6 +13,6 @@ namespace Team5.Ui.Drag
         int GetNumber(); 
 
         // Remove a given number of items from the source and never should exceed the number that retursn by GetNumber();
-        void RemoveItem(int number); 
+        void RemoveItems(int number); 
     }
 }
