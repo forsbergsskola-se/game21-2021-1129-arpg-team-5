@@ -35,8 +35,7 @@ namespace Team5.Movement
             audio = player.GetComponent<AudioSource>();
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
-
-
+            
             targetDest = GameObject.Find("Navigation Sphere");
             audio = player.GetComponent<AudioSource>();
         }
@@ -59,9 +58,15 @@ namespace Team5.Movement
 
                     //Hide click-marker when destination is met.
                     targetDest.GetComponent<MeshRenderer>().enabled = false; 
+                    targetDest.transform.position = new Vector3(targetDest.transform.position.x, -50, targetDest.transform.position.z);
 
                     audio.Play();
                    // Debug.Log("target reach");
+            }
+
+            if (targetDest.transform.position.y > 1)
+            {
+                targetDest.transform.position = new Vector3(0, -50, 0);
             }
 
             // changes destination colour if enemy

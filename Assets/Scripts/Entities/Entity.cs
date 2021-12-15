@@ -78,7 +78,13 @@ namespace Team5.Entities
         public virtual float Armor
         {
             get => armor;
-            set => damageResistance = (100 - value) / 100;
+            set
+            {
+                damageResistance = (100 - value) / 100;
+                armor = value;
+                /*Debug.Log($"{this.name} Armor is now: {value}");
+                Debug.Log($"{this.name} DamageResistance is now: {damageResistance}");*/
+            }
         }
         
         

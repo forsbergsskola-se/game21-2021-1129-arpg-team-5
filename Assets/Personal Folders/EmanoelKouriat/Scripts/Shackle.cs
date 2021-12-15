@@ -8,20 +8,24 @@ namespace Team5.Inventory.Items.Accessories
         public bool Equipped;
 
         private PlayerController player;
-        [SerializeField] private int healthValue = 10;
+        [SerializeField] private int Armor = 10;
 
         private void Start()
         {
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
+        public AccessoryController oldSlot { get; set; }
+
         public void Equip()
         {
             Debug.Log("Equiped!");
-            player.MaxHealth += healthValue;
-            player.AddHealth(healthValue);
             
-            Debug.Log("new test equip" + player.Health);
+            // player.MaxHealth += healthValue;
+            // player.AddHealth(healthValue);
+            player.Armor += Armor;
+
+            // Debug.Log("new test equip" + player.Health);
         }
         
         
@@ -30,11 +34,12 @@ namespace Team5.Inventory.Items.Accessories
         {
             Debug.Log("Unequiped!");
 
-            player.MaxHealth -= healthValue;
-            player.TakeDamage(healthValue);
-            //player.RemoveHealth(healthValue);
-           
-            Debug.Log("new test unequip" + player.Health);
+            // player.MaxHealth -= healthValue;
+            // player.TakeDamage(healthValue);
+            Debug.Log(player.Armor);
+            player.Armor -= Armor;
+
+            // Debug.Log("new test unequip" + player.Health);
         }
     }
 }

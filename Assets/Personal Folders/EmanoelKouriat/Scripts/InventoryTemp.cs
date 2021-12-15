@@ -37,14 +37,9 @@ public class InventoryTemp : MonoBehaviour
         for (int i = 1; slotSearch != null; i++)
         {
             slotSearch = transform.Find($"AccessorySlot{i}");
-            Debug.Log(slotSearch);
+            
             if (slotSearch != null)
                 accessorySlots.Add(slotSearch.gameObject);
-        }
-        
-        foreach (var VARIABLE in accessorySlots)
-        {
-            Debug.Log("Found: " + VARIABLE.name);
         }
     }
 
@@ -54,8 +49,6 @@ public class InventoryTemp : MonoBehaviour
         {
             if (Input.GetKeyDown(keyInput1[i]))
             {
-                Debug.Log($"Clicked hehe {keyInput1[i]}");
-                
                 if (consumableController.hotbarSlots[i] != null)
                 {
                     if (item.IsDestroyed())
@@ -66,6 +59,12 @@ public class InventoryTemp : MonoBehaviour
                     
                     item.transform.position = consumableController.hotbarSlots[i].transform.position;
                     item.transform.SetParent(consumableController.hotbarSlots[i].transform);
+                    
+                    if (item.GetComponent<IAccessory>().oldSlot != null)
+                    {
+                        item.GetComponent<IAccessory>().oldSlot.Accessory = null;
+                        item.GetComponent<IAccessory>().oldSlot = null;
+                    }
                 }
             }
         }
@@ -74,8 +73,6 @@ public class InventoryTemp : MonoBehaviour
         {
             if (Input.GetKeyDown(keyInput2[i]))
             {
-                Debug.Log($"Clicked hehe {keyInput2[i]}");
-                
                 if (accessorySlots[i] != null)
                 {
                     if (item.IsDestroyed())
