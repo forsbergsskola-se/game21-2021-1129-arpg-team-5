@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4054376268481093767}
   - component: {fileID: 4054376268481093766}
   - component: {fileID: 4054376268481093760}
+  - component: {fileID: 4078596931143146433}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -90,3 +91,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healValue: 75
+--- !u!114 &4078596931143146433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054376268481093764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e5c501be22a2c4f9f0bb0d921350bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipped: 0
+  Armor: 0
