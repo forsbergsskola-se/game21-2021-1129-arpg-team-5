@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Team5.Ui
 {
-    public class UISlotInventory : MonoBehaviour 
+    public class UISlotInventory : MonoBehaviour  
     {
         // Start is called before the first frame update
         void Start()
