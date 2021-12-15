@@ -59,6 +59,7 @@ namespace Team5.Movement
 
                     //Hide click-marker when destination is met.
                     targetDest.GetComponent<MeshRenderer>().enabled = false; 
+                    targetDest.transform.position = new Vector3(targetDest.transform.position.x, -50, targetDest.transform.position.z);
 
                     audio.Play();
                    // Debug.Log("target reach");
