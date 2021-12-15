@@ -80,8 +80,7 @@ public class InventoryTemp : MonoBehaviour
                 {
                     if (item.IsDestroyed())
                     {
-                        Instantiate(itemPrefab);
-                        item = GameObject.Find("Item(Clone)");
+                        item = Instantiate(itemPrefab);
                     }
 
                     accessorySlots[i].GetComponent<AccessoryController>().Accessory = item;
