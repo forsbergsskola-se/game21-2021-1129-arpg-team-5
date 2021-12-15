@@ -12,5 +12,9 @@ namespace Team5.Ui
         public TMP_Text CashText;
         public TMP_Text KillCountText;
         public TMP_Text LvlText;
+        public GameObject ShopText;
+        public TMP_Text ShopDialogue;
+
+        
     }
-}
+} 

@@ -19,7 +19,7 @@ namespace Team5.Ui
         private Entity entity;
         private float healthCount;        
         private int reviveCount;
-        private int skullCount;
+        public int skullCount = 0;
 
         private Fighter fighter;
         private int killCount;
@@ -80,6 +80,11 @@ namespace Team5.Ui
             Debug.Log($"{this.name} Picked up: {other.tag}");
             other.gameObject.SetActive(false);
             sparkle.Play();
+        }
+
+        public void lose22()
+        {
+            skullCount +=-22;
         }
     }
 }
