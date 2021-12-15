@@ -127,5 +127,11 @@ namespace Team5.Entities.Player
             Debug.Log($"+{value} health");
             Health += value;
         }
+
+        public void RemoveHealth(int value)
+        {
+            Debug.Log($"-{value} health");
+            Health -= value;
+        }
     }
 }
