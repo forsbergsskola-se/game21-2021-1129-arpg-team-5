@@ -66,6 +66,12 @@ public class InventoryTemp : MonoBehaviour
                     
                     item.transform.position = consumableController.hotbarSlots[i].transform.position;
                     item.transform.SetParent(consumableController.hotbarSlots[i].transform);
+                    
+                    if (item.GetComponent<IAccessory>().oldSlot != null)
+                    {
+                        item.GetComponent<IAccessory>().oldSlot.Accessory = null;
+                        item.GetComponent<IAccessory>().oldSlot = null;
+                    }
                 }
             }
         }
