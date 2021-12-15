@@ -24,11 +24,6 @@ namespace Team5.Ui.Hotbar
                 if (slotSearch != null)
                     hotbarSlots.Add(slotSearch.gameObject);
             }
-
-            foreach (var VARIABLE in hotbarSlots)
-            {
-                Debug.Log("Found: " + VARIABLE.name);
-            }
         }
 
         private void Update()

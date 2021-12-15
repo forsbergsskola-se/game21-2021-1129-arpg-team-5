@@ -82,8 +82,8 @@ namespace Team5.Entities
             {
                 damageResistance = (100 - value) / 100;
                 armor = value;
-                Debug.Log($"{this.name} Armor is now: {value}");
-                Debug.Log($"{this.name} DamageResistance is now: {damageResistance}");
+                /*Debug.Log($"{this.name} Armor is now: {value}");
+                Debug.Log($"{this.name} DamageResistance is now: {damageResistance}");*/
             }
         }
         
