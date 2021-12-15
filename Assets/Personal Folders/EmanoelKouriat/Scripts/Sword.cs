@@ -1,10 +1,11 @@
 using UnityEngine;
-using Team5.Entities.Player;
 
 namespace Team5.Inventory.Items.Weapons
 {
-    public class Shackle : MonoBehaviour, IWeapon
+    public class Sword : MonoBehaviour, IWeapon
     {
+        
+        public WeaponController CurrentSlot { get; set; }
 
         public void Equip()
         {
