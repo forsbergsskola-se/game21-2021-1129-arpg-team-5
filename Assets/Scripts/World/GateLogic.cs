@@ -16,7 +16,7 @@ namespace Team5.World.Interactables
         private bool isOpen;
         private float movementUpPerFrame;
         private float totalAnimationFrames;
-        public AudioSource Opening;
+        private AudioSource OpeningSound;
     
     
     
@@ -25,6 +25,7 @@ namespace Team5.World.Interactables
             totalAnimationFrames = Mathf.Round(timeToGoUp * AnimationFramerate);
             movementUpPerFrame = distanceToOpen / totalAnimationFrames;
             frameTime = 1 / AnimationFramerate;
+            OpeningSound = GetComponent<AudioSource>();
         }
 
     
@@ -34,7 +35,7 @@ namespace Team5.World.Interactables
         {
             if (isOpen)
                 return;
-            Opening.Play();
+            OpeningSound.Play();
             StartCoroutine(OpeningAnimation());
         }
 
