@@ -65,7 +65,7 @@ public class AccessoryController : MonoBehaviour
 
             if (accessory.GetComponent<IAccessory>().oldSlot != null)
             {
-                accessory.GetComponent<IAccessory>().oldSlot.accessory = null;
+                accessory.GetComponent<IAccessory>().oldSlot.Accessory = null;
             }
             accessory.GetComponent<IAccessory>().oldSlot = this;
 
