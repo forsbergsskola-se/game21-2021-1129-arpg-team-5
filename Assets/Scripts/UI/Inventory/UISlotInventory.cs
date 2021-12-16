@@ -3,22 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using Team5.Ui.Inventories;
 using Team5.Ui.Drag;
+using Team5.Inventories;
 
 namespace Team5.Ui
 {
-    public class UISlotInventory : MonoBehaviour , IDragableContainer<Sprite>
+    public class UISlotInventory : MonoBehaviour , IDragableContainer<InventoryItem>
     {
         [SerializeField] ItemIconInventory icon = null;
-        public void AddItems(Sprite item, int number)
+
+        
+        int index;
+        InventoryItem item;
+        Inventory inventory;
+
+       
+
+        public void Setup(Inventory inventory, int index)
         {
-            print(gameObject + "AddItem " + item);
-            icon.SetItem(item);
+            this.inventory = inventory;
+            this.index = index;
+            icon.SetItem(inventory.GetItemInSlot(index));
         }
 
-        public Sprite GetItem()
+        public int MaxAcceptable(InventoryItem item)
         {
-            print(gameObject + "GetItem " + icon.GetItem());
-            return icon.GetItem();
+            if (inventory.HasSpaceFor(item))
+            {
+                return int.MaxValue;
+            }
+            return 0;
+        }
+
+        public void AddItems(InventoryItem item, int number)
+        {
+            inventory.AddItemToSlot(index, item);
+        }
+
+        public InventoryItem GetItem()
+        {
+            return inventory.GetItemInSlot(index);
         }
 
         public int GetNumber()
@@ -26,33 +49,9 @@ namespace Team5.Ui
             return 1;
         }
 
-        public int MaxAcceptable(Sprite item)
-        {
-            if (GetItem() == null)
-            {
-                return int.MaxValue;
-            }
-            return 0;
-        }
-
         public void RemoveItems(int number)
         {
-            print(gameObject + "RemoveItem " + icon.GetItem());
-            icon.SetItem(null);
-        }
-
-        
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            inventory.RemoveFromSlot(index);
         }
     }
 }

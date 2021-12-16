@@ -1,7 +1,7 @@
 using UnityEngine;
 using Team5.Entities.Player;
 
-namespace Team5.Inventory.Items.Consumables
+namespace Team5.Inventories.Items.Consumables
 {
     public class HealthPotion : MonoBehaviour, IConsumable
     {

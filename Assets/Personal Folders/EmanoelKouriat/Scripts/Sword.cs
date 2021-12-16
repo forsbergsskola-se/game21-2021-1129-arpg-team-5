@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Team5.Inventory.Items.Weapons
+namespace Team5.Inventories.Items.Weapons
 {
     public class Sword : MonoBehaviour, IWeapon
     {

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Team5.Inventories;
+using System;
 
 namespace Team5.Ui.Inventories
 {
     [RequireComponent(typeof(Image))]
     public class ItemIconInventory : MonoBehaviour
     {
-        public void SetItem(Sprite item)
+        public void SetItem(InventoryItem item)
         {
             var iconImage = GetComponent<Image>();
             if (item == null)
@@ -20,7 +22,7 @@ namespace Team5.Ui.Inventories
             else
             {
                 iconImage.enabled = true;
-                iconImage.sprite = item;
+                iconImage.sprite = item.GetIcon();
             }
         }
 
@@ -33,5 +35,7 @@ namespace Team5.Ui.Inventories
             }
             return iconImage.sprite;
         }
+
+        
     }
 }

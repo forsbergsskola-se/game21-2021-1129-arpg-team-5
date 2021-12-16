@@ -2,36 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Team5.Inventory
+namespace Team5.Inventories
 {
-    [CreateAssetMenu(menuName = ("Team5/Inventory/Item"))]
-    public class InventoryItem : ScriptableObject //, ISerializationCallbackReceiver
+
+    [CreateAssetMenu(menuName = ("Inventory/Item"))]
+    public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
-        [SerializeField] int slotSize;
+        // CONFIG DATA
+        [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
         [SerializeField] string itemID = null;
-        [SerializeField] string itemName = null;
-        [SerializeField] string description = null;
+        [Tooltip("Item name to be displayed in UI.")]
+        [SerializeField] string displayName = null;
+        [Tooltip("Item description to be displayed in UI.")]
+        [SerializeField] [TextArea] string description = null;
+        [Tooltip("The UI icon to represent this item in the inventory.")]
         [SerializeField] Sprite icon = null;
-        [SerializeField] bool isStackable = false; 
+        [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
+        [SerializeField] bool stackable = false;
 
+        static Dictionary<string, InventoryItem> itemLookupCache;
 
-        static Dictionary<string, InventoryItem> itemCache;
-
-
-        public InventoryItem GetFromID(string itemID)
+        public static InventoryItem GetFromID(string itemID)
         {
-            if(itemCache == null)
+            if (itemLookupCache == null)
             {
-                itemCache = new Dictionary<string, InventoryItem>();
+                itemLookupCache = new Dictionary<string, InventoryItem>();
                 var itemList = Resources.LoadAll<InventoryItem>("");
-                foreach (var i in itemList)
+                foreach (var item in itemList)
                 {
-                    if (itemCache.ContainsKey(i.itemID)) continue;
-                    itemCache[i.itemID] = i;
+                    if (itemLookupCache.ContainsKey(item.itemID))
+                    {
+                        Debug.LogError(string.Format("Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
+                        continue;
+                    }
+
+                    itemLookupCache[item.itemID] = item;
                 }
             }
-            if (itemID == null || itemCache.ContainsKey(itemID)) return null;
-            return itemCache[itemID];
+
+            if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
+            return itemLookupCache[itemID];
+        }
+
+        public Sprite GetIcon()
+        {
+            return icon;
         }
 
         public string GetItemID()
@@ -39,44 +54,34 @@ namespace Team5.Inventory
             return itemID;
         }
 
-        public string GetItemName()
+        public bool IsStackable()
         {
-            return itemName;
+            return stackable;
         }
+
+        public string GetDisplayName()
+        {
+            return displayName;
+        }
+
         public string GetDescription()
         {
             return description;
         }
-        public bool GetStackable()
+
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            return isStackable;
+
+            if (string.IsNullOrWhiteSpace(itemID))
+            {
+                itemID = System.Guid.NewGuid().ToString();
+            }
         }
 
-        public Sprite GetItemIcon()
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            return icon;
+
         }
-
-        public int GetSlotSize()
-        {
-            return slotSize;
-        }
-
-
-
-
-
-
-        /*
-
-        public void OnBeforeSerialize()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnAfterDeserialize()
-        {
-            throw new System.NotImplementedException();
-        }*/
     }
 }

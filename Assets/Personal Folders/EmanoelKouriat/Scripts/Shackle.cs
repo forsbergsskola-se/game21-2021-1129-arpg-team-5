@@ -1,7 +1,7 @@
 using UnityEngine;
 using Team5.Entities.Player;
 
-namespace Team5.Inventory.Items.Accessories
+namespace Team5.Inventories.Items.Accessories
 {
     public class Shackle : MonoBehaviour, IAccessory
     {
