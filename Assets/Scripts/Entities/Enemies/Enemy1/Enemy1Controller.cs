@@ -6,21 +6,7 @@ using UnityEngine;
 
 namespace Team5.Entities.Enemies.Enemy1
 {
-    public class Enemy1Controller : Enemy, IInteractable
+    public class Enemy1Controller : Enemy
     {
-        public Texture2D temp;
-        
-        public Texture2D mouseTexture
-        {
-            get => temp;
-        }
-        
-        
-        public void OnHover()
-        {
-        }
-        public void OnClick(Vector3 mouseClickVector)
-        {
-        }
     }
 }
