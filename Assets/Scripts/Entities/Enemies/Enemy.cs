@@ -64,6 +64,8 @@ namespace Team5.Entities.Enemies
             
             var mouseController = FindObjectOfType<MouseController>();
             mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
+
+            healthText.enabled = false;
         }
 
         protected override void OnDeath()
