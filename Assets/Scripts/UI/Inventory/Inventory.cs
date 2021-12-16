@@ -17,6 +17,13 @@ namespace Team5.Inventories
         public event Action inventoryUpdated;
 
 
+        private void Awake()
+        {
+            slots = new InventoryItem[inventorySize];
+            slots[0] = InventoryItem.GetFromID("e9a47ad7-8867-4ec7-962a-4c7da9a7bd4f");
+            slots[1] = InventoryItem.GetFromID("04859820-cbbc-4a2c-9660-d9c12cc44ca3");
+        }
+
         public static Inventory GetPlayerInventory()
         {
             var player = GameObject.FindWithTag("Player");
@@ -97,12 +104,7 @@ namespace Team5.Inventories
         }
 
 
-        private void Awake()
-        {
-            slots = new InventoryItem[inventorySize];
-            slots[0] = InventoryItem.GetFromID("e9a47ad7-8867-4ec7-962a-4c7da9a7bd4f");
-            slots[1] = InventoryItem.GetFromID("04859820-cbbc-4a2c-9660-d9c12cc44ca3");
-        }
+     
 
         private int FindSlot(InventoryItem item)
         {

@@ -20,17 +20,7 @@ namespace Team5.Ui.Drag
             source = GetComponentInParent<IDrag<T>>();
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+       
         public void OnBeginDrag(PointerEventData eventData)
         {
             startPos = transform.position;
