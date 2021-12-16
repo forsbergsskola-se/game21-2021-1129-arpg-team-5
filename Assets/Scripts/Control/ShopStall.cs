@@ -81,10 +81,14 @@ public class ShopStall : MonoBehaviour, IInteractable
     }
 
 
-    public void OnHover()
+    public void OnHoverEnter()
     {
         ShopText.SetActive(true);
         Debug.Log($"{ShopText.name} {ShopText.activeInHierarchy}");
+    }
+
+    public void OnHoverExit()
+    {
     }
 
     void OnMouseExit()

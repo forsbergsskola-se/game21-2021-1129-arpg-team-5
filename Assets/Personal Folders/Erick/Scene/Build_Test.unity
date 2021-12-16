@@ -4734,6 +4734,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 631993708}
     m_Modifications:
+    - target: {fileID: -1309850160470361694, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: BaseMovementSpeed
+      value: 5.66
+      objectReference: {fileID: 0}
     - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_Speed
       value: 20
@@ -4802,7 +4806,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1471535502, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
 --- !u!1001 &212572326
 PrefabInstance:
@@ -16009,7 +16014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &834590422
 Transform:
   m_ObjectHideFlags: 0
