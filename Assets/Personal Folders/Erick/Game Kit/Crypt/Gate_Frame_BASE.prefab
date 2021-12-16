@@ -3351,7 +3351,6 @@ Transform:
   m_Children:
   - {fileID: 1764236469730798936}
   - {fileID: 1764236470365962887}
-  - {fileID: 9032684979090380660}
   - {fileID: 8581250709179975648}
   - {fileID: 7455683777591543574}
   m_Father: {fileID: 5933900807912641285}
@@ -3668,9 +3667,10 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.13, z: 0}
   m_LocalScale: {x: 0.12, y: 4, z: 0.12}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9032684979090380660}
   m_Father: {fileID: 1764236469307331728}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!33 &5737805520704552540
 MeshFilter:
@@ -4857,7 +4857,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1764236469307331728}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5095421032543288666
 MeshRenderer:
@@ -5011,7 +5011,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 94
+  m_VersionIndex: 100
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6176,13 +6176,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9171588426904779674}
-  m_LocalRotation: {x: -0, y: 0.0000002533197, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalRotation: {x: -0.0000001791241, y: -0.7071068, z: 0.7071068, w: 0.0000001791241}
+  m_LocalPosition: {x: 0, y: 0, z: -1.27}
+  m_LocalScale: {x: 0.83333296, y: 0.8333332, z: 0.24999993}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1764236469307331728}
-  m_RootOrder: 2
+  m_Father: {fileID: 7455683777591543574}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3612887356197724293
 BoxCollider:
@@ -6195,5 +6195,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 1}
+  m_Size: {x: 12, y: 14, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
