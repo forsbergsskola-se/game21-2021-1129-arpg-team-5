@@ -15,9 +15,11 @@ namespace Team5.Entities.Player
 
         private NavMeshAgent agent;
         private Animator animator;
+        private bool stopRegen;
+        
         public int reviveCounter;
-        
-        
+
+
         protected override void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -50,6 +52,12 @@ namespace Team5.Entities.Player
             Revive();
         }
 
+        public override void TakeDamage(float damageTaken)
+        {
+            base.TakeDamage(damageTaken);
+            stopRegen = true;
+        }
+
 
         private void Revive()
         {
@@ -79,12 +87,15 @@ namespace Team5.Entities.Player
 
         private IEnumerator PlayerRegenHealth()
         {
-            // TODO: Fix health regen not stopping after taking damage.
-            while (Health < MaxHealth && !takeDamageOnCooldown)
+            stopRegen = false;
+            
+            while (Health < MaxHealth && !stopRegen)
             {
                 yield return new WaitForSeconds(1);
                 Health += healthRegenPerSecond;
             }
+
+            stopRegen = false;
 
             Debug.Log("Player finished regen.");
         }
