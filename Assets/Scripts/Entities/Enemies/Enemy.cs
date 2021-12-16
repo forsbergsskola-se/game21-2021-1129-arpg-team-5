@@ -1,4 +1,5 @@
 using System.Collections;
+using Team5.Control;
 using Team5.Core;
 using Team5.Ui;
 using TMPro;
@@ -21,6 +22,16 @@ namespace Team5.Entities.Enemies
         public SkinnedMeshRenderer mesh;
         private MeshRenderer enemyIndicator2;
         private MeshRenderer enemyIndicator1;
+
+        private bool textEnabled = false;
+        void ChangedTarget(object sender, bool temp)
+        {
+            if (textEnabled)
+            {
+                textEnabled = false;
+                healthText.enabled = false;
+            }
+        }
 
 
 
@@ -50,6 +61,9 @@ namespace Team5.Entities.Enemies
             enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
             enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
+            
+            var mouseController = FindObjectOfType<MouseController>();
+            mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
         }
 
         protected override void OnDeath()
@@ -107,11 +121,14 @@ namespace Team5.Entities.Enemies
 
         public void OnHoverExit()
         {
-            healthText.enabled = false;
+            if (!textEnabled) 
+                healthText.enabled = false;
         }
 
         public void OnClick(Vector3 mouseClickVector)
         {
+            textEnabled = true;
+            healthText.enabled = true;
         }
     }
 }
