@@ -13,7 +13,7 @@ namespace Team5.Ui
 
         
         int index;
-        InventoryItem item;
+        //InventoryItem item;
         Inventory inventory;
 
        
