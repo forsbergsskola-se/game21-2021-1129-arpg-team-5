@@ -29,16 +29,17 @@ namespace Team5.Entities.Objects.DestroyableObject
             Instantiate(explosion, transform.position, transform.rotation);
             IsDead = true;
         }
-    
-        
-        
+
+
+        public void OnHoverExit()
+        {
+        }
+
         public void OnClick(Vector3 mouseClickVector)
         {
         }
         
-    
-        
-        public void OnHover()
+        public void OnHoverEnter()
         {
         }
     }
