@@ -7,14 +7,17 @@ public class BoomBoxTrigger : MonoBehaviour, IInteractable
 {
     public Texture2D cursorTexture;
     public Texture2D mouseTexture=> cursorTexture;
-    public void OnHover()
+    public void OnHoverEnter()
     {
         
     }
 
+    public void OnHoverExit()
+    {
+    }
+
     public void OnClick(Vector3 mouseClickVector)
     {
-        throw new System.NotImplementedException();
     }
     
 }
