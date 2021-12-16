@@ -34,8 +34,7 @@ namespace Team5.Movement
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
         private float timeSinceArrivedAtWaypoint;
-
-        
+        private static Quaternion deadRotate;
         
         private void Start()
         {
@@ -48,13 +47,17 @@ namespace Team5.Movement
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             healthText = this.GetComponentInChildren<TMP_Text>();
             guardPosition = transform.position;
+            deadRotate = this.gameObject.transform.rotation;
         }
 
         private void Update()
         {
-
             if (entity.IsDead)
             {
+                // keeps corpse from rotating
+                this.gameObject.transform.rotation = deadRotate;
+                
+                // disables children
                 enemyIndicator2.SetActive(false);
                 healthText.enabled = false;
             }
@@ -76,7 +79,6 @@ namespace Team5.Movement
                 if (enemyIndicator2 == enabled)
                     enemyIndicator2.SetActive(false);
             }
-            
             UpdateTimer();
         }
 

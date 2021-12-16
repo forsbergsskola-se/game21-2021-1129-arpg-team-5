@@ -239,8 +239,6 @@ namespace Team5.Combat
         //Set enemy indicator active
         public void EnemyIndicatorActive()
         {
-            
-            
             enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
             enemyIndicator.SetActive(true); 
         }
