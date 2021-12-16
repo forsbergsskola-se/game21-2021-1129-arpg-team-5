@@ -9,11 +9,15 @@ public class SceneTeleporter : MonoBehaviour, IInteractable
     public Texture2D mouseTexture => cursorTexture;
     public Texture2D cursorTexture;
     public string SceneToLoad;
-    public void OnHover()
+    public void OnHoverEnter()
     {
         //Debug.Log("I hover over the Floor");
     }
-    
+
+    public void OnHoverExit()
+    {
+    }
+
     public void OnClick(Vector3 mouseClickVector)
     {
         Debug.Log("I clicked on the Floor");
