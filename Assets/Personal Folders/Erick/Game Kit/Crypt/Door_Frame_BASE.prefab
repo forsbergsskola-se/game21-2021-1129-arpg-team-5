@@ -2105,6 +2105,10 @@ PrefabInstance:
       propertyPath: OutlineWidth
       value: 2.93
       objectReference: {fileID: 0}
+    - target: {fileID: 1073383817016897192, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5442421198229321212, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -2196,6 +2200,14 @@ PrefabInstance:
     - target: {fileID: 5442421198350804659, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_Name
       value: Door Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131254407802647, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_Size.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131254407802647, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_Size.y
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
