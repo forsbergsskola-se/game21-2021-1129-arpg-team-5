@@ -46,23 +46,28 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     
     
-    public void OnHover()
+    public void OnHoverEnter()
     {
-        if (isLocked && !waitForSound)
-        {
-            GetComponent<AudioSource>().Play();
-            waitForSound = true;
-            StartCoroutine(WaitForSound());
-        }
     }
-    
-    
-    
+
+    public void OnHoverExit()
+    {
+    }
+
+
     public void OnClick(Vector3 mouseClickVector)
     {
         if (isLocked)
+        {
+            if (!waitForSound)
+            {
+                GetComponent<AudioSource>().Play();
+                waitForSound = true;
+                StartCoroutine(WaitForSound());
+            }
             return;
-        
+        }
+
         // #############################################################################################################
         // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
         // Very ugly
