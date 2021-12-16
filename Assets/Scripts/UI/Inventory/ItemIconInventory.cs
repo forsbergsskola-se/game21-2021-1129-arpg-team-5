@@ -26,16 +26,6 @@ namespace Team5.Ui.Inventories
             }
         }
 
-        public Sprite GetItem()
-        {
-            var iconImage = GetComponent<Image>();
-            if (!iconImage.enabled)
-            {
-                return null;
-            }
-            return iconImage.sprite;
-        }
-
         
     }
 }

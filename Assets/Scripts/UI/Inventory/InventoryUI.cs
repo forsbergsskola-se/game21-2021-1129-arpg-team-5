@@ -19,7 +19,7 @@ namespace Team5.Ui.Inventories
         // Start is called before the first frame update
         void Start()
         {
-
+            Redraw();
         }
 
         // Update is called once per frame
