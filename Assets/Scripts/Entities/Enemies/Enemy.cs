@@ -1,15 +1,17 @@
 using System.Collections;
+using Team5.Core;
 using Team5.Ui;
 using TMPro;
 using UnityEngine;
 
 namespace Team5.Entities.Enemies
 {
-    public abstract class Enemy : Entity
+    public abstract class Enemy : Entity, IInteractable
     {
         // TODO: Update this with designer choice. Maybe a healthbar instead, or something else.
         private TMP_Text healthText;
         private TMP_Text hurtText;
+        [SerializeField] private Texture2D MouseTexture;
         private ParticleSystem blood;
         public float damageHealthDecay = 0.5f;
         
@@ -94,6 +96,22 @@ namespace Team5.Entities.Enemies
             yield return new WaitForSeconds(10);
             this.gameObject.SetActive(false);
             deathCloud.gameObject.SetActive(false);
+        }
+
+        public Texture2D mouseTexture => MouseTexture;
+
+        public void OnHoverEnter()
+        {
+            healthText.enabled = true;
+        }
+
+        public void OnHoverExit()
+        {
+            healthText.enabled = false;
+        }
+
+        public void OnClick(Vector3 mouseClickVector)
+        {
         }
     }
 }
