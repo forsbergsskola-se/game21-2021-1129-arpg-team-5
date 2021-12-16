@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using System.Net;
 using Team5.Combat;
 using Team5.Core;
 using Team5.Entities;
 using Team5.Entities.Player;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Team5.Ui
@@ -58,29 +60,34 @@ namespace Team5.Ui
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("WhiteSkull"))
+            bool pickedUp = false;
+
+            switch (other.gameObject.tag)
             {
-                skullCount +=1;
+                case "WhiteSkull":
+                    skullCount += 1;
+                    pickedUp = true;
+                    break;
+                case "RedSkull":
+                    skullCount += 5;
+                    pickedUp = true;
+                    break;
+                case "PurpleSkull":
+                    skullCount += 10;
+                    pickedUp = true;
+                    break;
+                case "GoldSkull":
+                    skullCount += 50;
+                    pickedUp = true;
+                    break;
             }
             
-            else if (other.gameObject.CompareTag("RedSkull"))
+            if (pickedUp)
             {
-                skullCount +=5;
+                Debug.Log($"{this.name} Picked up: {other.tag}");
+                other.gameObject.SetActive(false);
+                sparkle.Play();
             }
-            
-            else if (other.gameObject.CompareTag("PurpleSkull"))
-            {
-                skullCount +=10;
-            }
-            
-            else if (other.gameObject.CompareTag("GoldSkull"))
-            {
-                skullCount +=50;
-            }
-            
-            Debug.Log($"{this.name} Picked up: {other.tag}");
-            other.gameObject.SetActive(false);
-            sparkle.Play();
         }
 
         // temp values - no magic numbers later
