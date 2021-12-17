@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6627110874204226030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2568672955128091729, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_Name
+      value: Plague.Dr_Attack Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.238
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949315550131539691, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+--- !u!1 &8673361458702210495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2568672955128091729, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
+  m_PrefabInstance: {fileID: 6627110874204226030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &23420746713619470
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.3
+  m_Speed: 3
+  m_Acceleration: 50
+  avoidancePriority: 50
+  m_AngularSpeed: 5000
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &7607307426550264849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7861638750626848121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3675a7a5d85769439af3bbd1553dff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &1098251059725831106
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &5305579513243716866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60959850cc7f0dd4583dacb4e34d87fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  MaxHealth: 0
+  MovementSpeed: 0
+  BaseMaxHealth: 150
+  BaseArmor: 0
+  BaseMovementSpeed: 5
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0
+  MouseTexture: {fileID: 0}
+  damageHealthDecay: 0.5
+  dustSpawnTime: 0
+  corpseStayTime: 0
+  mesh: {fileID: 0}
+--- !u!114 &8925187325319681402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  baseAccuracyPercentage: 90
+  baseCriticalChance: 25
+  criticalDamageMultiplier: 1.2
+  timeBetweenAttacks: 1
+  weaponRange: 10
+  weaponDamage: 25
+--- !u!114 &2923447331089280229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 15
+  suspicionTime: 1
+  patrolPath: {fileID: 0}
+  waypointTolerance: 10
+  waypointWaitingTime: 3
