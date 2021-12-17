@@ -62,6 +62,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2568672955128091729, guid: a5667778311d74348a3a5f3d8e81b1cb, type: 3}
   m_PrefabInstance: {fileID: 6627110874204226030}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &1098251059725831106
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &23420746713619470
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -84,7 +98,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7607307426550264849
+--- !u!114 &2923447331089280229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,35 +107,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8673361458702210495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7861638750626848121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673361458702210495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3675a7a5d85769439af3bbd1553dff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &1098251059725831106
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673361458702210495}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.9
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  chaseDistance: 15
+  suspicionTime: 1
+  patrolPath: {fileID: 0}
+  waypointTolerance: 20
+  waypointWaitingTime: 3
 --- !u!114 &5305579513243716866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +140,30 @@ MonoBehaviour:
   dustSpawnTime: 0
   corpseStayTime: 0
   mesh: {fileID: 0}
+--- !u!114 &7607307426550264849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7861638750626848121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673361458702210495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3675a7a5d85769439af3bbd1553dff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8925187325319681402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,20 +183,3 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 10
   weaponDamage: 25
---- !u!114 &2923447331089280229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673361458702210495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseDistance: 15
-  suspicionTime: 1
-  patrolPath: {fileID: 0}
-  waypointTolerance: 10
-  waypointWaitingTime: 3
