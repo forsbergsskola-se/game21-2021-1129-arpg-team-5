@@ -6,23 +6,29 @@ using Team5.Movement;
 using Team5.Ui;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopStall : MonoBehaviour, IInteractable
 {
-    
+
     [SerializeField] private float distanceToShop;
     [SerializeField] private Texture2D shopCursor;
-    
+
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private GameObject player;
-    private Vector3 TargetPosition; 
+    private Vector3 TargetPosition;
     public Texture2D mouseTexture => shopCursor;
     private GameObject ShopText;
     private GameObject ShopTalk;
     private int Skulls;
     public GameObject GoldenSkull;
     private TMP_Text Dialogue;
+
+    [SerializeField] public Button yesButton = null;
+    [SerializeField] public Button noButton = null;
+
+
 
     private void Awake()
     {
@@ -33,7 +39,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         ShopText = this.gameObject.transform.Find("Shop Text").gameObject;
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
     }
-    
+
     private void Update()
     {
         Skulls = player.GetComponent<PlayerUI>().skullCount;
@@ -44,34 +50,52 @@ public class ShopStall : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             ShopTalk.SetActive(true);
+            Dialogue.text = "Want to do the skull quest?";
 
-            if (Skulls == 0)
-            {
-                Dialogue.text = "Welcome adventurer! Come back with some skulls if you want to trade!";
-            }
-            
-            else if (Skulls == 22)
-            {
-                Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
-                
-                // need to fix a way of specifying no. of skulls to subtract here:
-                player.GetComponent<PlayerUI>().SubtractSkulls();
-
-                StartCoroutine(Wait(5));
-            }
-
-            else if (Skulls > 0 && Skulls < 22)
-            {
-                Dialogue.text = $"You've found some skulls! But you still need {(22 - Skulls)} more to trade!";
-            }
-
-            else
-            {
-                Dialogue.text = "Sorry, but I'm fresh out of stock! Thanks for the spicy trade though... heheheh...";
-            }
+            yesButton.onClick.AddListener(delegate { ParameterOnClickYes("Yes Button was pressed!"); });
+            noButton.onClick.AddListener(delegate { ParameterOnClickNo("No button was pressed!"); });
         }
     }
-    
+
+
+    private void ParameterOnClickYes(string test)
+    {
+        SkullScenario();
+    }
+
+    private void ParameterOnClickNo(string test)
+    {
+        StartCoroutine(WaitExit(5));
+    }
+
+    private void SkullScenario()
+    {
+        if (Skulls == 0)
+        {
+            Dialogue.text = "Welcome adventurer! Come back with some skulls if you want to trade!";
+        }
+
+        else if (Skulls == 22)
+        {
+            Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
+
+            // need to fix a way of specifying no. of skulls to subtract here:
+            player.GetComponent<PlayerUI>().SubtractSkulls();
+
+            StartCoroutine(Wait(5));
+        }
+
+        else if (Skulls > 0 && Skulls < 22)
+        {
+            Dialogue.text = $"You've found some skulls! But you still need {(22 - Skulls)} more to trade!";
+        }
+
+        else
+        {
+            Dialogue.text = "Sorry, but I'm fresh out of stock! Thanks for the spicy trade though... heheheh...";
+        }
+    }
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject == player)
@@ -96,12 +120,13 @@ public class ShopStall : MonoBehaviour, IInteractable
         ShopText.SetActive(false);
         Debug.Log($"{ShopText.name} {ShopText.activeInHierarchy}");
     }
-    
-    
+
+
     public void OnClick(Vector3 mouseClickVector)
     {
         var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
-        var reachableTwo = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPositionTwo.position);
+        var reachableTwo = GameObject.Find("Player").GetComponent<Move>()
+            .TargetReachable(playerTargetPositionTwo.position);
 
         if (reachable && reachableTwo)
         {
@@ -110,13 +135,13 @@ public class ShopStall : MonoBehaviour, IInteractable
 
             TargetPosition = distance < distanceTwo ? playerTargetPosition.position : playerTargetPositionTwo.position;
         }
-        
+
         else if (reachable)
             TargetPosition = playerTargetPosition.position;
-        
+
         else if (reachableTwo)
             TargetPosition = playerTargetPositionTwo.position;
-        
+
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToShop)
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
@@ -126,5 +151,12 @@ public class ShopStall : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(time);
         GoldenSkull.transform.position = new Vector3(239, 5, -100);
         Dialogue.text = $"So ta-dah! One big shiny thing for lots of small shiny things. Enjoy, I guess?";
+    }
+
+    IEnumerator WaitExit(float time)
+    {
+        Dialogue.text = "Too bad. Come back if you change your mind";
+        yield return new WaitForSeconds(time);
+        ShopTalk.SetActive(false);
     }
 }
