@@ -31,11 +31,7 @@ namespace Team5.Entities
         /// </summary>
         protected virtual void Awake()
         {
-            MaxHealth = BaseMaxHealth;
-            Health = MaxHealth;
-            Armor = BaseArmor;
-            MovementSpeed = BaseMovementSpeed;
-            damageCooldownTime = BaseDamageCooldown;
+           ResetEntity();
         }
 
         
@@ -50,6 +46,7 @@ namespace Team5.Entities
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
+            takeDamageOnCooldown = false;
         }
 
         

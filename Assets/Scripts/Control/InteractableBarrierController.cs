@@ -10,10 +10,13 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
     
+    //TODO Maybe Add a public array instead of Transform  
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
     private GameObject player;
+    
+    //TODO To add scriptable object that contains the event.
     private MouseController mouseController;
     
     private Vector3 TargetPosition;
@@ -74,8 +77,9 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         // Very inefficient
         // Very very bad
 
-        var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
-        var reachableTwo = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPositionTwo.position);
+        var move = player.GetComponent<Move>();
+        var reachable = move.TargetReachable(playerTargetPosition.position);
+        var reachableTwo = move.TargetReachable(playerTargetPositionTwo.position);
 
         if (reachable && reachableTwo)
         {
@@ -94,13 +98,14 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         StartCoroutine(goToAndOpen);
         
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToOpenDoor)
-            GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
+            move.StartMoveAction(TargetPosition);
     }
 
 
 
     private IEnumerator GoToAndOpen()
     {
+        //TODO Why is this 100?
         for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.25f);
