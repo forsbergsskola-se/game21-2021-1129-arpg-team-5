@@ -108,7 +108,8 @@ namespace Team5.Combat
         
         private void AttackBehaviour()
         {
-            transform.LookAt(target.transform);
+            Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            transform.LookAt(targetPosition);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 if (!target.IsDead)
