@@ -47,8 +47,8 @@ namespace Team5.Movement
             audio = player.GetComponent<AudioSource>();
         }
 
-        
-        
+
+
         void Update()
         {
             agent.enabled = !entity.IsDead;
@@ -58,52 +58,44 @@ namespace Team5.Movement
             //TEMPORARY FOR OUR UPSCALED TEST SCENE!
             differentdistance = !isOnTestScene ? 0.2f : 2f;
             //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-            
-            
-                // indicates player has reached destinaton with sound and visual
-            if(agent.isStopped || DistanceToMarker() < differentdistance)
+
+
+            // indicates player has reached destinaton with sound and visual
+            if (CompareTag("Player"))
             {
-                audio.Play();
-                
-                if (CompareTag("Player"))
+                if (agent.isStopped || DistanceToMarker() < differentdistance)
                 {
+                    audio.Play();
                     agent.angularSpeed = 10;
+                    oldPlayerRotation = newPlayerRotation;
+                    targetDest.GetComponent<MeshRenderer>().enabled = false;
                 }
                 
-                    oldPlayerRotation = newPlayerRotation;
-
-                    //Hide click-marker when destination is met.
-                    targetDest.GetComponent<MeshRenderer>().enabled = false;
-                    //targetDest.transform.position = new Vector3(targetDest.transform.position.x, -50, targetDest.transform.position.z);
-
-                    
-                    // Debug.Log("target reach");
-            }else if (!agent.isStopped && DistanceToMarker() > differentdistance)
-            {
-                if (CompareTag("Player"))
+                
+                
+                else if (!agent.isStopped && DistanceToMarker() > differentdistance)
                 {
                     agent.angularSpeed = 5000;
                     targetDest.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
-
-            // changes destination colour if enemy
+            
+            
+            
             else if (this.gameObject != player)
             {
                 var targetDestLocation = Math.Round(targetDest.transform.position.x, 1);
                 var enemyLocation = Math.Round(this.gameObject.transform.position.x, 1);
-
+                
                 if (enemyLocation == targetDestLocation)
-                {
                     targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
-                    // Debug.Log("Target: Enemy");
-                }
                 else
-                {
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
-                }
             }
         }
+        
+        
+        
         private float DistanceToMarker()
         {
 
@@ -112,6 +104,7 @@ namespace Team5.Movement
         }
 
 
+        
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
