@@ -120,6 +120,7 @@ namespace Team5.Movement
             if (this.entity.IsDead)
             {
                 Debug.Log("Can't move yet bro, I'm dead");
+                
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))

@@ -17,6 +17,7 @@ namespace Team5.Combat
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float weaponDamage = 1f;
+        private float missedDamage = 0f;
 
         private float accuracyPercentage;
         private float criticalChance;
@@ -157,6 +158,7 @@ namespace Team5.Combat
                 //  misses attack due to low accuracy
                 else
                 {
+                    target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy < {accuracyChance}0% chance");
                     Debug.Log($"{this.name}'s critical hit missed {target.name}!");
                 }
@@ -175,6 +177,7 @@ namespace Team5.Combat
                 else
 
                 {
+                    target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
                     Debug.Log($"{this.name}'s attack missed {target.name}!");
                 }
