@@ -4738,6 +4738,10 @@ PrefabInstance:
       propertyPath: BaseMovementSpeed
       value: 5.66
       objectReference: {fileID: 0}
+    - target: {fileID: 989690487, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_Speed
       value: 20
@@ -35384,7 +35388,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: e01911c676f4c334e9b72bfa15917344, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0e08fb93b6fc09d4ba838a73949f1287, type: 2}
 --- !u!4 &1828662820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7836238932822904563, guid: da17f1072335e5041b1a0a64a0fe8661, type: 3}
