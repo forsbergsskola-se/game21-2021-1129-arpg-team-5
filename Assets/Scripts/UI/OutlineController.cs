@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Team5.Control;
@@ -22,7 +23,19 @@ namespace Team5.Ui
         public bool IsClicked = false;
         private void Start()
         {
-            outline = gameObject.AddComponent<Outline>();
+            // outline = gameObject.AddComponent<Outline>();
+
+            outline = GetComponentInChildren<Outline>();
+            if (outline == null) 
+                outline = GetComponent<Outline>();
+            if (outline == null)
+            {
+                Debug.Log($"<color=cyan>Failed to find Outline component in {name}. Please make sure there is a OutLine component on the object you want a outline around.</color> <color=red>[Script auto disabled because of error]</color>");
+                this.enabled = false;
+                return;
+            }
+
+
             outline.enabled = false;
 
             mouseController = FindObjectOfType<MouseController>();
