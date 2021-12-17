@@ -552,80 +552,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-1309850160470361694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39010ce8efaa18549911b6e1bb111f0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDead: 0
-  MaxHealth: 0
-  MovementSpeed: 0
-  BaseMaxHealth: 200
-  BaseArmor: 0
-  BaseMovementSpeed: 40
-  BaseDamageCooldown: 0
-  EntityLevelValueMuliplier: 0.02
-  healthOnRevive: 20
-  healthRegenPerSecond: 10
-  timeToRevive: 8
-  reviveCounter: 0
---- !u!114 &989690487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b0b99d2014ec548b9e539a8b532bef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skullCount: 0
-  expLevel: 1
-  sparkle: {fileID: 1471535492}
---- !u!114 &9151978097879815257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killCount: 0
-  baseAccuracyPercentage: 90
-  baseCriticalChance: 25
-  criticalDamageMultiplier: 1.25
-  timeBetweenAttacks: 1
-  weaponRange: 10
-  weaponDamage: 55
---- !u!54 &1471535502
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  serializedVersion: 2
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!82 &1471535491
 AudioSource:
   m_ObjectHideFlags: 0
@@ -818,3 +744,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1309850160470361694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39010ce8efaa18549911b6e1bb111f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  MaxHealth: 0
+  MovementSpeed: 0
+  BaseMaxHealth: 200
+  BaseArmor: 0
+  BaseMovementSpeed: 40
+  BaseDamageCooldown: 0
+  EntityLevelValueMuliplier: 0.02
+  healthOnRevive: 20
+  healthRegenPerSecond: 10
+  timeToRevive: 8
+  reviveCounter: 0
+--- !u!114 &989690487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b0b99d2014ec548b9e539a8b532bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skullCount: 0
+  expLevel: 1
+  sparkle: {fileID: 1471535492}
+--- !u!114 &9151978097879815257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  baseAccuracyPercentage: 90
+  baseCriticalChance: 25
+  criticalDamageMultiplier: 1.25
+  timeBetweenAttacks: 1
+  weaponRange: 10
+  weaponDamage: 55
