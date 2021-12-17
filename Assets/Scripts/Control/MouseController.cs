@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace Team5.Control
 {
-    // Require Camera in the MouseController.
-    [RequireComponent(typeof(Camera))]
     public class MouseController : MonoBehaviour
     {
         private Ray ray;
@@ -85,28 +83,27 @@ namespace Team5.Control
         {
             CheckMouseButton();
 
-            if (!TryCastRaySuccess())
+            if (TryCastRaySuccess())
             {
-                SetCursorTexture(null);
-                return;
-            }
-
-            if (TargetHasChanged())
-            {
-                SendOldTargetOnHoverExit();
-
-                if (TryGetInteractableSuccess())
+                if (TargetHasChanged())
                 {
-                    SendOnHoverEnter();
+                    SendOldTargetOnHoverExit();
+                    
+                    if (TryGetInteractableSuccess())
+                    {
+                        SendOnHoverEnter();
+                    }
+                }
+
+                if (targetInteractable != null)
+                {
+                    TrySendOnClick();
+                    SetCursorTexture(targetInteractable.mouseTexture);
+                    return;
                 }
             }
-
-            if (targetInteractable != null)
-            {
-                TrySendOnClick();
-                SetCursorTexture(targetInteractable.mouseTexture);
-            }
-
+            SetCursorTexture(null);
+            
         }
         
         
