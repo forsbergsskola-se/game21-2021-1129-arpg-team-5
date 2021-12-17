@@ -3,6 +3,8 @@ using Team5.Core;
 using Team5.Entities;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using Object = System.Object;
 
 
 namespace Team5.Movement
@@ -49,24 +51,30 @@ namespace Team5.Movement
             UpdateAnimator();
             
             // indicates player has reached destinaton with sound and visual
-            if(Vector3.Distance(player.transform.position, targetDest.transform.position) < 0.2)
+            if(agent.isStopped || DistanceToMarker() < 0.2)
             {
-                if (agent.tag == "Player")
+                audio.Play();
+                
+                if (CompareTag("Player"))
+                {
                     agent.angularSpeed = 10;
+                }
                 
                     oldPlayerRotation = newPlayerRotation;
 
                     //Hide click-marker when destination is met.
-                    targetDest.GetComponent<MeshRenderer>().enabled = false; 
-                    targetDest.transform.position = new Vector3(targetDest.transform.position.x, -50, targetDest.transform.position.z);
+                    targetDest.GetComponent<MeshRenderer>().enabled = false;
+                    //targetDest.transform.position = new Vector3(targetDest.transform.position.x, -50, targetDest.transform.position.z);
 
-                    audio.Play();
-                   // Debug.Log("target reach");
-            }
-
-            if (targetDest.transform.position.y > 1)
+                    
+                    // Debug.Log("target reach");
+            }else if (!agent.isStopped && DistanceToMarker() > 0.2)
             {
-                targetDest.transform.position = new Vector3(0, -50, 0);
+                if (CompareTag("Player"))
+                {
+                    agent.angularSpeed = 5000;
+                    targetDest.GetComponent<MeshRenderer>().enabled = true;
+                }
             }
 
             // changes destination colour if enemy
@@ -85,19 +93,15 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
                 }
             }
-            else
-            {
-                if (agent.tag == "Player")
-                {
-                    agent.angularSpeed = 5000;
-                    //enable click marker when player is at a higher distance from it.
-                    targetDest.GetComponent<MeshRenderer>().enabled = true;
-                }
-            }
+        }
+        private float DistanceToMarker()
+        {
+
+            var dist = Vector3.Distance(player.transform.position, targetDest.transform.position);
+            return dist;
         }
 
-        
-        
+
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);

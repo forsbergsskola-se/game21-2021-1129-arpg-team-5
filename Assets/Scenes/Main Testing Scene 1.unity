@@ -6656,6 +6656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 798398061309386227, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
+      propertyPath: m_TagString
+      value: Destructable
+      objectReference: {fileID: 0}
     - target: {fileID: 3720335640779852993, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
       propertyPath: m_Name
       value: Vase (2)
@@ -21534,7 +21538,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3033170870490616639}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999918
+  m_Size: 0.9999977
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22203,7 +22207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -607.77496}
+  m_AnchoredPosition: {x: -0.00012207031, y: -607.775}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3032902594412409921
@@ -22644,8 +22648,12 @@ PrefabInstance:
       value: 56.6
       objectReference: {fileID: 0}
     - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993711633244797357, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_Acceleration
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3851750723848233992, guid: 124d98b16b16de54c81c209455ddc98e, type: 3}
       propertyPath: m_RootOrder
