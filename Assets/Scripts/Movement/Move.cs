@@ -1,6 +1,7 @@
 using System;
 using Team5.Core;
 using Team5.Entities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,10 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         
+        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
+        public bool isOnTestScene;
+        private float differentdistance;
+        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         
         
         private void Start()
@@ -49,9 +54,14 @@ namespace Team5.Movement
             agent.enabled = !entity.IsDead;
 
             UpdateAnimator();
+
+            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
+            differentdistance = !isOnTestScene ? 0.2f : 2f;
+            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
             
-            // indicates player has reached destinaton with sound and visual
-            if(agent.isStopped || DistanceToMarker() < 0.2)
+            
+                // indicates player has reached destinaton with sound and visual
+            if(agent.isStopped || DistanceToMarker() < differentdistance)
             {
                 audio.Play();
                 
@@ -68,7 +78,7 @@ namespace Team5.Movement
 
                     
                     // Debug.Log("target reach");
-            }else if (!agent.isStopped && DistanceToMarker() > 0.2)
+            }else if (!agent.isStopped && DistanceToMarker() > differentdistance)
             {
                 if (CompareTag("Player"))
                 {
