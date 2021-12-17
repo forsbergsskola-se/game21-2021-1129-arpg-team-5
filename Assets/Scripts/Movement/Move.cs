@@ -65,7 +65,7 @@ namespace Team5.Movement
             {
                 if (agent.isStopped || DistanceToMarker() < differentdistance)
                 {
-                    audio.Play();
+                    
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
@@ -75,6 +75,7 @@ namespace Team5.Movement
                 
                 else if (!agent.isStopped && DistanceToMarker() > differentdistance)
                 {
+                    audio.Play();
                     agent.angularSpeed = 5000;
                     targetDest.GetComponent<MeshRenderer>().enabled = true;
                 }
