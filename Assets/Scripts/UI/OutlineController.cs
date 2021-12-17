@@ -19,7 +19,6 @@ namespace Team5.Ui
         private Color OutlineColor = Color.red;
         [SerializeField, Range(0f, 10f)]
         private float OutlineWidth = 5f;
-        [FormerlySerializedAs("IsClicked")]
         public bool IsClicked = false;
         private void Start()
         {
