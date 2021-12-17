@@ -21538,7 +21538,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3033170870490616639}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999977
+  m_Size: 0.999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22207,7 +22207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -607.775}
+  m_AnchoredPosition: {x: -0.00012207031, y: -607.7748}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3032902594412409921
@@ -22769,6 +22769,7 @@ GameObject:
   - component: {fileID: 1187176366}
   - component: {fileID: 8164078558229572312}
   - component: {fileID: 8164078558229572313}
+  - component: {fileID: 8164078558229572314}
   m_Layer: 0
   m_Name: Shop Stall
   m_TagString: Untagged
@@ -22808,6 +22809,21 @@ MonoBehaviour:
   OutlineColor: {r: 1, g: 0, b: 0.94604063, a: 1}
   OutlineWidth: 7.28
   IsClicked: 0
+--- !u!114 &8164078558229572314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164078558229572311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8164078559235949321
 GameObject:
   m_ObjectHideFlags: 0
