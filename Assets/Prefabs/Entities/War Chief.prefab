@@ -702,6 +702,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
   m_PrefabInstance: {fileID: 6823662429352061066}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5849511270623698625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1125661663725237835, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
+  m_PrefabInstance: {fileID: 6823662429352061066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &6412772323686751579
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -777,10 +782,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
+  MaxHealth: 0
   MovementSpeed: 0
   BaseMaxHealth: 100
   BaseArmor: 0
   BaseMovementSpeed: 5
   BaseDamageCooldown: 0
   EntityLevelValueMuliplier: 0
-  temp: {fileID: 0}
+  MouseTexture: {fileID: 0}
+  damageHealthDecay: 0.5
+  dustSpawnTime: 0
+  corpseStayTime: 0
+  mesh: {fileID: 0}
+--- !u!114 &2163154100921811092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849511270623698625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
