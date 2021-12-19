@@ -26,6 +26,8 @@ namespace Team5.Inventories.Control.sample
             }
         }
 
+        
+
         public bool HandleRaycast(PlayerController callingController)
         {
             if (Input.GetMouseButtonDown(0))
@@ -34,5 +36,7 @@ namespace Team5.Inventories.Control.sample
             }
             return true;
         }
+
+       
     }
 }
