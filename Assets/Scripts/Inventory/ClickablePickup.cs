@@ -1,6 +1,6 @@
 using UnityEngine;
 using Team5.Inventories;
-using InventoryExample.Control;
+using Team5.Control;
 
 namespace Team5.Inventories.Control.sample
 {
