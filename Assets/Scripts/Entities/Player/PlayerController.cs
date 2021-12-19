@@ -51,7 +51,7 @@ namespace Team5.Entities.Player
             // if (InteractWithMovement()) 
             //     return;
 
-            if (InteractWithUI()) return;
+            //if (InteractWithUI()) return;
         }
         #region UI Implementation of curser we need to review and implement it in mouse controller 
         private bool InteractWithUI()
