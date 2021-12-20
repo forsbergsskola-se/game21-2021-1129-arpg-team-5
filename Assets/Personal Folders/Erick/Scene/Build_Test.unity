@@ -12110,7 +12110,7 @@ GameObject:
   - component: {fileID: 601216301}
   - component: {fileID: 601216300}
   - component: {fileID: 601216299}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SceneTeleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17635,6 +17635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorMode: 0
   hotSpot: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &929588859
 PrefabInstance:
   m_ObjectHideFlags: 0

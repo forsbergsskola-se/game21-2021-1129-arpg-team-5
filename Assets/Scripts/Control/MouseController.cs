@@ -123,14 +123,15 @@ namespace Team5.Control
                 mouseClicked = false;
             }
         }
-        
-        
+
+        public LayerMask mask;
         
         private bool TryCastRaySuccess()
         {
-            // Ignore layer 13. This layer is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes.
-            int layermask = 1 << 13;
+            // Ignore layer 13 and 2. Layer 13 is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes. Layer 2 is IgnoreRaycast.
+            int layermask = 1 << 13 | 1 << 2;
             layermask = ~layermask;
+            mask = layermask;
             
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
