@@ -36,9 +36,6 @@ public class TEMPNAME_transparencyTrigger : MonoBehaviour
         // If the ray hits a object
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask))
         {
-            Debug.Log("HIT!");
-            Debug.Log(hit.collider.gameObject.name);
-            
             // hit.collider.gameObject.SetActive(false);
             //
             // THIS WORKS!
