@@ -14,7 +14,7 @@ namespace Team5.World.Interactables
             {
                 Debug.Log("Switch has no assigned InteractableBarrierController!");
             }
-            barrier.isLocked = true;
+            barrier.IsLocked = true;
         }
 
         public Texture2D mouseTexture => OnHoverMousetexture;
@@ -28,7 +28,7 @@ namespace Team5.World.Interactables
 
         public void OnClick(Vector3 mouseClickVector)
         {
-            barrier.isLocked = false;
+            barrier.IsLocked = false;
             
             transform.Find("Lever").transform.Rotate(Vector3.back, 60);
             

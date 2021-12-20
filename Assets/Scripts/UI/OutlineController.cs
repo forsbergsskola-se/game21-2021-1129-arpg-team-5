@@ -14,14 +14,12 @@ namespace Team5.Ui
         private MouseController mouseController;
 
         private Outline outline;
-        [SerializeField]
-        private Outline.Mode outlineMode;
-        [SerializeField]
-        private Color OutlineColor = Color.red;
-        [SerializeField, Range(0f, 10f)]
-        private float OutlineWidth = 5f;
+        [SerializeField] private Outline.Mode outlineMode;
+        [SerializeField] private Color OutlineColor = Color.red;
+        [SerializeField] private Color AlternateOutlineColor = Color.magenta;
+        [SerializeField, Range(0f, 10f)] private float OutlineWidth = 5f;
         public bool IsClicked = false;
-        private void Start()
+        private void Awake()
         {
             // outline = gameObject.AddComponent<Outline>();
 
@@ -37,17 +35,23 @@ namespace Team5.Ui
 
 
             outline.enabled = false;
+            
+            outline.OutlineMode = outlineMode;
+            outline.OutlineColor = OutlineColor;
+            outline.OutlineWidth = OutlineWidth;
 
             mouseController = FindObjectOfType<MouseController>();
             mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
         }
 
-        private void Update()
+
+
+        public void UseAlternateColor(bool value)
         {
-            outline.OutlineMode = outlineMode;
-            outline.OutlineColor = OutlineColor;
-            outline.OutlineWidth = OutlineWidth;
+            if(enabled)
+                outline.OutlineColor = value ? AlternateOutlineColor : OutlineColor;
         }
+        
 
 
         void ChangedTarget(object sender, bool temp)
