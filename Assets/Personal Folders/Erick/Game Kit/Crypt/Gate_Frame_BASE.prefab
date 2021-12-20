@@ -3463,7 +3463,6 @@ MonoBehaviour:
   lockedCursor: {fileID: 2800000, guid: bf68233415e240c41b98988c7b546703, type: 3}
   unlockedCursor: {fileID: 2800000, guid: 7468ec26e0a28ac4f8db9947c0e94286, type: 3}
   distanceToOpenDoor: 1
-  isLocked: 0
 --- !u!82 &7593725066210132065
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3574,6 +3573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   OutlineColor: {r: 0, g: 0.29411766, b: 0, a: 1}
+  AlternateOutlineColor: {r: 0.6862745, g: 0, b: 0, a: 1}
   OutlineWidth: 2.5
   IsClicked: 0
 --- !u!1 &1764236469730798937
@@ -4944,7 +4944,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 109
+  m_VersionIndex: 112
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
