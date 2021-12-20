@@ -11,20 +11,29 @@ using UnityEngine.UI;
 
 public class ShopStall : MonoBehaviour, IInteractable
 {
-
+    // positioning player
     [SerializeField] private float distanceToShop;
-    [SerializeField] private Texture2D shopCursor;
-
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private GameObject player;
     private Vector3 TargetPosition;
+   
+    // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
+    [SerializeField] private Texture2D shopCursor;
     private GameObject NameTag;
+   
+    // interactions
     private GameObject ShopTalk;
+    public GameObject GoldenSkull;
+    private TMP_Text Dialogue;
+    public Button Button1;
+    public Button Button2;
+    public Button Button3;
+    
+    // skulls
     private int Skulls;
     private GameObject SkullIcons;
-
     private int whiteSkulls;
     private int whiteSkullsTotal = 2;
     private int redSkulls;
@@ -33,31 +42,20 @@ public class ShopStall : MonoBehaviour, IInteractable
     private int purpleSkullsTotal = 1;
     private int goldSkulls;
     private int goldSkullsTotal = 1;
-
-
-
-    public GameObject GoldenSkull;
-    private TMP_Text Dialogue;
-
-    [SerializeField] public Button Button1;
-    [SerializeField] public Button Button2;
-    [SerializeField] public Button Button3;
-
+    
+    // buttons
     private GameObject button1;
     private GameObject button2;
     private GameObject button3;
-
-    private bool firstVisit = true;
-    private bool finishedQuest = false;
-
     private TMP_Text button1Text;
     private TMP_Text button2Text;
     private TMP_Text button3Text;
-
     
-    private bool skullQuestOffered = false;
-    private bool skullQuestRulesRead = true;
-    private bool skullQuestAccepted = true;
+    // bools
+    private bool firstVisit = true;
+    private bool skullQuestRulesRead;
+    private bool skullQuestAccepted;
+    private bool finishedQuest = false;
     
     private void Awake()
     {
@@ -76,50 +74,40 @@ public class ShopStall : MonoBehaviour, IInteractable
         button1Text = Button1.GetComponentInChildren<TextMeshProUGUI>();
         button2Text = Button2.GetComponentInChildren<TextMeshProUGUI>();
         button3Text = Button3.GetComponentInChildren<TextMeshProUGUI>();
+        
+        skullQuestRulesRead = false;
+        skullQuestAccepted = false;
     }
 
-    private void Update()
-    {
-        Skulls = player.GetComponent<PlayerUI>().skullCount;
-        whiteSkulls = player.GetComponent<PlayerUI>().whiteSkulls;
-        redSkulls = player.GetComponent<PlayerUI>().redSkulls;
-        purpleSkulls = player.GetComponent<PlayerUI>().purpleSkulls;
-        goldSkulls = player.GetComponent<PlayerUI>().goldSkulls;
-    }
-    
     private void OnCollisionEnter(Collision other)
     {
+        Refresh();
+        
         if (other.gameObject == player)
         {
             ShopTalk.SetActive(true);
-            
             buttonActive(true, true, false);
 
             if (firstVisit == true)
             {
-                skullQuestRulesRead = false;
-                skullQuestAccepted = false;
                 firstVisit = false;
                 Dialogue.text = "Hi there, welcome!";
                 button1Text.text = "Hello friend!";
                 button2Text.text = "Not interested";
             }
-
             else
             {
                 Dialogue.text = "Hi again, friend!";
                 button1Text.text = "Oh hai!";
-                button2Text.text = "... nope";
+                button2Text.text = "Not today";
             }
-                
-            Button1.onClick.AddListener(delegate { ParameterOnClickYesStart("Button 1 was pressed!"); });
-            Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
+            Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
     }
     
     private void ParameterOnClickYesStart(string test)
     {
-        
         if (skullQuestAccepted == false )
         {
             buttonActive(true, true, false);
@@ -128,16 +116,16 @@ public class ShopStall : MonoBehaviour, IInteractable
             button1Text.text = "Sure!";
             button2Text.text = "Maybe later";
                     
-            Button1.onClick.AddListener(delegate { ParameterOnClickYes("Button 1 was pressed!"); });
-            Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
-                    
+            Button1.onClick.AddListener( () => ParameterOnClickYes($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
+        
         else if (skullQuestRulesRead == false)
         {
             SkullScenarioRules();
         }
         
-        else
+        else if (skullQuestAccepted == true && skullQuestRulesRead == true)
         {
             SkullScenario();
         }
@@ -145,8 +133,7 @@ public class ShopStall : MonoBehaviour, IInteractable
 
     private void ParameterOnClickNoStart(string test)
     {
-        Dialogue.fontSize = 40;
-        SkullIcons.SetActive(false);
+        Refresh();
         buttonActive(false, false, false);
         WaitExit();
     }
@@ -156,12 +143,12 @@ public class ShopStall : MonoBehaviour, IInteractable
         skullQuestAccepted = true;
         Dialogue.text = "Want to hear the rules?";
         
-        { 
+        {
             button1Text.text = "Okay";
             button2Text.text = "No thanks";
             
-            Button1.onClick.AddListener(delegate { ParameterOnClickYesRules("Button 1 was pressed!"); });
-            Button2.onClick.AddListener(delegate { ParameterOnClickYesStart("Button 2 was pressed!"); });
+            Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button2)} was pressed!"));
         }
     }
     
@@ -177,7 +164,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         Dialogue.text = "See this big golden skull behind me? If you want it collect 22 skulls for me.";
         button1Text.text = "Continue";
         
-        Button1.onClick.AddListener(delegate { ParameterOnClickYesRules2("Button 1 was pressed!"); });
+        Button1.onClick.AddListener( () => ParameterOnClickYesRules2($"{nameof(Button1)} was pressed!"));
     }
 
     private void ParameterOnClickYesRules2(string test)
@@ -185,13 +172,18 @@ public class ShopStall : MonoBehaviour, IInteractable
         skullQuestRulesRead = true;
         
         Dialogue.text = "White skulls =	1 \nRed skulls =	5 \nPurple skulls =	10";
-        button1Text.text = "Okay. I got it";
-        
-        Button1.onClick.AddListener(delegate { ParameterOnClickYesStart("Button 1 was pressed!"); });
+        button1Text.text = "Okay, I get it!";
+
+        Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
     }
 
     private void ParameterOnClickTotals(string test)
     {
+        whiteSkulls = player.GetComponent<PlayerUI>().whiteSkulls;
+        redSkulls = player.GetComponent<PlayerUI>().redSkulls;
+        purpleSkulls = player.GetComponent<PlayerUI>().purpleSkulls;
+        goldSkulls = player.GetComponent<PlayerUI>().goldSkulls;
+
         buttonActive(true, true, false);
         SkullIcons.SetActive(true);
         Dialogue.fontSize = 30;
@@ -202,15 +194,16 @@ public class ShopStall : MonoBehaviour, IInteractable
 
         button1Text.text = "Return";
         button2Text.text = "Leave";
-        
-        Button1.onClick.AddListener(delegate { ParameterOnClickYesStart("Button 1 was pressed!"); });
-        Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
+
+
+        Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
+        Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
     private void SkullScenario()
     {
-        Dialogue.fontSize = 40;
-        SkullIcons.SetActive(false);
+        Skulls = player.GetComponent<PlayerUI>().skullCount;
+        Refresh();
         buttonActive(false, false, false);
         
         if (Skulls == 0)
@@ -222,9 +215,9 @@ public class ShopStall : MonoBehaviour, IInteractable
             button2Text.text = "Okay";
             button3Text.text = "See totals";
 
-            Button1.onClick.AddListener(delegate { ParameterOnClickYesRules("Button 1 was pressed!"); });
-            Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
-            Button3.onClick.AddListener(delegate { ParameterOnClickTotals("3rd button was pressed"); });
+            Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
+            Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
         }
 
         else if (Skulls == 22)
@@ -246,9 +239,9 @@ public class ShopStall : MonoBehaviour, IInteractable
             button2Text.text = "I'll be back.";
             button3Text.text = "See totals";
             
-            Button1.onClick.AddListener(delegate { ParameterOnClickYesRules("Button 1 was pressed!"); });
-            Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
-            Button3.onClick.AddListener(delegate { ParameterOnClickTotals("3rd button was pressed"); });
+            Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
+            Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
         }
 
         else
@@ -258,8 +251,8 @@ public class ShopStall : MonoBehaviour, IInteractable
             Dialogue.text = "Sorry, but I'm fresh out of stock! Thanks for the spicy trade though... heheheh...";
             button2Text.text = "Too bad! Bye!";
             button3Text.text = "See totals";
-            Button2.onClick.AddListener(delegate { ParameterOnClickNoStart("Button 2 was pressed!"); });
-            Button3.onClick.AddListener(delegate { ParameterOnClickTotals("3rd button was pressed"); });
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
+            Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
 
         }
     }
@@ -327,11 +320,9 @@ public class ShopStall : MonoBehaviour, IInteractable
 
     private void WaitExit()
     {
-        Dialogue.fontSize = 40;
-        SkullIcons.SetActive(false);
-        
         if (skullQuestAccepted == false)
         {
+            skullQuestAccepted = false;
             Dialogue.text = "Too bad. Come back if you change your mind";
         }
         
@@ -344,5 +335,11 @@ public class ShopStall : MonoBehaviour, IInteractable
         {
             Dialogue.text = "See you around, friend!";
         }
+    }
+
+    private void Refresh()
+    {
+        Dialogue.fontSize = 40;
+        SkullIcons.SetActive(false);
     }
 }
