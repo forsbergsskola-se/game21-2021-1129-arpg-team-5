@@ -14,7 +14,6 @@ namespace Team5.Ui
         public TMP_Text LvlText;
         public GameObject ShopText;
         public TMP_Text ShopDialogue;
-
-        
+        public GameObject SkullIcons;
     }
 } 
