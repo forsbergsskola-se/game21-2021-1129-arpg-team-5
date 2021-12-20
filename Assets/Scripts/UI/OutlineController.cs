@@ -37,6 +37,10 @@ namespace Team5.Ui
 
 
             outline.enabled = false;
+            
+            outline.OutlineMode = outlineMode;
+            outline.OutlineColor = OutlineColor;
+            outline.OutlineWidth = OutlineWidth;
 
             mouseController = FindObjectOfType<MouseController>();
             mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
@@ -44,9 +48,6 @@ namespace Team5.Ui
 
         private void Update()
         {
-            outline.OutlineMode = outlineMode;
-            outline.OutlineColor = OutlineColor;
-            outline.OutlineWidth = OutlineWidth;
         }
 
 
@@ -71,8 +72,10 @@ namespace Team5.Ui
 
         public void OnMouseEnter()
         {
+            Debug.Log("Hoverover");
             if (this.enabled)
             {
+                Debug.Log("Outline enabled");
                 outline.enabled = true;
             }
         }
