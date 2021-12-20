@@ -23,6 +23,11 @@ namespace Team5.Ui
         private float healthCount;        
         private int reviveCount;
         public int skullCount = 0;
+        
+        [HideInInspector] public int whiteSkulls = 0;
+        [HideInInspector] public int redSkulls = 0;
+        [HideInInspector] public int purpleSkulls = 0;
+        [HideInInspector] public int goldSkulls = 0;
 
         private Fighter fighter;
         private int killCount;
@@ -66,18 +71,22 @@ namespace Team5.Ui
             {
                 case "WhiteSkull":
                     skullCount += 1;
+                    whiteSkulls += 1;
                     pickedUp = true;
                     break;
                 case "RedSkull":
                     skullCount += 5;
+                    redSkulls += 1;
                     pickedUp = true;
                     break;
                 case "PurpleSkull":
                     skullCount += 10;
+                    purpleSkulls += 1;
                     pickedUp = true;
                     break;
                 case "GoldSkull":
                     skullCount += 50;
+                    goldSkulls += 1;
                     pickedUp = true;
                     break;
             }
