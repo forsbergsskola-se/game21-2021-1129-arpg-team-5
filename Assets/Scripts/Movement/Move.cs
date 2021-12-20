@@ -25,6 +25,7 @@ namespace Team5.Movement
         private static Quaternion newPlayerRotation;
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
+        private bool canPlaySound;
         
         //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         public bool isOnTestScene;
@@ -59,23 +60,23 @@ namespace Team5.Movement
             differentdistance = !isOnTestScene ? 0.2f : 2f;
             //TEMPORARY FOR OUR UPSCALED TEST SCENE!
 
-
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
                 if (agent.isStopped || DistanceToMarker() < differentdistance)
                 {
-                    
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
+
+                    if (!canPlaySound)
+                        return;
+                    canPlaySound = false;
+                    audio.Play();
                 }
-                
-                
-                
                 else if (!agent.isStopped && DistanceToMarker() > differentdistance)
                 {
-                    audio.Play();
+                    canPlaySound = true;
                     agent.angularSpeed = 5000;
                     targetDest.GetComponent<MeshRenderer>().enabled = true;
                 }
@@ -119,7 +120,7 @@ namespace Team5.Movement
             // can't move if dead
             if (this.entity.IsDead)
             {
-                Debug.Log("Can't move yet bro, I'm dead");
+                Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
                 
             }
             // can't move if reviving and standing up

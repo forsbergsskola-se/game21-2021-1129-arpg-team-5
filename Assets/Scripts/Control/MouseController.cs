@@ -27,57 +27,6 @@ namespace Team5.Control
         }
         
         
-        
-        // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
-        // private void Update()
-        // {
-        //     if (Input.GetMouseButtonDown(0))
-        //     {
-        //         mouseClicked = true;
-        //         GameObject.Find("Player").GetComponent<Move>().Cancel();
-        //         // Invoke a event to signify for others that the player clicked something.
-        //         ChangedTarget?.Invoke(this, true);
-        //     }
-        //     else
-        //     {
-        //         mouseClicked = false;
-        //     }
-        //     
-        //     int layermask = 1 << 13;
-        //     layermask = ~layermask;
-        //     
-        //     ray = cameraObject.ScreenPointToRay(Input.mousePosition);
-        //
-        //     if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask)) 
-        //     {
-        //         SetCursorTexture(null);
-        //         
-        //         // if (Input.GetMouseButtonDown(0))
-        //         //     GameObject.Find("Player").GetComponent<Move>().Cancel();
-        //         
-        //         return;
-        //     }
-        //
-        //     // if (hit.collider.gameObject.TryGetComponent(out IInteractable interact))
-        //     // {
-        //     //     SetCursorTexture(interact.mouseTexture);
-        //     //
-        //     //     if (mouseClicked)
-        //     //     {
-        //     //         interact.OnClick(hit.point);
-        //     //         if (hit.collider.TryGetComponent(out OutlineController outlineController))
-        //     //         {
-        //     //             outlineController.OnClick();
-        //     //         }
-        //     //     }
-        //     //     else 
-        //     //         interact.OnHover();
-        //     // }
-        //     else
-        //     {
-        //         SetCursorTexture(null);
-        //     }
-        // }
 
         private void Update()
         {
@@ -123,14 +72,15 @@ namespace Team5.Control
                 mouseClicked = false;
             }
         }
-        
-        
+
+        public LayerMask mask;
         
         private bool TryCastRaySuccess()
         {
-            // Ignore layer 13. This layer is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes.
-            int layermask = 1 << 13;
+            // Ignore layer 13 and 2. Layer 13 is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes. Layer 2 is IgnoreRaycast.
+            int layermask = 1 << 13 | 1 << 2;
             layermask = ~layermask;
+            mask = layermask;
             
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 

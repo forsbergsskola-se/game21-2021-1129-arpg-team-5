@@ -49,7 +49,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4313666629939256661
 Transform:
@@ -154,6 +154,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3379836402047742272, guid: 208d3df1529e1064eb0246a6b2663aea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 208d3df1529e1064eb0246a6b2663aea, type: 3}
 --- !u!4 &2310612109155824808 stripped
@@ -235,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2e7f1c883253a3b41b59eed8c9012ca5, type: 3}
       propertyPath: m_Name
       value: Pillar Fbx
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e7f1c883253a3b41b59eed8c9012ca5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e7f1c883253a3b41b59eed8c9012ca5, type: 3}
@@ -425,6 +433,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 208d3df1529e1064eb0246a6b2663aea, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379836402047742272, guid: 208d3df1529e1064eb0246a6b2663aea, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

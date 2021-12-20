@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5354488819407242953}
   - component: {fileID: 5544139879925855329}
   m_Layer: 0
-  m_Name: Levee
+  m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,6 +1747,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2058835752819664891}
+  - component: {fileID: 8919413687366364423}
+  - component: {fileID: 4568416897394591532}
+  - component: {fileID: 2691001377604441599}
+  - component: {fileID: 7498974367945196287}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -1771,6 +1775,64 @@ Transform:
   m_Father: {fileID: 8493882178711309658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8919413687366364423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927616136849515082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4568416897394591532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927616136849515082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e40ad3296c0654b9e1f366d01f60d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrier: {fileID: 0}
+  OnHoverMousetexture: {fileID: 2800000, guid: ad6177de6414cb44a928a7c028f06d13, type: 3}
+--- !u!114 &2691001377604441599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927616136849515082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978dbc6fb56581540977d81204b586f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  OutlineColor: {r: 1, g: 0.8469602, b: 0, a: 1}
+  OutlineWidth: 2.5
+  IsClicked: 0
+--- !u!114 &7498974367945196287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927616136849515082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8493882178711309632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,6 +1955,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 223.8328
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4e5b1fe7fc3473148aec8594c9fd329d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5b1fe7fc3473148aec8594c9fd329d, type: 3}
 --- !u!4 &1284626261398756573 stripped
@@ -1975,6 +2041,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_TOP (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
 --- !u!4 &7441354673278886484 stripped
@@ -2056,6 +2126,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
       propertyPath: m_Name
       value: Wall_TOP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a54d82f0ae9d744b9dde0b91003a9c, type: 3}
