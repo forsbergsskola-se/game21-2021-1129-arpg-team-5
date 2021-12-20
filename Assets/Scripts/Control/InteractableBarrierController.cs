@@ -18,7 +18,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     private Vector3 TargetPosition;
     
-    private bool isLocked = true;
+    public bool isLocked = false;
     private bool waitForSound;
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
     
@@ -41,7 +41,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
         // Temporary 
-        StartCoroutine(UnlockDoor());
+        // StartCoroutine(UnlockDoor());
     }
     
     
