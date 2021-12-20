@@ -20,7 +20,7 @@ public class ShopStall : MonoBehaviour, IInteractable
     private GameObject player;
     private Vector3 TargetPosition;
     public Texture2D mouseTexture => shopCursor;
-    private GameObject ShopText;
+    private GameObject NameTag;
     private GameObject ShopTalk;
     private int Skulls;
     public GameObject GoldenSkull;
@@ -43,7 +43,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         ShopTalk = FindObjectOfType<HUD>().ShopText;
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
-        ShopText = this.gameObject.transform.Find("Shop Text").gameObject;
+        NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         
         button1 = yesButton.gameObject;
@@ -208,7 +208,7 @@ public class ShopStall : MonoBehaviour, IInteractable
     
     public void OnHoverEnter()
     {
-        ShopText.SetActive(true);
+        NameTag.SetActive(true);
     }
     
     public void OnHoverExit()
@@ -217,7 +217,7 @@ public class ShopStall : MonoBehaviour, IInteractable
 
     void OnMouseExit()
     {
-        ShopText.SetActive(false);
+        NameTag.SetActive(false);
     }
     
     
