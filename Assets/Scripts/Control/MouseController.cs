@@ -27,57 +27,6 @@ namespace Team5.Control
         }
         
         
-        
-        // Todo: This heavy use of Input.GetMouseButtonDown is not nice. Try to find a nicer implementation.
-        // private void Update()
-        // {
-        //     if (Input.GetMouseButtonDown(0))
-        //     {
-        //         mouseClicked = true;
-        //         GameObject.Find("Player").GetComponent<Move>().Cancel();
-        //         // Invoke a event to signify for others that the player clicked something.
-        //         ChangedTarget?.Invoke(this, true);
-        //     }
-        //     else
-        //     {
-        //         mouseClicked = false;
-        //     }
-        //     
-        //     int layermask = 1 << 13;
-        //     layermask = ~layermask;
-        //     
-        //     ray = cameraObject.ScreenPointToRay(Input.mousePosition);
-        //
-        //     if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask)) 
-        //     {
-        //         SetCursorTexture(null);
-        //         
-        //         // if (Input.GetMouseButtonDown(0))
-        //         //     GameObject.Find("Player").GetComponent<Move>().Cancel();
-        //         
-        //         return;
-        //     }
-        //
-        //     // if (hit.collider.gameObject.TryGetComponent(out IInteractable interact))
-        //     // {
-        //     //     SetCursorTexture(interact.mouseTexture);
-        //     //
-        //     //     if (mouseClicked)
-        //     //     {
-        //     //         interact.OnClick(hit.point);
-        //     //         if (hit.collider.TryGetComponent(out OutlineController outlineController))
-        //     //         {
-        //     //             outlineController.OnClick();
-        //     //         }
-        //     //     }
-        //     //     else 
-        //     //         interact.OnHover();
-        //     // }
-        //     else
-        //     {
-        //         SetCursorTexture(null);
-        //     }
-        // }
 
         private void Update()
         {
