@@ -24,6 +24,7 @@ namespace Team5.Combat
         private float timeSinceLastAttack = Mathf.Infinity;
 
         private GameObject player;
+        private Entity thisEntity;
         private GameObject enemyIndicator;
         private Entity target;
         
@@ -47,6 +48,7 @@ namespace Team5.Combat
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
+            thisEntity = GetComponent<Entity>();
 
             AccuracyPercentage = baseAccuracyPercentage;
             CriticalChance = baseCriticalChance;
@@ -109,16 +111,23 @@ namespace Team5.Combat
         
         private void AttackBehaviour()
         {
-            //Target Looking at Y position only.
-            Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-            transform.LookAt(targetPosition);
-            if (timeSinceLastAttack > timeBetweenAttacks)
+            if (!thisEntity.IsDead)
             {
-                if (!target.IsDead)
+                //Target Looking at Y position only.
+                Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                transform.LookAt(targetPosition);
+                if (timeSinceLastAttack > timeBetweenAttacks)
                 {
-                    TriggerAttack();
-                    timeSinceLastAttack = 0;
+                    if (!target.IsDead)
+                    {
+                        TriggerAttack();
+                        timeSinceLastAttack = 0;
+                    }
                 }
+            }
+            else
+            {
+                Debug.Log(name + " is dead and can't attack. <color=cyan>[ Why is AttackBehaviour called when this entity is dead? ]</color>");
             }
         }
 
