@@ -17,7 +17,7 @@ namespace Team5.Entities.Objects.DestroyableObject
 
         private void Start()
         {
-            player= GameObject.FindWithTag("Player");
+            player = GameObject.FindWithTag("Player");
             Vector3.Distance(player.transform.position, transform.position);
         }
         
@@ -34,8 +34,8 @@ namespace Team5.Entities.Objects.DestroyableObject
         
         public void OnHoverExit()
         {
-            Nametag.SetActive(false);
-            Debug.Log($"mouse over {this.name}");
+            /*Nametag.SetActive(false);
+            Debug.Log($"mouse over {this.name}");*/
         }
 
         public void OnClick(Vector3 mouseClickVector)
@@ -45,8 +45,8 @@ namespace Team5.Entities.Objects.DestroyableObject
         
         public void OnHoverEnter()
         {
-            Nametag.SetActive(true);
-            Debug.Log($"mouse on {this.name}");
+            /*Nametag.SetActive(true);
+            Debug.Log($"mouse on {this.name}");*/
         }
     }
 }
