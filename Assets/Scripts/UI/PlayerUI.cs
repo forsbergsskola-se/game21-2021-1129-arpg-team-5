@@ -22,12 +22,12 @@ namespace Team5.Ui
         private Entity entity;
         private float healthCount;        
         private int reviveCount;
-        public int skullCount = 0;
-        
-        [HideInInspector] public int whiteSkulls = 0;
-        [HideInInspector] public int redSkulls = 0;
-        [HideInInspector] public int purpleSkulls = 0;
-        [HideInInspector] public int goldSkulls = 0;
+        public int skullCount { get; private set; }= 0;
+
+        public int whiteSkulls { get; private set; } = 0;
+        public int redSkulls { get; private set; } = 0;
+        public int purpleSkulls { get; private set; } = 0;
+        public int goldSkulls { get; private set; } = 0;
 
         private Fighter fighter;
         private int killCount;
