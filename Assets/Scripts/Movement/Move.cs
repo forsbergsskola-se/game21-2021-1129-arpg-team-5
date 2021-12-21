@@ -26,6 +26,7 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         private bool canPlaySound;
+        private FMOD.Studio.EventInstance walkingInstance;
         
         //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         public bool isOnTestScene;
@@ -46,6 +47,7 @@ namespace Team5.Movement
             
             targetDest = GameObject.Find("Navigation Sphere");
             audio = player.GetComponent<AudioSource>();
+            walkingInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments   (1)");
         }
 
 
@@ -68,7 +70,7 @@ namespace Team5.Movement
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
-
+                    walkingInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                     if (!canPlaySound)
                         return;
                     canPlaySound = false;
@@ -111,6 +113,7 @@ namespace Team5.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
+            walkingInstance.start();
         }
 
         
@@ -179,6 +182,11 @@ namespace Team5.Movement
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(destination, path);
             return path.status != NavMeshPathStatus.PathPartial;
+        }
+
+        public void MoveToAudio()
+        {
+           
         }
     }
 }

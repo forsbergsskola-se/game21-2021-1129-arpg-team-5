@@ -16,8 +16,8 @@ namespace Team5.World.Interactables
         private float movementPerFrame;
         private float totalAnimationFrames;
         private float frameTime;
-        private AudioSource OpeningSound;
-
+        // private AudioSource OpeningSound;
+        public FMODUnity.EventReference LockedDoor;
         private const float AnimationFramerate = 60;
 
         
@@ -27,7 +27,7 @@ namespace Team5.World.Interactables
             totalAnimationFrames = Mathf.Round(timeToOpen * AnimationFramerate);
             movementPerFrame = openDegrees / totalAnimationFrames;
             frameTime = 1 / AnimationFramerate;
-            OpeningSound = GetComponent<AudioSource>();
+            // OpeningSound = GetComponent<AudioSource>();
         }
 
         
@@ -36,8 +36,8 @@ namespace Team5.World.Interactables
         {
             if (isOpen) 
                 return;
-
-            OpeningSound.Play();
+            FMODUnity.RuntimeManager.PlayOneShot(LockedDoor);
+            // OpeningSound.Play();
             StartCoroutine(OpeningAnimation());
         }
 
