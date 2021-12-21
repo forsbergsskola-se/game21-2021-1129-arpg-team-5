@@ -23,13 +23,11 @@ namespace Team5.Entities.Objects.DestroyableObject
         
         protected override void OnDeath()
         {
+            //Nametag.SetActive(false);
             gameObject.SetActive(false);
             Instantiate(SmokeSystem, transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
             IsDead = true;
-            
-            Nametag.SetActive(false);
-            Debug.Log($"mouse over {this.name}");
         }
         
         public void OnHoverExit()
