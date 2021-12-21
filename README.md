@@ -38,7 +38,7 @@ SFX:
 -Gillgamesh
 
 Music:
-- Rafael Wolde Selassie
+- Raphael Wolde Selassie
 
 //Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
