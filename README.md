@@ -12,7 +12,7 @@
 
 {video}
 
-Avem Mortis is an ARPG Dungeon Crawler Group Project made under the first term 1 of our studies for Forsbergs Skola.
+Avem Mortis is an ARPG Dungeon Crawler Group Project made under the first term of our studies for Forsbergs Skola.
 
 ## TEAM 5
 
