@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Team5.Entities.Enemies
 {
-    public abstract class Enemy : Entity, IInteractable
+    public class Enemy : Entity, IInteractable
     {
         // TODO: Update this with designer choice. Maybe a healthbar instead, or something else.
         private TMP_Text healthText;
