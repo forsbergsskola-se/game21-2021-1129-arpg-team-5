@@ -7,42 +7,42 @@ public class LevelSystem
 {
     public event EventHandler OnExperienceChanged;
     public event EventHandler OnLevelChanged;
-    
-    private int level;
-    private int experience;
-    private int experienceToNextLevel;
+
+    private int _level;
+    private int _experience;
+    private int _experienceToNextLevel;
 
     public LevelSystem()
     {
-        level = 0;
-        experience = 0;
-        experienceToNextLevel = 100;
+        _level = 0;
+        _experience = 0;
+        _experienceToNextLevel = 100;
     }
 
     public void AddExperience(int amount)
     {
-        experience += amount;
-        if (experience >= experienceToNextLevel)
+        _experience += amount;
+        if (_experience >= _experienceToNextLevel)
         {
             //Enough exp to lvl up
-            level++;
-            experience -= experienceToNextLevel;
+            _level++;
+            _experience -= _experienceToNextLevel;
             if (OnLevelChanged != null) OnLevelChanged(this, EventArgs.Empty);
 
         }
 
         if (OnExperienceChanged != null) OnExperienceChanged(this, EventArgs.Empty);
-        
+
     }
 
     public int GetLevelNumber()
     {
-        return level;
+        return _level;
     }
 
     public float GetExperienceNormalized()
     {
-        return (float)experience / experienceToNextLevel;
-        
+        return (float) _experience / _experienceToNextLevel;
+
     }
 }

@@ -1,41 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelWindow : MonoBehaviour
 {
-    private Text levelText;
-    private Image experienceBarImage;
-    private LevelSystem levelSystem;
+    private Text _levelText;
+    private Image _experienceBarImage;
+    private LevelSystem _levelSystem;
 
     private void Awake()
     {
-        levelText = transform.Find("levelText").GetComponent<Text>();
-        experienceBarImage = transform.Find("experienceBar").Find("bar").GetComponent<Image>();
+        _levelText = transform.Find("levelText").GetComponent<Text>();
+        _experienceBarImage = transform.Find("experienceBar").Find("bar").GetComponent<Image>();
         
     }
 
     private void SetExperienceBarSize(float experienceNormalized)
     {
-        experienceBarImage.fillAmount = experienceNormalized;
-        
-        
-        SetExperienceBarSize(.5f);
-        SetLevelNumber(7);
+        _experienceBarImage.fillAmount = experienceNormalized;
     }
 
 
 
     private void SetLevelNumber(int levelNumber)
     {
-        levelText.text = "LEVEL\n" + (levelNumber + 1);
+        _levelText.text = "LEVEL\n" + (levelNumber + 1);
     }
 
     public void SetLevelSystem(LevelSystem levelSystem)
     {
-        this.levelSystem = levelSystem;
+        this._levelSystem = levelSystem;
         
         SetLevelNumber(levelSystem.GetLevelNumber());
         SetExperienceBarSize(levelSystem.GetExperienceNormalized());
@@ -45,11 +39,11 @@ public class LevelWindow : MonoBehaviour
     }
     private void LevelSystem_OnLevelChanged(object sender, EventArgs e)
     {
-        SetLevelNumber(levelSystem.GetLevelNumber());
+        SetLevelNumber(_levelSystem.GetLevelNumber());
     }
 
     private void LevelSystem_OnExperienceChanged(object sender, EventArgs e)
     {
-        SetExperienceBarSize(levelSystem.GetExperienceNormalized());
+        SetExperienceBarSize(_levelSystem.GetExperienceNormalized());
     }
 }

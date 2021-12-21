@@ -15,6 +15,6 @@ public class Testing : MonoBehaviour
         levelSystem.AddExperience(60);
         Debug.Log(levelSystem.GetLevelNumber());
         
-        levelWindow.SetLevelSystem(levelSystem);
+        
     }
 }
