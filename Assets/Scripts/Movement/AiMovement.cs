@@ -28,13 +28,16 @@ namespace Team5.Movement
         // Ui stuff
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
-        private TMP_Text healthText;
+        public TMP_Text healthText;
 
         private int currentWaypointIndex = 0;
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
         private float timeSinceArrivedAtWaypoint;
 
+        private Vector3 position;
+        private Quaternion rotation;
+     
         private void Start()
         {
             entity = GetComponent<Entity>();
@@ -44,12 +47,18 @@ namespace Team5.Movement
 
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
-            healthText = this.GetComponentInChildren<TMP_Text>();
             guardPosition = transform.position;
+            rotation = healthText.transform.rotation;
         }
 
         private void Update()
         {
+            position = this.transform.position;
+            healthText.transform.position = position;
+            healthText.transform.rotation = rotation;
+           
+                
+
             if (entity.IsDead)
             {
                 // disables children
