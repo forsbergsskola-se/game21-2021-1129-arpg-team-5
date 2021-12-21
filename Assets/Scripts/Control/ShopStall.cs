@@ -33,6 +33,7 @@ public class ShopStall : MonoBehaviour, IInteractable
     
     // skulls
     private int Skulls;
+    public int SkullsTotal = 22;
     private GameObject SkullIcons;
     private int whiteSkulls;
     private int whiteSkullsTotal = 2;
@@ -42,7 +43,7 @@ public class ShopStall : MonoBehaviour, IInteractable
     private int purpleSkullsTotal = 1;
     private int goldSkulls;
     private int goldSkullsTotal = 1;
-    
+
     // buttons
     private GameObject button1;
     private GameObject button2;
@@ -62,15 +63,15 @@ public class ShopStall : MonoBehaviour, IInteractable
         player = GameObject.FindGameObjectWithTag("Player");
         ShopTalk = FindObjectOfType<HUD>().ShopText;
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
+        NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
         SkullIcons = FindObjectOfType<HUD>().SkullIcons;
+        
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
-        NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
         
         button1 = Button1.gameObject;
         button2 = Button2.gameObject;
         button3 = Button3.gameObject;
-
         button1Text = Button1.GetComponentInChildren<TextMeshProUGUI>();
         button2Text = Button2.GetComponentInChildren<TextMeshProUGUI>();
         button3Text = Button3.GetComponentInChildren<TextMeshProUGUI>();
@@ -78,6 +79,8 @@ public class ShopStall : MonoBehaviour, IInteractable
         skullQuestRulesRead = false;
         skullQuestAccepted = false;
     }
+    
+    // Activated when Player enters invisible collider
 
     private void OnCollisionEnter(Collision other)
     {
@@ -88,6 +91,7 @@ public class ShopStall : MonoBehaviour, IInteractable
             ShopTalk.SetActive(true);
             buttonActive(true, true, false);
 
+            // Only first time dialogue
             if (firstVisit == true)
             {
                 firstVisit = false;
@@ -95,19 +99,25 @@ public class ShopStall : MonoBehaviour, IInteractable
                 button1Text.text = "Hello friend!";
                 button2Text.text = "Not interested";
             }
+            
+            // Every other time
             else
             {
                 Dialogue.text = "Hi again, friend!";
                 button1Text.text = "Oh hai!";
                 button2Text.text = "Not today";
             }
+            
+            // Detects button clicks
             Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
     }
     
+    // Button 1
     private void ParameterOnClickYesStart(string test)
     {
+        // Quest Offered:
         if (skullQuestAccepted == false )
         {
             buttonActive(true, true, false);
@@ -120,17 +130,20 @@ public class ShopStall : MonoBehaviour, IInteractable
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
         
+        // Check for rules skip
         else if (skullQuestRulesRead == false)
         {
             SkullScenarioRules();
         }
         
+        // Shortcut to main interactions
         else if (skullQuestAccepted == true && skullQuestRulesRead == true)
         {
             SkullScenario();
         }
     }
 
+    // Triggers exit text
     private void ParameterOnClickNoStart(string test)
     {
         Refresh();
@@ -138,6 +151,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         WaitExit();
     }
     
+    // Rule question
     private void ParameterOnClickYes(string test)
     {
         skullQuestAccepted = true;
@@ -152,21 +166,24 @@ public class ShopStall : MonoBehaviour, IInteractable
         }
     }
     
+    // Rules trigger
     private void ParameterOnClickYesRules(string test)
     {
         SkullScenarioRules();
     }
 
+    // Rules text 1
     private void SkullScenarioRules()
     {
         buttonActive(true, false, false);
         
-        Dialogue.text = "See this big golden skull behind me? If you want it collect 22 skulls for me.";
+        Dialogue.text = $"See this big golden skull behind me? If you want it collect {SkullsTotal} skulls for me.";
         button1Text.text = "Continue";
         
         Button1.onClick.AddListener( () => ParameterOnClickYesRules2($"{nameof(Button1)} was pressed!"));
     }
 
+    // Rules text 2
     private void ParameterOnClickYesRules2(string test)
     {
         skullQuestRulesRead = true;
@@ -176,36 +193,42 @@ public class ShopStall : MonoBehaviour, IInteractable
 
         Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
     }
-
+    
+    // Skull totals list.
     private void ParameterOnClickTotals(string test)
     {
+        // Updates int vales only here when it's needed.
         whiteSkulls = player.GetComponent<PlayerUI>().whiteSkulls;
         redSkulls = player.GetComponent<PlayerUI>().redSkulls;
         purpleSkulls = player.GetComponent<PlayerUI>().purpleSkulls;
         goldSkulls = player.GetComponent<PlayerUI>().goldSkulls;
 
         buttonActive(true, true, false);
+        button1Text.text = "Return";
+        button2Text.text = "Leave";
+        
+        // Changes formatting + adds icons
         SkullIcons.SetActive(true);
         Dialogue.fontSize = 30;
+        
+        // Skull print
         Dialogue.text = $"White skulls =	{whiteSkulls} / {whiteSkullsTotal} \n" +
                         $"Red Skulls =	{redSkulls} / {redSkullsTotal} \n" +
                         $"Purple Skulls =	{purpleSkulls} / {purpleSkullsTotal} \n" +
                         $"Gold Skulls =	{goldSkulls} / {goldSkullsTotal}";
-
-        button1Text.text = "Return";
-        button2Text.text = "Leave";
-
-
+        
         Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
         Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
+    // Main Skull Quest Interaction
     private void SkullScenario()
     {
         Skulls = player.GetComponent<PlayerUI>().skullCount;
         Refresh();
         buttonActive(false, false, false);
         
+        // If player hasn't any skulls yet
         if (Skulls == 0)
         {
             buttonActive(true, true, true);
@@ -220,7 +243,8 @@ public class ShopStall : MonoBehaviour, IInteractable
             Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
         }
 
-        else if (Skulls == 22)
+        // If player has collected all skulls
+        else if (Skulls == SkullsTotal)
         {
             Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
             finishedQuest = true;
@@ -230,11 +254,12 @@ public class ShopStall : MonoBehaviour, IInteractable
             StartCoroutine(Wait(5));
         }
 
-        else if (Skulls > 0 && Skulls < 22)
+        // If player has some skulls
+        else if (Skulls > 0 && Skulls < SkullsTotal)
         {
             buttonActive(true, true, true);
 
-            Dialogue.text = $"You've found some skulls! But you still need {(22 - Skulls)} more to trade!";
+            Dialogue.text = $"You've found some skulls! But you still need {(SkullsTotal - Skulls)} more to trade!";
             button1Text.text = "Rules please";
             button2Text.text = "I'll be back.";
             button3Text.text = "See totals";
@@ -244,6 +269,7 @@ public class ShopStall : MonoBehaviour, IInteractable
             Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
         }
 
+        // If quest is completed
         else
         {
             buttonActive(false, true, true);
@@ -253,10 +279,10 @@ public class ShopStall : MonoBehaviour, IInteractable
             button3Text.text = "See totals";
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
             Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
-
         }
     }
     
+    // When walking away from shop
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject == player)
@@ -265,21 +291,19 @@ public class ShopStall : MonoBehaviour, IInteractable
         }
     }
     
+    // Text trigger to identify shop
     public void OnHoverEnter()
     {
         NameTag.SetActive(true);
     }
     
+    // Disables text when not hovering over
     public void OnHoverExit()
-    {
-    }
-
-    void OnMouseExit()
     {
         NameTag.SetActive(false);
     }
-    
-    
+
+    // Player technicalities (burrowed from door/gate logic)
     public void OnClick(Vector3 mouseClickVector)
     {
         var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
@@ -304,6 +328,7 @@ public class ShopStall : MonoBehaviour, IInteractable
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
     
+    // Multi-button quick set-active method for hiding and showing different combos
     private void buttonActive(bool buttonOne, bool buttonTwo, bool buttonThree)
     {
         button1.SetActive(buttonOne);
@@ -311,13 +336,15 @@ public class ShopStall : MonoBehaviour, IInteractable
         button3.SetActive(buttonThree);
     }
 
+    // Spawns rewards after skulls have been taken
     IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
         GoldenSkull.transform.position = new Vector3(239, 5, -100);
         Dialogue.text = $"So ta-dah! One big shiny thing for lots of small shiny things. Enjoy, I guess?";
     }
-
+    
+    // Exit goodbyes
     private void WaitExit()
     {
         if (skullQuestAccepted == false)
@@ -328,7 +355,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         
         else if (finishedQuest == false)
         {
-            Dialogue.text = $"Bye! \nRemember: \n{(22 - Skulls)} more Skulls!";
+            Dialogue.text = $"Bye! \nRemember: \n{(SkullsTotal - Skulls)} more Skulls!";
         }
 
         else
@@ -337,6 +364,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         }
     }
 
+    // Formatting soft reset
     private void Refresh()
     {
         Dialogue.fontSize = 40;
