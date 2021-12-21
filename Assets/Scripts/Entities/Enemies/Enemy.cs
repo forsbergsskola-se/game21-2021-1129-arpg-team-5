@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Team5.Control;
 using Team5.Core;
@@ -22,7 +23,7 @@ namespace Team5.Entities.Enemies
         public SkinnedMeshRenderer mesh;
         private MeshRenderer enemyIndicator2;
         private MeshRenderer enemyIndicator1;
-
+     
         private bool textEnabled = false;
         void ChangedTarget(object sender, bool temp)
         {
@@ -33,8 +34,6 @@ namespace Team5.Entities.Enemies
             }
         }
 
-
-
         public override float Health
         {
             get => base.Health;
@@ -42,8 +41,8 @@ namespace Team5.Entities.Enemies
             {
                 float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(hurt.ToString());
-                healthText.SetText(Health.ToString());
+                hurtText.SetText(Mathf.RoundToInt(hurt).ToString());
+                healthText.SetText(Mathf.RoundToInt(Health).ToString());
                 
                 blood.gameObject.SetActive(true);
                 blood.Play();
@@ -54,8 +53,11 @@ namespace Team5.Entities.Enemies
         
         protected override void Awake()
         {
-            healthText = GetComponentInChildren<TMP_Text>();
-            hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
+            //healthText = 
+            
+            healthText = transform.Find("Health (TMP)").GetComponent<TMP_Text>();
+            hurtText = transform.Find("Hurt Health (TMP)").GetComponent<TMP_Text>();
+
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
             deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
             enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
