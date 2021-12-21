@@ -7382,6 +7382,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &350784719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7292096548842268690, guid: af566a725a78b674c8dc6ecf4a79fc2a, type: 3}
+  m_PrefabInstance: {fileID: 1037468161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &350784726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350784719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -741599271
+      Data2: 1233717033
+      Data3: 1450243997
+      Data4: -1510529467
+    Path: event:/DoorLocked
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &351969701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7836238932822904563, guid: da17f1072335e5041b1a0a64a0fe8661, type: 3}
@@ -19611,6 +19646,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transparency: {fileID: 2100000, guid: d908b43ce54679c478f1a9af479478a3, type: 2}
+--- !u!114 &1006270952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87405533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 957772419
+      Data2: 1251969307
+      Data3: 986794378
+      Data4: 553908129
+    Path: event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments  
+      (1)
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1006270953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87405533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -745935350
+      Data2: 1172914599
+      Data3: -816624227
+      Data4: -1142146889
+    Path: event:/Team_5_-_Crypt
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1022474295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19919,7 +20015,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 319504790}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7292096548842268680, guid: af566a725a78b674c8dc6ecf4a79fc2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af566a725a78b674c8dc6ecf4a79fc2a, type: 3}
 --- !u!43 &1039862230
 Mesh:
@@ -24475,6 +24572,20 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1261211593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261211582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!4 &1262637754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3116092766921631156, guid: 9173bf4bf326ada4e838a0dded3db0ed, type: 3}
@@ -35455,7 +35566,8 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1006270930}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2899094109106625461, guid: 17c6b0c19598b3442bbcfcbed3883e3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 17c6b0c19598b3442bbcfcbed3883e3b, type: 3}
 --- !u!1001 &1821463600
 PrefabInstance:
