@@ -17,7 +17,7 @@ namespace Team5.Ui
         private TMP_Text reviveText;
         private TMP_Text killText;
         private TMP_Text lvlText;
-        private TMP_Text scoreText;
+        private TMP_Text skullText;
         
         private Entity entity;
         private float healthCount;        
@@ -43,7 +43,7 @@ namespace Team5.Ui
             reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
-            scoreText = FindObjectOfType<HUD>().ScoreText;
+            skullText = FindObjectOfType<HUD>().SkullCounter;
         }
 
         void Update()
@@ -59,7 +59,7 @@ namespace Team5.Ui
 
             if (skullCount >= 0)
             {
-                scoreText.text = "" + skullCount;
+                skullText.text = "" + skullCount;
             }
         }
 
