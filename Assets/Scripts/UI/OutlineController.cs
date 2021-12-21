@@ -93,8 +93,11 @@ namespace Team5.Ui
 
         public void DisableOutlineController()
         {
-            enabled = false;
-            outline.enabled = false;
+            if (enabled)
+            {
+                enabled = false;
+                outline.enabled = false;
+            }
         }
 
         public void EnableOutLineController()
