@@ -24,7 +24,6 @@ public class ShopStall : MonoBehaviour, IInteractable
     private GameObject NameTag;
    
     // interactions
-    private GameObject ShopTalk;
     public GameObject GoldenSkull;
     private TMP_Text Dialogue;
     public Button Button1;
@@ -62,7 +61,6 @@ public class ShopStall : MonoBehaviour, IInteractable
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        ShopTalk = FindObjectOfType<HUD>().ShopText;
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
         SkullIcons = FindObjectOfType<HUD>().SkullIcons;
@@ -88,10 +86,11 @@ public class ShopStall : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             Refresh();
-            FindObjectOfType<HUD>().HudUIActive(false,false, false, false, false, false, true);
-
-            ShopTalk.SetActive(true);
+            
+            // multiple HUD elements enabled and disabled onEnter
+            FindObjectOfType<HUD>().HudUIActive(false,false, true, false, false, false, true);
             buttonActive(true, true, false);
+            NameTag.SetActive(true);
 
             // Only first time dialogue
             if (firstVisit == true)
@@ -115,6 +114,17 @@ public class ShopStall : MonoBehaviour, IInteractable
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
     }
+    
+    // When walking away from shop
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject == player)
+        {
+            // Activates and deactivates HUD elements onExit
+            FindObjectOfType<HUD>().HudUIActive(true,true, false, true, true, true, true);
+        }
+    }
+
     
     // Button 1
     private void ParameterOnClickYesStart(string test)
@@ -281,15 +291,6 @@ public class ShopStall : MonoBehaviour, IInteractable
             button3Text.text = "See totals";
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
             Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
-        }
-    }
-    
-    // When walking away from shop
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject == player)
-        {
-            ShopTalk.SetActive(false);
         }
     }
     
