@@ -155,12 +155,21 @@ namespace Team5.Combat
             if (Random.Range(0, 100) < CriticalChance)
             {
                 var totalAttackValue = weaponDamage * criticalDamageMultiplier;
-                Debug.Log($"{this.name} can land critical hit");
+                
+                if (target.CompareTag("Enemy"))
+                {
+                    Debug.Log($"{this.name} can land critical hit");
+                }
                 // hit accuracy higher than chance, can attack with critical hit
                 if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
-                    Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
+                    
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
+
+                    }
                     target.TakeDamage(totalAttackValue);
                 }
 
@@ -169,7 +178,10 @@ namespace Team5.Combat
                 {
                     target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy < {accuracyChance}0% chance");
-                    Debug.Log($"{this.name}'s critical hit missed {target.name}!");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name}'s critical hit missed {target.name}!");
+                    }
                 }
             }
             // attack without critical hit
@@ -178,17 +190,22 @@ namespace Team5.Combat
                 if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
-                    Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
+                    }
                     target.TakeDamage(weaponDamage);
                 }
                 
                 //  misses attack due to low accuracy
                 else
-
                 {
                     target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
-                    Debug.Log($"{this.name}'s attack missed {target.name}!");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name}'s attack missed {target.name}!");
+                    }
                 }
             }
 
