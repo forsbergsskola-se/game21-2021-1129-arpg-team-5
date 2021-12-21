@@ -3,7 +3,6 @@ using Team5.Core;
 using TMPro;
 using UnityEngine;
 
-
 namespace Team5.Ui
 {
     public class HUD : MonoBehaviour
@@ -40,9 +39,11 @@ namespace Team5.Ui
             InventoryMenu.SetActive(inventory);
             SkullHolder.SetActive(skulls);
         }
-
+        
         public void ShopUIActive(bool headPlayer, bool headNpc )
         {
+            // May need multiple heads here for converstations
+            // Can be updated for shop objects UI
             DialogueHeadMain.SetActive(headPlayer);
             DialogueHeadNPC.SetActive(headNpc);
         }

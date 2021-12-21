@@ -18,8 +18,7 @@ namespace Team5.Movement
         [SerializeField] private PatrolPath patrolPath;
         [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] private float waypointWaitingTime = 1f;
-
-
+        
         private Entity entity;
         private Fighter fighter;
         private Move move;
@@ -29,27 +28,44 @@ namespace Team5.Movement
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
         private TMP_Text healthText;
+        private TMP_Text hurtText;
 
         private int currentWaypointIndex = 0;
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
         private float timeSinceArrivedAtWaypoint;
 
+        private Vector3 healthposition;
+        private Quaternion healthRotation;
+        private Vector3 hurtHealthposition;
+     
         private void Start()
         {
             entity = GetComponent<Entity>();
             fighter = GetComponent<Fighter>();
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
+            
+            healthText = transform.Find("Health (TMP)").GetComponent<TMP_Text>();
+            hurtText = transform.Find("Hurt Health (TMP)").GetComponent<TMP_Text>();
 
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
-            healthText = this.GetComponentInChildren<TMP_Text>();
             guardPosition = transform.position;
+            healthRotation = healthText.transform.rotation;
         }
 
         private void Update()
         {
+            // Positions enemy health
+            healthposition = this.transform.position;
+            healthText.transform.position = healthposition + new Vector3(0f, 3.5f, 0f);
+            healthText.transform.rotation = healthRotation;
+
+            // Positions enemy hurt health
+            hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
+            hurtText.transform.rotation = healthRotation;
+
             if (entity.IsDead)
             {
                 // disables children

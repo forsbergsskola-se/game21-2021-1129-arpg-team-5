@@ -33,8 +33,6 @@ namespace Team5.Entities.Enemies
             }
         }
 
-
-
         public override float Health
         {
             get => base.Health;
@@ -42,11 +40,11 @@ namespace Team5.Entities.Enemies
             {
                 float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(hurt.ToString());
-                healthText.SetText(Health.ToString());
+                hurtText.SetText(Mathf.RoundToInt(hurt).ToString());
+                healthText.SetText(Mathf.RoundToInt(Health).ToString());
                 
-                blood.gameObject.SetActive(true);
-                blood.Play();
+                // blood.gameObject.SetActive(true);
+                // blood.Play();
                 hurtText.enabled = true;
                 StartCoroutine(WaitAndDisableHurtHealth());
             }
@@ -56,10 +54,10 @@ namespace Team5.Entities.Enemies
         {
             healthText = GetComponentInChildren<TMP_Text>();
             hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
-            blood = transform.Find("Blood").GetComponent<ParticleSystem>();
-            deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
-            enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
-            enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
+            // blood = transform.Find("Blood").GetComponent<ParticleSystem>();
+            // deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
+            // enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
+            // enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
             
             var mouseController = FindObjectOfType<MouseController>();
@@ -76,11 +74,11 @@ namespace Team5.Entities.Enemies
                 outlineController.DisableOutlineController();
 
             
-            if (enemyIndicator2.enabled == true)
-            {
-                enemyIndicator2.enabled = false;
-                enemyIndicator1.enabled = false;
-            }
+            // if (enemyIndicator2.enabled == true)
+            // {
+            //     enemyIndicator2.enabled = false;
+            //     enemyIndicator1.enabled = false;
+            // }
             
             StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
@@ -90,8 +88,8 @@ namespace Team5.Entities.Enemies
         {
             yield return new WaitForSeconds(damageHealthDecay);
             hurtText.enabled = false;
-            blood.Stop();
-            blood.gameObject.SetActive(false);
+            // blood.Stop();
+            // blood.gameObject.SetActive(false);
         }
         
         private IEnumerator WaitAndDisableDeath()
