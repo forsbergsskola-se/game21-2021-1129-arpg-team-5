@@ -45,7 +45,7 @@ Music:
 ## Design Documents
 
 - [Art Bible](https://docs.google.com/document/d/1kmmNRXxuQTUjEbA_zCKJrBUggH1VcWJWazhoLs_2uqg/edit?usp=sharing)
-- [Game Design Doc]()
+- [Game Design Doc](https://docs.google.com/document/d/1wN6nqEZCp5ByDDDxh-hWYSBEGwuz0tUw_kIYmtZ3RXg/edit?usp=sharing)
 - [Technical Design Doc](https://docs.google.com/document/d/1qFNCIbQrtsfrfUVcr83rFVf1SQEyY2pftagSwwIqA5k/edit?usp=sharing)
 
 ## Media
