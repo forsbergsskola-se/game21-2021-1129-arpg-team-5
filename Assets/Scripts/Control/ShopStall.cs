@@ -57,6 +57,7 @@ public class ShopStall : MonoBehaviour, IInteractable
     private bool skullQuestRulesRead;
     private bool skullQuestAccepted;
     private bool finishedQuest = false;
+
     
     private void Awake()
     {
@@ -84,10 +85,11 @@ public class ShopStall : MonoBehaviour, IInteractable
 
     private void OnCollisionEnter(Collision other)
     {
-        Refresh();
-        
         if (other.gameObject == player)
         {
+            Refresh();
+            FindObjectOfType<HUD>().HudUIActive(false,false, false, false, false, false, true);
+
             ShopTalk.SetActive(true);
             buttonActive(true, true, false);
 
