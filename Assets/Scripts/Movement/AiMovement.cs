@@ -28,15 +28,17 @@ namespace Team5.Movement
         // Ui stuff
         private GameObject enemyIndicator;
         private GameObject enemyIndicator2;
-        public TMP_Text healthText;
+        private TMP_Text healthText;
+        private TMP_Text hurtText;
 
         private int currentWaypointIndex = 0;
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
         private float timeSinceArrivedAtWaypoint;
 
-        private Vector3 position;
-        private Quaternion rotation;
+        private Vector3 healthposition;
+        private Quaternion healthRotation;
+        private Vector3 hurtHealthposition;
      
         private void Start()
         {
@@ -44,18 +46,23 @@ namespace Team5.Movement
             fighter = GetComponent<Fighter>();
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
+            healthText = GameObject.Find($"{this.name} Health (TMP)").GetComponent<TMP_Text>();
+            hurtText = GameObject.Find($"{this.name} Hurt Health (TMP)").GetComponent<TMP_Text>();
 
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             guardPosition = transform.position;
-            rotation = healthText.transform.rotation;
+            healthRotation = healthText.transform.rotation;
         }
 
         private void Update()
         {
-            position = this.transform.position;
-            healthText.transform.position = position;
-            healthText.transform.rotation = rotation;
+            healthposition = this.transform.position;
+            healthText.transform.position = healthposition + new Vector3(0f, 3.5f, 0f);
+            healthText.transform.rotation = healthRotation;
+            
+            hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
+            hurtText.transform.rotation = healthRotation;
            
                 
 
