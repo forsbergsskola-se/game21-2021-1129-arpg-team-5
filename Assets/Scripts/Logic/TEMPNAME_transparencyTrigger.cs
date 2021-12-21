@@ -18,7 +18,7 @@ public class TEMPNAME_transparencyTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cameraObject = GameObject.FindWithTag("MainCamera");
+        cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
         lastHit = new RaycastHit();
     }
 
@@ -30,8 +30,8 @@ public class TEMPNAME_transparencyTrigger : MonoBehaviour
 
         // layermask = ~layermask;
 
-        ray = new Ray(transform.position, transform.position - cameraObject.transform.position);
-        
+        ray = new Ray(transform.position,  cameraObject.transform.position - transform.position);
+
         // Gizmos.DrawLine(transform.position, transform.position - cameraObject.transform.position);
         // If the ray hits a object
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity, layermask))
