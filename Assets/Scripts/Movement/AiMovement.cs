@@ -18,8 +18,7 @@ namespace Team5.Movement
         [SerializeField] private PatrolPath patrolPath;
         [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] private float waypointWaitingTime = 1f;
-
-
+        
         private Entity entity;
         private Fighter fighter;
         private Move move;
@@ -46,8 +45,9 @@ namespace Team5.Movement
             fighter = GetComponent<Fighter>();
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
-            healthText = GameObject.Find($"{this.name} Health (TMP)").GetComponent<TMP_Text>();
-            hurtText = GameObject.Find($"{this.name} Hurt Health (TMP)").GetComponent<TMP_Text>();
+            
+            healthText = transform.Find("Health (TMP)").GetComponent<TMP_Text>();
+            hurtText = transform.Find("Hurt Health (TMP)").GetComponent<TMP_Text>();
 
             enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
             enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
@@ -57,14 +57,14 @@ namespace Team5.Movement
 
         private void Update()
         {
+            // Positions enemy health
             healthposition = this.transform.position;
             healthText.transform.position = healthposition + new Vector3(0f, 3.5f, 0f);
             healthText.transform.rotation = healthRotation;
-            
+
+            // Positions enemy hurt health
             hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
             hurtText.transform.rotation = healthRotation;
-           
-                
 
             if (entity.IsDead)
             {
