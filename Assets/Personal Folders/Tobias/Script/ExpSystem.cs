@@ -19,7 +19,7 @@ namespace Team5.Ui.ExpSystem
         
         public float expAddPerSec = 0.01f;
         public int expChunksAddAtOnce = 1;
-        public Text levelText;
+        public TMP_Text levelText;
         
         
 
