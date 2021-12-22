@@ -46,25 +46,25 @@ namespace Team5.Movement
             move = GetComponent<Move>();
             player = GameObject.FindWithTag("Player");
             
-            healthText = transform.Find("Health (TMP)").GetComponent<TMP_Text>();
-            hurtText = transform.Find("Hurt Health (TMP)").GetComponent<TMP_Text>();
+            // healthText = transform.Find("Health (TMP)").GetComponent<TMP_Text>();
+            // hurtText = transform.Find("Hurt Health (TMP)").GetComponent<TMP_Text>();
 
-            enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
-            enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
+            // enemyIndicator = this.gameObject.transform.Find("Enemy Indicator").gameObject;
+            // enemyIndicator2 = this.gameObject.transform.Find("Enemy Indicator2").gameObject;
             guardPosition = transform.position;
-            healthRotation = healthText.transform.rotation;
+            // healthRotation = healthText.transform.rotation;
         }
 
         private void Update()
         {
             // Positions enemy health
-            healthposition = this.transform.position;
-            healthText.transform.position = healthposition + new Vector3(0f, 3.5f, 0f);
-            healthText.transform.rotation = healthRotation;
+            // healthposition = this.transform.position;
+            // healthText.transform.position = healthposition + new Vector3(0f, 3.5f, 0f);
+            // healthText.transform.rotation = healthRotation;
 
             // Positions enemy hurt health
-            hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
-            hurtText.transform.rotation = healthRotation;
+            // hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
+            // hurtText.transform.rotation = healthRotation;
 
             if (entity.IsDead)
             {
