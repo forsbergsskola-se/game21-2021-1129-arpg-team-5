@@ -28,8 +28,8 @@ namespace Team5.Ui
                 outline = GetComponent<Outline>();
             if (outline == null)
             {
-                Debug.Log($"<color=cyan>Failed to find Outline component in {name}. Please make sure there is a OutLine component on the object you want a outline around.</color> <color=red>[Script auto disabled because of error]</color>");
-                this.enabled = false;
+                Debug.Log($"<color=cyan>Failed to find Outline component in {name}. Please make sure there is a OutLine component on the object you want a outline around.</color> <color=red>[Script auto destroyed because of error]</color>");
+                Destroy(this);
                 return;
             }
 
