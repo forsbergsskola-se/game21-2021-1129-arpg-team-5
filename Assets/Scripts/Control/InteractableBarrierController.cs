@@ -1,12 +1,21 @@
 using System.Collections;
 using Team5.Control;
 using Team5.Core;
+using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
 
 public class InteractableBarrierController : MonoBehaviour, IInteractable
 {
+    [System.Serializable]
+    public struct CursorMapping
+    {
+        public CursorType type;
+        public Texture2D texture;
+        public Vector2 hotspot;
+    }
+
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;

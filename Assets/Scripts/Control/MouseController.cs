@@ -1,13 +1,24 @@
 using System;
 using Team5.Core;
+using Team5.Entities.Player;
+using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
+using static Team5.Entities.Player.PlayerController;
 
 namespace Team5.Control
 {
     public class MouseController : MonoBehaviour
     {
+        [System.Serializable]
+        public struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
+        }
+
         private Ray ray;
         private Camera cameraObject;
         private bool mouseClicked;
@@ -15,14 +26,16 @@ namespace Team5.Control
         private RaycastHit hit;
         private Collider lastHitCollider;
         private IInteractable targetInteractable;
-    
+        [SerializeField] float raycastRadius = 1f;
+        [SerializeField] CursorMapping[] cursorMappings = null;
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
-
+        PlayerController player;
         
         
         private void Start()
         {
+            player = GetComponent<PlayerController>();
             cameraObject = gameObject.GetComponent<Camera>();
         }
         
@@ -31,6 +44,7 @@ namespace Team5.Control
         private void Update()
         {
             CheckMouseButton();
+            InteractWithComponent();
 
             if (TryCastRaySuccess())
             {
@@ -157,9 +171,60 @@ namespace Team5.Control
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
-        
-        
-        
+
+        private bool InteractWithComponent()
+        {
+            print("Can Interact");
+            RaycastHit[] hits = RaycastAllSorted();
+            foreach (RaycastHit hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
+                {
+                    if (raycastable.HandleRaycast(player))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        RaycastHit[] RaycastAllSorted()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
+            float[] distances = new float[hits.Length];
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+            return hits;
+        }
+
+        private static Ray GetMouseRay()
+        {
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach (CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.type == type)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
+        }
         /// <summary>
         /// Invoked with a true when the player clicks the mouse button, canceling actions.
         /// </summary>

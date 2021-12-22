@@ -11,14 +11,8 @@ namespace Team5.Entities.Player
 {
     public class PlayerController : Entity
     {
-        [System.Serializable]
-        public struct CursorMapping
-        {
-            public CursorType type;
-            public Texture2D texture;
-            public Vector2 hotspot;
-        }
-        [SerializeField] CursorMapping[] cursorMappings = null;
+      
+        //[SerializeField] CursorMapping[] cursorMappings = null;
         [SerializeField] private float healthOnRevive;
         [SerializeField] private float healthRegenPerSecond;
         [SerializeField] private float timeToRevive;
@@ -53,35 +47,7 @@ namespace Team5.Entities.Player
 
             //if (InteractWithUI()) return;
         }
-        #region UI Implementation of curser we need to review and implement it in mouse controller 
-        private bool InteractWithUI()
-        {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                SetCursor(CursorType.UI);
-                return true;
-            }
-            return false;
-        }
-
-        private void SetCursor(CursorType type)
-        {
-            CursorMapping mapping = GetCursorMapping(type);
-            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
-        }
-
-        private CursorMapping GetCursorMapping(CursorType type)
-        {
-            foreach (CursorMapping mapping in cursorMappings)
-            {
-                if (mapping.type == type)
-                {
-                    return mapping;
-                }
-            }
-            return cursorMappings[0];
-        }
-        #endregion
+       
 
 
         protected override void OnDeath()
