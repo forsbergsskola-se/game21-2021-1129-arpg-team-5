@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using Team5.Control;
 using Team5.Core;
 using Team5.Ui;
+using Team5.Ui.ExpSystem;
 using TMPro;
 using UnityEngine;
 
@@ -22,8 +24,11 @@ namespace Team5.Entities.Enemies
         public SkinnedMeshRenderer mesh;
         private MeshRenderer enemyIndicator2;
         private MeshRenderer enemyIndicator1;
-
+       
         private bool textEnabled = false;
+
+
+        
         void ChangedTarget(object sender, bool temp)
         {
             if (textEnabled)
@@ -111,6 +116,8 @@ namespace Team5.Entities.Enemies
             this.gameObject.SetActive(false);
             deathCloud.gameObject.SetActive(false);
         }
+        
+        
 
         public Texture2D mouseTexture => MouseTexture;
 

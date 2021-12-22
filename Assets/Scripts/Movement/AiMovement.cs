@@ -4,6 +4,7 @@ using Team5.Combat;
 using Team5.Control;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Ui.ExpSystem;
 using TMPro;
 using UnityEngine;
 
@@ -29,7 +30,8 @@ namespace Team5.Movement
         private GameObject enemyIndicator2;
         private TMP_Text healthText;
         private TMP_Text hurtText;
-
+        public int DefaultKillXp;
+        
         private int currentWaypointIndex = 0;
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer;
@@ -38,6 +40,8 @@ namespace Team5.Movement
         private Vector3 healthposition;
         private Quaternion healthRotation;
         private Vector3 hurtHealthposition;
+     
+        
      
         private void Start()
         {
@@ -71,6 +75,7 @@ namespace Team5.Movement
                 // disables children
                 //enemyIndicator2.SetActive(false);
                 //healthText.enabled = false;
+                player.GetComponent<ExpSystem>().DefaultKillExp(DefaultKillXp);
             }
 
             if (CheckAttackRange() && fighter.CanAttack(player))

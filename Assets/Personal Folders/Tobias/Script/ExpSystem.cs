@@ -1,43 +1,70 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using Team5.Control;
+using Team5.Core;
+using Team5.Ui;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ExpSystem : MonoBehaviour
+namespace Team5.Ui.ExpSystem
 {
-    public int maxExp; 
-    public float updatedExp;
 
-    public Image ExpBar;
 
-    //test
-    public float expIncreasedPerSecond;
-    public int playerLevel;
-    public Text levelText;
-    
-    void Start()
+
+    public class ExpSystem : MonoBehaviour
     {
-        playerLevel = 1;
-        expIncreasedPerSecond = 5f;
-        maxExp = 25;
-        updatedExp = 0;
-    }
+        public int maxExp;
+        public float updatedExp;
 
-    // Update is called once per frame
-    void Update()
-    {
-        updatedExp += expIncreasedPerSecond * Time.deltaTime;
-        ExpBar.fillAmount = updatedExp / maxExp;
+        public Image ExpBar;
 
-        levelText.text = playerLevel + "";
+        //test
+        public float expIncreasedPerSecond;
+        public int playerLevel;
+        public Text levelText;
 
-        if (updatedExp >= maxExp)
+       
+
+
+
+        void Start()
         {
-            playerLevel++;
+            playerLevel = 1;
+            maxExp = 25;
             updatedExp = 0;
-            maxExp += maxExp;
+        }
 
+        // Update is called once per frame
+        void Update()
+        {
+            ExpBar.fillAmount = updatedExp / maxExp;
+
+            levelText.text = playerLevel + "";
+
+            if (updatedExp >= maxExp)
+            {
+                playerLevel++;
+                updatedExp = 0;
+                maxExp += maxExp;
+
+            }
+        }
+
+        public void ExpGain(int ExpValue)
+        {
+            updatedExp += ExpValue;
+        }
+
+        public void DefaultKillExp(int DefaultKillXp)
+        {
+            ExpGain(DefaultKillXp);
+        }
+
+        public void DestroyExp(int DestroyXp)
+        {
+            ExpGain(DestroyXp);
         }
     }
+
 }
