@@ -25796,12 +25796,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bbac252181745488dc39e1b5354411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxExp: 0
+  playerLevel: 1
+  maxExp: 25
   updatedExp: 0
   ExpBar: {fileID: 232240007}
-  expIncreasedPerSecond: 0
-  expChunksIncreasedAtOnce: 1
-  playerLevel: 0
+  expAddPerSec: 0.01
+  expChunksAddAtOnce: 1
   levelText: {fileID: 19753903}
 --- !u!1 &1473311923
 GameObject:
