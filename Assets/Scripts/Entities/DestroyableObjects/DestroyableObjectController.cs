@@ -11,36 +11,40 @@ namespace Team5.Entities.Objects.DestroyableObject
         public GameObject explosion;
         public ParticleSystem SmokeSystem;
         private GameObject player;
+        public GameObject Nametag;
         
-        
-        
+
+
         private void Start()
         {
-            player= GameObject.FindWithTag("Player");
+            player = GameObject.FindWithTag("Player");
             Vector3.Distance(player.transform.position, transform.position);
         }
-
-
-
+        
         protected override void OnDeath()
         {
+            //Nametag.SetActive(false);
             gameObject.SetActive(false);
             Instantiate(SmokeSystem, transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
             IsDead = true;
         }
-
-
+        
         public void OnHoverExit()
         {
+            /*Nametag.SetActive(false);
+            Debug.Log($"mouse over {this.name}");*/
         }
 
         public void OnClick(Vector3 mouseClickVector)
         {
+            
         }
         
         public void OnHoverEnter()
         {
+            /*Nametag.SetActive(true);
+            Debug.Log($"mouse on {this.name}");*/
         }
     }
 }

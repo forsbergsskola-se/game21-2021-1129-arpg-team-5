@@ -121,7 +121,7 @@ namespace Team5.Movement
             if (this.entity.IsDead)
             {
                 Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
-                
+                targetDest.transform.position = new Vector3(0, -50, 0);;
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))

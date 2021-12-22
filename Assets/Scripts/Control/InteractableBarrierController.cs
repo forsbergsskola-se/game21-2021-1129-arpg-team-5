@@ -2,6 +2,7 @@ using System.Collections;
 using Team5.Control;
 using Team5.Core;
 using Team5.Movement;
+using Team5.Ui;
 using UnityEngine;
 
 public class InteractableBarrierController : MonoBehaviour, IInteractable
@@ -9,7 +10,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
-    
+
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
@@ -18,13 +19,27 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     
     private Vector3 TargetPosition;
     
-    public bool isLocked = false;
+    private bool isLocked = false;
     private bool waitForSound;
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
     
     // This is a variable holding the specific coroutine, allowing us to cancel it.
     private IEnumerator goToAndOpen;
-    
+
+
+    public bool IsLocked
+    {
+        set
+        {
+            if (TryGetComponent(out OutlineController outlineController))
+            {
+                // If the object is locked we use the alternate color.
+                outlineController.UseAlternateColor(value);
+            }
+
+            isLocked = value;
+        }
+    }
     
     
     private void Awake()

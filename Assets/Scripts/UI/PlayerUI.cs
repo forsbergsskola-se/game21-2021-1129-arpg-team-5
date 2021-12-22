@@ -17,12 +17,17 @@ namespace Team5.Ui
         private TMP_Text reviveText;
         private TMP_Text killText;
         private TMP_Text lvlText;
-        private TMP_Text scoreText;
+        private TMP_Text skullText;
         
         private Entity entity;
         private float healthCount;        
         private int reviveCount;
-        public int skullCount = 0;
+        public int skullCount { get; private set; }= 0;
+
+        public int whiteSkulls { get; private set; } = 0;
+        public int redSkulls { get; private set; } = 0;
+        public int purpleSkulls { get; private set; } = 0;
+        public int goldSkulls { get; private set; } = 0;
 
         private Fighter fighter;
         private int killCount;
@@ -38,7 +43,7 @@ namespace Team5.Ui
             reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
-            scoreText = FindObjectOfType<HUD>().ScoreText;
+            skullText = FindObjectOfType<HUD>().SkullCounter;
         }
 
         void Update()
@@ -54,7 +59,7 @@ namespace Team5.Ui
 
             if (skullCount >= 0)
             {
-                scoreText.text = "" + skullCount;
+                skullText.text = "" + skullCount;
             }
         }
 
@@ -66,18 +71,22 @@ namespace Team5.Ui
             {
                 case "WhiteSkull":
                     skullCount += 1;
+                    whiteSkulls += 1;
                     pickedUp = true;
                     break;
                 case "RedSkull":
                     skullCount += 5;
+                    redSkulls += 1;
                     pickedUp = true;
                     break;
                 case "PurpleSkull":
                     skullCount += 10;
+                    purpleSkulls += 1;
                     pickedUp = true;
                     break;
                 case "GoldSkull":
                     skullCount += 50;
+                    goldSkulls += 1;
                     pickedUp = true;
                     break;
             }

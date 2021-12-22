@@ -144,7 +144,10 @@ namespace Team5.Entities
             if (takeDamageOnCooldown) return;
         
             StartCoroutine(DamageCooldown());
-            Debug.Log(name + " took " + damageTaken*damageResistance + " damage!");
+            if (this.CompareTag("Player") || this.CompareTag("Enemy"))
+            {
+                Debug.Log(name + " took " + damageTaken*damageResistance + " damage!");
+            }
             Health -= damageTaken * damageResistance;
         }
 
