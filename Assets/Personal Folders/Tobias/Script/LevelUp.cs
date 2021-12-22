@@ -21,7 +21,7 @@ public class LevelUp : MonoBehaviour
     void Start()
     {
         level = 1;
-        hp = 100;
+        hp = 100; //for testing
         experience = 0;
         
     }
@@ -29,6 +29,12 @@ public class LevelUp : MonoBehaviour
     void Update()
     {
         Exp();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            experience += 100;
+        }
+            
       }
 
     void RankUp()
