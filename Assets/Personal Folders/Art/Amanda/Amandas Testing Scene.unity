@@ -4112,6 +4112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorMode: 0
   hotSpot: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &967515860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5814,10 +5817,42 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7090458245164148665, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: -5926861728586034710, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: -4676772701584024781, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: -3130909778923500050, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: -1951755354393117641, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: -664397643035401655, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
+    - target: {fileID: 149128999033272794, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
     - target: {fileID: 919132149155446097, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
       propertyPath: m_Name
       value: Skull
       objectReference: {fileID: 0}
+    - target: {fileID: 2430867600346763398, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1dfee552261ee6a4d9cc652e658c34dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1803ac6b66a0ef4cb956cf935f8219e, type: 3}
 --- !u!1 &1292467858
