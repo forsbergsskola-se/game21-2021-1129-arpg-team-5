@@ -22,8 +22,8 @@ namespace Team5.Ui
         private Entity entity;
         private float healthCount;        
         private int reviveCount;
-        public int skullCount { get; private set; }= 0;
-
+        
+        public int skullCount { get; private set; } = 0;
         public int whiteSkulls { get; private set; } = 0;
         public int redSkulls { get; private set; } = 0;
         public int purpleSkulls { get; private set; } = 0;
@@ -57,9 +57,14 @@ namespace Team5.Ui
 
             lvlText.text = "EXP LVL: " + entity.EntityLevel;
 
-            if (skullCount >= 0)
+            if (skullCount > 0)
             {
                 skullText.text = "" + skullCount;
+            }
+
+            else if (skullCount <= 0)
+            {
+                skullText.text = "0";
             }
         }
 
@@ -106,14 +111,14 @@ namespace Team5.Ui
         }
         
         // temp values - no magic numbers later
-        public void SubtractSkulls ()
+        public void SubtractSkulls (int skulls)
         {
             StartCoroutine(Wait(22, -1, 0.2f));
         }
         
-        IEnumerator Wait(int value, int value2, float time )
+        IEnumerator Wait(int skulls, int value2, float time )
         {
-            for (var i= 0; i<value; i++)
+            for (var i= 0; i<skulls; i++)
             {
                 skullCount += value2;
                 yield return new WaitForSeconds(time);
