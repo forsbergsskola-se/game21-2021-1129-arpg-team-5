@@ -19,7 +19,7 @@ namespace Team5.Ui.ExpSystem
         
         public float expAddPerSec = 0.01f;
         public int expChunksAddAtOnce = 1;
-        public Text levelText;
+        public TMP_Text levelText;
         
         
 
@@ -28,7 +28,7 @@ namespace Team5.Ui.ExpSystem
         void Update()
         {
             ExpBar.fillAmount = updatedExp / maxExp;
-            levelText.text = $"LEVEL {playerLevel}";
+            levelText.text = $"LVL {playerLevel}";
 
             if (updatedExp >= maxExp)
             {
