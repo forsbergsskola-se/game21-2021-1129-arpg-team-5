@@ -12,16 +12,19 @@ namespace Team5.Ui.ExpSystem
 {
     public class ExpSystem : MonoBehaviour
     {
+        public int playerLevel = 1;
         public int maxExp = 25;
-        public float updatedExp = 0;
+        public float updatedExp = 0f;
         public Image ExpBar;
         
-        public float expIncreasedPerSecond = 0.01f;
-        public int expChunksIncreasedAtOnce = 1;
-        public int playerLevel = 1;
+        public float expAddPerSec = 0.01f;
+        public int expChunksAddAtOnce = 1;
         public Text levelText;
         
+        
+
         // Updates level constantly with checks
+        // Note: make sure player level != 0 in inspector or will increase exponentially
         void Update()
         {
             ExpBar.fillAmount = updatedExp / maxExp;
@@ -38,7 +41,7 @@ namespace Team5.Ui.ExpSystem
         // how we add exp
         public void ExpGain(int ExpValue)
         {
-            StartCoroutine(Wait(ExpValue, expChunksIncreasedAtOnce, expIncreasedPerSecond));
+            StartCoroutine(Wait(ExpValue, expChunksAddAtOnce, expAddPerSec));
             //updatedExp += ExpValue;
         }
         
