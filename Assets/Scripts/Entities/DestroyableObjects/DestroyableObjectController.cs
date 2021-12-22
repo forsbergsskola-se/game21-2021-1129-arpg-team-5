@@ -1,6 +1,7 @@
 using UnityEngine;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Ui.ExpSystem;
 
 namespace Team5.Entities.Objects.DestroyableObject
 {
@@ -12,7 +13,7 @@ namespace Team5.Entities.Objects.DestroyableObject
         public ParticleSystem SmokeSystem;
         private GameObject player;
         public GameObject Nametag;
-        
+        public int DestroyXp;
 
 
         private void Start()
@@ -28,6 +29,7 @@ namespace Team5.Entities.Objects.DestroyableObject
             Instantiate(SmokeSystem, transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
             IsDead = true;
+            player.GetComponent<ExpSystem>().DestroyExp(DestroyXp);
         }
         
         public void OnHoverExit()
