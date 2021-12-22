@@ -1,6 +1,6 @@
 using UnityEngine;
 using Team5.Inventories;
-using Team5.Control;
+using Team5.Entities.Player;
 
 namespace Team5.Inventories.Control.sample
 {
@@ -18,10 +18,12 @@ namespace Team5.Inventories.Control.sample
         {
             if (pickup.CanBePickedUp())
             {
+                print("Selected!");
                 return CursorType.Pickup;
             }
             else
             {
+                print("Cant select!");
                 return CursorType.FullPickup;
             }
         }

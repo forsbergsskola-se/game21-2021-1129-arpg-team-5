@@ -69,8 +69,8 @@ namespace Team5.Movement
             if (entity.IsDead)
             {
                 // disables children
-                enemyIndicator2.SetActive(false);
-                healthText.enabled = false;
+                //enemyIndicator2.SetActive(false);
+                //healthText.enabled = false;
             }
 
             if (CheckAttackRange() && fighter.CanAttack(player))
