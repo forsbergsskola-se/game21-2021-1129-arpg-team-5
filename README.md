@@ -28,7 +28,6 @@ Design:
 Programming:
 - [Emanoel](https://github.com/xakzi)
 - [Harry](https://github.com/HarryTheHeath)
-- [Ina](https://github.com/InaSLew)
 - [Johannes](https://github.com/MustoLini)
 - [Oskar](https://github.com/Zargn)
 - [Tobias](https://github.com/AlchemistWolf)
