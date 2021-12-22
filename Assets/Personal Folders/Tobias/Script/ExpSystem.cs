@@ -28,7 +28,7 @@ namespace Team5.Ui.ExpSystem
         void Update()
         {
             ExpBar.fillAmount = updatedExp / maxExp;
-            levelText.text = $"LEVEL {playerLevel}";
+            levelText.text = $"LVL {playerLevel}";
 
             if (updatedExp >= maxExp)
             {
