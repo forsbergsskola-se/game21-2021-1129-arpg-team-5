@@ -20,6 +20,7 @@ namespace Team5.Entities.Player
         private NavMeshAgent agent;
         private Animator animator;
         private bool stopRegen;
+        public bool reviving {get; private set; } = false ;
         
         public int reviveCounter;
 
@@ -94,6 +95,7 @@ namespace Team5.Entities.Player
 
         private IEnumerator PlayerRegenHealth()
         {
+            reviving = true;
             stopRegen = false;
             
             while (Health < MaxHealth && !stopRegen)
@@ -103,6 +105,7 @@ namespace Team5.Entities.Player
             }
 
             stopRegen = false;
+            reviving = false;
 
             Debug.Log("Player finished regen.");
         }
