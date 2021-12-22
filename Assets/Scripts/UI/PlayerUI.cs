@@ -48,7 +48,7 @@ namespace Team5.Ui
 
         void Update()
         {
-            healthText.text = "Health: " + entity.Health;
+            healthText.text = "Health: \n" + entity.Health;
 
             reviveCount = this.GetComponent<PlayerController>().reviveCounter;
             reviveText.text = "Revivals: " + reviveCount;
