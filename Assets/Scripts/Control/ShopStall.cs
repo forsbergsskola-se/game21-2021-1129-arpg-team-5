@@ -55,11 +55,14 @@ public class ShopStall : MonoBehaviour, IInteractable
     private bool firstVisit = true;
     private bool skullQuestRulesRead;
     private bool skullQuestAccepted;
-    private bool finishedQuest = false;
+    private bool finishedQuest;
+    private bool subtractingFinished = false;
+
 
     
     private void Awake()
     {
+        finishedQuest = false;
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
@@ -233,6 +236,24 @@ public class ShopStall : MonoBehaviour, IInteractable
         Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
+    private void ParameterOnClickYesFinished(string test)
+    {
+        subtractingFinished = false;
+        Dialogue.text = "Okay, hand over the skulls and wait a mo...";
+        
+        if (finishedQuest == false)
+        {
+            SubtractSkulls(22);
+            StartCoroutine(Wait(5));
+            finishedQuest = true;
+        }
+    }
+
+    private void SubtractSkulls(int skullsToSubtract)
+    {
+        player.GetComponent<PlayerUI>().SubtractSkulls(skullsToSubtract);
+    }
+    
     // Main Skull Quest Interaction
     private void SkullScenario()
     {
@@ -241,7 +262,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         buttonActive(false, false, false);
         
         // If player hasn't any skulls yet
-        if (Skulls == 0)
+        if (Skulls == 0 && finishedQuest != true)
         {
             buttonActive(true, true, true);
 
@@ -256,33 +277,36 @@ public class ShopStall : MonoBehaviour, IInteractable
         }
 
         // If player has collected all skulls
-        else if (Skulls == SkullsTotal)
+        if (Skulls == SkullsTotal)
         {
-            Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
-            finishedQuest = true;
+            buttonActive(true, false, false);
 
-            // need to fix a way of specifying no. of skulls to subtract here:
-            player.GetComponent<PlayerUI>().SubtractSkulls();
-            StartCoroutine(Wait(5));
+            Dialogue.text = $"A-ha so you've finally collected {Skulls} skulls! Well... a deals a deal, eh?";
+            button1Text.text = "Hand it over";
+            Button1.onClick.AddListener( () => ParameterOnClickYesFinished($"{nameof(Button1)} was pressed!"));
         }
 
-        // If player has some skulls
-        else if (Skulls > 0 && Skulls < SkullsTotal)
-        {
-            buttonActive(true, true, true);
 
-            Dialogue.text = $"You've found some skulls! But you still need {(SkullsTotal - Skulls)} more to trade!";
-            button1Text.text = "Rules please";
-            button2Text.text = "I'll be back.";
-            button3Text.text = "See totals";
+        // If player has some skulls
+        if (finishedQuest == false && subtractingFinished == false)
+        {
+            if (((Skulls > 0) && (Skulls < SkullsTotal) && (Skulls != SkullsTotal)))
+            {
+                buttonActive(true, true, true);
+
+                Dialogue.text = $"You've found some skulls! But you still need {(SkullsTotal - Skulls)} more to trade!";
+                button1Text.text = "Rules please";
+                button2Text.text = "I'll be back.";
+                button3Text.text = "See totals";
             
-            Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
-            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
-            Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
+                Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
+                Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
+                Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
+            }
         }
 
         // If quest is completed
-        else
+        else if (Skulls > 22 && finishedQuest == true)
         {
             buttonActive(false, true, true);
 
@@ -291,6 +315,12 @@ public class ShopStall : MonoBehaviour, IInteractable
             button3Text.text = "See totals";
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
             Button3.onClick.AddListener( () => ParameterOnClickTotals($"{nameof(Button3)} was pressed!"));
+        }
+
+        else
+        {
+            buttonActive(false, false, false);
+            Dialogue.text = "Well go on, it's right there!";
         }
     }
     
@@ -345,6 +375,8 @@ public class ShopStall : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(time);
         GoldenSkull.transform.position = new Vector3(239, 5, -100);
         Dialogue.text = $"So ta-dah! One big shiny thing for lots of small shiny things. Enjoy, I guess?";
+        finishedQuest = true;
+        subtractingFinished = true;
     }
     
     // Exit goodbyes
