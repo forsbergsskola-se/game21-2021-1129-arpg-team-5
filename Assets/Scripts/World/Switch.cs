@@ -12,9 +12,13 @@ namespace Team5.World.Interactables
         {
             if (barrier == null)
             {
-                Debug.Log("Switch has no assigned InteractableBarrierController!");
+                Debug.Log("<color=cyan>Switch has no assigned InteractableBarrierController!</color>  <color=red>[ Script destroyed! ]</color>");
+                Destroy(this);
             }
-            barrier.IsLocked = true;
+            else
+            {
+                barrier.IsLocked = true;
+            }
         }
 
         public Texture2D mouseTexture => OnHoverMousetexture;

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using Team5.Control;
 using Team5.Core;
 using Team5.Ui;
+using Team5.Ui.ExpSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Team5.Entities.Enemies
 {
@@ -19,11 +22,45 @@ namespace Team5.Entities.Enemies
         public float dustSpawnTime;
         public float corpseStayTime;
         private ParticleSystem deathCloud;
-        public SkinnedMeshRenderer mesh;
-        private MeshRenderer enemyIndicator2;
-        private MeshRenderer enemyIndicator1;
+        // public SkinnedMeshRenderer mesh;
 
         private bool textEnabled = false;
+        // public Canvas canvas;
+        // public Image healthBar;
+        // private float currentHealthBar;
+        //
+        // public void Start()
+        // {
+        //     // UI game start settings
+        //     healthBar.fillAmount = 1;
+        //     currentHealthBar = 1;
+        //     canvas.enabled = true;
+        // }
+        //
+        // public void Update()
+        // {
+        //     // sets Healthbar fill
+        //     currentHealthBar = this.Health / this.MaxHealth;
+        //     healthBar.fillAmount = currentHealthBar;
+        //
+        //     // sets Healthbar colour to red if health is high
+        //     if (currentHealthBar < 0.333)
+        //     {
+        //         healthBar.color = Color.red;
+        //     }
+        //
+        //     // sets Healthbar colour to green if health is high
+        //     else if (currentHealthBar > 0.666)
+        //     {
+        //         healthBar.color = Color.green;
+        //     }
+        //     else
+        //     {
+        //         healthBar.color = Color.yellow;
+        //     }
+        // }
+
+
         void ChangedTarget(object sender, bool temp)
         {
             if (textEnabled)
@@ -33,8 +70,6 @@ namespace Team5.Entities.Enemies
             }
         }
 
-
-
         public override float Health
         {
             get => base.Health;
@@ -42,11 +77,11 @@ namespace Team5.Entities.Enemies
             {
                 float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(hurt.ToString());
-                healthText.SetText(Health.ToString());
+                hurtText.SetText(Mathf.RoundToInt(hurt).ToString());
+                healthText.SetText(Mathf.RoundToInt(Health).ToString());
                 
-                blood.gameObject.SetActive(true);
-                blood.Play();
+                // blood.gameObject.SetActive(true);
+                // blood.Play();
                 hurtText.enabled = true;
                 StartCoroutine(WaitAndDisableHurtHealth());
             }
@@ -58,8 +93,8 @@ namespace Team5.Entities.Enemies
             hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
             deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
-            enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
-            enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
+            // enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
+            // enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
             
             var mouseController = FindObjectOfType<MouseController>();
@@ -71,16 +106,17 @@ namespace Team5.Entities.Enemies
         protected override void OnDeath()
         {
             //gameObject.GetComponent<OutlineController>().DisableOutlineController();
+            // canvas.enabled = false;
 
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
 
             
-            if (enemyIndicator2.enabled == true)
-            {
-                enemyIndicator2.enabled = false;
-                enemyIndicator1.enabled = false;
-            }
+            // if (enemyIndicator2.enabled == true)
+            // {
+            //     enemyIndicator2.enabled = false;
+            //     enemyIndicator1.enabled = false;
+            // }
             
             StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
@@ -90,8 +126,8 @@ namespace Team5.Entities.Enemies
         {
             yield return new WaitForSeconds(damageHealthDecay);
             hurtText.enabled = false;
-            blood.Stop();
-            blood.gameObject.SetActive(false);
+            // blood.Stop();
+            // blood.gameObject.SetActive(false);
         }
         
         private IEnumerator WaitAndDisableDeath()
@@ -106,13 +142,15 @@ namespace Team5.Entities.Enemies
             
             // Enemy mesh is disabled
             yield return new WaitForSeconds(corpseStayTime);
-            mesh.GetComponent<Renderer>().enabled = false;
+            GetComponentInChildren<Renderer>().enabled = false;
 
             // Enemy game object fully disabled
             yield return new WaitForSeconds(10);
             this.gameObject.SetActive(false);
             deathCloud.gameObject.SetActive(false);
         }
+        
+        
 
         public Texture2D mouseTexture => MouseTexture;
 

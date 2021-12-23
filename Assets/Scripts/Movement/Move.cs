@@ -1,6 +1,7 @@
 using System;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Entities.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -97,7 +98,10 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
             }
         }
-        
+        void WalkingSound()
+        {
+            Debug.Log("Play Audio");
+        }
         
         
         private float DistanceToMarker()
@@ -120,18 +124,33 @@ namespace Team5.Movement
         
         public void MoveTo(Vector3 destination)
         {
-            // can't move if dead
+            // can't set target dest if dead
+            if (player.GetComponent<PlayerController>().reviving == true)
+            {
+                if (this.entity.Health < 40)
+                {
+                    targetDest.SetActive(false);
+                    agent.isStopped = true;
+                }
+            }
+            
             if (this.entity.IsDead)
             {
-                Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
+                agent.isStopped = true;
                 
+                if (agent.tag == "Player")
+                {
+                    targetDest.SetActive(false);
+                }
+                //Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))
             {
                 agent.isStopped = true;
-                Debug.Log("Can't move yet bro, I'm reviving");
+                //Debug.Log("Can't move yet bro, I'm reviving");
             }
+            
             //otherwise can move
             else
             {
@@ -140,7 +159,7 @@ namespace Team5.Movement
                 
                 if (agent.tag == "Player")
                 {
-                    
+                    targetDest.SetActive(true);
                     oldPlayerRotation = this.gameObject.transform.rotation;
                     
                     targetDest.transform.position = destination;
@@ -189,4 +208,6 @@ namespace Team5.Movement
            
         }
     }
+    
+    
 }
