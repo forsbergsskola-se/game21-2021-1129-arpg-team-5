@@ -13,7 +13,6 @@ namespace Team5.Ui
 {
     public class PlayerUI : MonoBehaviour
     {
-        private TMP_Text healthText;
         private TMP_Text reviveText;
         private TMP_Text killText;
         private TMP_Text lvlText;
@@ -39,7 +38,6 @@ namespace Team5.Ui
             entity = this.GetComponent<Entity>();
             fighter = this.GetComponent<Fighter>();
             
-            healthText = FindObjectOfType<HUD>().HealthText;
             reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
@@ -48,8 +46,6 @@ namespace Team5.Ui
 
         void Update()
         {
-            healthText.text = "Health: \n" + entity.Health;
-
             reviveCount = this.GetComponent<PlayerController>().reviveCounter;
             reviveText.text = "Revivals: " + reviveCount;
             
