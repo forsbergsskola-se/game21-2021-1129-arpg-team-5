@@ -106,7 +106,7 @@ namespace Team5.Entities.Player
             EntityLevel += 1;
             Debug.Log("Player died!");
             base.OnDeath();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/TempDeath");
+            Debug.Log("Play death audio");
             Revive();
         }
 
