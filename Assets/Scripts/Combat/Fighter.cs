@@ -170,6 +170,7 @@ namespace Team5.Combat
                         Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
 
                     }
+                    Debug.Log("Play Audio");
                     target.TakeDamage(totalAttackValue);
                 }
 

@@ -96,7 +96,10 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
             }
         }
-        
+        void WalkingSound()
+        {
+            Debug.Log("Play Audio");
+        }
         
         
         private float DistanceToMarker()
@@ -197,4 +200,6 @@ namespace Team5.Movement
             return path.status != NavMeshPathStatus.PathPartial;
         }
     }
+    
+    
 }
