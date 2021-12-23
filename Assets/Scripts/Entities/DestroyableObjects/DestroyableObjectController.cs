@@ -14,7 +14,7 @@ namespace Team5.Entities.Objects.DestroyableObject
         private GameObject player;
         public GameObject Nametag;
         public int DestroyXp;
-
+        // public FMODUnity.EventReference vaseDestoryed;
 
         private void Start()
         {
@@ -24,6 +24,7 @@ namespace Team5.Entities.Objects.DestroyableObject
         
         protected override void OnDeath()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/86324__timbre__smashing-1");
             //Nametag.SetActive(false);
             gameObject.SetActive(false);
             Instantiate(SmokeSystem, transform.position, transform.rotation);

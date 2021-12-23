@@ -100,6 +100,7 @@ namespace Team5.Movement
         }
         void WalkingSound()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments   (1)");
             Debug.Log("Play Audio");
         }
         

@@ -9,6 +9,7 @@ namespace Team5.World.Interactables
 {
     public class DoorLogic : MonoBehaviour, IOpenLogic
     {
+        public FMODUnity.EventReference unlockedDoor;
         [SerializeField] private float timeToOpen;
         [SerializeField] private float openDegrees;
     
@@ -17,7 +18,7 @@ namespace Team5.World.Interactables
         private float totalAnimationFrames;
         private float frameTime;
         // private AudioSource OpeningSound;
-        public FMODUnity.EventReference LockedDoor;
+        
         private const float AnimationFramerate = 60;
 
         
@@ -36,8 +37,6 @@ namespace Team5.World.Interactables
         {
             if (isOpen) 
                 return;
-            FMODUnity.RuntimeManager.PlayOneShot(LockedDoor);
-            // OpeningSound.Play();
             StartCoroutine(OpeningAnimation());
         }
 
@@ -50,7 +49,8 @@ namespace Team5.World.Interactables
                 yield return new WaitForSeconds(frameTime);
                 transform.Rotate(Vector3.up, movementPerFrame);
             }
-
+            
+            FMODUnity.RuntimeManager.PlayOneShot(unlockedDoor);
             GetComponent<OutlineController>().DisableOutlineController();
         }
 

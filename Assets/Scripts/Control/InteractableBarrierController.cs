@@ -16,6 +16,8 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         public Vector2 hotspot;
     }
 
+    
+    public FMODUnity.EventReference lockedDoor;
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
@@ -85,10 +87,11 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         {
             if (!waitForSound)
             {
-                GetComponent<AudioSource>().Play();
                 waitForSound = true;
                 StartCoroutine(WaitForSound());
             }
+            //TODO Fix So the gate does not sound same as the door. 
+            FMODUnity.RuntimeManager.PlayOneShot(lockedDoor);
             return;
         }
 
@@ -165,5 +168,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(4);
         isLocked = false;
+        
+        
     }
 }
