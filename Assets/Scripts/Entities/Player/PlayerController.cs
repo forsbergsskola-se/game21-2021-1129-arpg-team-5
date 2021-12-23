@@ -2,10 +2,13 @@ using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
 using Team5.Combat;
+
 using Team5.Entities;
 using Team5.Inventories.Control.sample;
 using UnityEngine.EventSystems;
 using System;
+using Team5.Ui;
+using UnityEngine.UI;
 
 namespace Team5.Entities.Player
 {
@@ -23,7 +26,12 @@ namespace Team5.Entities.Player
         public bool reviving {get; private set; } = false ;
         
         public int reviveCounter;
+        public Image healthBar;
+        public Image lowHealthEffect;
+        public Image veryLowHealthEffect;
 
+        private float currentHealthBar;
+        private bool lowHealth;
 
         protected override void Awake()
         {
@@ -31,12 +39,51 @@ namespace Team5.Entities.Player
             animator = GetComponent<Animator>();
             base.Awake();
             agent.speed = MovementSpeed;
+            
+            healthBar.fillAmount = 1;
+            currentHealthBar = 1;
+            lowHealthEffect.enabled = false;
+            veryLowHealthEffect.enabled = false;
+
         }
-        
-        
-        
+
         void Update()
         {
+            currentHealthBar = this.Health / this.MaxHealth;
+            healthBar.fillAmount = currentHealthBar;
+
+            if (currentHealthBar < 0.333)
+            {
+                lowHealth = true;
+                healthBar.color = Color.red;
+
+                if (currentHealthBar < 0.333 && currentHealthBar > 0.111)
+                {
+                    veryLowHealthEffect.enabled = false;
+                    lowHealthEffect.enabled = true;
+                }
+                else
+                {
+                    lowHealthEffect.enabled = false;
+                    veryLowHealthEffect.enabled = true;
+                }
+            }
+
+            else if (currentHealthBar > 0.666)
+            {
+                lowHealth = false;
+                healthBar.color = Color.green;
+                lowHealthEffect.enabled = false;
+            }
+
+            else
+            {
+                lowHealth = false;
+                healthBar.color = Color.yellow;
+                lowHealthEffect.enabled = false;
+            }
+
+            
             if (IsDead) 
                 return;
 
