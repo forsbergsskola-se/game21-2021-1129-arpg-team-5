@@ -6,6 +6,7 @@ using Team5.Ui;
 using Team5.Ui.ExpSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Team5.Entities.Enemies
 {
@@ -26,9 +27,42 @@ namespace Team5.Entities.Enemies
         private MeshRenderer enemyIndicator1;
        
         private bool textEnabled = false;
+        public Canvas canvas;
+        public Image healthBar;
+        private float currentHealthBar;
+
+        public void Start()
+        {
+            // UI game start settings
+            healthBar.fillAmount = 1;
+            currentHealthBar = 1;
+            canvas.enabled = true;
+        }
+
+        public void Update()
+        {
+            // sets Healthbar fill
+            currentHealthBar = this.Health / this.MaxHealth;
+            healthBar.fillAmount = currentHealthBar;
+
+            // sets Healthbar colour to red if health is high
+            if (currentHealthBar < 0.333)
+            {
+                healthBar.color = Color.red;
+            }
+
+            // sets Healthbar colour to green if health is high
+            else if (currentHealthBar > 0.666)
+            {
+                healthBar.color = Color.green;
+            }
+            else
+            {
+                healthBar.color = Color.yellow;
+            }
+        }
 
 
-        
         void ChangedTarget(object sender, bool temp)
         {
             if (textEnabled)
@@ -74,6 +108,7 @@ namespace Team5.Entities.Enemies
         protected override void OnDeath()
         {
             //gameObject.GetComponent<OutlineController>().DisableOutlineController();
+            canvas.enabled = false;
 
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
