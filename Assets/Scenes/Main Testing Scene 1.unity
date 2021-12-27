@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 85855405}
   - component: {fileID: 85855404}
   - component: {fileID: 85855403}
+  - component: {fileID: 85855406}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -1340,7 +1341,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 85855404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 85855406}
+        m_TargetAssemblyTypeName: Team5.Ui.SceneController, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Main Menu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &85855404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,6 +1392,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85855401}
   m_CullTransparentMesh: 1
+--- !u!114 &85855406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85855401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6da1faba2bb4043902df3ea77490d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &88088953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,6 +2550,7 @@ MonoBehaviour:
   SkullHolder: {fileID: 1583569870}
   SkullCounter: {fileID: 355297059}
   InventoryMenu: {fileID: 438312634}
+  PauseMenu: {fileID: 1993148968}
   ShopText: {fileID: 628717856}
   ShopDialogue: {fileID: 1063920554}
   SkullIcons: {fileID: 1917915177}
@@ -8240,6 +8266,7 @@ GameObject:
   - component: {fileID: 654896836}
   - component: {fileID: 654896835}
   - component: {fileID: 654896834}
+  - component: {fileID: 654896837}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -8310,7 +8337,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 654896835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654896837}
+        m_TargetAssemblyTypeName: Team5.Ui.SceneController, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &654896835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8349,6 +8388,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654896832}
   m_CullTransparentMesh: 1
+--- !u!114 &654896837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654896832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6da1faba2bb4043902df3ea77490d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &655270115
 GameObject:
   m_ObjectHideFlags: 0
@@ -34563,9 +34614,10 @@ GameObject:
   - component: {fileID: 1993148972}
   - component: {fileID: 1993148971}
   - component: {fileID: 1993148970}
+  - component: {fileID: 1993148973}
   m_Layer: 5
   m_Name: Pause Menu
-  m_TagString: Untagged
+  m_TagString: Pause Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34656,6 +34708,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1993148973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993148968}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50be8b3867177b341ad7944fc2c526ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996176449
 GameObject:
   m_ObjectHideFlags: 0
