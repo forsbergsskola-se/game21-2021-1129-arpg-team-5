@@ -28,8 +28,9 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         private bool canPlaySound;
-        public FMODUnity.EventReference walkingInstance;
+        public StudioEventEmitter MoveSound;
         
+
         //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         public bool isOnTestScene;
         private float differentdistance;
@@ -96,8 +97,7 @@ namespace Team5.Movement
         }
         void WalkingSound()
         {
-            GetComponent<StudioEventEmitter>().Play();
-            Debug.Log("Play Audio");
+            MoveSound.Play();
         }
         
         

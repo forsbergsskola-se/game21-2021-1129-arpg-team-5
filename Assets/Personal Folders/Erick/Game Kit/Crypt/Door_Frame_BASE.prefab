@@ -2182,6 +2182,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3758573805739257388, guid: da443ba5a2b413242843fb9185bdfe0f, type: 3}
     - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor
+      value: 
+      objectReference: {fileID: 2042668138932776499}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: LockedDoor.Path
       value: event:/DoorLocked
       objectReference: {fileID: 0}
@@ -2277,6 +2281,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor
+      value: 
+      objectReference: {fileID: 3025137313486082486}
     - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: LockedDoor.Path
       value: event:/DoorLocked
@@ -2413,6 +2421,36 @@ MonoBehaviour:
       Data3: 635099010
       Data4: 1798231861
     Path: event:/450300__vero-marengere__wooden-door
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &3025137313486082486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292096548842268690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -741599271
+      Data2: 1233717033
+      Data3: 1450243997
+      Data4: -1510529467
+    Path: event:/DoorLocked
   Event: 
   PlayEvent: 0
   StopEvent: 0

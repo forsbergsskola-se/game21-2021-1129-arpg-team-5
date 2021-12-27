@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using Team5.Control;
 using Team5.Core;
 using Team5.Inventories.Control.sample;
@@ -17,7 +18,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     }
 
     
-    public FMODUnity.EventReference lockedDoor;
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
@@ -29,6 +29,8 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     private MouseController mouseController;
     
     private Vector3 TargetPosition;
+
+    public StudioEventEmitter LockedDoor;
     
     private bool isLocked = false;
     private bool waitForSound;
@@ -91,7 +93,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
                 StartCoroutine(WaitForSound());
             }
             //TODO Fix So the gate does not sound same as the door. 
-            FMODUnity.RuntimeManager.PlayOneShot(lockedDoor);
+            LockedDoor.Play();
             return;
         }
 

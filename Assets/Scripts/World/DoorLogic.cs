@@ -10,7 +10,7 @@ namespace Team5.World.Interactables
 {
     public class DoorLogic : MonoBehaviour, IOpenLogic
     {
-        public FMODUnity.EventReference unlockedDoor;
+        public StudioEventEmitter unlockedDoor;
         [SerializeField] private float timeToOpen;
         [SerializeField] private float openDegrees;
     
@@ -38,7 +38,7 @@ namespace Team5.World.Interactables
             if (isOpen) 
                 return;
             StartCoroutine(OpeningAnimation());
-            GetComponent<StudioEventEmitter>().Play();
+            unlockedDoor.Play();
         }
 
         

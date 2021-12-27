@@ -17,27 +17,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.3
+      value: 36.33
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 10.44
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.1
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -45,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1125661663725125827, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_Layer
@@ -397,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396328571035324522, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_Speed
-      value: 56.6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1396328571035324522, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_Enabled
@@ -419,6 +423,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 3851750723848475682}
+    - target: {fileID: 2115861893407760292, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
+      propertyPath: MoveSound
+      value: 
+      objectReference: {fileID: 7883124570019250464}
     - target: {fileID: 2115861893407760292, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: targetDest
       value: 
@@ -477,7 +485,7 @@ MonoBehaviour:
   MovementSpeed: 0
   BaseMaxHealth: 200
   BaseArmor: 0
-  BaseMovementSpeed: 10
+  BaseMovementSpeed: 5.66
   BaseDamageCooldown: 0
   EntityLevelValueMuliplier: 0.02
   healthOnRevive: 20
@@ -495,13 +503,45 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31b0b99d2014ec548b9e539a8b532bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   expLevel: 1
   sparkle: {fileID: 0}
+--- !u!114 &1006270940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d265a1ee851694790d8bb49042242f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparency: {fileID: 2100000, guid: d908b43ce54679c478f1a9af479478a3, type: 2}
+--- !u!114 &1006270956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bbac252181745488dc39e1b5354411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: 1
+  maxExp: 25
+  updatedExp: 0
+  ExpBar: {fileID: 0}
+  expAddPerSec: 0.01
+  expChunksAddAtOnce: 1
+  levelText: {fileID: 0}
 --- !u!114 &1471535493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,5 +615,36 @@ MonoBehaviour:
   baseCriticalChance: 25
   criticalDamageMultiplier: 1.25
   timeBetweenAttacks: 1
-  weaponRange: 10
+  weaponRange: 2
   weaponDamage: 55
+  attackSound: {fileID: 447417579491830981}
+--- !u!114 &447417579491830981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1131413459
+      Data2: 1238272454
+      Data3: -638856540
+      Data4: 1869587502
+    Path: event:/AaaaH
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
