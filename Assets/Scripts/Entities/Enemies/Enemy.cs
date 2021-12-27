@@ -16,25 +16,19 @@ namespace Team5.Entities.Enemies
         [SerializeField] private Texture2D MouseTexture;
         
         
-        public Image healthBar;
-        
-        
+        private ParticleSystem blood;
         private Canvas canvas;
         private ParticleSystem deathCloud;
         private float healthbarValue;
         private TMP_Text hurtText;
+        private bool textEnabled;
+
         
-        private ParticleSystem blood;
+        public Image healthBar;
         public float damageTextDecayTime = 0.5f;
-        
         public float dustSpawnTime;
         public float corpseStayTime;
 
-        private bool textEnabled;
-        
-        
-        
-        
         
         private const float OneThird = 0.333f;
         private const float TwoThirds = 0.666f;
