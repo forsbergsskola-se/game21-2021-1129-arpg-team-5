@@ -11,6 +11,8 @@ namespace Team5.Ui
     public class SceneController : MonoBehaviour
     {
         private GameObject pauseMenu;
+        public GameObject PauseMenu;
+
         private string sceneName;
 
         private void Awake()
@@ -57,6 +59,15 @@ namespace Team5.Ui
             {
                 return;
             }
+        }
+        
+        // special button for Main Menu (in lieu of Esc key)
+
+        public void MainMenuClick()
+        {
+            var PauseMenu = GameObject.FindGameObjectWithTag("Pause Button").transform.Find("Pause Menu").gameObject;
+            PauseMenu.SetActive(true);
+            PauseGame();
         }
         
         // possible way to mute D-MOD audio later
