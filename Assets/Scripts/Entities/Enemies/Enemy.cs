@@ -13,8 +13,6 @@ namespace Team5.Entities.Enemies
 {
     public class Enemy : Entity, IInteractable
     {
-        // TODO: Update this with designer choice. Maybe a healthbar instead, or something else.
-        // private TMP_Text healthText;
         private TMP_Text hurtText;
         [SerializeField] private Texture2D MouseTexture;
         private ParticleSystem blood;
@@ -23,33 +21,37 @@ namespace Team5.Entities.Enemies
         public float dustSpawnTime;
         public float corpseStayTime;
         private ParticleSystem deathCloud;
-        // public SkinnedMeshRenderer mesh;
 
         private bool textEnabled = false;
         private Canvas canvas;
         public Image healthBar;
-        private float currentHealthBar;
+        private float healthbarValue;
+        private const float oneThird = 0.333f;
+        private const float twoThirds = 0.666f;
+        
         
         public void Start()
         {
             // UI game start settings
-            healthBar.fillAmount = 1;
-            currentHealthBar = 1;
+            healthBar.fillAmount = 1; // FillAmount only supports values between 0 and 1.
+            healthbarValue = 1;
         }
 
+        
+        
         public void UpdateUi()
         {
-            currentHealthBar = this.Health / this.MaxHealth;
-            healthBar.fillAmount = currentHealthBar;
+            healthbarValue = Health / MaxHealth;
+            healthBar.fillAmount = healthbarValue;
             
             // sets Healthbar colour to red if health is high
-            if (currentHealthBar < 0.333)
+            if (healthbarValue < oneThird)
             {
                 healthBar.color = Color.red;
             }
         
             // sets Healthbar colour to green if health is high
-            else if (currentHealthBar > 0.666)
+            else if (healthbarValue > twoThirds)
             {
                 healthBar.color = Color.green;
             }
@@ -58,17 +60,8 @@ namespace Team5.Entities.Enemies
                 healthBar.color = Color.yellow;
             }
         }
-
-
-        void ChangedTarget(object sender, bool temp)
-        {
-            if (textEnabled)
-            {
-                textEnabled = false;
-                //healthText.enabled = false;
-                canvas.enabled = false;
-            }
-        }
+        
+        
 
         public override float Health
         {
@@ -87,43 +80,35 @@ namespace Team5.Entities.Enemies
             }
         }
         
+        
+        
         protected override void Awake()
         {
             Transform enemyUi = transform.Find("EntityUiElements").transform;
-            // healthText = enemyUi.Find("Enemy Floating Health (TMP)").GetComponent<TMP_Text>();
             hurtText = enemyUi.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
             deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
-            // enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
-            // enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
             
             var mouseController = FindObjectOfType<MouseController>();
             mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
-
-            // healthText.enabled = false;
+            
             canvas = GetComponentInChildren<Canvas>();
             canvas.enabled = false;
         }
 
+        
+        
         protected override void OnDeath()
         {
-            //gameObject.GetComponent<OutlineController>().DisableOutlineController();
-            // canvas.enabled = false;
-
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
 
-            
-            // if (enemyIndicator2.enabled == true)
-            // {
-            //     enemyIndicator2.enabled = false;
-            //     enemyIndicator1.enabled = false;
-            // }
-            
             StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
         }
+        
+        
         
         IEnumerator WaitAndDisableHurtHealth()
         {
@@ -132,6 +117,8 @@ namespace Team5.Entities.Enemies
             // blood.Stop();
             // blood.gameObject.SetActive(false);
         }
+        
+        
         
         private IEnumerator WaitAndDisableDeath()
         {
@@ -157,24 +144,38 @@ namespace Team5.Entities.Enemies
 
         public Texture2D mouseTexture => MouseTexture;
 
+        
+        
         public void OnHoverEnter()
         {
-            // healthText.enabled = true;
             canvas.enabled = true;
         }
 
+        
+        
         public void OnHoverExit()
         {
             if (!textEnabled)
                 canvas.enabled = false;
-            // healthText.enabled = false;
         }
 
+        
+        
         public void OnClick(Vector3 mouseClickVector)
         {
             textEnabled = true;
-            // healthText.enabled = true;
             canvas.enabled = true;
+        }
+        
+        
+        
+        void ChangedTarget(object sender, bool temp)
+        {
+            if (textEnabled)
+            {
+                textEnabled = false;
+                canvas.enabled = false;
+            }
         }
     }
 }
