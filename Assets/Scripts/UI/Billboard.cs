@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    public Transform cam;
+    private Transform cameraTransform;
+
+    private void Start()
+    {
+        cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+    }
+
     void LateUpdate()
     {
         //rotate = cam.transform.rotation.z + 90;
-        transform.LookAt(transform.position + cam.forward);
+        transform.LookAt(transform.position + cameraTransform.forward);
     }
 }
