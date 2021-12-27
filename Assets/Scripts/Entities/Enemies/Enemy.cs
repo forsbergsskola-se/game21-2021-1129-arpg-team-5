@@ -13,21 +13,31 @@ namespace Team5.Entities.Enemies
 {
     public class Enemy : Entity, IInteractable
     {
-        private TMP_Text hurtText;
         [SerializeField] private Texture2D MouseTexture;
+        
+        
+        public Image healthBar;
+        
+        
+        private Canvas canvas;
+        private ParticleSystem deathCloud;
+        private float healthbarValue;
+        private TMP_Text hurtText;
+        
         private ParticleSystem blood;
         public float damageTextDecayTime = 0.5f;
         
         public float dustSpawnTime;
         public float corpseStayTime;
-        private ParticleSystem deathCloud;
 
-        private bool textEnabled = false;
-        private Canvas canvas;
-        public Image healthBar;
-        private float healthbarValue;
-        private const float oneThird = 0.333f;
-        private const float twoThirds = 0.666f;
+        private bool textEnabled;
+        
+        
+        
+        
+        
+        private const float OneThird = 0.333f;
+        private const float TwoThirds = 0.666f;
         
         
         public void Start()
@@ -45,13 +55,13 @@ namespace Team5.Entities.Enemies
             healthBar.fillAmount = healthbarValue;
             
             // sets Healthbar colour to red if health is high
-            if (healthbarValue < oneThird)
+            if (healthbarValue < OneThird)
             {
                 healthBar.color = Color.red;
             }
         
             // sets Healthbar colour to green if health is high
-            else if (healthbarValue > twoThirds)
+            else if (healthbarValue > TwoThirds)
             {
                 healthBar.color = Color.green;
             }
