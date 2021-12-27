@@ -1369,6 +1369,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 10
   weaponDamage: 25
+  attackSound: {fileID: 0}
 --- !u!114 &92426990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,6 +1443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSound: {fileID: 0}
+  isOnTestScene: 0
 --- !u!195 &92426995
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5373,6 +5376,7 @@ GameObject:
   - component: {fileID: 384880456}
   - component: {fileID: 384880455}
   - component: {fileID: 384880454}
+  - component: {fileID: 384880458}
   m_Layer: 5
   m_Name: Main Menu Button
   m_TagString: Main Menu
@@ -5507,6 +5511,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384880452}
   m_CullTransparentMesh: 1
+--- !u!65 &384880458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384880452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &398373690
 GameObject:
   m_ObjectHideFlags: 0
@@ -37591,6 +37608,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 10
   weaponDamage: 25
+  attackSound: {fileID: 0}
 --- !u!1 &3019043352095481088
 GameObject:
   m_ObjectHideFlags: 0
@@ -42860,6 +42878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSound: {fileID: 0}
+  isOnTestScene: 0
 --- !u!114 &4557248764718577924
 MonoBehaviour:
   m_ObjectHideFlags: 0
