@@ -15,7 +15,6 @@ namespace Team5.Entities.Objects.DestroyableObject
         public GameObject Nametag;
         public int DestroyXp;
 
-
         private void Start()
         {
             player = GameObject.FindWithTag("Player");

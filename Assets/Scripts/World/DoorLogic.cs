@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -9,6 +10,7 @@ namespace Team5.World.Interactables
 {
     public class DoorLogic : MonoBehaviour, IOpenLogic
     {
+        public StudioEventEmitter unlockedDoor;
         [SerializeField] private float timeToOpen;
         [SerializeField] private float openDegrees;
     
@@ -16,8 +18,8 @@ namespace Team5.World.Interactables
         private float movementPerFrame;
         private float totalAnimationFrames;
         private float frameTime;
-        private AudioSource OpeningSound;
-
+        
+        
         private const float AnimationFramerate = 60;
 
         
@@ -27,7 +29,6 @@ namespace Team5.World.Interactables
             totalAnimationFrames = Mathf.Round(timeToOpen * AnimationFramerate);
             movementPerFrame = openDegrees / totalAnimationFrames;
             frameTime = 1 / AnimationFramerate;
-            OpeningSound = GetComponent<AudioSource>();
         }
 
         
@@ -36,9 +37,8 @@ namespace Team5.World.Interactables
         {
             if (isOpen) 
                 return;
-
-            OpeningSound.Play();
             StartCoroutine(OpeningAnimation());
+            unlockedDoor.Play();
         }
 
         
@@ -50,7 +50,7 @@ namespace Team5.World.Interactables
                 yield return new WaitForSeconds(frameTime);
                 transform.Rotate(Vector3.up, movementPerFrame);
             }
-
+            
             GetComponent<OutlineController>().DisableOutlineController();
         }
 
