@@ -20,7 +20,9 @@ namespace Team5.Ui
         public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
         public GameObject PauseMenu;
-        
+        public GameObject MainMenu;
+        private Button MainMenuButton;
+
         // Shop UI
         public GameObject ShopText;
         public TMP_Text ShopDialogue;
@@ -30,6 +32,11 @@ namespace Team5.Ui
         
         // Overlays
         public GameObject overlayController;
+
+        private void Awake()
+        {
+            MainMenuButton = MainMenu.GetComponent<Button>();
+        }
 
         private void Update()
         {
