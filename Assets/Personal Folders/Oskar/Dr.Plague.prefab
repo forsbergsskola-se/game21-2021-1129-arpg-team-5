@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSound: {fileID: 0}
+  isOnTestScene: 0
 --- !u!114 &6914784486547225752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +123,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.9
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &4318557112121369305
@@ -161,6 +163,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 1.5
   weaponDamage: 25
+  attackSound: {fileID: 0}
 --- !u!114 &8670397084905533021
 MonoBehaviour:
   m_ObjectHideFlags: 0
