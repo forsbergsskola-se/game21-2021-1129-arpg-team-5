@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using Team5.Core;
 using Team5.Ui;
@@ -16,7 +17,7 @@ namespace Team5.World.Interactables
         private bool isOpen;
         private float movementUpPerFrame;
         private float totalAnimationFrames;
-        private AudioSource OpeningSound;
+        
     
     
     
@@ -25,7 +26,6 @@ namespace Team5.World.Interactables
             totalAnimationFrames = Mathf.Round(timeToGoUp * AnimationFramerate);
             movementUpPerFrame = distanceToOpen / totalAnimationFrames;
             frameTime = 1 / AnimationFramerate;
-            OpeningSound = GetComponent<AudioSource>();
         }
 
     
@@ -35,8 +35,8 @@ namespace Team5.World.Interactables
         {
             if (isOpen)
                 return;
-            OpeningSound.Play();
             StartCoroutine(OpeningAnimation());
+            GetComponent<StudioEventEmitter>().Play();
         }
 
     

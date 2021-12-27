@@ -1,3 +1,4 @@
+using FMODUnity;
 using Team5.Movement;
 using Team5.Core;
 using Team5.Entities;
@@ -22,6 +23,7 @@ namespace Team5.Combat
         private float accuracyPercentage;
         private float criticalChance;
         private float timeSinceLastAttack = Mathf.Infinity;
+        public StudioEventEmitter attackSound;
 
         private GameObject player;
         private Entity thisEntity;
@@ -171,6 +173,7 @@ namespace Team5.Combat
 
                     }
                     Debug.Log("Play Audio");
+                    attackSound.Play();
                     target.TakeDamage(totalAttackValue);
                 }
 
@@ -195,6 +198,7 @@ namespace Team5.Combat
                     {
                         Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
                     }
+                    attackSound.Play();
                     target.TakeDamage(weaponDamage);
                 }
                 

@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Team5.Core;
 using Team5.Entities;
 using Team5.Entities.Player;
@@ -27,7 +28,9 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         private bool canPlaySound;
+        public StudioEventEmitter MoveSound;
         
+
         //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         public bool isOnTestScene;
         private float differentdistance;
@@ -41,12 +44,10 @@ namespace Team5.Movement
             animator = GetComponent<Animator>();
             
             player = GameObject.FindWithTag("Player");
-            audio = player.GetComponent<AudioSource>();
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
             
             targetDest = GameObject.Find("Navigation Sphere");
-            audio = player.GetComponent<AudioSource>();
         }
 
 
@@ -57,25 +58,19 @@ namespace Team5.Movement
 
             UpdateAnimator();
 
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-            differentdistance = !isOnTestScene ? 0.2f : 2f;
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
-                if (agent.isStopped || DistanceToMarker() < differentdistance)
+                if (agent.isStopped || DistanceToMarker() < 0.2f)
                 {
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
-
                     if (!canPlaySound)
                         return;
                     canPlaySound = false;
-                    audio.Play();
                 }
-                else if (!agent.isStopped && DistanceToMarker() > differentdistance)
+                else if (!agent.isStopped && DistanceToMarker() > 0.2f)
                 {
                     canPlaySound = true;
                     agent.angularSpeed = 5000;
@@ -98,7 +93,7 @@ namespace Team5.Movement
         }
         void WalkingSound()
         {
-            Debug.Log("Play Audio");
+            MoveSound.Play();
         }
         
         
@@ -151,9 +146,8 @@ namespace Team5.Movement
             //otherwise can move
             else
             {
-                agent.destination = destination;  // Move agent to the target position
+                agent.destination = destination; // Move agent to the target position
                 agent.isStopped = false;
-                
                 if (agent.tag == "Player")
                 {
                     targetDest.SetActive(true);
