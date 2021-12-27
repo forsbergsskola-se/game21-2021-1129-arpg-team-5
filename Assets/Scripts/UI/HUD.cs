@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using Team5.Core;
 using TMPro;
@@ -17,6 +18,7 @@ namespace Team5.Ui
         public GameObject SkullHolder;
         public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
+        public GameObject PauseMenu;
         
         // Shop UI
         public GameObject ShopText;
@@ -28,7 +30,31 @@ namespace Team5.Ui
         // Overlays
         public GameObject overlayController;
 
+        private void Update()
+        {
+            var sceneController = FindObjectOfType<SceneController>();
             
+            if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy == false)
+            {
+                PauseMenu.SetActive(true);
+            }
+
+            else if ((Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy))
+            {
+                PauseMenu.SetActive(false);
+            }
+            
+            if (PauseMenu.activeInHierarchy)
+            {
+                sceneController.PauseGame();
+            }
+            
+            else if (PauseMenu.activeInHierarchy == false)
+            {
+                sceneController.ResumeGame();
+            }
+        }
+
         public void HudUIActive(bool overlays, bool level, bool dialogueBox, bool revives, 
                                 bool killCount, bool inventory, bool skulls)
         {
