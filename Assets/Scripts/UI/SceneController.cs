@@ -12,17 +12,23 @@ namespace Team5.Ui
     {
         private GameObject pauseMenu;
 
+        // load scene via name
+        
         public void LoadScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
             Debug.Log($"{sceneName} loaded");
         }
+        
+        // quit game (works in build)
     
         public void QuitGame()
         {
             Application.Quit();
             Debug.Log("Quit Button: Pressed");
         }
+        
+        // pause game & deactivate mouse controller
 
         public void PauseGame()
         {
@@ -30,6 +36,8 @@ namespace Team5.Ui
             Time.timeScale = 0;
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = false;;
         }
+        
+        // resume game & reenable mouse controller
 
         public void ResumeGame()
         {
@@ -45,6 +53,8 @@ namespace Team5.Ui
                 return;
             }
         }
+        
+        // possible way to mute D-MOD audio later
         
         public void MuteUnmuteBus(bool setMuted){
 
