@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Team5.Core;
 using Team5.Entities;
 using Team5.Entities.Player;
@@ -27,7 +28,7 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         private bool canPlaySound;
-        private FMOD.Studio.EventInstance walkingInstance;
+        public FMODUnity.EventReference walkingInstance;
         
         //TEMPORARY FOR OUR UPSCALED TEST SCENE!
         public bool isOnTestScene;
@@ -42,13 +43,10 @@ namespace Team5.Movement
             animator = GetComponent<Animator>();
             
             player = GameObject.FindWithTag("Player");
-            audio = player.GetComponent<AudioSource>();
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
             
             targetDest = GameObject.Find("Navigation Sphere");
-            audio = player.GetComponent<AudioSource>();
-            walkingInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments   (1)");
         }
 
 
@@ -71,11 +69,9 @@ namespace Team5.Movement
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
-                    walkingInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                     if (!canPlaySound)
                         return;
                     canPlaySound = false;
-                    audio.Play();
                 }
                 else if (!agent.isStopped && DistanceToMarker() > differentdistance)
                 {
@@ -100,7 +96,7 @@ namespace Team5.Movement
         }
         void WalkingSound()
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments   (1)");
+            GetComponent<StudioEventEmitter>().Play();
             Debug.Log("Play Audio");
         }
         
@@ -118,7 +114,6 @@ namespace Team5.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
-            walkingInstance.start();
         }
 
         
@@ -155,9 +150,8 @@ namespace Team5.Movement
             //otherwise can move
             else
             {
-                agent.destination = destination;  // Move agent to the target position
+                agent.destination = destination; // Move agent to the target position
                 agent.isStopped = false;
-                
                 if (agent.tag == "Player")
                 {
                     targetDest.SetActive(true);
