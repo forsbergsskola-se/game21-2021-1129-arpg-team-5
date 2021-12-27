@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using FMODUnity;
 using Team5.Control;
 using Team5.Core;
 using Team5.Ui;
@@ -13,11 +14,11 @@ namespace Team5.Entities.Enemies
     public class Enemy : Entity, IInteractable
     {
         // TODO: Update this with designer choice. Maybe a healthbar instead, or something else.
-        private TMP_Text healthText;
+        // private TMP_Text healthText;
         private TMP_Text hurtText;
         [SerializeField] private Texture2D MouseTexture;
         private ParticleSystem blood;
-        public float damageHealthDecay = 0.5f;
+        public float damageTextDecayTime = 0.5f;
         
         public float dustSpawnTime;
         public float corpseStayTime;
@@ -25,40 +26,38 @@ namespace Team5.Entities.Enemies
         // public SkinnedMeshRenderer mesh;
 
         private bool textEnabled = false;
-        // public Canvas canvas;
-        // public Image healthBar;
-        // private float currentHealthBar;
-        //
-        // public void Start()
-        // {
-        //     // UI game start settings
-        //     healthBar.fillAmount = 1;
-        //     currentHealthBar = 1;
-        //     canvas.enabled = true;
-        // }
-        //
-        // public void Update()
-        // {
-        //     // sets Healthbar fill
-        //     currentHealthBar = this.Health / this.MaxHealth;
-        //     healthBar.fillAmount = currentHealthBar;
-        //
-        //     // sets Healthbar colour to red if health is high
-        //     if (currentHealthBar < 0.333)
-        //     {
-        //         healthBar.color = Color.red;
-        //     }
-        //
-        //     // sets Healthbar colour to green if health is high
-        //     else if (currentHealthBar > 0.666)
-        //     {
-        //         healthBar.color = Color.green;
-        //     }
-        //     else
-        //     {
-        //         healthBar.color = Color.yellow;
-        //     }
-        // }
+        private Canvas canvas;
+        public Image healthBar;
+        private float currentHealthBar;
+        
+        public void Start()
+        {
+            // UI game start settings
+            healthBar.fillAmount = 1;
+            currentHealthBar = 1;
+        }
+
+        public void UpdateUi()
+        {
+            currentHealthBar = this.Health / this.MaxHealth;
+            healthBar.fillAmount = currentHealthBar;
+            
+            // sets Healthbar colour to red if health is high
+            if (currentHealthBar < 0.333)
+            {
+                healthBar.color = Color.red;
+            }
+        
+            // sets Healthbar colour to green if health is high
+            else if (currentHealthBar > 0.666)
+            {
+                healthBar.color = Color.green;
+            }
+            else
+            {
+                healthBar.color = Color.yellow;
+            }
+        }
 
 
         void ChangedTarget(object sender, bool temp)
@@ -66,7 +65,8 @@ namespace Team5.Entities.Enemies
             if (textEnabled)
             {
                 textEnabled = false;
-                healthText.enabled = false;
+                //healthText.enabled = false;
+                canvas.enabled = false;
             }
         }
 
@@ -78,8 +78,8 @@ namespace Team5.Entities.Enemies
                 float hurt = (base.Health - value);
                 base.Health = value;
                 hurtText.SetText(Mathf.RoundToInt(hurt).ToString());
-                healthText.SetText(Mathf.RoundToInt(Health).ToString());
-                
+                UpdateUi();
+
                 // blood.gameObject.SetActive(true);
                 // blood.Play();
                 hurtText.enabled = true;
@@ -89,8 +89,9 @@ namespace Team5.Entities.Enemies
         
         protected override void Awake()
         {
-            healthText = GetComponentInChildren<TMP_Text>();
-            hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
+            Transform enemyUi = transform.Find("EntityUiElements").transform;
+            // healthText = enemyUi.Find("Enemy Floating Health (TMP)").GetComponent<TMP_Text>();
+            hurtText = enemyUi.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
             blood = transform.Find("Blood").GetComponent<ParticleSystem>();
             deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
             // enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
@@ -100,7 +101,9 @@ namespace Team5.Entities.Enemies
             var mouseController = FindObjectOfType<MouseController>();
             mouseController.ChangedTarget += ChangedTarget; // This here makes our ChangeTarget method run when the event inside mousecontoller is invoked.
 
-            healthText.enabled = false;
+            // healthText.enabled = false;
+            canvas = GetComponentInChildren<Canvas>();
+            canvas.enabled = false;
         }
 
         protected override void OnDeath()
@@ -124,7 +127,7 @@ namespace Team5.Entities.Enemies
         
         IEnumerator WaitAndDisableHurtHealth()
         {
-            yield return new WaitForSeconds(damageHealthDecay);
+            yield return new WaitForSeconds(damageTextDecayTime);
             hurtText.enabled = false;
             // blood.Stop();
             // blood.gameObject.SetActive(false);
@@ -156,19 +159,22 @@ namespace Team5.Entities.Enemies
 
         public void OnHoverEnter()
         {
-            healthText.enabled = true;
+            // healthText.enabled = true;
+            canvas.enabled = true;
         }
 
         public void OnHoverExit()
         {
-            if (!textEnabled) 
-                healthText.enabled = false;
+            if (!textEnabled)
+                canvas.enabled = false;
+            // healthText.enabled = false;
         }
 
         public void OnClick(Vector3 mouseClickVector)
         {
             textEnabled = true;
-            healthText.enabled = true;
+            // healthText.enabled = true;
+            canvas.enabled = true;
         }
     }
 }
