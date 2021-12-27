@@ -681,13 +681,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1125661663715692297, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
-    - target: {fileID: 1125661663715692297, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 155655f78b6bd3e4bbca0bcb510e3050, type: 2}
+      objectReference: {fileID: 9100000, guid: 942c68f26cab68d4393d8445d1adb1d1, type: 2}
     - target: {fileID: 1125661663725047247, guid: e02c21da295e0f4478a6185d1c7177f8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -843,7 +839,6 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 10
   waypointWaitingTime: 0
-  DefaultKillXp: 0
 --- !u!114 &9013752961455765329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,23 +864,6 @@ MonoBehaviour:
   dustSpawnTime: 0
   corpseStayTime: 0
   mesh: {fileID: 0}
---- !u!114 &-3069560952170267530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849511270623630703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978dbc6fb56581540977d81204b586f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  OutlineColor: {r: 1, g: 0, b: 0, a: 1}
-  AlternateOutlineColor: {r: 1, g: 0, b: 1, a: 1}
-  OutlineWidth: 5
-  IsClicked: 0
 --- !u!114 &2163154100921811092
 MonoBehaviour:
   m_ObjectHideFlags: 0

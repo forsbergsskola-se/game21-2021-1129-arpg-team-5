@@ -75,34 +75,34 @@ namespace Team5.Combat
                 AttackBehaviour();
             }
 
-            // if (target.IsDead)
-            // {
-            //     // Disables enemy indicator if enemy dies
-            //     if (this.gameObject != player )
-            //     {
-            //         EnemyIndicatorInactive();
-            //     }
-            //
-            //     // Disables enemy indicator if player dies
-            //     else if (this.gameObject == player )
-            //     {
-            //         EnemyIndicatorInactiveTarget();
-            //     }
-            //     return;
-            // }
-            //
-            //
-            // // Activates Enemy Indicator if Player targets enemy
-            // if (target.gameObject != player)
-            // {
-            //     EnemyIndicatorActiveTarget();
-            // }
-            //
-            // // Activates Enemy Indicator if Enemy targets players
-            // if (target.gameObject == player)
-            // {
-            //     EnemyIndicatorActive();
-            // }
+            if (target.IsDead)
+            {
+                // Disables enemy indicator if enemy dies
+                if (this.gameObject != player )
+                {
+                    EnemyIndicatorInactive();
+                }
+
+                // Disables enemy indicator if player dies
+                else if (this.gameObject == player )
+                {
+                    EnemyIndicatorInactiveTarget();
+                }
+                return;
+            }
+            
+            
+            // Activates Enemy Indicator if Player targets enemy
+            if (target.gameObject != player)
+            {
+                EnemyIndicatorActiveTarget();
+            }
+
+            // Activates Enemy Indicator if Enemy targets players
+            if (target.gameObject == player)
+            {
+                EnemyIndicatorActive();
+            }
             
             // need to add logic for small enemy indicator to go away
         }
@@ -269,44 +269,44 @@ namespace Team5.Combat
         
         
         //Set enemy indicator active
-        // public void EnemyIndicatorActive()
-        // {
-        //     enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
-        //     enemyIndicator.SetActive(true); 
-        // }
-        //
-        //
-        //
-        // public void EnemyIndicatorActiveTarget()
-        // {
-        //     if (target.CompareTag("Enemy"))
-        //     {
-        //         enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-        //         enemyIndicator.SetActive(true);    
-        //     }
-        // }
+        public void EnemyIndicatorActive()
+        {
+            enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+            enemyIndicator.SetActive(true); 
+        }
+        
+        
+        
+        public void EnemyIndicatorActiveTarget()
+        {
+            if (target.CompareTag("Enemy"))
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(true);    
+            }
+        }
         
         
         
         //Set enemy indicator inactive
-        // public void EnemyIndicatorInactive()
-        // {
-        //     if (this.gameObject != player && target.CompareTag("Enemy"))
-        //     {
-        //         enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
-        //         enemyIndicator.SetActive(false);
-        //     } 
-        // }
+        public void EnemyIndicatorInactive()
+        {
+            if (this.gameObject != player && target.CompareTag("Enemy"))
+            {
+                enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+                enemyIndicator.SetActive(false);
+            } 
+        }
         
         
         
-        // public void EnemyIndicatorInactiveTarget()
-        // {
-        //     if (target.CompareTag("Enemy"))
-        //     {
-        //         enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-        //         enemyIndicator.SetActive(false);
-        //     }
-        // }
+        public void EnemyIndicatorInactiveTarget()
+        {
+            if (target.CompareTag("Enemy"))
+            {
+                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+                enemyIndicator.SetActive(false);
+            }
+        }
     }
 }

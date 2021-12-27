@@ -22,43 +22,45 @@ namespace Team5.Entities.Enemies
         public float dustSpawnTime;
         public float corpseStayTime;
         private ParticleSystem deathCloud;
-        // public SkinnedMeshRenderer mesh;
-
+        public SkinnedMeshRenderer mesh;
+        private MeshRenderer enemyIndicator2;
+        private MeshRenderer enemyIndicator1;
+       
         private bool textEnabled = false;
-        // public Canvas canvas;
-        // public Image healthBar;
-        // private float currentHealthBar;
-        //
-        // public void Start()
-        // {
-        //     // UI game start settings
-        //     healthBar.fillAmount = 1;
-        //     currentHealthBar = 1;
-        //     canvas.enabled = true;
-        // }
-        //
-        // public void Update()
-        // {
-        //     // sets Healthbar fill
-        //     currentHealthBar = this.Health / this.MaxHealth;
-        //     healthBar.fillAmount = currentHealthBar;
-        //
-        //     // sets Healthbar colour to red if health is high
-        //     if (currentHealthBar < 0.333)
-        //     {
-        //         healthBar.color = Color.red;
-        //     }
-        //
-        //     // sets Healthbar colour to green if health is high
-        //     else if (currentHealthBar > 0.666)
-        //     {
-        //         healthBar.color = Color.green;
-        //     }
-        //     else
-        //     {
-        //         healthBar.color = Color.yellow;
-        //     }
-        // }
+        public Canvas canvas;
+        public Image healthBar;
+        private float currentHealthBar;
+
+        public void Start()
+        {
+            // UI game start settings
+            healthBar.fillAmount = 1;
+            currentHealthBar = 1;
+            canvas.enabled = true;
+        }
+
+        public void Update()
+        {
+            // sets Healthbar fill
+            currentHealthBar = this.Health / this.MaxHealth;
+            healthBar.fillAmount = currentHealthBar;
+
+            // sets Healthbar colour to red if health is high
+            if (currentHealthBar < 0.333)
+            {
+                healthBar.color = Color.red;
+            }
+
+            // sets Healthbar colour to green if health is high
+            else if (currentHealthBar > 0.666)
+            {
+                healthBar.color = Color.green;
+            }
+            else
+            {
+                healthBar.color = Color.yellow;
+            }
+        }
 
 
         void ChangedTarget(object sender, bool temp)
@@ -91,8 +93,8 @@ namespace Team5.Entities.Enemies
         {
             healthText = GetComponentInChildren<TMP_Text>();
             hurtText = transform.Find("Hurt Health Value (TMP)").GetComponent<TMP_Text>();
-            blood = transform.Find("Blood").GetComponent<ParticleSystem>();
-            deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
+            // blood = transform.Find("Blood").GetComponent<ParticleSystem>();
+            // deathCloud = transform.Find("Dust Cloud").GetComponent<ParticleSystem>();
             // enemyIndicator1 = transform.Find("Enemy Indicator").GetComponent<MeshRenderer>();
             // enemyIndicator2 = transform.Find("Enemy Indicator2").GetComponent<MeshRenderer>();
             base.Awake();
@@ -106,7 +108,7 @@ namespace Team5.Entities.Enemies
         protected override void OnDeath()
         {
             //gameObject.GetComponent<OutlineController>().DisableOutlineController();
-            // canvas.enabled = false;
+            canvas.enabled = false;
 
             if (gameObject.TryGetComponent(out OutlineController outlineController))
                 outlineController.DisableOutlineController();
@@ -142,7 +144,7 @@ namespace Team5.Entities.Enemies
             
             // Enemy mesh is disabled
             yield return new WaitForSeconds(corpseStayTime);
-            GetComponentInChildren<Renderer>().enabled = false;
+            mesh.GetComponent<Renderer>().enabled = false;
 
             // Enemy game object fully disabled
             yield return new WaitForSeconds(10);
