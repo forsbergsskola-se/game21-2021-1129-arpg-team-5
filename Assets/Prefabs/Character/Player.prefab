@@ -527,55 +527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7fa956988825f489f56a00ac14a5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9151978097879815257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killCount: 0
-  baseAccuracyPercentage: 90
-  baseCriticalChance: 25
-  criticalDamageMultiplier: 1.25
-  timeBetweenAttacks: 1
-  weaponRange: 10
-  weaponDamage: 55
---- !u!114 &4739761446832021677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851750723848475682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -745935350
-      Data2: 1172914599
-      Data3: -816624227
-      Data4: -1142146889
-    Path: event:/Team_5_-_Crypt
-  Event: 
-  PlayEvent: 1
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &7883124570019250464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,3 +558,22 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &9151978097879815257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851750723848475682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a62c05393cbdd04182032a44672d717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  baseAccuracyPercentage: 90
+  baseCriticalChance: 25
+  criticalDamageMultiplier: 1.25
+  timeBetweenAttacks: 1
+  weaponRange: 10
+  weaponDamage: 55
