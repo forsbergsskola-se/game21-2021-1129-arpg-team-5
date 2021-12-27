@@ -74,7 +74,7 @@ namespace Team5.Entities.Enemies
             {
                 float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(Mathf.RoundToInt(hurt).ToString());
+                hurtText.SetText(Mathf.RoundToInt(hurt) != 0 ? Mathf.RoundToInt(hurt).ToString() : "Miss!");
                 UpdateUi();
 
                 // blood.gameObject.SetActive(true);
