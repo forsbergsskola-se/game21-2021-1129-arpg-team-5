@@ -58,14 +58,10 @@ namespace Team5.Movement
 
             UpdateAnimator();
 
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-            differentdistance = !isOnTestScene ? 0.2f : 2f;
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
-                if (agent.isStopped || DistanceToMarker() < differentdistance)
+                if (agent.isStopped || DistanceToMarker() < 0.2f)
                 {
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
@@ -74,7 +70,7 @@ namespace Team5.Movement
                         return;
                     canPlaySound = false;
                 }
-                else if (!agent.isStopped && DistanceToMarker() > differentdistance)
+                else if (!agent.isStopped && DistanceToMarker() > 0.2f)
                 {
                     canPlaySound = true;
                     agent.angularSpeed = 5000;
@@ -196,11 +192,6 @@ namespace Team5.Movement
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(destination, path);
             return path.status != NavMeshPathStatus.PathPartial;
-        }
-
-        public void MoveToAudio()
-        {
-           
         }
     }
     
