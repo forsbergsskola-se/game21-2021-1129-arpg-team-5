@@ -17,15 +17,11 @@ namespace Team5.Ui
         {
             pauseMenu = GameObject.FindWithTag("Pause Menu");
         }
-
-        // load scene via name
         
+        // resume game and load scene via name
         public void LoadScene(string sceneName)
         {
-            if (sceneName != "Main Menu")
-            {
-                ResumeGame();
-            }
+            Time.timeScale = 1;
             SceneManager.LoadScene(sceneName);
             Debug.Log($"{sceneName} loaded");
         }
@@ -51,21 +47,15 @@ namespace Team5.Ui
         public void ResumeGame()
         {
             Time.timeScale = 1;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = true;;
             
-            sceneName = SceneManager.GetActiveScene().name;
-            Debug.Log($"{sceneName}");
-            if (sceneName != "Main Menu")
+            if (pauseMenu.activeInHierarchy)
             {
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = true;;
-                
-                if (pauseMenu.activeInHierarchy)
-                {
-                    pauseMenu.SetActive(false);
-                }
-                else
-                {
-                    return;
-                }
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                return;
             }
         }
         
