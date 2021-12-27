@@ -28,12 +28,6 @@ namespace Team5.Movement
         private static float newPlayerZAxis;
         private bool canPlaySound;
         
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        public bool isOnTestScene;
-        private float differentdistance;
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        
-        
         private void Start()
         {
             entity = GetComponent<Entity>();
@@ -57,14 +51,10 @@ namespace Team5.Movement
 
             UpdateAnimator();
 
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-            differentdistance = !isOnTestScene ? 0.2f : 2f;
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
-                if (agent.isStopped || DistanceToMarker() < differentdistance)
+                if (agent.isStopped || DistanceToMarker() < 0.2f)
                 {
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
@@ -75,7 +65,7 @@ namespace Team5.Movement
                     canPlaySound = false;
                     audio.Play();
                 }
-                else if (!agent.isStopped && DistanceToMarker() > differentdistance)
+                else if (!agent.isStopped && DistanceToMarker() > 0.2f)
                 {
                     canPlaySound = true;
                     agent.angularSpeed = 5000;
