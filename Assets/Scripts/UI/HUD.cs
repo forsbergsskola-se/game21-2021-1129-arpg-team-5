@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using Team5.Control;
 using Team5.Core;
 using TMPro;
 using UnityEngine;
@@ -32,8 +33,10 @@ namespace Team5.Ui
 
         private void Update()
         {
+            // Press Escape key to de/activate Pause Menu
+
             var sceneController = FindObjectOfType<SceneController>();
-            
+
             if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy == false)
             {
                 PauseMenu.SetActive(true);
@@ -42,16 +45,15 @@ namespace Team5.Ui
             else if ((Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy))
             {
                 PauseMenu.SetActive(false);
+                sceneController.ResumeGame();
+
             }
-            
+
+            // Pauses and resumes game if pause menu active
+
             if (PauseMenu.activeInHierarchy)
             {
                 sceneController.PauseGame();
-            }
-            
-            else if (PauseMenu.activeInHierarchy == false)
-            {
-                sceneController.ResumeGame();
             }
         }
 
@@ -76,5 +78,4 @@ namespace Team5.Ui
             DialogueHeadNPC.SetActive(headNpc);
         }
     }
-
 } 
