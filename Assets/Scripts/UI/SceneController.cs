@@ -11,11 +11,21 @@ namespace Team5.Ui
     public class SceneController : MonoBehaviour
     {
         private GameObject pauseMenu;
+        private string sceneName;
+
+        private void Awake()
+        {
+            pauseMenu = GameObject.FindWithTag("Pause Menu");
+        }
 
         // load scene via name
         
         public void LoadScene(string sceneName)
         {
+            if (sceneName != "Main Menu")
+            {
+                ResumeGame();
+            }
             SceneManager.LoadScene(sceneName);
             Debug.Log($"{sceneName} loaded");
         }
@@ -32,7 +42,6 @@ namespace Team5.Ui
 
         public void PauseGame()
         {
-            pauseMenu = GameObject.FindWithTag("Pause Menu");
             Time.timeScale = 0;
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = false;;
         }
@@ -41,16 +50,22 @@ namespace Team5.Ui
 
         public void ResumeGame()
         {
-            pauseMenu = GameObject.FindWithTag("Pause Menu");
             Time.timeScale = 1;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = true;;
-            if (pauseMenu.activeInHierarchy)
+            
+            sceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"{sceneName}");
+            if (sceneName != "Main Menu")
             {
-                pauseMenu.SetActive(false);
-            }
-            else
-            {
-                return;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseController>().enabled = true;;
+                
+                if (pauseMenu.activeInHierarchy)
+                {
+                    pauseMenu.SetActive(false);
+                }
+                else
+                {
+                    return;
+                }
             }
         }
         
