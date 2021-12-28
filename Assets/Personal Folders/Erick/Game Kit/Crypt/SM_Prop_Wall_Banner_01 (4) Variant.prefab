@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 104734, guid: bb0fa3f17faa4104685a0f593249f5d4, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_Wall_Banner_01 (4)
+      value: SM_Prop_Wall_Banner_01 (4) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 404076, guid: bb0fa3f17faa4104685a0f593249f5d4, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64088216933981104, guid: bb0fa3f17faa4104685a0f593249f5d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb0fa3f17faa4104685a0f593249f5d4, type: 3}
+--- !u!1 &2175484872086803092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 104734, guid: bb0fa3f17faa4104685a0f593249f5d4, type: 3}
+  m_PrefabInstance: {fileID: 2175484872086899594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3600410352553204437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175484872086803092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.000576, y: 4.2934284, z: 0.18088531}
+  m_Center: {x: 0, y: -2.061314, z: 0}
