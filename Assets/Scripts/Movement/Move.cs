@@ -103,7 +103,8 @@ namespace Team5.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
-            targetDest.transform.position = new Vector3(targetDest.transform.position.x, targetDest.transform.position.y + 0.01f, targetDest.transform.position.z);
+            if (CompareTag("Player"))
+                targetDest.transform.position = new Vector3(targetDest.transform.position.x, targetDest.transform.position.y + 0.01f, targetDest.transform.position.z);
 
         }
 
