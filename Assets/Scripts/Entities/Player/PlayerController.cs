@@ -45,7 +45,15 @@ namespace Team5.Entities.Player
 
         void Update()
         {
+            // suggestion for how lowHealth bool can be utilized
+            
+            if (lowHealth == true)
+            {
+                Debug.Log("Use a potion to regain health!");
+            }
+            
             // sets Healthbar fill
+
             currentHealthBar = this.Health / this.MaxHealth;
             healthBar.fillAmount = currentHealthBar;
 
