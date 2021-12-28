@@ -20,6 +20,7 @@ namespace Team5.Ui
         public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
         public GameObject PauseMenu;
+        public GameObject OptionsMenu;
         public GameObject MainMenu;
         private Button MainMenuButton;
 
@@ -44,7 +45,7 @@ namespace Team5.Ui
 
             var sceneController = FindObjectOfType<SceneController>();
 
-            if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy == false)
+            if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeInHierarchy == false && OptionsMenu.activeInHierarchy == false)
             {
                 PauseMenu.SetActive(true);
             }
@@ -53,7 +54,11 @@ namespace Team5.Ui
             {
                 PauseMenu.SetActive(false);
                 sceneController.ResumeGame();
-
+            }
+            
+            else if ((Input.GetKeyDown(KeyCode.Escape) && OptionsMenu.activeInHierarchy))
+            {
+                sceneController.OptionsClose();
             }
 
             // Pauses and resumes game if pause menu active
