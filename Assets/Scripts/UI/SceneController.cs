@@ -11,13 +11,13 @@ namespace Team5.Ui
     public class SceneController : MonoBehaviour
     {
         private GameObject pauseMenu;
-        public GameObject PauseMenu;
-
+        private GameObject optionsMenu;
         private string sceneName;
 
         private void Awake()
         {
             pauseMenu = GameObject.FindWithTag("Pause Menu");
+            optionsMenu = GameObject.FindWithTag("Options Menu");
         }
         
         // resume game and load scene via name
@@ -61,12 +61,35 @@ namespace Team5.Ui
             }
         }
         
-        // special button for Main Menu (in lieu of Esc key)
+        // opens and closes options menu
+
+        public void OptionsOpen()
+        {
+            var OptionsMenu = GameObject.FindGameObjectWithTag("Pause Button").transform.Find("Options Menu").gameObject;
+            OptionsMenu.SetActive(true);
+            MainMenuClick();
+        }
+
+        public void OptionsClose()
+        {
+            var OptionsMenu = GameObject.FindGameObjectWithTag("Pause Button").transform.Find("Options Menu").gameObject;
+            OptionsMenu.SetActive(false);
+            MainMenuClick();
+        }
+
+        // special button for Main Menu && also works for toggling Pause Menu while in Options Menu
 
         public void MainMenuClick()
         {
             var PauseMenu = GameObject.FindGameObjectWithTag("Pause Button").transform.Find("Pause Menu").gameObject;
-            PauseMenu.SetActive(true);
+            if (PauseMenu.activeInHierarchy)
+            {
+                PauseMenu.SetActive(false);
+            }
+            else
+            {
+                PauseMenu.SetActive(true);
+            }
             PauseGame();
         }
         
