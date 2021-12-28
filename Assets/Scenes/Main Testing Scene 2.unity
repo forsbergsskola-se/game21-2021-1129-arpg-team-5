@@ -1703,21 +1703,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 0}
   ReviveText: {fileID: 1875393655}
+  HealthText: {fileID: 1285851240}
   CashText: {fileID: 0}
   KillCountText: {fileID: 990989009}
   LvlText: {fileID: 524038610}
   SkullHolder: {fileID: 1583569870}
   SkullCounter: {fileID: 355297059}
   InventoryMenu: {fileID: 438312634}
-  PauseMenu: {fileID: 0}
-  OptionsMenu: {fileID: 0}
-  MainMenu: {fileID: 0}
   ShopText: {fileID: 628717856}
   ShopDialogue: {fileID: 1063920554}
   SkullIcons: {fileID: 1917915177}
   DialogueHeadMain: {fileID: 0}
   DialogueHeadNPC: {fileID: 0}
-  overlayController: {fileID: 0}
 --- !u!114 &163437278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20058,18 +20055,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280722821138442283, guid: c90ddef204698ec4aa61078dbba5ed88, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280783800262219375, guid: c90ddef204698ec4aa61078dbba5ed88, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280783800262219375, guid: c90ddef204698ec4aa61078dbba5ed88, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280783800262219375, guid: c90ddef204698ec4aa61078dbba5ed88, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2280788496289604439, guid: c90ddef204698ec4aa61078dbba5ed88, type: 3}
