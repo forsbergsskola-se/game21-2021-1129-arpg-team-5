@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 8670397084905533021}
   - component: {fileID: 2948991050389314355}
   - component: {fileID: 1413966232825244158}
+  - component: {fileID: 5762739972252400799}
+  - component: {fileID: 4972664595884296808}
   m_Layer: 0
   m_Name: Dr.Plague
   m_TagString: Enemy
@@ -99,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e5016f6d1e33e4eac4c0485cd8df19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSound: {fileID: 0}
+  MoveSound: {fileID: 4972664595884296808}
   isOnTestScene: 0
 --- !u!114 &6914784486547225752
 MonoBehaviour:
@@ -163,7 +165,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 1.5
   weaponDamage: 25
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 5762739972252400799}
 --- !u!114 &8670397084905533021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +221,67 @@ MonoBehaviour:
   damageTextDecayTime: 0.5
   dustSpawnTime: 0
   corpseStayTime: 0
+--- !u!114 &5762739972252400799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586214465307560896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1330722290
+      Data2: 1162088888
+      Data3: 1721084325
+      Data4: 401520110
+    Path: event:/IDK2
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &4972664595884296808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586214465307560896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 957772419
+      Data2: 1251969307
+      Data3: 986794378
+      Data4: 553908129
+    Path: event:/Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments  
+      (1)
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4878107142272815186
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,14 +5892,14 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
---- !u!4 &8730572749451983473 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
-  m_PrefabInstance: {fileID: 9125278925628841370}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8242406472008999115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
+  m_PrefabInstance: {fileID: 9125278925628841370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8730572749451983473 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2112dba9f8a2904d8a7d0b96fa0eb44, type: 3}
   m_PrefabInstance: {fileID: 9125278925628841370}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7964653615918661135
