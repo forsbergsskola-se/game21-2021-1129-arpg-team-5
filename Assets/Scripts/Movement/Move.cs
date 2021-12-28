@@ -40,7 +40,7 @@ namespace Team5.Movement
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
             
-            targetDest = GameObject.Find("Navigation Sphere");
+            targetDest = GameObject.Find("Target Animation00");
         }
 
 
@@ -50,7 +50,7 @@ namespace Team5.Movement
             agent.enabled = !entity.IsDead;
 
             UpdateAnimator();
-
+            
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
@@ -58,7 +58,7 @@ namespace Team5.Movement
                 {
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
-                    targetDest.GetComponent<MeshRenderer>().enabled = false;
+                    targetDest.GetComponent<SpriteRenderer>().enabled = false;
                     if (!canPlaySound)
                         return;
                     canPlaySound = false;
@@ -67,7 +67,7 @@ namespace Team5.Movement
                 {
                     canPlaySound = true;
                     agent.angularSpeed = 5000;
-                    targetDest.GetComponent<MeshRenderer>().enabled = true;
+                    targetDest.GetComponent<SpriteRenderer>().enabled = true;
                 }
             }
             
@@ -79,9 +79,9 @@ namespace Team5.Movement
                 var enemyLocation = Math.Round(this.gameObject.transform.position.x, 1);
                 
                 if (enemyLocation == targetDestLocation)
-                    targetDest.GetComponent<MeshRenderer>().material = enemyMaterial;
+                    targetDest.GetComponent<SpriteRenderer>().material = enemyMaterial;
                 else
-                    targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
+                    targetDest.GetComponent<SpriteRenderer>().material = waypointMaterial;
             }
         }
         void WalkingSound()
@@ -103,6 +103,8 @@ namespace Team5.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
+            targetDest.transform.position = new Vector3(targetDest.transform.position.x, targetDest.transform.position.y + 0.01f, targetDest.transform.position.z);
+
         }
 
         
