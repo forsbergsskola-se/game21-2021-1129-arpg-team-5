@@ -33,7 +33,10 @@ namespace Team5.Entities.Enemies
         private const float OneThird = 0.333f;
         private const float TwoThirds = 0.666f;
         
-        
+        [SerializeField]
+        private string missText = "Miss!";
+
+
         public void Start()
         {
             // UI game start settings
@@ -74,7 +77,7 @@ namespace Team5.Entities.Enemies
             {
                 float hurt = (base.Health - value);
                 base.Health = value;
-                hurtText.SetText(Mathf.RoundToInt(hurt) != 0 ? Mathf.RoundToInt(hurt).ToString() : "Miss!");
+                hurtText.SetText(Mathf.RoundToInt(hurt) != 0 ? Mathf.RoundToInt(hurt).ToString() : missText);
                 UpdateUi();
 
                 // blood.gameObject.SetActive(true);
