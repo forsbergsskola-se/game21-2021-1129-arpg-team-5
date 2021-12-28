@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 614
+  m_VersionIndex: 617
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2181,6 +2181,50 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -3758573805739257388, guid: da443ba5a2b413242843fb9185bdfe0f, type: 3}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor
+      value: 
+      objectReference: {fileID: 2042668138932776499}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Path
+      value: event:/DoorLocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Path
+      value: event:/450300__vero-marengere__wooden-door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data1
+      value: -741599271
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data2
+      value: 1233717033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data3
+      value: 1450243997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data4
+      value: -1510529467
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data1
+      value: -2068184521
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data2
+      value: 1105806675
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data3
+      value: 635099010
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804650, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data4
+      value: 1798231861
+      objectReference: {fileID: 0}
     - target: {fileID: 5442421198350804653, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2237,17 +2281,93 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor
+      value: 
+      objectReference: {fileID: 3025137313486082486}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Path
+      value: event:/DoorLocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: lockedDoor.Path
+      value: event:/DoorLocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Path
+      value: event:/450300__vero-marengere__wooden-door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data1
+      value: -741599271
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data2
+      value: 1233717033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data3
+      value: 1450243997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: LockedDoor.Guid.Data4
+      value: -1510529467
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: lockedDoor.Guid.Data1
+      value: -741599271
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: lockedDoor.Guid.Data2
+      value: 1233717033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: lockedDoor.Guid.Data3
+      value: 1450243997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: lockedDoor.Guid.Data4
+      value: -1510529467
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data1
+      value: -2068184521
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data2
+      value: 1105806675
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data3
+      value: 635099010
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804654, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: unlockedDoor.Guid.Data4
+      value: 1798231861
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_Size.x
+      value: 16.800673
+      objectReference: {fileID: 0}
     - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_Size.y
-      value: 9.6
+      value: 11.458708
       objectReference: {fileID: 0}
     - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_Size.z
-      value: 0.7
+      value: 5.6070194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_Center.x
+      value: 5.8226194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9293417
       objectReference: {fileID: 0}
     - target: {fileID: 5442421198350804655, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_Center.z
-      value: 0.3
+      value: 1.5170455
       objectReference: {fileID: 0}
     - target: {fileID: 5442421198350804659, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
       propertyPath: m_Name
@@ -2271,11 +2391,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+--- !u!1 &7292096548842268690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5442421198350804659, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
+  m_PrefabInstance: {fileID: 3365849268632489633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7292096548842268684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5442421198350804653, guid: 453c59bcb5ea3e7478c623262f7af608, type: 3}
   m_PrefabInstance: {fileID: 3365849268632489633}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2042668138932776499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292096548842268690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2068184521
+      Data2: 1105806675
+      Data3: 635099010
+      Data4: 1798231861
+    Path: event:/450300__vero-marengere__wooden-door
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &3025137313486082486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292096548842268690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -741599271
+      Data2: 1233717033
+      Data3: 1450243997
+      Data4: -1510529467
+    Path: event:/DoorLocked
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &4863115688735335358
 PrefabInstance:
   m_ObjectHideFlags: 0

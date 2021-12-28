@@ -1,12 +1,23 @@
 using System.Collections;
+using FMODUnity;
 using Team5.Control;
 using Team5.Core;
+using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
 
 public class InteractableBarrierController : MonoBehaviour, IInteractable
 {
+    [System.Serializable]
+    public struct CursorMapping
+    {
+        public CursorType type;
+        public Texture2D texture;
+        public Vector2 hotspot;
+    }
+
+    
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
@@ -18,6 +29,8 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     private MouseController mouseController;
     
     private Vector3 TargetPosition;
+
+    public StudioEventEmitter LockedDoor;
     
     private bool isLocked = false;
     private bool waitForSound;
@@ -76,10 +89,11 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         {
             if (!waitForSound)
             {
-                GetComponent<AudioSource>().Play();
                 waitForSound = true;
                 StartCoroutine(WaitForSound());
             }
+            //TODO Fix So the gate does not sound same as the door. 
+            LockedDoor.Play();
             return;
         }
 
@@ -156,5 +170,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(4);
         isLocked = false;
+        
+        
     }
 }

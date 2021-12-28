@@ -1,3 +1,4 @@
+using FMODUnity;
 using Team5.Movement;
 using Team5.Core;
 using Team5.Entities;
@@ -22,6 +23,7 @@ namespace Team5.Combat
         private float accuracyPercentage;
         private float criticalChance;
         private float timeSinceLastAttack = Mathf.Infinity;
+        public StudioEventEmitter attackSound;
 
         private GameObject player;
         private Entity thisEntity;
@@ -75,34 +77,34 @@ namespace Team5.Combat
                 AttackBehaviour();
             }
 
-            if (target.IsDead)
-            {
-                // Disables enemy indicator if enemy dies
-                if (this.gameObject != player )
-                {
-                    EnemyIndicatorInactive();
-                }
-
-                // Disables enemy indicator if player dies
-                else if (this.gameObject == player )
-                {
-                    EnemyIndicatorInactiveTarget();
-                }
-                return;
-            }
-            
-            
-            // Activates Enemy Indicator if Player targets enemy
-            if (target.gameObject != player)
-            {
-                EnemyIndicatorActiveTarget();
-            }
-
-            // Activates Enemy Indicator if Enemy targets players
-            if (target.gameObject == player)
-            {
-                EnemyIndicatorActive();
-            }
+            // if (target.IsDead)
+            // {
+            //     // Disables enemy indicator if enemy dies
+            //     if (this.gameObject != player )
+            //     {
+            //         EnemyIndicatorInactive();
+            //     }
+            //
+            //     // Disables enemy indicator if player dies
+            //     else if (this.gameObject == player )
+            //     {
+            //         EnemyIndicatorInactiveTarget();
+            //     }
+            //     return;
+            // }
+            //
+            //
+            // // Activates Enemy Indicator if Player targets enemy
+            // if (target.gameObject != player)
+            // {
+            //     EnemyIndicatorActiveTarget();
+            // }
+            //
+            // // Activates Enemy Indicator if Enemy targets players
+            // if (target.gameObject == player)
+            // {
+            //     EnemyIndicatorActive();
+            // }
             
             // need to add logic for small enemy indicator to go away
         }
@@ -155,12 +157,23 @@ namespace Team5.Combat
             if (Random.Range(0, 100) < CriticalChance)
             {
                 var totalAttackValue = weaponDamage * criticalDamageMultiplier;
-                Debug.Log($"{this.name} can land critical hit");
+                
+                if (target.CompareTag("Enemy"))
+                {
+                    Debug.Log($"{this.name} can land critical hit");
+                }
                 // hit accuracy higher than chance, can attack with critical hit
                 if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
-                    Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
+                    
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name} landed a CRITICAL HIT of {totalAttackValue} on {target.name}!!!");
+
+                    }
+                    Debug.Log("Play Audio");
+                    attackSound.Play();
                     target.TakeDamage(totalAttackValue);
                 }
 
@@ -169,7 +182,10 @@ namespace Team5.Combat
                 {
                     target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy < {accuracyChance}0% chance");
-                    Debug.Log($"{this.name}'s critical hit missed {target.name}!");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name}'s critical hit missed {target.name}!");
+                    }
                 }
             }
             // attack without critical hit
@@ -178,17 +194,23 @@ namespace Team5.Combat
                 if (Random.Range(0, 100) < accuracyPercentage)
                 {
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
-                    Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
+                    }
+                    attackSound.Play();
                     target.TakeDamage(weaponDamage);
                 }
                 
                 //  misses attack due to low accuracy
                 else
-
                 {
                     target.TakeDamage(missedDamage);
                     //Debug.Log($"{this.name}'s {accuracyPercent}0% accuracy < {accuracyChance}0% chance");
-                    Debug.Log($"{this.name}'s attack missed {target.name}!");
+                    if (target.CompareTag("Enemy"))
+                    {
+                        Debug.Log($"{this.name}'s attack missed {target.name}!");
+                    }
                 }
             }
 
@@ -251,44 +273,44 @@ namespace Team5.Combat
         
         
         //Set enemy indicator active
-        public void EnemyIndicatorActive()
-        {
-            enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
-            enemyIndicator.SetActive(true); 
-        }
-        
-        
-        
-        public void EnemyIndicatorActiveTarget()
-        {
-            if (target.CompareTag("Enemy"))
-            {
-                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(true);    
-            }
-        }
+        // public void EnemyIndicatorActive()
+        // {
+        //     enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+        //     enemyIndicator.SetActive(true); 
+        // }
+        //
+        //
+        //
+        // public void EnemyIndicatorActiveTarget()
+        // {
+        //     if (target.CompareTag("Enemy"))
+        //     {
+        //         enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+        //         enemyIndicator.SetActive(true);    
+        //     }
+        // }
         
         
         
         //Set enemy indicator inactive
-        public void EnemyIndicatorInactive()
-        {
-            if (this.gameObject != player && target.CompareTag("Enemy"))
-            {
-                enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
-                enemyIndicator.SetActive(false);
-            } 
-        }
+        // public void EnemyIndicatorInactive()
+        // {
+        //     if (this.gameObject != player && target.CompareTag("Enemy"))
+        //     {
+        //         enemyIndicator = this.transform.Find("Enemy Indicator2").gameObject;
+        //         enemyIndicator.SetActive(false);
+        //     } 
+        // }
         
         
         
-        public void EnemyIndicatorInactiveTarget()
-        {
-            if (target.CompareTag("Enemy"))
-            {
-                enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
-                enemyIndicator.SetActive(false);
-            }
-        }
+        // public void EnemyIndicatorInactiveTarget()
+        // {
+        //     if (target.CompareTag("Enemy"))
+        //     {
+        //         enemyIndicator = target.transform.Find("Enemy Indicator").gameObject;
+        //         enemyIndicator.SetActive(false);
+        //     }
+        // }
     }
 }

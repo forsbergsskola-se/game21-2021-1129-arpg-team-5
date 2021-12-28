@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4566685602811334385}
   - component: {fileID: 4566685602811334384}
   - component: {fileID: 4566685602811334387}
+  - component: {fileID: 4121442740068290425}
   m_Layer: 0
   m_Name: pCylinder1
   m_TagString: Untagged
@@ -147,8 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  OutlineColor: {r: 1, g: 0, b: 0.88872623, a: 1}
-  OutlineWidth: 10
+  OutlineColor: {r: 0.6862745, g: 0, b: 0, a: 1}
+  AlternateOutlineColor: {r: 1, g: 0, b: 1, a: 1}
+  OutlineWidth: 2.5
   IsClicked: 0
 --- !u!114 &4566685602811334384
 MonoBehaviour:
@@ -185,6 +187,30 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 2fca70c009af3234fa450e35248f1bc8, type: 3}
   explosion: {fileID: 4300093290876434741, guid: 58221ac3a117cb54088a38313efe9304, type: 3}
   SmokeSystem: {fileID: 4714472364175860279, guid: 0987b23ac6f302b409d6fcd8ff856512, type: 3}
+  Nametag: {fileID: 0}
+  DestroyXp: 30
+  vaseDestoryed:
+    Guid:
+      Data1: -1494301522
+      Data2: 1146413404
+      Data3: 1971809719
+      Data4: 775387672
+    Path: event:/86324__timbre__smashing-1
+--- !u!114 &4121442740068290425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798398061309386227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3720335640779852993
 GameObject:
   m_ObjectHideFlags: 0

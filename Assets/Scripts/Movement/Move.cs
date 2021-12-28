@@ -1,6 +1,8 @@
 using System;
+using FMODUnity;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Entities.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,12 +28,7 @@ namespace Team5.Movement
         private float oldPlayerZAxis;
         private static float newPlayerZAxis;
         private bool canPlaySound;
-        
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        public bool isOnTestScene;
-        private float differentdistance;
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        
+        public StudioEventEmitter MoveSound;
         
         private void Start()
         {
@@ -40,12 +37,10 @@ namespace Team5.Movement
             animator = GetComponent<Animator>();
             
             player = GameObject.FindWithTag("Player");
-            audio = player.GetComponent<AudioSource>();
             enemyMaterial = (Material) Resources.Load("EnemyIndicator");
             waypointMaterial = (Material) Resources.Load("Waypoint");
             
             targetDest = GameObject.Find("Navigation Sphere");
-            audio = player.GetComponent<AudioSource>();
         }
 
 
@@ -56,25 +51,19 @@ namespace Team5.Movement
 
             UpdateAnimator();
 
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-            differentdistance = !isOnTestScene ? 0.2f : 2f;
-            //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-
             // indicates player has reached destinaton with sound and visual
             if (CompareTag("Player"))
             {
-                if (agent.isStopped || DistanceToMarker() < differentdistance)
+                if (agent.isStopped || DistanceToMarker() < 0.2f)
                 {
                     agent.angularSpeed = 10;
                     oldPlayerRotation = newPlayerRotation;
                     targetDest.GetComponent<MeshRenderer>().enabled = false;
-
                     if (!canPlaySound)
                         return;
                     canPlaySound = false;
-                    audio.Play();
                 }
-                else if (!agent.isStopped && DistanceToMarker() > differentdistance)
+                else if (!agent.isStopped && DistanceToMarker() > 0.2f)
                 {
                     canPlaySound = true;
                     agent.angularSpeed = 5000;
@@ -95,7 +84,10 @@ namespace Team5.Movement
                     targetDest.GetComponent<MeshRenderer>().material = waypointMaterial;
             }
         }
-        
+        void WalkingSound()
+        {
+            MoveSound.Play();
+        }
         
         
         private float DistanceToMarker()
@@ -117,27 +109,41 @@ namespace Team5.Movement
         
         public void MoveTo(Vector3 destination)
         {
-            // can't move if dead
+            // can't set target dest if dead
+            if (player.GetComponent<PlayerController>().reviving == true)
+            {
+                if (this.entity.Health < 40)
+                {
+                    targetDest.SetActive(false);
+                    agent.isStopped = true;
+                }
+            }
+            
             if (this.entity.IsDead)
             {
-                Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
+                agent.isStopped = true;
                 
+                if (agent.tag == "Player")
+                {
+                    targetDest.SetActive(false);
+                }
+                //Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))
             {
                 agent.isStopped = true;
-                Debug.Log("Can't move yet bro, I'm reviving");
+                //Debug.Log("Can't move yet bro, I'm reviving");
             }
+            
             //otherwise can move
             else
             {
-                agent.destination = destination;  // Move agent to the target position
+                agent.destination = destination; // Move agent to the target position
                 agent.isStopped = false;
-                
                 if (agent.tag == "Player")
                 {
-                    
+                    targetDest.SetActive(true);
                     oldPlayerRotation = this.gameObject.transform.rotation;
                     
                     targetDest.transform.position = destination;
@@ -181,4 +187,6 @@ namespace Team5.Movement
             return path.status != NavMeshPathStatus.PathPartial;
         }
     }
+    
+    
 }
