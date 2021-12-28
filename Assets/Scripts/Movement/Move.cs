@@ -30,13 +30,6 @@ namespace Team5.Movement
         private bool canPlaySound;
         public StudioEventEmitter MoveSound;
         
-
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        public bool isOnTestScene;
-        private float differentdistance;
-        //TEMPORARY FOR OUR UPSCALED TEST SCENE!
-        
-        
         private void Start()
         {
             entity = GetComponent<Entity>();
