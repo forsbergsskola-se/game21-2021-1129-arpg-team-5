@@ -13,7 +13,7 @@ public class RoomController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void ActivateRoom()
+    public void ActivateRoom()
     {
         gameObject.SetActive(true);
         DisableObjectsForVisibility();
@@ -24,7 +24,7 @@ public class RoomController : MonoBehaviour
     /// <summary>
     /// Disable all selected objects to make the room more open and clear..
     /// </summary>
-    public void DisableObjectsForVisibility()
+    void DisableObjectsForVisibility()
     {
         foreach (var obj in objectsToDisable)
         {
