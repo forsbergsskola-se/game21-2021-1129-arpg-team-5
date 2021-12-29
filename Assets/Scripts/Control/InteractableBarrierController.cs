@@ -100,7 +100,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         // #############################################################################################################
         // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
         // Very ugly
-        // Very inefficient
         // Very very bad
 
         var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
