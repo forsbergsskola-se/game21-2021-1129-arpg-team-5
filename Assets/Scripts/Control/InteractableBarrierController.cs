@@ -158,9 +158,9 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     void TryToActivateRooms()
     {
         if (ConnectedRoom1 != null)
-            ConnectedRoom1.DisableObjectsForVisibility();
+            ConnectedRoom1.ActivateRoom();
         if (ConnectedRoom2 != null)
-            ConnectedRoom2.DisableObjectsForVisibility();
+            ConnectedRoom2.ActivateRoom();
     }
     
     
