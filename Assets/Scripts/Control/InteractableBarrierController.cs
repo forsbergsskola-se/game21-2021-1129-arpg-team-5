@@ -21,6 +21,9 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
+    [SerializeField] private RoomController ConnectedRoom1;
+    [SerializeField] private RoomController ConnectedRoom2;
+
 
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
@@ -31,7 +34,8 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     private Vector3 TargetPosition;
 
     public StudioEventEmitter LockedDoor;
-    
+
+
     private bool isLocked = false;
     private bool waitForSound;
     public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
@@ -40,6 +44,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     private IEnumerator goToAndOpen;
 
 
+    
     public bool IsLocked
     {
         set
@@ -55,6 +60,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     }
     
     
+    
     private void Awake()
     {
         goToAndOpen = GoToAndOpen();
@@ -67,9 +73,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         openLogicScript = GetComponent<IOpenLogic>();
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
-        
-        // Temporary 
-        // StartCoroutine(UnlockDoor());
     }
     
     
@@ -77,11 +80,12 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     public void OnHoverEnter()
     {
     }
-
+    
     public void OnHoverExit()
     {
     }
 
+    
 
     public void OnClick(Vector3 mouseClickVector)
     {
@@ -136,15 +140,27 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
                 openLogicScript.Open();
+                
+                TryToActivateRooms();
+                
+                // Deactivate so the barrier can no longer be interacted with.
                 GetComponent<BoxCollider>().enabled = false;
-                // player.gameObject.transform.LookAt(this.gameObject.transform.position);
-
                 unlockedCursor = null;
                 lockedCursor = null;
                 
                 break;
             }
         }
+    }
+
+
+
+    void TryToActivateRooms()
+    {
+        if (ConnectedRoom1 != null)
+            ConnectedRoom1.DisableObjectsForVisibility();
+        if (ConnectedRoom2 != null)
+            ConnectedRoom2.DisableObjectsForVisibility();
     }
     
     
@@ -161,15 +177,5 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(1);
         waitForSound = false;
-    }
-    
-      
-    
-    IEnumerator UnlockDoor()
-    {
-        yield return new WaitForSeconds(4);
-        isLocked = false;
-        
-        
     }
 }
