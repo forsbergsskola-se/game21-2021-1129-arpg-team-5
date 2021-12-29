@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 122248, guid: c14c6b5f8efce91498fb7109e3180d13, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Grate_Ground_01
+      value: SM_Env_Grate_Ground_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 468176, guid: c14c6b5f8efce91498fb7109e3180d13, type: 3}
       propertyPath: m_RootOrder
@@ -75,5 +75,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 20ffe4c0b3cb8ba4e9b8bf4a41896174, type: 2}
+    - target: {fileID: 64170061863090918, guid: c14c6b5f8efce91498fb7109e3180d13, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14c6b5f8efce91498fb7109e3180d13, type: 3}
