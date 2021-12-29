@@ -77,6 +77,19 @@ namespace Team5.Ui
             MainMenuClick();
         }
 
+        public void CreditsOpen()
+        {
+            var Credits = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Credits Menu").gameObject;
+            Credits.SetActive(true);
+        }
+
+        public void CreditsClose()
+        {
+            var Credits = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Credits Menu").gameObject;
+            Credits.SetActive(false);
+        }
+
+
         // special button for Main Menu && also works for toggling Pause Menu while in Options Menu
 
         public void MainMenuClick()
