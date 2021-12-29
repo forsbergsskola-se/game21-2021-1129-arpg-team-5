@@ -174,7 +174,7 @@ namespace Team5.Control
 
         private bool InteractWithComponent()
         {
-            print("Can Interact");
+            //print("Can Interact");
             RaycastHit[] hits = RaycastAllSorted();
             foreach (RaycastHit hit in hits)
             {

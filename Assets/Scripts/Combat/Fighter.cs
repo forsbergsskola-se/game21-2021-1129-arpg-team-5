@@ -116,11 +116,9 @@ namespace Team5.Combat
             if (!thisEntity.IsDead)
             {
                 //Target Looking at Y position only.
-                if (CompareTag("Player"))
-                {
+                
                    Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
                    transform.LookAt(targetPosition); 
-                }
                 
                 if (timeSinceLastAttack > timeBetweenAttacks)
                 {
