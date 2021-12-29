@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -5,8 +6,20 @@ public class RoomController : MonoBehaviour
     
     [Tooltip("Add objects that should be hidden when the room is unlocked.")]
     public GameObject[] objectsToDisable;
-    
 
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void ActivateRoom()
+    {
+        gameObject.SetActive(true);
+        DisableObjectsForVisibility();
+    }
+    
+    
     
     /// <summary>
     /// Disable all selected objects to make the room more open and clear..
