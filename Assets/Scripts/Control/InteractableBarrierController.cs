@@ -6,6 +6,7 @@ using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InteractableBarrierController : MonoBehaviour, IInteractable
 {
@@ -21,6 +22,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
+    [FormerlySerializedAs("LockedDoor")] public StudioEventEmitter LockedDoorSound;
     [SerializeField] private RoomController ConnectedRoom1;
     [SerializeField] private RoomController ConnectedRoom2;
 
@@ -30,19 +32,14 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     private IOpenLogic openLogicScript;
     private GameObject player;
     private MouseController mouseController;
-    
     private Vector3 TargetPosition;
-
-    public StudioEventEmitter LockedDoor;
-
-
     private bool isLocked = false;
     private bool waitForSound;
-    public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
-    
     // This is a variable holding the specific coroutine, allowing us to cancel it.
     private IEnumerator goToAndOpen;
 
+    
+    public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
 
     
     public bool IsLocked
@@ -97,7 +94,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
                 StartCoroutine(WaitForSound());
             }
             //TODO Fix So the gate does not sound same as the door. 
-            LockedDoor.Play();
+            LockedDoorSound.Play();
             return;
         }
 
@@ -170,7 +167,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     {
         StopCoroutine(goToAndOpen);
     }
-     
+    
     
     
     IEnumerator WaitForSound()
