@@ -18,9 +18,9 @@ namespace Team5.Inventories
         /// Create a pickup at the current position.
         /// </summary>
         /// <param name="item">The item type for the pickup.</param>
-        public void DropItem(InventoryItem item)
+        public void DropItem(InventoryItem item , int number)
         {
-            SpawnPickup(item, GetDropLocation());
+            SpawnPickup(item, GetDropLocation(),number);
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace Team5.Inventories
         }
 
 
-        public void SpawnPickup(InventoryItem item, Vector3 spawnLocation)
+        public void SpawnPickup(InventoryItem item, Vector3 spawnLocation, int number)
         {
-            var pickup = item.SpawnPickup(spawnLocation);
+            var pickup = item.SpawnPickup(spawnLocation,number);
             droppedItems.Add(pickup);
         }
 
@@ -65,7 +65,7 @@ namespace Team5.Inventories
             {
                 var pickupItem = InventoryItem.GetFromID(item.itemID);
                 Vector3 position = item.position.ToVector();
-                SpawnPickup(pickupItem, position);
+                SpawnPickup(pickupItem, position,1);
             }
         }
 

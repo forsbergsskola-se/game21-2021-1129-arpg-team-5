@@ -40,7 +40,7 @@ namespace Team5.Inventories
 
         private void SpawnPickup()
         {
-            var spawnedPickup = item.SpawnPickup(transform.position);
+            var spawnedPickup = item.SpawnPickup(transform.position, 1);
             spawnedPickup.transform.SetParent(transform);
         }
 
