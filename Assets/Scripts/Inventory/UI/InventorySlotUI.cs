@@ -35,7 +35,7 @@ namespace Team5.UI.Inventories
 
         public void AddItems(InventoryItem item, int number)
         {
-            inventory.AddItemToSlot(index, item);
+            inventory.AddItemToSlot(index, item, number);
         }
 
         public InventoryItem GetItem()
@@ -50,7 +50,7 @@ namespace Team5.UI.Inventories
 
         public void RemoveItems(int number)
         {
-            inventory.RemoveFromSlot(index);
+            inventory.RemoveFromSlot(index, number);
         }
     }
 }
