@@ -14,9 +14,11 @@ namespace Team5.UI.Inventories
     [RequireComponent(typeof(Image))]
     public class InventoryItemIcon : MonoBehaviour
     {
-      
 
-        public void SetItem(InventoryItem item)
+        [SerializeField] GameObject textContainer = null;
+        [SerializeField] TextMeshProUGUI itemNumber = null;
+
+        public void SetItem(InventoryItem item, int number)
         {
             var iconImage = GetComponent<Image>();
             if (item == null)
@@ -27,6 +29,19 @@ namespace Team5.UI.Inventories
             {
                 iconImage.enabled = true;
                 iconImage.sprite = item.GetIcon();
+            }
+
+            if (itemNumber)
+            {
+                if (number <= 1)
+                {
+                    textContainer.SetActive(false);
+                }
+                else
+                {
+                    textContainer.SetActive(true);
+                    itemNumber.text = number.ToString();
+                }
             }
         }
     }

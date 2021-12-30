@@ -28,6 +28,7 @@ namespace Team5.Inventories
         public void Setup(InventoryItem item, int number)
         {
             this.item = item;
+            this.number = number;
         }
 
         public InventoryItem GetItem()
@@ -35,9 +36,14 @@ namespace Team5.Inventories
             return item;
         }
 
+        public int GetNumber()
+        {
+            return number;
+        }
+
         public void PickupItem()
         {
-            bool foundSlot = inventory.AddToFirstEmptySlot(item,1);
+            bool foundSlot = inventory.AddToFirstEmptySlot(item,number);
             if (foundSlot)
             {
                 Destroy(gameObject);

@@ -68,6 +68,8 @@ namespace Team5.Inventories
             }
 
             slots[i].item = item;
+            slots[i].number += number;
+            print(slots[i].number);
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -104,6 +106,11 @@ namespace Team5.Inventories
         public void RemoveFromSlot(int slot, int number)
         {
             slots[slot].item = null;
+            if(slots[slot].number <= 0)
+            {
+                slots[slot].number = 0;
+                slots[slot].item = null;
+            }
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -125,7 +132,14 @@ namespace Team5.Inventories
                 return AddToFirstEmptySlot(item, number); ;
             }
 
+            var i = FindStack(item);
+            if (i >= 0)
+            {
+                slot = i;
+            }
             slots[slot].item = item;
+            slots[slot].number += number;
+
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -145,7 +159,28 @@ namespace Team5.Inventories
         /// <returns>-1 if no slot is found.</returns>
         private int FindSlot(InventoryItem item)
         {
-            return FindEmptySlot();
+            int i = FindStack(item);
+            if (i < 0)
+            {
+                i = FindEmptySlot();
+            }
+            return i;
+        }
+
+        private int FindStack(InventoryItem item)
+        {
+            if (!item.IsStackable())
+            {
+                return -1;
+            }
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, item))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>
@@ -165,25 +200,38 @@ namespace Team5.Inventories
             return -1;
         }
 
+        public int GetNumberInSlot(int index)
+        {
+            return slots[index].number;
+        }
+        [System.Serializable]
+        private struct InventorySlotRecord
+        {
+            public string itemID;
+            public int number;
+        }
+
         object ISaveable.CaptureState()
         {
-            var slotStrings = new string[inventorySize];
+            var slotRecords = new InventorySlotRecord[inventorySize];
             for (int i = 0; i < inventorySize; i++)
             {
                 if (slots[i].item != null)
                 {
-                    slotStrings[i] = slots[i].item.GetItemID();
+                    slotRecords[i].itemID = slots[i].item.GetItemID();
+                    slotRecords[i].number = slots[i].number;
                 }
             }
-            return slotStrings;
+            return slotRecords;
         }
 
         void ISaveable.RestoreState(object state)
         {
-            var slotStrings = (string[])state;
+            var slotRecords = (InventorySlotRecord[])state;
             for (int i = 0; i < inventorySize; i++)
             {
-                slots[i].item = InventoryItem.GetFromID(slotStrings[i]);
+                slots[i].item = InventoryItem.GetFromID(slotRecords[i].itemID);
+                slots[i].number = slotRecords[i].number;
             }
             if (inventoryUpdated != null)
             {

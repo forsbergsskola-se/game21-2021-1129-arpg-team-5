@@ -44,6 +44,7 @@ namespace Team5.Inventories
         {
             public string itemID;
             public SerializableVector3 position;
+            public int number;
         }
 
         object ISaveable.CaptureState()
@@ -54,6 +55,7 @@ namespace Team5.Inventories
             {
                 droppedItemsList[i].itemID = droppedItems[i].GetItem().GetItemID();
                 droppedItemsList[i].position = new SerializableVector3(droppedItems[i].transform.position);
+                droppedItemsList[i].number = droppedItems[i].GetNumber();
             }
             return droppedItemsList;
         }
@@ -65,6 +67,7 @@ namespace Team5.Inventories
             {
                 var pickupItem = InventoryItem.GetFromID(item.itemID);
                 Vector3 position = item.position.ToVector();
+                int number = item.number;
                 SpawnPickup(pickupItem, position,1);
             }
         }
