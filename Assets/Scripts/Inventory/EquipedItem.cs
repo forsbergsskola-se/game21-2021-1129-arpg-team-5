@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Team5.Inventories
 {
-    [CreateAssetMenu(menuName = ("Tem5/Inventory/Equipable Item"))]
+    [CreateAssetMenu(menuName = ("Team5/Inventory/Equipable Item"))]
     public class EquipedItem : InventoryItem
     {
         [Tooltip("Where allowed to put this item.")]

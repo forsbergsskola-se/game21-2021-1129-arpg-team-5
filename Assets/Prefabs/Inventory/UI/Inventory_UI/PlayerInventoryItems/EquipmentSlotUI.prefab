@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 5560091795445101703}
   - component: {fileID: 7222716692114668643}
   - component: {fileID: 6645162881249869538}
+  - component: {fileID: 8017971573648872073}
+  - component: {fileID: 6707456637653214442}
   m_Layer: 5
   m_Name: EquipmentSlotUI
   m_TagString: Untagged
@@ -194,3 +196,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8017971573648872073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026182344156541951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80dab7101d738e4f961365d1214d5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 8797276469833192894}
+  equipedlocation: 5
+--- !u!114 &6707456637653214442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026182344156541951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534af19856c298f46a05155bba011895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipPrefab: {fileID: 0}

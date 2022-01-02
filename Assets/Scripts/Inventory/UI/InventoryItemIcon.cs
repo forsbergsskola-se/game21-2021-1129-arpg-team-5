@@ -18,6 +18,10 @@ namespace Team5.UI.Inventories
         [SerializeField] GameObject textContainer = null;
         [SerializeField] TextMeshProUGUI itemNumber = null;
 
+        public void SetItem(InventoryItem item)
+        {
+            SetItem(item, 0);
+        }
         public void SetItem(InventoryItem item, int number)
         {
             var iconImage = GetComponent<Image>();
