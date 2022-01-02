@@ -14,7 +14,7 @@ namespace Team5.Saving
     public class SaveableEntity : MonoBehaviour
     {
    
-        [Tooltip("The unique ID is automatically generated in a scene file if " + "left empty. Do not set in a prefab unless you want all instances to " + "be linked.")]
+        [Tooltip("The unique ID is automatically generated in a scene file if " + "left empty.")]
         [SerializeField] string uniqueIdentifier = "";
 
 

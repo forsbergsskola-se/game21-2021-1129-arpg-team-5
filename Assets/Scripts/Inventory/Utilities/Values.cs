@@ -1,10 +1,10 @@
-﻿namespace GameDevTV.Utils
+﻿namespace Team5.Utils
 {
     /// <summary>
     /// Container class that wraps a value and ensures initialisation is 
     /// called just before first use.
     /// </summary>
-    public class LazyValue<T>
+    public class Values<T>
     {
         private T _value;
         private bool _initialized = false;
@@ -16,7 +16,7 @@
         /// Setup the container but don't initialise the value yet.
         /// </summary>
        
-        public LazyValue(InitializerDelegate initializer)
+        public Values(InitializerDelegate initializer)
         {
             _initializer = initializer;
         }
