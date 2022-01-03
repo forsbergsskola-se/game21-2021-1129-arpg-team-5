@@ -31,7 +31,6 @@ namespace Team5.Ui
         private Fighter fighter;
         private int killCount;
         public int expLevel = 1;
-        public AudioSource sparkle;
 
         private void Start()
         {
@@ -96,7 +95,6 @@ namespace Team5.Ui
             {
                 Debug.Log($"{this.name} Picked up: {other.tag}");
                 other.gameObject.SetActive(false);
-                sparkle.Play();
             }
         }
 
