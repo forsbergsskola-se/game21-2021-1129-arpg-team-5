@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Team5.Inventories.Items;
 using UnityEngine;
 
 namespace Team5.Ui.Hotbar
