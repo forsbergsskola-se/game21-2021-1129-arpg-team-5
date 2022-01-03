@@ -6,6 +6,7 @@ using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InteractableBarrierController : MonoBehaviour, IInteractable
 {
@@ -21,25 +22,26 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     [SerializeField] private Texture2D lockedCursor;
     [SerializeField] private Texture2D unlockedCursor;
     [SerializeField] private float distanceToOpenDoor;
+    [FormerlySerializedAs("LockedDoor")] public StudioEventEmitter LockedDoorSound;
+    [SerializeField] private RoomController ConnectedRoom1;
+    [SerializeField] private RoomController ConnectedRoom2;
+
 
     private Transform playerTargetPosition;
     private Transform playerTargetPositionTwo;
     private IOpenLogic openLogicScript;
     private GameObject player;
     private MouseController mouseController;
-    
     private Vector3 TargetPosition;
-
-    public StudioEventEmitter LockedDoor;
-    
     private bool isLocked = false;
     private bool waitForSound;
-    public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
-    
     // This is a variable holding the specific coroutine, allowing us to cancel it.
     private IEnumerator goToAndOpen;
 
+    
+    public Texture2D mouseTexture => isLocked ? lockedCursor : unlockedCursor;
 
+    
     public bool IsLocked
     {
         set
@@ -55,6 +57,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     }
     
     
+    
     private void Awake()
     {
         goToAndOpen = GoToAndOpen();
@@ -67,9 +70,6 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
         openLogicScript = GetComponent<IOpenLogic>();
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
-        
-        // Temporary 
-        // StartCoroutine(UnlockDoor());
     }
     
     
@@ -77,11 +77,12 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     public void OnHoverEnter()
     {
     }
-
+    
     public void OnHoverExit()
     {
     }
 
+    
 
     public void OnClick(Vector3 mouseClickVector)
     {
@@ -93,14 +94,13 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
                 StartCoroutine(WaitForSound());
             }
             //TODO Fix So the gate does not sound same as the door. 
-            LockedDoor.Play();
+            LockedDoorSound.Play();
             return;
         }
 
         // #############################################################################################################
         // TODO: THIS IS UGLY. LOOK INTO GETTING THE SHORTEST PATH INSTEAD.
         // Very ugly
-        // Very inefficient
         // Very very bad
 
         var reachable = GameObject.Find("Player").GetComponent<Move>().TargetReachable(playerTargetPosition.position);
@@ -137,15 +137,27 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             if (Vector3.Distance(player.transform.position, TargetPosition) < distanceToOpenDoor)
             {
                 openLogicScript.Open();
+                
+                TryToActivateRooms();
+                
+                // Deactivate so the barrier can no longer be interacted with.
                 GetComponent<BoxCollider>().enabled = false;
-                // player.gameObject.transform.LookAt(this.gameObject.transform.position);
-
                 unlockedCursor = null;
                 lockedCursor = null;
                 
                 break;
             }
         }
+    }
+
+
+
+    void TryToActivateRooms()
+    {
+        if (ConnectedRoom1 != null)
+            ConnectedRoom1.ActivateRoom();
+        if (ConnectedRoom2 != null)
+            ConnectedRoom2.ActivateRoom();
     }
     
     
@@ -155,22 +167,12 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
     {
         StopCoroutine(goToAndOpen);
     }
-     
+    
     
     
     IEnumerator WaitForSound()
     {
         yield return new WaitForSeconds(1);
         waitForSound = false;
-    }
-    
-      
-    
-    IEnumerator UnlockDoor()
-    {
-        yield return new WaitForSeconds(4);
-        isLocked = false;
-        
-        
     }
 }

@@ -5,6 +5,7 @@ using Team5.Inventories.Control.sample;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static Team5.Entities.Player.PlayerController;
 
 namespace Team5.Control
@@ -46,6 +47,8 @@ namespace Team5.Control
             CheckMouseButton();
             InteractWithComponent();
 
+            if (InteractWithUI()) return;
+
             if (TryCastRaySuccess())
             {
                 if (TargetHasChanged())
@@ -69,7 +72,14 @@ namespace Team5.Control
             
         }
         
-        
+        bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void CheckMouseButton()
         {
@@ -174,7 +184,7 @@ namespace Team5.Control
 
         private bool InteractWithComponent()
         {
-            print("Can Interact");
+            //print("Can Interact");
             RaycastHit[] hits = RaycastAllSorted();
             foreach (RaycastHit hit in hits)
             {

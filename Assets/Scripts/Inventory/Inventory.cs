@@ -13,7 +13,15 @@ namespace Team5.Inventories
         [Tooltip("Allowed size")]
         [SerializeField] int inventorySize = 16;
 
-        InventoryItem[] slots;
+        InventorySlot[] slots;
+
+        public struct InventorySlot
+        {
+            public int number;
+            public InventoryItem item;
+        }
+
+        
 
         /// <summary>
         /// shows when the items in the slots are added/removed.
@@ -50,7 +58,7 @@ namespace Team5.Inventories
         /// </summary>
         /// <param name="item">The item to add.</param>
         /// <returns>Whether or not the item could be added.</returns>
-        public bool AddToFirstEmptySlot(InventoryItem item)
+        public bool AddToFirstEmptySlot(InventoryItem item, int number)
         {
             int i = FindSlot(item);
 
@@ -59,7 +67,9 @@ namespace Team5.Inventories
                 return false;
             }
 
-            slots[i] = item;
+            slots[i].item = item;
+            slots[i].number += number;
+            print(slots[i].number);
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -87,15 +97,20 @@ namespace Team5.Inventories
         /// </summary>
         public InventoryItem GetItemInSlot(int slot)
         {
-            return slots[slot];
+            return slots[slot].item;
         }
 
         /// <summary>
         /// Remove the item from the given slot.
         /// </summary>
-        public void RemoveFromSlot(int slot)
+        public void RemoveFromSlot(int slot, int number)
         {
-            slots[slot] = null;
+            slots[slot].item = null;
+            if(slots[slot].number <= 0)
+            {
+                slots[slot].number = 0;
+                slots[slot].item = null;
+            }
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -110,14 +125,21 @@ namespace Team5.Inventories
         /// <param name="slot">The slot to attempt to add to.</param>
         /// <param name="item">The item type to add.</param>
         /// <returns>True if the item was added anywhere in the inventory.</returns>
-        public bool AddItemToSlot(int slot, InventoryItem item)
+        public bool AddItemToSlot(int slot, InventoryItem item, int number)
         {
-            if (slots[slot] != null)
+            if (slots[slot].item != null)
             {
-                return AddToFirstEmptySlot(item); ;
+                return AddToFirstEmptySlot(item, number); ;
             }
 
-            slots[slot] = item;
+            var i = FindStack(item);
+            if (i >= 0)
+            {
+                slot = i;
+            }
+            slots[slot].item = item;
+            slots[slot].number += number;
+
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
@@ -128,7 +150,7 @@ namespace Team5.Inventories
 
         private void Awake()
         {
-            slots = new InventoryItem[inventorySize];
+            slots = new InventorySlot[inventorySize];
         }
 
         /// <summary>
@@ -137,7 +159,28 @@ namespace Team5.Inventories
         /// <returns>-1 if no slot is found.</returns>
         private int FindSlot(InventoryItem item)
         {
-            return FindEmptySlot();
+            int i = FindStack(item);
+            if (i < 0)
+            {
+                i = FindEmptySlot();
+            }
+            return i;
+        }
+
+        private int FindStack(InventoryItem item)
+        {
+            if (!item.IsStackable())
+            {
+                return -1;
+            }
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, item))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>
@@ -146,9 +189,10 @@ namespace Team5.Inventories
         /// <returns>-1 if all slots are full.</returns>
         private int FindEmptySlot()
         {
+            
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] == null)
+                if (slots[i].item == null)
                 {
                     return i;
                 }
@@ -156,25 +200,38 @@ namespace Team5.Inventories
             return -1;
         }
 
+        public int GetNumberInSlot(int index)
+        {
+            return slots[index].number;
+        }
+        [System.Serializable]
+        private struct InventorySlotRecord
+        {
+            public string itemID;
+            public int number;
+        }
+
         object ISaveable.CaptureState()
         {
-            var slotStrings = new string[inventorySize];
+            var slotRecords = new InventorySlotRecord[inventorySize];
             for (int i = 0; i < inventorySize; i++)
             {
-                if (slots[i] != null)
+                if (slots[i].item != null)
                 {
-                    slotStrings[i] = slots[i].GetItemID();
+                    slotRecords[i].itemID = slots[i].item.GetItemID();
+                    slotRecords[i].number = slots[i].number;
                 }
             }
-            return slotStrings;
+            return slotRecords;
         }
 
         void ISaveable.RestoreState(object state)
         {
-            var slotStrings = (string[])state;
+            var slotRecords = (InventorySlotRecord[])state;
             for (int i = 0; i < inventorySize; i++)
             {
-                slots[i] = InventoryItem.GetFromID(slotStrings[i]);
+                slots[i].item = InventoryItem.GetFromID(slotRecords[i].itemID);
+                slots[i].number = slotRecords[i].number;
             }
             if (inventoryUpdated != null)
             {

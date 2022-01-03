@@ -10,6 +10,7 @@ namespace Team5.Inventories
     {
   
         InventoryItem item;
+        int number;
         Inventory inventory;
 
 
@@ -24,9 +25,10 @@ namespace Team5.Inventories
         /// Set the vital data after creating the prefab.
         /// </summary>
         /// <param name="item">The type of item this prefab represents.</param>
-        public void Setup(InventoryItem item)
+        public void Setup(InventoryItem item, int number)
         {
             this.item = item;
+            this.number = number;
         }
 
         public InventoryItem GetItem()
@@ -34,9 +36,14 @@ namespace Team5.Inventories
             return item;
         }
 
+        public int GetNumber()
+        {
+            return number;
+        }
+
         public void PickupItem()
         {
-            bool foundSlot = inventory.AddToFirstEmptySlot(item);
+            bool foundSlot = inventory.AddToFirstEmptySlot(item,number);
             if (foundSlot)
             {
                 Destroy(gameObject);

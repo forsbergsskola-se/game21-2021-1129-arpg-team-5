@@ -13,6 +13,7 @@ namespace Team5.Entities.Player
         [SerializeField] private float healthOnRevive;
         [SerializeField] private float healthRegenPerSecond;
         [SerializeField] private float timeToRevive;
+        public float reviveHealthCapPercentage;
 
         private NavMeshAgent agent;
         private Animator animator;
@@ -145,9 +146,10 @@ namespace Team5.Entities.Player
 
             Health = healthOnRevive;
             IsDead = false;
-            
             animator.SetTrigger("revive");
             animator.SetBool("isDead", false);
+            
+            
             reviveCounter++;
             
             StartCoroutine(PlayerRegenHealth());
@@ -158,8 +160,10 @@ namespace Team5.Entities.Player
         {
             reviving = true;
             stopRegen = false;
-            
-            while (Health < MaxHealth && !stopRegen)
+
+            // var regenPercent = (MaxHealth / 100) * reviveHealthCapPercentage;
+            // while (Health < regenPercent && !stopRegen)
+            while (Health<MaxHealth&&!stopRegen)
             {
                 yield return new WaitForSeconds(1);
                 Health += healthRegenPerSecond;
@@ -209,6 +213,12 @@ namespace Team5.Entities.Player
         public void RemoveHealth(int value)
         {
             Health -= value;
+        }
+
+        void ReviveDone()
+        {
+            Debug.Log("Is this running");
+            IsDead = false;
         }
     }
 }

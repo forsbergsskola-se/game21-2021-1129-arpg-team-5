@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GameDevTV.Utils
+namespace Team5.Utils
 {
     
     public class PeristentObjectSpawner : MonoBehaviour

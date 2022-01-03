@@ -21,7 +21,7 @@ namespace Team5.UI.Inventories
         {
             this.inventory = inventory;
             this.index = index;
-            icon.SetItem(inventory.GetItemInSlot(index));
+            icon.SetItem(inventory.GetItemInSlot(index), inventory.GetNumberInSlot(index));
         }
 
         public int MaxAcceptable(InventoryItem item)
@@ -35,7 +35,7 @@ namespace Team5.UI.Inventories
 
         public void AddItems(InventoryItem item, int number)
         {
-            inventory.AddItemToSlot(index, item);
+            inventory.AddItemToSlot(index, item, number);
         }
 
         public InventoryItem GetItem()
@@ -45,12 +45,12 @@ namespace Team5.UI.Inventories
 
         public int GetNumber()
         {
-            return 1;
+            return inventory.GetNumberInSlot(index);
         }
 
         public void RemoveItems(int number)
         {
-            inventory.RemoveFromSlot(index);
+            inventory.RemoveFromSlot(index, number);
         }
     }
 }
