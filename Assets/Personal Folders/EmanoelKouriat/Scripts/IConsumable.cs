@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IConsumable
 {
-   public void Consume();
+   public bool Consume(GameObject user);
 }
