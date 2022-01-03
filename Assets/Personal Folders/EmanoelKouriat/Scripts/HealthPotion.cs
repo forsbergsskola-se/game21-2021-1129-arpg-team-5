@@ -1,3 +1,4 @@
+using Team5.Entities;
 using UnityEngine;
 using Team5.Entities.Player;
 
@@ -13,17 +14,25 @@ namespace Team5.Inventories.Items.Consumables
             player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
-        public void Consume()
+        public bool Consume(GameObject user)
         {
-            if (player.Health < player.MaxHealth)
+            Entity entity = user.GetComponent<Entity>();
+            // ##############################################################################
+            // TODO: This was needed since the script "forgot" the playercontroller somehow?
+            // Why is that?
+            // ##############################################################################
+            
+            
+
+            if (entity.Health < entity.MaxHealth)
             {
-                player.AddHealth(healValue);
-                Destroy(gameObject);
+                entity.AddHealth(healValue);
+                // Destroy(gameObject);
+                return true;
             }
-            else
-            {
-                Debug.Log("Health is already full!");
-            }
+            
+            Debug.Log("Health is already full!");
+            return false;
         }
     }
 }
