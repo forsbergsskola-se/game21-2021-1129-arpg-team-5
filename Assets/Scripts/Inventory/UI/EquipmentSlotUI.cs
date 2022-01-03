@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Team5.Core.UI.Dragging;
 using Team5.Inventories;
+using Team5.Inventories.Items;
 using Team5.UI.Inventories;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ public class EquipmentSlotUI : MonoBehaviour, IItemHolder, IDragContainer<Invent
     public void AddItems(InventoryItem item, int number)
     {
         playerEquipment.AddItem(equipedlocation, (EquipedItem)item);
+        item.pickup.GetComponent<IEquippable>().Equip();
     }
 
     public InventoryItem GetItem()
@@ -58,6 +60,7 @@ public class EquipmentSlotUI : MonoBehaviour, IItemHolder, IDragContainer<Invent
 
     public void RemoveItems(int number)
     {
+        GetItem().pickup.GetComponent<IEquippable>().UnEquip();
         playerEquipment.RemoveItem(equipedlocation);
     }
 
