@@ -5,7 +5,7 @@
 			<value>Hiaa3</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -113,7 +113,6 @@
 	<object class="MixerBusEffectChain" id="{97bc02f6-30b0-41a0-a328-f0cbdb48450a}">
 		<relationship name="effects">
 			<destination>{1e58dbee-c244-4898-b862-b4ac17f0844d}</destination>
-			<destination>{1741da92-dabb-441c-8110-922119774bce}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{616d1c82-bae0-4a9f-bdf2-7d82235eb4ac}" />
@@ -125,6 +124,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{ba1ca279-575d-44ba-a057-d8e89c964ea3}" />
 	<object class="MixerBusFader" id="{1e58dbee-c244-4898-b862-b4ac17f0844d}" />
-	<object class="SpatialiserEffect" id="{1741da92-dabb-441c-8110-922119774bce}" />
 	<object class="MixerBusFader" id="{6b27fe6a-f6d3-4411-866a-0364dff9c3d2}" />
 </objects>

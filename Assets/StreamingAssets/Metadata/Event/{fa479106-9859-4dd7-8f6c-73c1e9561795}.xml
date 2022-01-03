@@ -5,7 +5,7 @@
 			<value>Forest_battle_theme</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -133,7 +133,6 @@
 	<object class="MixerBusEffectChain" id="{93935155-bbb2-4875-8ea1-86be08ad5310}">
 		<relationship name="effects">
 			<destination>{e433d539-31e7-4f4d-ac0f-18288290a434}</destination>
-			<destination>{47bc57c9-d0a6-49ca-ada7-a18f679f47f3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7ef4b5bc-00f7-41e8-8702-a944c4f63df3}" />
@@ -145,6 +144,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{14ea427f-9755-4b27-a13a-eb703b321e91}" />
 	<object class="MixerBusFader" id="{e433d539-31e7-4f4d-ac0f-18288290a434}" />
-	<object class="SpatialiserEffect" id="{47bc57c9-d0a6-49ca-ada7-a18f679f47f3}" />
 	<object class="MixerBusFader" id="{507e660e-def7-4626-a200-3287e92625d8}" />
 </objects>

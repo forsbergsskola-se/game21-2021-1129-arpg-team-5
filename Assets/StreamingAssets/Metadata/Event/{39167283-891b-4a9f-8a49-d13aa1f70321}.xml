@@ -5,7 +5,7 @@
 			<value>Walking  on (creepy) wooden floor SFX _ Player walking on 3 environments   (1)</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -125,7 +125,6 @@
 	<object class="MixerBusEffectChain" id="{ce8f9380-d8e5-4be5-ba53-a5ade57a69d7}">
 		<relationship name="effects">
 			<destination>{0a9c2129-0901-4843-8635-7f463f540f1e}</destination>
-			<destination>{df70ea2d-282e-45fe-9e16-6624cdfa384b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c1848c37-154e-4575-9949-571560ef4a0b}" />
@@ -137,6 +136,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{21dc0f27-e59f-4da7-9151-403d0de81bee}" />
 	<object class="MixerBusFader" id="{0a9c2129-0901-4843-8635-7f463f540f1e}" />
-	<object class="SpatialiserEffect" id="{df70ea2d-282e-45fe-9e16-6624cdfa384b}" />
 	<object class="MixerBusFader" id="{b46f0821-7c3b-4cf1-95a9-11ad09ed7b62}" />
 </objects>

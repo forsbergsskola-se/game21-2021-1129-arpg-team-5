@@ -5,7 +5,7 @@
 			<value>450300__vero-marengere__wooden-door</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{4e7eb878-5bd4-4e20-bb7d-89bd5e0b4723}">
 		<relationship name="effects">
 			<destination>{ff06b200-9a16-4170-862a-037ea0e3d173}</destination>
-			<destination>{c86e7c3e-064d-4805-a4e5-8d2eaa432bb1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{23dde766-58d2-4484-8ad3-de35f4ef263d}" />
@@ -128,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{2b38f36f-6f15-4323-a3ef-9edf4bda7955}" />
 	<object class="MixerBusFader" id="{ff06b200-9a16-4170-862a-037ea0e3d173}" />
-	<object class="SpatialiserEffect" id="{c86e7c3e-064d-4805-a4e5-8d2eaa432bb1}" />
 	<object class="MixerBusFader" id="{1faed2c5-df39-46cb-9f3b-9b3a7451959b}" />
 </objects>

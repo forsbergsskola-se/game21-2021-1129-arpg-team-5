@@ -5,7 +5,7 @@
 			<value>Castle door opening_closing sound</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{15f3feea-6bbf-4dbc-80e9-caeeba42133b}">
 		<relationship name="effects">
 			<destination>{e8619856-d5ba-4946-b100-9be8bb635310}</destination>
-			<destination>{967cadaa-14ec-4738-87e8-d4ec321bfbe3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{20c256d6-c597-4f06-91ed-f77d33e73313}" />
@@ -136,7 +135,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{ea6705a5-6ebd-45fb-ac5f-b1c0a17cb474}" />
 	<object class="MixerBusFader" id="{e8619856-d5ba-4946-b100-9be8bb635310}" />
-	<object class="SpatialiserEffect" id="{967cadaa-14ec-4738-87e8-d4ec321bfbe3}" />
 	<object class="AutomationPoint" id="{b4b57ff5-4bd1-46f7-b046-5b9df51e9c4d}">
 		<property name="position">
 			<value>0.5</value>

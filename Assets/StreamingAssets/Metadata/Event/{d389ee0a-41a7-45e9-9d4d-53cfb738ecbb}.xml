@@ -5,7 +5,7 @@
 			<value>Team_5_-_Crypt</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -133,7 +133,6 @@
 	<object class="MixerBusEffectChain" id="{4a976d44-83cd-44b3-9bfd-29fc31d53906}">
 		<relationship name="effects">
 			<destination>{99356066-bb8b-4126-ae5b-393e5b41755b}</destination>
-			<destination>{2ec9806e-8dba-430d-b417-dde44cda0e74}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2d43104c-6a5d-42b5-a0bb-2cf867105cd4}" />
@@ -145,6 +144,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{512074b3-872c-4a6f-8eb9-7545b7b306ea}" />
 	<object class="MixerBusFader" id="{99356066-bb8b-4126-ae5b-393e5b41755b}" />
-	<object class="SpatialiserEffect" id="{2ec9806e-8dba-430d-b417-dde44cda0e74}" />
 	<object class="MixerBusFader" id="{56d9e454-c205-41cd-805a-2bb8215135a1}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>Team_5_-_Forest_Test</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -133,7 +133,6 @@
 	<object class="MixerBusEffectChain" id="{79379502-5028-47db-9cc4-6147ffc1c5ea}">
 		<relationship name="effects">
 			<destination>{9c3c2f86-cb3b-40e4-bc0a-b7f3fe5fd204}</destination>
-			<destination>{c10eadfc-eed9-489c-821e-432d0b6a29ca}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d58ef258-162c-42a8-b5e6-63a53b6b02a9}" />
@@ -145,6 +144,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{35277522-9bbf-49b2-9a85-c7583fab7887}" />
 	<object class="MixerBusFader" id="{9c3c2f86-cb3b-40e4-bc0a-b7f3fe5fd204}" />
-	<object class="SpatialiserEffect" id="{c10eadfc-eed9-489c-821e-432d0b6a29ca}" />
 	<object class="MixerBusFader" id="{ce30b669-1657-43a8-93be-e25edcd1f55e}" />
 </objects>

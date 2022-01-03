@@ -5,7 +5,7 @@
 			<value>AaaaH</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{c3e8ec5a-956f-48d9-adee-997b6a7ff68a}">
 		<relationship name="effects">
 			<destination>{1ff514ef-1553-4d77-98d2-32d2acefe0ca}</destination>
-			<destination>{06a3fea8-42b7-4611-8d81-0f8d1196f7c8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6dc298cb-05ec-43c4-bf87-1e6a325db6ef}" />
@@ -128,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{579caed0-7889-41d7-abc6-1965dac8e285}" />
 	<object class="MixerBusFader" id="{1ff514ef-1553-4d77-98d2-32d2acefe0ca}" />
-	<object class="SpatialiserEffect" id="{06a3fea8-42b7-4611-8d81-0f8d1196f7c8}" />
 	<object class="MixerBusFader" id="{ab380307-a60e-4555-9785-f0ea240ee27b}" />
 </objects>

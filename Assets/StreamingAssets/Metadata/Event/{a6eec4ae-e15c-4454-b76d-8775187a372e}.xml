@@ -5,7 +5,7 @@
 			<value>86324__timbre__smashing-1</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{afdb7450-b3b5-42d3-b3ec-f8994cc4120a}</destination>
@@ -113,7 +113,6 @@
 	<object class="MixerBusEffectChain" id="{fcfc2df9-8d38-4295-974b-b47d1b244602}">
 		<relationship name="effects">
 			<destination>{aeb13109-aff2-4c8c-ab98-e2177831062e}</destination>
-			<destination>{8489cdbf-f45f-46d4-b3d4-89a8e4b277c2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{966efecc-11d0-4a5d-a63f-734a741a6379}" />
@@ -125,6 +124,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{eceb03f7-e55a-48a7-a7f7-4675ab4d22b4}" />
 	<object class="MixerBusFader" id="{aeb13109-aff2-4c8c-ab98-e2177831062e}" />
-	<object class="SpatialiserEffect" id="{8489cdbf-f45f-46d4-b3d4-89a8e4b277c2}" />
 	<object class="MixerBusFader" id="{74d96c27-0991-45ed-a7b8-5cc21e79a0b5}" />
 </objects>
