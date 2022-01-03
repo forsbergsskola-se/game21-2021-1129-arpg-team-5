@@ -36,7 +36,7 @@ namespace Team5.Ui.Hotbar
                     
                     if (hotbarSlots[i].transform.childCount == 1)
                     {
-                        hotbarSlots[i].transform.GetChild(0).gameObject.GetComponent<IConsumable>().Consume();
+                        hotbarSlots[i].transform.GetChild(0).gameObject.GetComponent<IConsumable>().Consume(gameObject);
                     }
                 }
             }
