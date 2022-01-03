@@ -113,14 +113,18 @@ namespace Team5.Combat
         
         private void AttackBehaviour()
         {
-            if (!thisEntity.IsDead)
+            if (!thisEntity.IsDead && !target.IsDead)
             {
                 //Target Looking at Y position only.
                 
-                   Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-                   transform.LookAt(targetPosition); 
-                
-                if (timeSinceLastAttack > timeBetweenAttacks)
+                   Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+                   transform.LookAt(targetPosition);
+                   
+                   // keeps both entities exactly at mirror opposite locations (may cause problems with multiple entities)
+                   Quaternion targetRotation = target.transform.rotation;
+                   Quaternion rot180degrees = Quaternion.Euler(-targetRotation.eulerAngles);
+
+                   if (timeSinceLastAttack > timeBetweenAttacks)
                 {
                     if (!target.IsDead)
                     {
@@ -131,7 +135,12 @@ namespace Team5.Combat
             }
             else
             {
-                Debug.Log(name + " is dead and can't attack. <color=cyan>[ Why is AttackBehaviour called when this entity is dead? ]</color>");
+                // keeps position and rotation instead of looking at corpse
+                
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+                this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z, this.transform.rotation.w);
+                
+                //Debug.Log(name + " is dead and can't attack. <color=cyan>[ Why is AttackBehaviour called when this entity is dead? ]</color>");
             }
         }
 

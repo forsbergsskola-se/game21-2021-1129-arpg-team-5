@@ -70,14 +70,6 @@ namespace Team5.Movement
             // hurtText.transform.position = healthposition + new Vector3(0f, 8f, 0f);
             // hurtText.transform.rotation = healthRotation;
 
-            if (entity.IsDead)
-            {
-                // disables children
-                //enemyIndicator2.SetActive(false);
-                //healthText.enabled = false;
-                player.GetComponent<ExpSystem>().DefaultKillExp(DefaultKillXp);
-            }
-
             if (CheckAttackRange() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
