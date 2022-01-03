@@ -70,11 +70,14 @@ namespace Team5.Inventories
             if (dockedItems.ContainsKey(index))
             {
                 dockedItems[index].item.Use(user);
-                if (dockedItems[index].item.isConsumable())
+                if (dockedItems[index].item.Use(user))
                 {
-                    RemoveItems(index, 1);
+                    if (dockedItems[index].item.isConsumable())
+                    {
+                        RemoveItems(index, 1);
+                    }
+                    return true;
                 }
-                return true;
             }
             return false;
         }
