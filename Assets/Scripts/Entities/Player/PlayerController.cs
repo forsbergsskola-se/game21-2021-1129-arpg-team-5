@@ -48,10 +48,11 @@ namespace Team5.Entities.Player
         {
             // suggestion for how lowHealth bool can be utilized
             
-            if (lowHealth == true)
-            {
-                Debug.Log("Use a potion to regain health!");
-            }
+            // TODO: Do NOT spam debug logs!
+            // if (lowHealth == true)
+            // {
+            //     Debug.Log("Use a potion to regain health!");
+            // }
             
             // sets Healthbar fill
 
