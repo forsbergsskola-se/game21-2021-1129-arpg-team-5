@@ -163,7 +163,7 @@ namespace Team5.Movement
             
             if (this.entity.IsDead)
             {
-                Debug.Log("Still dead");
+                //Debug.Log("Still dead");
             }
             else
             {
