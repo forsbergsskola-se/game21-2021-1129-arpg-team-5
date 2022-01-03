@@ -106,7 +106,7 @@ namespace Team5.Inventories
         public void RemoveFromSlot(int slot, int number)
         {
             slots[slot].item = null;
-            if(slots[slot].number <= 0)
+            if(slots[slot].number >= 0)
             {
                 slots[slot].number = 0;
                 slots[slot].item = null;
