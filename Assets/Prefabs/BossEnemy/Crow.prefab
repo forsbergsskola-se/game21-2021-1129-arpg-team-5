@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975509176101255055}
   m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -1.0352211, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1053.0216, y: 1053.0216, z: 1053.0216}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -329,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8616981373562646222}
   - component: {fileID: 7667756379071364738}
-  - component: {fileID: 1400649408450898972}
+  - component: {fileID: 3360919247596070274}
   m_Layer: 0
   m_Name: Crow2
   m_TagString: Untagged
@@ -469,7 +469,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 8.1490725e-10, y: 0.00053370086, z: 0.00026195883}
     m_Extent: {x: 0.0011341994, y: 0.0014618533, z: 0.00085822714}
   m_DirtyAABB: 0
---- !u!114 &1400649408450898972
+--- !u!114 &3360919247596070274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1657,7 +1657,7 @@ GameObject:
   - component: {fileID: 6785237772422512388}
   m_Layer: 0
   m_Name: Crow
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
