@@ -24,7 +24,7 @@ namespace Team5.Inventories
         [Tooltip("The UI icon to represent this item in the inventory.")]
         [SerializeField] Sprite icon = null;
         [Tooltip("The prefab that should be spawned when this item is dropped.")]
-        [SerializeField] protected Pickup pickup = null;
+        [SerializeField] public Pickup pickup = null; // TODO: Didn't want to make this public, but with the time constraints we have to take the easy solution. :/
         [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
         [SerializeField] bool stackable = false;
 
