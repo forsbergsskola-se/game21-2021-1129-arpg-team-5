@@ -21,8 +21,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
     [SerializeField] private Texture2D shopCursor;
-    private GameObject NameTag;
-   
+    
     // interactions
     private TMP_Text Dialogue;
     public Button Button1;
@@ -68,6 +67,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     public string rulesOffer;
     public string rulesAccept;
     public string rulesReject;
+    public string rulesOptOut;
     
     // Rules
 
@@ -94,7 +94,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
         finishedQuest = false;
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
-        NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
@@ -119,9 +118,8 @@ public class GenericQuest : MonoBehaviour, IInteractable
             Refresh();
             
             // multiple HUD elements enabled and disabled onEnter
-            FindObjectOfType<HUD>().HudUIActive(false,false, true, false, false, false, true);
+            FindObjectOfType<HUD>().HudUIActive(false,false, true, false);
             buttonActive(true, true, false);
-            NameTag.SetActive(true);
 
             // Only first time dialogue
             if (firstVisit == true)
@@ -152,7 +150,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             // Activates and deactivates HUD elements onExit
-            FindObjectOfType<HUD>().HudUIActive(true,true, false, true, true, true, true);
+            FindObjectOfType<HUD>().HudUIActive(true,true, false, true);
         }
     }
 
@@ -161,7 +159,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private void ParameterOnClickYesStart(string test)
     {
         // Quest Offered:
-        if (QuestAccepted == false )
+        if (QuestAccepted == false || QuestRulesRead == false)
         {
             buttonActive(true, true, false);
         
@@ -171,12 +169,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
                     
             Button1.onClick.AddListener( () => ParameterOnClickYes($"{nameof(Button1)} was pressed!"));
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
-        }
-        
-        // Check for rules skip
-        else if (QuestRulesRead == false)
-        {
-            ScenarioRules();
         }
         
         // Shortcut to main interactions
@@ -194,18 +186,29 @@ public class GenericQuest : MonoBehaviour, IInteractable
         WaitExit();
     }
     
+    // Rules skip
+    private void ParameterOnClickSkipRules(string test)
+    {
+        QuestAccepted = true;
+        QuestRulesRead = false; 
+        Scenario();
+    }
+
+    
     // Rule question
     private void ParameterOnClickYes(string test)
     {
-        QuestAccepted = true;
         Dialogue.text = $"{rulesOffer}";
+        buttonActive(true, true, true);
         
         {
             button1Text.text = $"{rulesAccept}";
             button2Text.text = $"{rulesReject}";
+            button3Text.text = $"{rulesOptOut}";
             
             Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
-            Button2.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button2)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickSkipRules($"{nameof(Button2)} was pressed!"));
+            Button3.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button3)} was pressed!"));
         }
     }
     
@@ -219,7 +222,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private void ScenarioRules()
     {
         buttonActive(true, false, false);
-        
+        QuestAccepted = true;
         Dialogue.text = $"{rules1}";
         button1Text.text = "Continue";
         
@@ -237,6 +240,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
         Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
     }
     
+    // Once finished criteria is set up
     private void ParameterOnClickYesFinished(string test)
     {
         Dialogue.text = $"{questFinished}";
@@ -270,13 +274,11 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Text trigger to identify shop
     public void OnHoverEnter()
     {
-        NameTag.SetActive(true);
     }
     
     // Disables text when not hovering over
     public void OnHoverExit()
     {
-        NameTag.SetActive(false);
     }
 
     // Player technicalities (burrowed from door/gate logic)
