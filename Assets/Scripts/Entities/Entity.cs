@@ -159,6 +159,19 @@ namespace Team5.Entities
             yield return new WaitForSeconds(damageCooldownTime);
             takeDamageOnCooldown = false;
         }
+        
+        
+        
+        public void AddHealth(int value)
+        {
+            Health += value;
+        }
+
+        
+        public void RemoveHealth(int value)
+        {
+            Health -= value;
+        }
     }
 
 }
