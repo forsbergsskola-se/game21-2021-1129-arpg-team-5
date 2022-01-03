@@ -69,7 +69,6 @@ namespace Team5.Inventories
         {
             if (dockedItems.ContainsKey(index))
             {
-                dockedItems[index].item.Use(user);
                 if (dockedItems[index].item.Use(user))
                 {
                     if (dockedItems[index].item.isConsumable())
@@ -81,6 +80,7 @@ namespace Team5.Inventories
             }
             return false;
         }
+        
         public void RemoveItems(int index, int number)
         {
             if (dockedItems.ContainsKey(index))
