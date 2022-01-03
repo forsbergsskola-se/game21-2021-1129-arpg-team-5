@@ -69,17 +69,13 @@ namespace Team5.Ui
             }
         }
 
-        public void HudUIActive(bool overlays, bool level, bool dialogueBox, bool revives, 
-                                bool killCount, bool inventory, bool skulls)
+        public void HudUIActive(bool overlays, bool level, bool dialogueBox, bool inventory)
         {
             overlayController.SetActive(overlays);
             LvlText.enabled = level;
             ShopText.SetActive(dialogueBox);
             //ScoreText.enabled = Score;
-            ReviveText.enabled = revives;
-            KillCountText.enabled = killCount;
             InventoryMenu.SetActive(inventory);
-            SkullHolder.SetActive(skulls);
         }
         
         public void ShopUIActive(bool headPlayer, bool headNpc )
