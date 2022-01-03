@@ -115,6 +115,7 @@ namespace Team5.Movement
             // can't set target dest if dead
             if (player.GetComponent<PlayerController>().reviving == true)
             {
+                // TODO: This should probably be done from the player itself. And this magic number here is bad. If we change how much health we regen or start at, the player might be able to move to early, or to late.
                 if (this.entity.Health < 40)
                 {
                     targetDest.SetActive(false);
