@@ -28,6 +28,7 @@ namespace Team5.Inventories.Items.Consumables
             {
                 entity.AddHealth(healValue);
                 // Destroy(gameObject);
+                Debug.Log($"Healed {user} for {healValue} health.");
                 return true;
             }
             
