@@ -6,19 +6,13 @@ namespace Team5.Inventories.Items.Consumables
 {
     public class HealthPotion : MonoBehaviour, IConsumable
     {
-        private PlayerController player;
         [SerializeField] private int healValue;
-        
-        private void Start()
-        {
-            player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        }
 
         public bool Consume(GameObject user)
         {
             Entity entity = user.GetComponent<Entity>();
             // ##############################################################################
-            // TODO: This was needed since the script "forgot" the playercontroller somehow?
+            // TODO: This was needed since the script "forget" the playercontroller somehow?
             // Why is that?
             // ##############################################################################
             
