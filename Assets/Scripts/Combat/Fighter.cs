@@ -2,6 +2,7 @@ using FMODUnity;
 using Team5.Movement;
 using Team5.Core;
 using Team5.Entities;
+using Team5.Inventories.Items;
 using Team5.Ui;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -298,6 +299,24 @@ namespace Team5.Combat
             if (AttacKSpeedMOD != 0) timeBetweenAttacks += AttacKSpeedMOD * multiplier;
         }
 
+        
+
+        public void EquipWeapon(Weapon weapon)
+        {
+            // weaponRange = weapon.WeaponRange;
+            weaponRange += weapon.WeaponRangeComparedToFists;
+
+            // todo: Set the model of the player and weapon after the model attached to the weapon.
+
+            Debug.Log("Equiped weapon");
+        }
+
+        public void UnEquipWeapon(Weapon weapon)
+        {
+            weaponRange -= weapon.WeaponRangeComparedToFists;
+            
+            Debug.Log("Unequiped weapon");
+        }
 
 
         //Set enemy indicator active
