@@ -13,7 +13,8 @@ namespace Team5.Inventories.Items
         public void Equip()
         {
             Debug.Log("Equipped " + name);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor += 20;
+            // GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor += 20;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,1);
             
             // TODO: Make a nice way to modify the stat of choice.
         }
@@ -21,7 +22,8 @@ namespace Team5.Inventories.Items
         public void UnEquip()
         {
             Debug.Log("UnEquipped " + name);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor -= 20;
+            // GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor -= 20;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,-1);
         }
     }
 }
