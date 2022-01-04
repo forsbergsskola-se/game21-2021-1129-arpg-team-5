@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -2813925197619152505}
   - component: {fileID: -2423898892075507496}
   m_Layer: 0
-  m_Name: Necklace of Massive Speed (TESTING ITEM)
+  m_Name: God Necklace (TESTING ITEM)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c8793f50ad46f5beec39250511073f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealthBoost: 0
+  MaxHealthBoost: 10000
   MovementSpeedBoost: 30
-  ArmorBoost: 0
+  ArmorBoost: 50
+  AccuracyChanceBoost: 100
+  CriticalChanceBoost: 100
+  DamageBoost: -100
+  AttackSpeedBoostSeconds: 1
