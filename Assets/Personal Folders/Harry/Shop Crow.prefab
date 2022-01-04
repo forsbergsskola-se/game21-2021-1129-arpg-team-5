@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 1647702047419277891}
   - component: {fileID: 1647702047419277890}
   - component: {fileID: 1647702047419277889}
+  - component: {fileID: 8835664928536363942}
   m_Layer: 0
   m_Name: Shop Crow
   m_TagString: NPC
@@ -504,6 +505,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8835664928536363942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647702047419277903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd30db63a22727743b451a6ab77a70fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647702047877533024
 GameObject:
   m_ObjectHideFlags: 0
