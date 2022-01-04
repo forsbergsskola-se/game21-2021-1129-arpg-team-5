@@ -1,6 +1,7 @@
 using System.Collections;
 using Team5.Core;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Team5.Entities
 {
@@ -8,7 +9,7 @@ namespace Team5.Entities
     {
         [HideInInspector] public bool IsDead;
         [HideInInspector] public float MaxHealth;
-        [HideInInspector] public float MovementSpeed;
+        // [HideInInspector] public float MovementSpeed;
 
         [SerializeField] private int BaseMaxHealth;
         [SerializeField] private int BaseArmor;
@@ -20,6 +21,7 @@ namespace Team5.Entities
         private float damageCooldownTime;
         private float health;
         private float level = 1;
+        private float movementSpeed;
 
         protected float damageResistance;
         protected bool takeDamageOnCooldown;
@@ -84,6 +86,26 @@ namespace Team5.Entities
                 armor = value;
                 /*Debug.Log($"{this.name} Armor is now: {value}");
                 Debug.Log($"{this.name} DamageResistance is now: {damageResistance}");*/
+            }
+        }
+
+
+
+        public virtual float MovementSpeed
+        {
+            get => movementSpeed;
+            set
+            {
+                movementSpeed = value;
+                if (TryGetComponent(out NavMeshAgent navMeshAgent))
+                {
+                    Debug.Log("modified speed");
+                    navMeshAgent.speed = movementSpeed;
+                }
+                else
+                {
+                    Debug.Log("Could not change speed. No agent found.");
+                }
             }
         }
         
