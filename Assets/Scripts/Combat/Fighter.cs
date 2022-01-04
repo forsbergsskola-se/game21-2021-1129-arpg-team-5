@@ -290,12 +290,14 @@ namespace Team5.Combat
         /// <param name="DamageMOD"></param>
         /// <param name="AttacKSpeedMOD"></param>
         /// <param name="multiplier">Use to choose to add/subtract values. 1 = add, -1 = subtract.</param>
-        public void ModifyStats(float AccuracyChanceMOD, float DamageMOD, float AttacKSpeedMOD, int multiplier)
+        public void ModifyStats(float AccuracyChanceMOD, float CritChanceMod, float DamageMOD, float AttacKSpeedMOD, int multiplier)
         {
             if (AccuracyChanceMOD != 0) accuracyPercentage += AccuracyChanceMOD * multiplier;
+            if (CritChanceMod != 0) criticalChance += CritChanceMod * multiplier;
             if (DamageMOD != 0) weaponDamage += DamageMOD * multiplier;
             if (AttacKSpeedMOD != 0) timeBetweenAttacks += AttacKSpeedMOD * multiplier;
         }
+
 
 
         //Set enemy indicator active
