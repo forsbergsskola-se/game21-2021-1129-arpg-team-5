@@ -257,7 +257,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
         Refresh();
         buttonActive(false, false, false);
         
-        // If player hasn't any skulls yet
         if (finishedQuest != true)
         {
             buttonActive(true, true, false);
