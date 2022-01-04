@@ -148,10 +148,10 @@ namespace Team5.Entities.Player
             agent.ResetPath();
 
             Health = healthOnRevive;
-            IsDead = false;
+            IsDead = true;
             animator.SetTrigger("revive");
             animator.SetBool("isDead", false);
-            
+            StartCoroutine(ReviveDone());
             
             reviveCounter++;
             
@@ -206,10 +206,12 @@ namespace Team5.Entities.Player
             return Camera.main.ScreenPointToRay(Input.mousePosition);
         }
 
-        void ReviveDone()
+        public IEnumerator ReviveDone()
         {
             Debug.Log("Is this running");
+            yield return new WaitForSeconds(8);
             IsDead = false;
+            
         }
     }
 }
