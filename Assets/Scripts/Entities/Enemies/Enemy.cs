@@ -3,6 +3,7 @@ using System.Collections;
 using FMODUnity;
 using Team5.Control;
 using Team5.Core;
+using Team5.Entities.Player;
 using Team5.Ui;
 using Team5.Ui.ExpSystem;
 using TMPro;
@@ -114,6 +115,7 @@ namespace Team5.Entities.Enemies
                 outlineController.DisableOutlineController();
             
             player.GetComponent<ExpSystem>().DefaultKillExp(DefaultKillXp);
+            player.GetComponent<PlayerController>().killCount += 1;
 
             StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
