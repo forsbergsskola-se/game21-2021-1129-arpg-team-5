@@ -78,7 +78,7 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
             Refresh();
             
             // multiple HUD elements enabled and disabled onEnter
-            FindObjectOfType<HUD>().HudUIActive(false,false, true, false);
+            FindObjectOfType<HUD>().HudUIActive(false,false, false, false,true, false);
             buttonActive(true, false, false);
 
             // Only first time dialogue
@@ -107,7 +107,7 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             // Activates and deactivates HUD elements onExit
-            FindObjectOfType<HUD>().HudUIActive(true,true, false, true);
+            FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
         }
     }
     
@@ -144,7 +144,7 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
     private void ParameterOnClickExit(string test)
     {
         buttonActive(false, false, false);
-        FindObjectOfType<HUD>().HudUIActive(true,true, false, true);
+        FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
     }
 
 
