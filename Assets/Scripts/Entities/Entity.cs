@@ -172,7 +172,15 @@ namespace Team5.Entities
         {
             Health -= value;
         }
-    }
 
+
+
+        public void ModifyStats(float movementSpeedMOD, float maxHealhMOD, float armorMOD, int multiplier)
+        {
+            MovementSpeed += movementSpeedMOD * multiplier;
+            MaxHealth += maxHealhMOD * multiplier;
+            Armor += armorMOD * multiplier;
+        }
+    }
 }
 
