@@ -7,6 +7,6 @@ namespace Team5.Inventories.Items
     public class Weapon : MonoBehaviour
     {
         public Texture WeaponModel;
-        public float WeaponRange;
+        public float WeaponRangeComparedToFists;
     }
 }
