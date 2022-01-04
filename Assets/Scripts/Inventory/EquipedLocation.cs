@@ -18,6 +18,7 @@ namespace Team5.Inventories
         Shield,
         Gloves,
         Bracelet,
-        Earrings
+        Earrings,
+        Ring
     }
 }
