@@ -18,7 +18,7 @@ namespace Team5.Inventories.Control.sample
         {
             if (pickup.CanBePickedUp())
             {
-                print("Selected!");
+                // print("Selected!");
                 return CursorType.Pickup;
             }
             else
