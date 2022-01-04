@@ -29,6 +29,8 @@ namespace Team5.Entities.Player
         private float currentHealthBar;
         private bool lowHealth;
 
+        public int killCount;
+
         protected override void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
