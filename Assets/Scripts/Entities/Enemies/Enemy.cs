@@ -25,7 +25,7 @@ namespace Team5.Entities.Enemies
         private bool textEnabled;
         private GameObject player;
 
-        
+        private GameObject UiManager;
         public Image healthBar;
         public float damageTextDecayTime = 0.5f;
         public float dustSpawnTime;
@@ -45,6 +45,7 @@ namespace Team5.Entities.Enemies
             healthBar.fillAmount = 1; // FillAmount only supports values between 0 and 1.
             healthbarValue = 1;
             player = GameObject.FindWithTag("Player");
+            UiManager = this.gameObject.transform.Find("EntityUiElements").gameObject;
         }
 
         
@@ -116,6 +117,7 @@ namespace Team5.Entities.Enemies
             
             player.GetComponent<ExpSystem>().DefaultKillExp(DefaultKillXp);
             player.GetComponent<PlayerController>().killCount += 1;
+            UiManager.SetActive(false);
 
             StartCoroutine(WaitAndDisableDeath());
             base.OnDeath();
