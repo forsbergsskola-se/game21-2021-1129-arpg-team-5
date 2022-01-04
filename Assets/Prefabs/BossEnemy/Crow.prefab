@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 6785237772422512390}
   - component: {fileID: 6785237772422512391}
   - component: {fileID: 6785237772422512388}
-  - component: {fileID: 3536974347369851609}
+  - component: {fileID: 4951992661300001769}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Enemy
@@ -1903,8 +1903,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &3536974347369851609
-BoxCollider:
+--- !u!136 &4951992661300001769
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1913,9 +1913,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.7257442, y: 2.9246411, z: 3.444171}
-  m_Center: {x: -0.1354971, y: 0.96232057, z: 0.1982913}
+  m_Radius: 2.180872
+  m_Height: 4.361744
+  m_Direction: 1
+  m_Center: {x: -0.18867588, y: 0.9079323, z: -0.03334999}
 --- !u!1 &6172833429217291320
 GameObject:
   m_ObjectHideFlags: 0
