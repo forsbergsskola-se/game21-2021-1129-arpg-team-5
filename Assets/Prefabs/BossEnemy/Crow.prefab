@@ -1644,7 +1644,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6458364935020509304}
   - component: {fileID: 1099041467382473218}
-  - component: {fileID: 6785237772422512385}
   - component: {fileID: 6785237772422512414}
   - component: {fileID: 6785237772422512415}
   - component: {fileID: 6785237772422512412}
@@ -1655,6 +1654,7 @@ GameObject:
   - component: {fileID: 6785237772422512390}
   - component: {fileID: 6785237772422512391}
   - component: {fileID: 6785237772422512388}
+  - component: {fileID: 3536974347369851609}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Enemy
@@ -1702,20 +1702,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &6785237772422512385
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5974983801700098754}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.1171212
-  m_Height: 4.2342424
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.685462, z: -0.01807928}
 --- !u!114 &6785237772422512414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,7 +1836,7 @@ MonoBehaviour:
   baseCriticalChance: 20
   criticalDamageMultiplier: 1.3
   timeBetweenAttacks: 1
-  weaponRange: 1.5
+  weaponRange: 2.5
   weaponDamage: 25
   attackSound: {fileID: 6785237772422512414}
 --- !u!114 &6785237772422512384
@@ -1904,7 +1890,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5974983801700098754}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_Radius: 1.5
   m_Speed: 1.5
   m_Acceleration: 25
   avoidancePriority: 50
@@ -1917,6 +1903,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &3536974347369851609
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974983801700098754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7257442, y: 2.9246411, z: 3.444171}
+  m_Center: {x: -0.1354971, y: 0.96232057, z: 0.1982913}
 --- !u!1 &6172833429217291320
 GameObject:
   m_ObjectHideFlags: 0
