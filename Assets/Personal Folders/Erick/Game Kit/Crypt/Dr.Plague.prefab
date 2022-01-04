@@ -209,10 +209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDead: 0
   MaxHealth: 0
-  MovementSpeed: 0
   BaseMaxHealth: 150
   BaseArmor: 0
-  BaseMovementSpeed: 5.66
+  BaseMovementSpeed: 3
   BaseDamageCooldown: 0.5
   EntityLevelValueMuliplier: 0
   MouseTexture: {fileID: 2800000, guid: 988a4fc2c36d5864f97e02fc0f796c6e, type: 3}
@@ -220,6 +219,8 @@ MonoBehaviour:
   damageTextDecayTime: 0.5
   dustSpawnTime: 0
   corpseStayTime: 0
+  DefaultKillXp: 0
+  missText: Miss!
 --- !u!114 &6985246525161119413
 MonoBehaviour:
   m_ObjectHideFlags: 0
