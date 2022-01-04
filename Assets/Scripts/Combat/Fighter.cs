@@ -118,14 +118,14 @@ namespace Team5.Combat
             {
                 //Target Looking at Y position only.
                 
-                   Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
-                   transform.LookAt(targetPosition);
+                Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+                transform.LookAt(targetPosition);
                    
                    // keeps both entities exactly at mirror opposite locations (may cause problems with multiple entities)
-                   Quaternion targetRotation = target.transform.rotation;
-                   Quaternion rot180degrees = Quaternion.Euler(-targetRotation.eulerAngles);
+                   //Quaternion targetRotation = target.transform.rotation;
+                   //Quaternion rot180degrees = Quaternion.Euler(-targetRotation.eulerAngles);
 
-                   if (timeSinceLastAttack > timeBetweenAttacks)
+                if (timeSinceLastAttack > timeBetweenAttacks)
                 {
                     if (!target.IsDead)
                     {

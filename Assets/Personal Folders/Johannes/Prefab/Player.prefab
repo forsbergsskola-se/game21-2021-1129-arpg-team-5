@@ -397,7 +397,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321974586143131068}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81bbac252181745488dc39e1b5354411, type: 3}
   m_Name: 
@@ -423,7 +423,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDead: 0
   MaxHealth: 0
-  MovementSpeed: 0
   BaseMaxHealth: 200
   BaseArmor: 0
   BaseMovementSpeed: 5.66
@@ -438,6 +437,7 @@ MonoBehaviour:
   healthEffects: {fileID: 0}
   lowHealthEffect: {fileID: 0}
   veryLowHealthEffect: {fileID: 0}
+  killCount: 0
 --- !u!114 &2205058682175292376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expLevel: 1
-  sparkle: {fileID: 0}
 --- !u!114 &2205058682175292192
 MonoBehaviour:
   m_ObjectHideFlags: 0
