@@ -1821,7 +1821,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDead: 0
   MaxHealth: 0
-  MovementSpeed: 0
   BaseMaxHealth: 250
   BaseArmor: 0
   BaseMovementSpeed: 2.83
@@ -1905,7 +1904,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5974983801700098754}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.3
+  m_Radius: 1
   m_Speed: 1.5
   m_Acceleration: 25
   avoidancePriority: 50
