@@ -13,7 +13,7 @@ namespace Team5.Ui
         // HUD UI
         public TMP_Text ScoreText;
         public TMP_Text ReviveText;
-        public TMP_Text CashText;
+        public TMP_Text CoinText;
         public TMP_Text KillCountText;
         public TMP_Text LvlText;
         public GameObject SkullHolder;
