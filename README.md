@@ -28,7 +28,7 @@ Design:
 Programming:
 - [Emanoel](https://github.com/xakzi)
 - [Harry](https://github.com/HarryTheHeath)
-- [Johannes](https://github.com/MustoLini)[LinkedIn](https://www.linkedin.com/in/isak-johannes-danielsson-484b1918b/)
+- [Johannes](https://github.com/MustoLini) : [LinkedIn](https://www.linkedin.com/in/isak-johannes-danielsson-484b1918b/)
 - [Oskar](https://github.com/Zargn)
 - [Tobias](https://github.com/AlchemistWolf)
 - [Toofan](https://github.com/toofantah)
