@@ -8,7 +8,7 @@ namespace Team5.Entities
     public abstract class Entity : MonoBehaviour
     {
         [HideInInspector] public bool IsDead;
-        [HideInInspector] public float MaxHealth;
+        // [HideInInspector] public float MaxHealth;
         // [HideInInspector] public float MovementSpeed;
 
         [SerializeField] private int BaseMaxHealth;
@@ -21,6 +21,7 @@ namespace Team5.Entities
         private float damageCooldownTime;
         private float health;
         private float level = 1;
+        private float maxHealth;
         private float movementSpeed;
 
         protected float damageResistance;
@@ -33,8 +34,8 @@ namespace Team5.Entities
         /// </summary>
         protected virtual void Awake()
         {
-            MaxHealth = BaseMaxHealth;
-            Health = MaxHealth;
+            maxHealth = BaseMaxHealth;
+            Health = maxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
@@ -47,8 +48,8 @@ namespace Team5.Entities
         /// </summary>
         public virtual void ResetEntity()
         {
-            MaxHealth = BaseMaxHealth;
-            Health = MaxHealth;
+            maxHealth = BaseMaxHealth;
+            Health = maxHealth;
             Armor = BaseArmor;
             MovementSpeed = BaseMovementSpeed;
             damageCooldownTime = BaseDamageCooldown;
@@ -64,11 +65,27 @@ namespace Team5.Entities
             get => health;
             protected set
             {
-                health = Mathf.Clamp(value, 0, MaxHealth);
+                health = Mathf.Clamp(value, 0, maxHealth);
                 if (health <= 0)
                 {
                     OnDeath();
                 }
+            }
+        }
+
+
+
+        /// <summary>
+        /// Set entity maxHealth. Automatically heals/damages for the difference between new and old values.
+        /// </summary>
+        public float MaxHealth
+        {
+            get => maxHealth;
+            set
+            {
+                var healthDifference = value - maxHealth;
+                maxHealth = value;
+                ModifyHealth(healthDifference);
             }
         }
 
@@ -184,19 +201,13 @@ namespace Team5.Entities
         
         
         
-        public void AddHealth(int value)
+        public void ModifyHealth(float value)
         {
             Health += value;
         }
 
-        
-        public void RemoveHealth(int value)
-        {
-            Health -= value;
-        }
 
-        
-        
+
         /// <summary>
         /// Modify entity statistics.
         /// </summary>
