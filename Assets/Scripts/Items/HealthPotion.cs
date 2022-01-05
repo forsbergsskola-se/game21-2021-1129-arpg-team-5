@@ -20,7 +20,7 @@ namespace Team5.Inventories.Items.Consumables
 
             if (entity.Health < entity.MaxHealth)
             {
-                entity.AddHealth(healValue);
+                entity.ModifyHealth(healValue);
                 // Destroy(gameObject);
                 Debug.Log($"Healed {user} for {healValue} health.");
                 return true;

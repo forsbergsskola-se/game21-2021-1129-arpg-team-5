@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4583ea623d9111e47b00268ccb9e6b5a, type: 2}
+  - {fileID: 2100000, guid: dde8c74b97164a9438663e12787cdc80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5287527537211293351}
   - component: {fileID: -4135427363998880131}
   m_Layer: 0
-  m_Name: HealingPotion
+  m_Name: HealingPotion low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd9c7ed257009846acc1682b2bf2171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healValue: 50
+  healValue: 1

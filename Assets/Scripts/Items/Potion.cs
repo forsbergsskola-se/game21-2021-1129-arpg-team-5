@@ -30,11 +30,17 @@ namespace Team5.Inventories.Items.Consumables
         private void AddPotionEffect(GameObject user)
         {
             user.GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,1);
+
+            Debug.Log($"Potion {name} used.");
+            // TODO: Play drankPotion particle effect here.
         }
 
         private void RemovePotionEffect(GameObject user)
         {
             user.GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,-1);
+
+            Debug.Log($"Potion {name} effects faded.");
+            // TODO: Play potioneffect went away particle effect here.
         }
     }
 }
