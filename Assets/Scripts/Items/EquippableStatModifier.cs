@@ -1,4 +1,5 @@
 ﻿using System;
+using Team5.Combat;
 using Team5.Entities;
 using UnityEngine;
 
@@ -10,20 +11,67 @@ namespace Team5.Inventories.Items
         [SerializeField] private float MovementSpeedBoost;
         [SerializeField] private float ArmorBoost;
 
+        [SerializeField] private float AccuracyChanceBoost;
+        [SerializeField] private float CriticalChanceBoost;
+        [SerializeField] private float DamageBoost;
+        [Tooltip("Does not always work. Animation sets a maximum attack speed, but with this you can make it a bit faster, but not much. Slowing it down is fine though.")]
+        [SerializeField] private float AttackSpeedBoostSeconds;
+
+        [SerializeField] private bool IsWeapon;
+
+        private Entity playerEntity;
+        private Fighter playerFighter;
+
+        private float attackSpeedBoost;
+
+        private void Start()
+        {
+            UpdateValues();
+        }
+
+        private void UpdateValues()
+        {
+            if (IsWeapon)
+            {
+                if (!TryGetComponent(out Weapon weapon))
+                {
+                    IsWeapon = false;
+                    Debug.Log($"<color=cyan>No weapon.cs script found on {name}. Did you mark this item as weapon deliberately?</color>");
+                }
+            }
+            
+            
+            
+            playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
+            playerFighter = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
+
+            attackSpeedBoost = AttackSpeedBoostSeconds * -1;
+        }
+
         public void Equip()
         {
-            Debug.Log("Equipped " + name);
-            // GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor += 20;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,1);
+            UpdateValues();
             
-            // TODO: Make a nice way to modify the stat of choice.
+            Debug.Log("Equipped " + name);
+            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,1);
+            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, DamageBoost,
+                attackSpeedBoost, 1);
+            
+            if (IsWeapon)
+                playerFighter.EquipWeapon(GetComponent<Weapon>());
         }
 
         public void UnEquip()
         {
+            UpdateValues();
+            
             Debug.Log("UnEquipped " + name);
-            // GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().Armor -= 20;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>().ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,-1);
+            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,-1);
+            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, DamageBoost,
+                attackSpeedBoost, -1);
+            
+            if (IsWeapon)
+                playerFighter.UnEquipWeapon(GetComponent<Weapon>());
         }
     }
 }

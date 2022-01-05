@@ -195,13 +195,20 @@ namespace Team5.Entities
             Health -= value;
         }
 
-
-
+        
+        
+        /// <summary>
+        /// Modify entity statistics.
+        /// </summary>
+        /// <param name="movementSpeedMOD"></param>
+        /// <param name="maxHealhMOD"></param>
+        /// <param name="armorMOD"></param>
+        /// <param name="multiplier">Use to subtract values or add. 1 = Add, -1 = Subtract.</param>
         public void ModifyStats(float movementSpeedMOD, float maxHealhMOD, float armorMOD, int multiplier)
         {
-            MovementSpeed += movementSpeedMOD * multiplier;
-            MaxHealth += maxHealhMOD * multiplier;
-            Armor += armorMOD * multiplier;
+            if (movementSpeedMOD != 0) MovementSpeed += movementSpeedMOD * multiplier;
+            if (maxHealhMOD != 0) MaxHealth += maxHealhMOD * multiplier;
+            if (armorMOD != 0) Armor += armorMOD * multiplier;
         }
     }
 }

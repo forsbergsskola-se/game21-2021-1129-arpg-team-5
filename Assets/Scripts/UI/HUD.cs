@@ -11,12 +11,12 @@ namespace Team5.Ui
     public class HUD : MonoBehaviour
     {
         // HUD UI
-        public TMP_Text ScoreText;
         public TMP_Text ReviveText;
-        public TMP_Text CashText;
+        public GameObject MoneyUI;
+        public GameObject ShopUI;
+        public TMP_Text CoinText;
         public TMP_Text KillCountText;
         public TMP_Text LvlText;
-        public GameObject SkullHolder;
         public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
         public GameObject PauseMenu;
@@ -69,18 +69,21 @@ namespace Team5.Ui
             }
         }
 
-        public void HudUIActive(bool overlays, bool level, bool dialogueBox, bool inventory)
+        public void HudUIActive(bool overlays, bool level, bool moneyUI, 
+                                bool shopUI, bool dialogueBox, bool inventory)
+        
         {
             overlayController.SetActive(overlays);
             LvlText.enabled = level;
+            MoneyUI.SetActive(moneyUI);
+            ShopUI.SetActive(shopUI);
             ShopText.SetActive(dialogueBox);
-            //ScoreText.enabled = Score;
             InventoryMenu.SetActive(inventory);
         }
         
-        public void ShopUIActive(bool headPlayer, bool headNpc )
+        public void ConversationUIActive(bool headPlayer, bool headNpc )
         {
-            // May need multiple heads here for converstations
+            // May need multiple heads here for conversations
             // Can be updated for shop objects UI
             DialogueHeadMain.SetActive(headPlayer);
             DialogueHeadNPC.SetActive(headNpc);
