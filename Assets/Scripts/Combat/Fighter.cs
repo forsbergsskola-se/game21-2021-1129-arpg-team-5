@@ -314,7 +314,7 @@ namespace Team5.Combat
 
         
 
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponItem weapon)
         {
             // weaponRange = weapon.WeaponRange;
             weaponRange += weapon.WeaponRangeComparedToFists;
@@ -325,7 +325,7 @@ namespace Team5.Combat
             Debug.Log("Equiped weapon");
         }
 
-        public void UnEquipWeapon(Weapon weapon)
+        public void UnEquipWeapon(WeaponItem weapon)
         {
             weaponRange -= weapon.WeaponRangeComparedToFists;
 

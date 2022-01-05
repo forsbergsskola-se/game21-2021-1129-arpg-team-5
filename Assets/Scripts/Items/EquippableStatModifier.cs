@@ -35,7 +35,7 @@ namespace Team5.Inventories.Items
         {
             if (IsWeapon)
             {
-                if (!TryGetComponent(out Weapon weapon))
+                if (!TryGetComponent(out WeaponItem weapon))
                 {
                     IsWeapon = false;
                     Debug.Log($"<color=cyan>No weapon.cs script found on {name}. Did you mark this item as weapon deliberately?</color>");
@@ -60,7 +60,7 @@ namespace Team5.Inventories.Items
                 attackSpeedBoost, 1);
             
             if (IsWeapon)
-                playerFighter.EquipWeapon(GetComponent<Weapon>());
+                playerFighter.EquipWeapon(GetComponent<WeaponItem>());
         }
 
         public void UnEquip()
@@ -73,7 +73,7 @@ namespace Team5.Inventories.Items
                 attackSpeedBoost, -1);
             
             if (IsWeapon)
-                playerFighter.UnEquipWeapon(GetComponent<Weapon>());
+                playerFighter.UnEquipWeapon(GetComponent<WeaponItem>());
         }
     }
 }
