@@ -91,7 +91,7 @@ public class ShopStall : MonoBehaviour, IInteractable
             Refresh();
             
             // multiple HUD elements enabled and disabled onEnter
-            FindObjectOfType<HUD>().HudUIActive(false,false, false, false);
+            FindObjectOfType<HUD>().HudUIActive(false,false, false,false,false, false);
             buttonActive(true, true, false);
             NameTag.SetActive(true);
 
@@ -124,7 +124,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             // Activates and deactivates HUD elements onExit
-            FindObjectOfType<HUD>().HudUIActive(true,true, false, true);
+            FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
         }
     }
 
