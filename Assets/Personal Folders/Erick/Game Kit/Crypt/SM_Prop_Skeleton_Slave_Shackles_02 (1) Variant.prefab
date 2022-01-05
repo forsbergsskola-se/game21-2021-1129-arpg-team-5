@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 159302, guid: 0e4ef1130a2885740b955cbd88392c5f, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_Skeleton_Slave_Shackles_02 (1)
+      value: SM_Prop_Skeleton_Slave_Shackles_02 (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 486240, guid: 0e4ef1130a2885740b955cbd88392c5f, type: 3}
       propertyPath: m_RootOrder
@@ -63,5 +63,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64797781876042722, guid: 0e4ef1130a2885740b955cbd88392c5f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e4ef1130a2885740b955cbd88392c5f, type: 3}
