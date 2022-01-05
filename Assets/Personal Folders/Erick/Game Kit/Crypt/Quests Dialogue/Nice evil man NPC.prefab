@@ -1642,8 +1642,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8647113, y: 1.9853468, z: 3.8526218}
-  m_Center: {x: 0, y: 0.49267244, z: 0.56717366}
+  m_Size: {x: 4.8536024, y: 1.9853468, z: 3.8526218}
+  m_Center: {x: 0.24911246, y: 0.49267244, z: 0.56717366}
 --- !u!136 &6128377515917649961
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1705,9 +1705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToNPC: 0
   shopCursor: {fileID: 2800000, guid: bc57d0e62b2e9ce48bb23171c54d98fa, type: 3}
-  Button1: {fileID: 0}
-  Button2: {fileID: 0}
-  Button3: {fileID: 0}
+  npcName: Kevin
   greetText: Psst... over here...
   greetReply: What is it?
   genericHello: Hey again fellow nice person
