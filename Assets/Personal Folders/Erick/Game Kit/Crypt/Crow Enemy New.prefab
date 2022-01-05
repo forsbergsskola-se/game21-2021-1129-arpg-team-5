@@ -6942,7 +6942,6 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointWaitingTime: 0.5
-  DefaultKillXp: 0
 --- !u!114 &1275689686615308688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7051,8 +7050,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275689686615308777}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.5
   m_Speed: 1.5
   m_Acceleration: 25
   avoidancePriority: 50
