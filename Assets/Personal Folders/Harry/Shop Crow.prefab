@@ -517,6 +517,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd30db63a22727743b451a6ab77a70fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToShop: 0
+  shopCursor: {fileID: 0}
+  Button1: {fileID: 0}
+  Button2: {fileID: 0}
+  Button3: {fileID: 0}
+  greetText: Hello first time
+  greetAccept: Hi
+  greetReject: Later
+  genericHello: Normal hello
+  helloAccept: Hi
+  helloReject: Not now
+  checkWares: Want to check my wares?
+  shopAgree: Yes!
+  goBack: Return
+  leaveShop: Leave
+  goToPurchase: Buy
+  checkPuchase: Are you sure?
+  confirmPurchase: Confirm
+  stopPurchase: Cancel
+  notEnoughMoney: You can't afford this!
+  goBackToShop: Return
+  purchaseSuccess: Thank you! Want anything else?
+  carryOnShopping: Sure
+  thatsAllThanks: Not now
+  item1: Health Potion
+  item1stock: 5
+  item1cost: 1
+  item2: Speed Potion
+  item2stock: 5
+  item2cost: 5
+  item3: Attack Potion
+  item3stock: 3
+  item3cost: 16
+  item4: Big Surprise!
+  item4stock: 1
+  item4cost: 10000
+  goodbye: Come back soon!
 --- !u!1 &1647702047877533024
 GameObject:
   m_ObjectHideFlags: 0
