@@ -31,6 +31,8 @@ namespace Team5.Control
         [SerializeField] CursorMapping[] cursorMappings = null;
         public CursorMode cursorMode = CursorMode.Auto;
         public Vector3 hotSpot = Vector3.zero;
+        [SerializeField] private Texture2D invalidCursor;
+
         PlayerController player;
         
         
@@ -68,7 +70,7 @@ namespace Team5.Control
                     return;
                 }
             }
-            SetCursorTexture(null);
+            SetCursorTexture(invalidCursor);
             
         }
         
@@ -97,20 +99,20 @@ namespace Team5.Control
             }
         }
 
-        public LayerMask mask;
+        // public LayerMask mask;
         
         private bool TryCastRaySuccess()
         {
             // Ignore layer 13 and 2. Layer 13 is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes. Layer 2 is IgnoreRaycast.
             int layermask = 1 << 13 | 1 << 2;
             layermask = ~layermask;
-            mask = layermask;
+            LayerMask mask = layermask;
             
             ray = cameraObject.ScreenPointToRay(Input.mousePosition);
 
             if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
             {
-                SetCursorTexture(null);
+                SetCursorTexture(invalidCursor);
                 return false;
             }
 
