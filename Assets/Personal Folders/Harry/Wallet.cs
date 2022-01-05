@@ -62,5 +62,10 @@ namespace Team5.Ui
                 other.gameObject.SetActive(false);
             }
         }
+
+        public void SubtractMoney(int amount)
+        {
+            Coins = (Coins - amount);
+        }
     }
 }
