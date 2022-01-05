@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        //animator.SetBool("IsOpen", false);
         DialogueButton.SetActive(false);
         DialogueBox.SetActive(false);
     }

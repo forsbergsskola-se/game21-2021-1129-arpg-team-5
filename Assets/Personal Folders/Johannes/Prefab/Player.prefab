@@ -389,6 +389,9 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   weaponRange: 2
   weaponDamage: 55
+  weaponPrefab: {fileID: 5605198179342550686, guid: 57c4500c9509382498a85c384d3d9e7a, type: 3}
+  handTransform: {fileID: 2608305121316846215}
+  overrideWeapon: {fileID: 22100000, guid: a1f3065d9f6793a4e8920b70e22bb58c, type: 2}
   attackSound: {fileID: 2205058682175292378}
 --- !u!114 &2205058682175292374
 MonoBehaviour:
@@ -422,10 +425,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  MaxHealth: 0
   BaseMaxHealth: 200
   BaseArmor: 0
-  BaseMovementSpeed: 5.66
+  BaseMovementSpeed: 4.3
   BaseDamageCooldown: 0
   EntityLevelValueMuliplier: 0.02
   healthOnRevive: 20
@@ -536,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cbaa17287d360429d8c1272985300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 5
+  inventorySize: 15
 --- !u!114 &2205058682175292192
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,11 @@ namespace Team5.Combat
         [SerializeField] private float weaponDamage = 1f;
         private float missedDamage = 0f;
 
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
+
+        [SerializeField] AnimatorOverrideController overrideWeapon;
+
         private float accuracyPercentage;
         private float criticalChance;
         private float timeSinceLastAttack = Mathf.Infinity;
@@ -55,10 +60,12 @@ namespace Team5.Combat
 
             AccuracyPercentage = baseAccuracyPercentage;
             CriticalChance = baseCriticalChance;
+
+            SpawnWeapon();
         }
 
-        
-        
+       
+
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -110,8 +117,13 @@ namespace Team5.Combat
             // need to add logic for small enemy indicator to go away
         }
 
-        
-        
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = overrideWeapon;
+        }
+
         private void AttackBehaviour()
         {
             if (!thisEntity.IsDead && !target.IsDead)
