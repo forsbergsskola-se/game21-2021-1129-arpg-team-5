@@ -27,6 +27,9 @@ namespace Team5.Ui
         // Shop UI
         public GameObject ShopText;
         public TMP_Text ShopDialogue;
+        public Button Button1;
+        public Button Button2;
+        public Button Button3;
         public GameObject SkullIcons;
         public GameObject DialogueHeadMain;
         public GameObject DialogueHeadNPC;

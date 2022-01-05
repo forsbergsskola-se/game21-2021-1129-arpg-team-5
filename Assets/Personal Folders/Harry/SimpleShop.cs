@@ -24,9 +24,9 @@ public class SimpleShop : MonoBehaviour, IInteractable
     
     // interactions
     private TMP_Text Dialogue;
-    public Button Button1;
-    public Button Button2;
-    public Button Button3;
+    private Button Button1;
+    private Button Button2;
+    private Button Button3;
     
     // button text
     private GameObject button1;
@@ -111,9 +111,14 @@ public class SimpleShop : MonoBehaviour, IInteractable
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
+        Button1 = FindObjectOfType<HUD>().Button1;
+        Button2 = FindObjectOfType<HUD>().Button2;
+        Button3 = FindObjectOfType<HUD>().Button3;
+        
         button1 = Button1.gameObject;
         button2 = Button2.gameObject;
         button3 = Button3.gameObject;
+        
         button1Text = Button1.GetComponentInChildren<TextMeshProUGUI>();
         button2Text = Button2.GetComponentInChildren<TextMeshProUGUI>();
         button3Text = Button3.GetComponentInChildren<TextMeshProUGUI>();

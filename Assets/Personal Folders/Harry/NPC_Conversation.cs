@@ -25,15 +25,15 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
     // interactions
     private TMP_Text Dialogue;
     
-    public Button Button1;
+    private Button Button1;
     private GameObject button1;
     private TMP_Text button1Text;
     
-    public Button Button2;
+    private Button Button2;
     private GameObject button2;
     private TMP_Text button2Text;
     
-    public Button Button3;
+    private Button Button3;
     private GameObject button3;
     
     // bools
@@ -60,6 +60,10 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
+
+        Button1 = FindObjectOfType<HUD>().Button1;
+        Button2 = FindObjectOfType<HUD>().Button2;
+        Button3 = FindObjectOfType<HUD>().Button3;
         
         button1 = Button1.gameObject;
         button2 = Button2.gameObject;
