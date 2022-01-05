@@ -2,6 +2,7 @@
 using Team5.Combat;
 using Team5.Entities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Team5.Inventories.Items
 {
@@ -9,10 +10,11 @@ namespace Team5.Inventories.Items
     {
         [SerializeField] private float MaxHealthBoost;
         [SerializeField] private float MovementSpeedBoost;
-        [SerializeField] private float ArmorBoost;
+        [FormerlySerializedAs("ArmorBoost")] [SerializeField] private float DefenceBoost;
 
         [SerializeField] private float AccuracyChanceBoost;
         [SerializeField] private float CriticalChanceBoost;
+        [SerializeField] private float CriticalDamageMultiplierBoost;
         [SerializeField] private float DamageBoost;
         [Tooltip("Does not always work. Animation sets a maximum attack speed, but with this you can make it a bit faster, but not much. Slowing it down is fine though.")]
         [SerializeField] private float AttackSpeedBoostSeconds;
@@ -53,8 +55,8 @@ namespace Team5.Inventories.Items
             UpdateValues();
             
             Debug.Log("Equipped " + name);
-            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,1);
-            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, DamageBoost,
+            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,DefenceBoost,1);
+            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, CriticalDamageMultiplierBoost, DamageBoost,
                 attackSpeedBoost, 1);
             
             if (IsWeapon)
@@ -66,8 +68,8 @@ namespace Team5.Inventories.Items
             UpdateValues();
             
             Debug.Log("UnEquipped " + name);
-            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,ArmorBoost,-1);
-            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, DamageBoost,
+            playerEntity.ModifyStats(MovementSpeedBoost,MaxHealthBoost,DefenceBoost,-1);
+            playerFighter.ModifyStats(AccuracyChanceBoost, CriticalChanceBoost, CriticalDamageMultiplierBoost, DamageBoost,
                 attackSpeedBoost, -1);
             
             if (IsWeapon)
