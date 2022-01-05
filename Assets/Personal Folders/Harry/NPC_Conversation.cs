@@ -43,6 +43,9 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
     
     // First Encounter
 
+    private GameObject NPCNameUI;
+    public string npcName;
+
     public string greetText;
     public string greetReply;
     public string genericHello;
@@ -57,6 +60,8 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
     {
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
+        NPCNameUI = FindObjectOfType<HUD>().NPCName;
+        npcName = NPCNameUI.GetComponentInChildren<TMP_Text>().text;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
@@ -80,7 +85,6 @@ public class NPC_Conversation : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             Refresh();
-            
             // multiple HUD elements enabled and disabled onEnter
             FindObjectOfType<HUD>().HudUIActive(false,false, false, false,true, false);
             buttonActive(true, false, false);
