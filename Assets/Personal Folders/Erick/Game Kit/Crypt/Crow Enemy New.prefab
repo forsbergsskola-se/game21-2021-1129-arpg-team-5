@@ -6937,7 +6937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 4
+  chaseDistance: 8
   suspicionTime: 2
   patrolPath: {fileID: 0}
   waypointTolerance: 1
@@ -6968,9 +6968,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDead: 0
   MaxHealth: 0
-  BaseMaxHealth: 250
+  BaseMaxHealth: 400
   BaseArmor: 0
-  BaseMovementSpeed: 2.83
+  BaseMovementSpeed: 3.5
   BaseDamageCooldown: 0.5
   EntityLevelValueMuliplier: 0
   MouseTexture: {fileID: 2800000, guid: 988a4fc2c36d5864f97e02fc0f796c6e, type: 3}
@@ -6998,7 +6998,7 @@ MonoBehaviour:
   criticalDamageMultiplier: 1.3
   timeBetweenAttacks: 1
   weaponRange: 2.5
-  weaponDamage: 25
+  weaponDamage: 50
   attackSound: {fileID: 1275689686615308703}
 --- !u!114 &1275689686615308693
 MonoBehaviour:
