@@ -300,13 +300,17 @@ namespace Team5.Combat
         }
 
         
+        
 
+        // Work here! 
+        
         public void EquipWeapon(Weapon weapon)
         {
             // weaponRange = weapon.WeaponRange;
             weaponRange += weapon.WeaponRangeComparedToFists;
 
             // todo: Set the model of the player and weapon after the model attached to the weapon.
+            // todo: Set the animation of the player to the weapons animations.
 
             Debug.Log("Equiped weapon");
         }
@@ -315,10 +319,21 @@ namespace Team5.Combat
         {
             weaponRange -= weapon.WeaponRangeComparedToFists;
             
+            // todo: Revert back to the standard unarmed animation.
+            // todo: Revert back to not render the weapon, and only empty hands.
+            
             Debug.Log("Unequiped weapon");
         }
 
 
+        
+        
+        
+        
+        
+        
+        
+        
         //Set enemy indicator active
         // public void EnemyIndicatorActive()
         // {
