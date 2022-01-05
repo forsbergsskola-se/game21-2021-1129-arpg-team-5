@@ -301,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 974, y: -299.26}
+  m_AnchoredPosition: {x: 898, y: -299}
   m_SizeDelta: {x: 1700.01, y: 1383.401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130358501
@@ -327,17 +327,18 @@ MonoBehaviour:
   m_text: 'Programming & Engineering:
 
 
-    Emanoel
+    Emanoel Emil Kouriat
 
-    Harry
+    Harry Heath
 
     Johannes
+    Danielsson
 
-    Oskar
+    Oskar Anderson
 
-    Tobias
+    Tobias Lundin
 
-    Toofan
+    Toofan Tahmouresi
 
 
     Soundtrack:
@@ -346,8 +347,8 @@ MonoBehaviour:
     Raphael
     Wolde Selassie'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -385,7 +386,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 7
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -1321,7 +1322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &953574050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1861,7 +1862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.09, y: -299.26}
+  m_AnchoredPosition: {x: 74, y: -299}
   m_SizeDelta: {x: 1700.01, y: 1383.401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950022465
@@ -1884,10 +1885,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Art:\n\nAmanda\r\nDavid\r\nElla\n\nDesign: \n\nErick\r\nSear\n\nSFX:\n\nGillgamesh?"
+  m_text: "Art:\n\nAmanda Hahne\nDavid Mejerwall\nElla Schoultz\n\nDesign: \n\nErick
+    Vaghi\nSear Waizy"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1925,7 +1927,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 7
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
