@@ -177,8 +177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  MaxHealth: 0
-  MovementSpeed: 0
   BaseMaxHealth: 40
   BaseArmor: 0
   BaseMovementSpeed: 0
@@ -188,7 +186,7 @@ MonoBehaviour:
   explosion: {fileID: 4300093290876434741, guid: 58221ac3a117cb54088a38313efe9304, type: 3}
   SmokeSystem: {fileID: 4714472364175860279, guid: 0987b23ac6f302b409d6fcd8ff856512, type: 3}
   Nametag: {fileID: 0}
-  DestroyXp: 30
+  DestroyXp: 1
 --- !u!114 &4121442740068290425
 MonoBehaviour:
   m_ObjectHideFlags: 0
