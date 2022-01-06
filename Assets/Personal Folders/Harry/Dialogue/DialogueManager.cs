@@ -12,8 +12,6 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public float typingSpeed;
-    //public Animator animator;
-
     private Queue<string> sentences;
 
     void Start () 
@@ -23,8 +21,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue (Dialogue dialogue)
     {
-        //animator.SetBool("IsOpen", true);
-
         nameText.text = dialogue.name;
         sentences.Clear();
 
@@ -61,12 +57,6 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        //animator.SetBool("IsOpen", false);
-<<<<<<< Updated upstream
-        DialogueButton.SetActive(false);
-        DialogueBox.SetActive(false);
-=======
         FindObjectOfType<TalkingNPC>().StopTalk();
->>>>>>> Stashed changes
     }
 }
