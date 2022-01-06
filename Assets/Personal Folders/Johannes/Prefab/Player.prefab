@@ -387,9 +387,7 @@ MonoBehaviour:
   baseCriticalChance: 25
   criticalDamageMultiplier: 1.25
   timeBetweenAttacks: 1
-  weaponRange: 2
-  weaponDamage: 55
-  weapon: {fileID: 11400000, guid: d4fd8c3e31c9e54438b543fac3651112, type: 2}
+  defaultweapon: {fileID: 11400000, guid: d4fd8c3e31c9e54438b543fac3651112, type: 2}
   handTransform: {fileID: 2608305121316846215}
   attackSound: {fileID: 2205058682175292378}
 --- !u!114 &2205058682175292374
