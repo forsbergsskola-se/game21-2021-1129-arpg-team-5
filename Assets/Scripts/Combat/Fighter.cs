@@ -16,14 +16,13 @@ namespace Team5.Combat
         
         [SerializeField] private float baseAccuracyPercentage;
         [SerializeField] private float baseCriticalChance;
-        [SerializeField] private float criticalDamageMultiplier;
         [SerializeField] private float timeBetweenAttacks = 1f;
 
 
         [SerializeField] Weapon defaultweapon = null;
-        private Weapon currentWeapon = null;
+        public Weapon currentWeapon = null;
         private float missedDamage = 0f;
-
+        public float criticalDamageMultiplier;
         
         [SerializeField] Transform handTransform = null;
 
