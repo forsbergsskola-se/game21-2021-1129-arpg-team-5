@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Team5.Inventories;
 using UnityEngine;
 
 namespace Team5.Combat
 {
     [CreateAssetMenu(fileName = "New Weapon", menuName = "Team5/Combat/New Weapon")]
-    public class Weapon : ScriptableObject
+    public class Weapon : EquipedItem
     {
         [SerializeField] AnimatorOverrideController overrideAnim;
         [SerializeField] GameObject equippedPrefab = null;
