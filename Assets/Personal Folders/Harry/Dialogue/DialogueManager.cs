@@ -8,26 +8,17 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private GameObject DialogueBox;
-    private GameObject DialogueButton;
-    private TMP_Text nameText;
-    private TMP_Text dialogueText;
+    
+    public TMP_Text nameText;
+    public TMP_Text dialogueText;
+    public float typingSpeed;
     //public Animator animator;
 
     private Queue<string> sentences;
 
-    private void Awake()
-    {
-        throw new NotImplementedException();
-    }
-
     void Start () 
     {
         sentences = new Queue<string>();
-        DialogueBox = FindObjectOfType<HUD>().ShopDialogue.gameObject;
-        DialogueButton = DialogueBox.transform.Find("Continue Button").gameObject;
-        dialogueText = FindObjectOfType<HUD>().ShopDialogue;
-        nameText = FindObjectOfType<HUD>().NPCName.GetComponentInChildren<TMP_Text>();
     }
 
     public void StartDialogue (Dialogue dialogue)
@@ -64,14 +55,18 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
     }
 
     void EndDialogue()
     {
         //animator.SetBool("IsOpen", false);
+<<<<<<< Updated upstream
         DialogueButton.SetActive(false);
         DialogueBox.SetActive(false);
+=======
+        FindObjectOfType<TalkingNPC>().StopTalk();
+>>>>>>> Stashed changes
     }
 }
