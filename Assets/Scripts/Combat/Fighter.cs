@@ -79,7 +79,8 @@ namespace Team5.Combat
             
             if (!GetIsInRange())
             {
-                GetComponent<Move>().MoveTo(target.transform.position);
+                if(!target.IsDead)
+                    GetComponent<Move>().MoveTo(target.transform.position);
             }
             else
             {
