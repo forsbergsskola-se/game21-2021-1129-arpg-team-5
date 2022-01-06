@@ -66,7 +66,7 @@ public class ShopStall : MonoBehaviour, IInteractable
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         NameTag = this.gameObject.transform.Find("Name Tag").gameObject;
-        SkullIcons = FindObjectOfType<HUD>().SkullIcons;
+        //SkullIcons = FindObjectOfType<HUD>().SkullIcons;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
