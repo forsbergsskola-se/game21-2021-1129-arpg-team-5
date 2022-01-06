@@ -86,10 +86,10 @@ namespace Team5.Movement
         }
         void WalkingSound()
         {
-            MoveSound.Play();
+           if(this.CompareTag("Player"))
+                MoveSound.Play();
         }
-        
-        
+
         private float DistanceToMarker()
         {
 

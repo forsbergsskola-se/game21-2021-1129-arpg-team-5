@@ -6967,7 +6967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  MaxHealth: 0
   BaseMaxHealth: 400
   BaseArmor: 0
   BaseMovementSpeed: 3.5
@@ -6997,8 +6996,8 @@ MonoBehaviour:
   baseCriticalChance: 20
   criticalDamageMultiplier: 1.3
   timeBetweenAttacks: 1
-  weaponRange: 2.5
-  weaponDamage: 50
+  defaultweapon: {fileID: 11400000, guid: 360ae48bf16623f4e82084d9e8825dad, type: 2}
+  handTransform: {fileID: 1275689686469797959}
   attackSound: {fileID: 1275689686615308703}
 --- !u!114 &1275689686615308693
 MonoBehaviour:
