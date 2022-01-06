@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72143f005f53a7e46b6d0afbeaf61943, type: 3}
   m_Name: Ax
   m_EditorClassIdentifier: 
-  overrideAnim: {fileID: 22100000, guid: f0529e311008a0540a8c99a1e93cd1f3, type: 2}
-  equippedPrefab: {fileID: 5545192945441299770, guid: 1b9cc6d18d3db124a89f9a9c8f6323ac, type: 3}
-  weaponRange: 2
-  weaponDamage: 28
+  itemID: b09ecf1e-3711-409b-9c67-0520782c8efc
+  displayName: Ritual ax
+  description: Hit them to their rituals with this ax!
+  icon: {fileID: 21300000, guid: 7a838ac3498941142a5d03e993911c66, type: 3}
+  pickup: {fileID: 6338611301242585235, guid: b401aa8e94cbe0b418f6a9d033b19df8, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
+  overrideAnim: {fileID: 22100000, guid: 0b2a427544c7ba94f8ee90915863d8f3, type: 2}
+  equippedPrefab: {fileID: 3100501115339743511, guid: 5f68096f283c78d47af5b8695ca0f83e, type: 3}
+  weaponRange: 4
+  weaponDamage: 41
