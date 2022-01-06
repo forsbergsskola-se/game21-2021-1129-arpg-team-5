@@ -32,6 +32,7 @@ namespace Team5.Ui
         public Button Button2;
         public Button Button3;
         public Button ContinueButton;
+        public Button RepeatButton;
         public GameObject SkullIcons;
         public GameObject DialogueHeadMain;
         public GameObject DialogueHeadNPC;
