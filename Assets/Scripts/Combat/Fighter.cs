@@ -19,12 +19,14 @@ namespace Team5.Combat
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float weaponDamage = 1f;
+
+        [SerializeField] Weapon weapon = null;
         private float missedDamage = 0f;
 
-        [SerializeField] GameObject weaponPrefab = null;
+        
         [SerializeField] Transform handTransform = null;
 
-        [SerializeField] AnimatorOverrideController overrideWeapon;
+        
 
         private float accuracyPercentage;
         private float criticalChance;
@@ -119,9 +121,11 @@ namespace Team5.Combat
 
         private void SpawnWeapon()
         {
-            Instantiate(weaponPrefab, handTransform);
+            if (weapon == null) return;
+            
             Animator animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = overrideWeapon;
+            weapon.Spawn(handTransform, animator);
+            
         }
 
         private void AttackBehaviour()

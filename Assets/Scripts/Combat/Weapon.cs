@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+namespace Team5.Combat
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(fileName = "Weapon", menuName = "Team5/Combat/New Weapon")]
+    public class Weapon : ScriptableObject
     {
-        
-    }
+        [SerializeField] AnimatorOverrideController overrideAnim;
+        [SerializeField] GameObject weaponPrefab = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Spawn(Transform handposition, Animator animator)
+        {
+            Instantiate(weaponPrefab, handposition);
+            animator.runtimeAnimatorController = overrideAnim;
+        }
     }
 }
