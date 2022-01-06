@@ -68,15 +68,15 @@ public class DialogueManager : MonoBehaviour
     
     public void SlowDialogue()
     {
-        typingSpeed = 0.5f;
+        typingSpeed = 0.1f;
     }
     public void MediumDialogue()
     {
-        typingSpeed = 0.1f;
+        typingSpeed = 0.05f;
     }
     public void FastDialogue()
     {
-        typingSpeed = 0.05f;
+        typingSpeed = 0.03f;
     }
     public void VeryFastDialogue()
     {
