@@ -2,6 +2,7 @@ using Team5.Core;
 using Team5.Movement;
 using Team5.Ui;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TalkingNPC : MonoBehaviour, IInteractable
 {
@@ -12,8 +13,9 @@ public class TalkingNPC : MonoBehaviour, IInteractable
     private GameObject player;
     private Vector3 TargetPosition;
     private GameObject DialogueButton;
-    private GameObject DialogueBox;
-    
+    private GameObject RepeatButton;
+    private Button Repeat;
+
     private GameObject Button1;
     private GameObject Button2;
     private GameObject Button3;
@@ -28,8 +30,10 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
 
-        DialogueBox = FindObjectOfType<HUD>().ShopUI.gameObject;
         DialogueButton = FindObjectOfType<HUD>().ContinueButton.gameObject;
+        Repeat = FindObjectOfType<HUD>().RepeatButton;
+        RepeatButton = Repeat.gameObject;
+        
         Button1 = FindObjectOfType<HUD>().Button1.gameObject;
         Button2 = FindObjectOfType<HUD>().Button2.gameObject;
         Button3 = FindObjectOfType<HUD>().Button3.gameObject;
@@ -92,9 +96,22 @@ public class TalkingNPC : MonoBehaviour, IInteractable
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
 
+    public void ReplayOption()
+    {
+        RepeatButton.SetActive(true);
+        Repeat.onClick.AddListener( () => ParameterOnClick($"{nameof(Repeat)} was pressed!"));
+    }
+
+    private void ParameterOnClick(string test)
+    {
+        RepeatButton.SetActive(false);
+        FindObjectOfType<DialogueTrigger>().TriggerDialogue();
+    }
+
     public void StopTalk()
     {
         DialogueButton.SetActive(false);
+        RepeatButton.SetActive(false);
         FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
     }
     
