@@ -10,14 +10,15 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
-    public float typingSpeed;
+    public float typingSpeed = 0.05f;
     private Queue<string> sentences;
 
     void Awake() 
     {
         sentences = new Queue<string>();
+        typingSpeed = 0.05f;
     }
-    
+
     public void StartDialogue (Dialogue dialogue)
     {
         nameText.text = dialogue.name;
