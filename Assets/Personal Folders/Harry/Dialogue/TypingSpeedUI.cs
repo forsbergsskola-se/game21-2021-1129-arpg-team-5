@@ -8,10 +8,10 @@ using UnityEngine;
 public class TypingSpeedUI : MonoBehaviour
 {
     private float typingSpeed;
-    private float slow = 0.5f;
-    private float medium = 0.1f;
-    private float fast = 0.05f;
-    private float veryFast = 0.01f;
+    public float slow = 0.5f;
+    public float medium = 0.1f;
+    public float fast = 0.05f;
+    public float veryFast = 0.01f;
 
     public GameObject one;
     public GameObject two;
@@ -45,19 +45,19 @@ public class TypingSpeedUI : MonoBehaviour
 
     public void SlowDialogue()
     {
-        typingSpeed = 0.5f;
+        FindObjectOfType<DialogueManager>().SlowDialogue();
     }
     public void MediumDialogue()
     {
-        typingSpeed = 0.1f;
+        FindObjectOfType<DialogueManager>().MediumDialogue();
     }
     public void FastDialogue()
     {
-        typingSpeed = 0.05f;
+        FindObjectOfType<DialogueManager>().FastDialogue();
     }
     public void VeryFastDialogue()
     {
-        typingSpeed = 0.01f;
+        FindObjectOfType<DialogueManager>().VeryFastDialogue();
     }
 
     private void OnOff(bool slow, bool medium, bool fast, bool veryFast)
