@@ -11,13 +11,13 @@ namespace Team5.Ui
     public class HUD : MonoBehaviour
     {
         // HUD UI
-        public TMP_Text ReviveText;
+        //public TMP_Text ReviveText;
         public GameObject MoneyUI;
         public GameObject ShopUI;
         public TMP_Text CoinText;
         public TMP_Text KillCountText;
         public TMP_Text LvlText;
-        public TMP_Text SkullCounter;
+        //public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
         public GameObject PauseMenu;
         public GameObject OptionsMenu;
@@ -33,9 +33,9 @@ namespace Team5.Ui
         public Button Button3;
         public Button ContinueButton;
         public Button RepeatButton;
-        public GameObject SkullIcons;
-        public GameObject DialogueHeadMain;
-        public GameObject DialogueHeadNPC;
+        //public GameObject SkullIcons;
+        //public GameObject DialogueHeadMain;
+        //public GameObject DialogueHeadNPC;
         
         // Overlays
         public GameObject overlayController;
@@ -91,8 +91,8 @@ namespace Team5.Ui
         {
             // May need multiple heads here for conversations
             // Can be updated for shop objects UI
-            DialogueHeadMain.SetActive(headPlayer);
-            DialogueHeadNPC.SetActive(headNpc);
+            //DialogueHeadMain.SetActive(headPlayer);
+            //DialogueHeadNPC.SetActive(headNpc);
         }
     }
 } 
