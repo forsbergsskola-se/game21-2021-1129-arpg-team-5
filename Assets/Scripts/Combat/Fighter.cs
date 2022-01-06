@@ -6,6 +6,7 @@ using Team5.Inventories.Items;
 using Team5.Ui;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Team5.Inventories;
 
 namespace Team5.Combat
 {
@@ -37,7 +38,9 @@ namespace Team5.Combat
         private Entity thisEntity;
         private GameObject enemyIndicator;
         private Entity target;
-        
+
+        Equipment equipment;
+
         private static readonly int Attack1 = Animator.StringToHash("attack");
         private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
@@ -52,9 +55,16 @@ namespace Team5.Combat
             get => accuracyPercentage;
             set => accuracyPercentage = Mathf.Min(value, 100);
         }
-        
-        
-        
+
+        private void Awake()
+        {
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
+        }
+
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
@@ -79,7 +89,8 @@ namespace Team5.Combat
             
             if (!GetIsInRange())
             {
-                GetComponent<Move>().MoveTo(target.transform.position);
+                if(!target.IsDead)
+                    GetComponent<Move>().MoveTo(target.transform.position);
             }
             else
             {
@@ -125,6 +136,19 @@ namespace Team5.Combat
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
             
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipedLocation.Weapon) as Weapon;
+            if(weapon == null)
+            {
+                EquipWeapon(defaultweapon);
+            }
+            else
+            {
+                EquipWeapon(weapon);
+            }
         }
 
         private void AttackBehaviour()

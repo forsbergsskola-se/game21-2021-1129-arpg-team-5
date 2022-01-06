@@ -37,10 +37,10 @@ namespace Team5.Ui
             entity = this.GetComponent<Entity>();
             fighter = this.GetComponent<Fighter>();
             
-            reviveText = FindObjectOfType<HUD>().ReviveText;
+            //reviveText = FindObjectOfType<HUD>().ReviveText;
             killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
-            skullText = FindObjectOfType<HUD>().SkullCounter;
+            //skullText = FindObjectOfType<HUD>().SkullCounter;
         }
 
         void Update()

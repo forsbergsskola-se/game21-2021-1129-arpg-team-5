@@ -8,9 +8,9 @@ using UnityEngine;
 public class TypingSpeedUI : MonoBehaviour
 {
     private float typingSpeed;
-    public float slow = 0.5f;
-    public float medium = 0.1f;
-    public float fast = 0.05f;
+    public float slow = 0.1f;
+    public float medium = 0.05f;
+    public float fast = 0.03f;
     public float veryFast = 0.01f;
 
     public GameObject one;

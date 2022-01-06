@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
+    private TMP_Text button;
     public float typingSpeed { get; private set; } = 0.05f;
     private Queue<string> sentences;
 
@@ -17,11 +18,13 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         typingSpeed = 0.05f;
+        button = FindObjectOfType<HUD>().ContinueButton.GetComponentInChildren<TMP_Text>();
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         nameText.text = dialogue.name;
+        button.text = "Continue >>";
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -37,7 +40,7 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 1)
         {
             FindObjectOfType<TalkingNPC>().ReplayOption();
-
+            button.text = "Leave";
         }
         
         else if (sentences.Count == 0)
@@ -68,15 +71,15 @@ public class DialogueManager : MonoBehaviour
     
     public void SlowDialogue()
     {
-        typingSpeed = 0.5f;
+        typingSpeed = 0.1f;
     }
     public void MediumDialogue()
     {
-        typingSpeed = 0.1f;
+        typingSpeed = 0.05f;
     }
     public void FastDialogue()
     {
-        typingSpeed = 0.05f;
+        typingSpeed = 0.03f;
     }
     public void VeryFastDialogue()
     {
