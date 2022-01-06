@@ -17,8 +17,7 @@ namespace Team5.Combat
         [SerializeField] private float baseCriticalChance;
         [SerializeField] private float criticalDamageMultiplier;
         [SerializeField] private float timeBetweenAttacks = 1f;
-        [SerializeField] private float weaponRange = 2f;
-        [SerializeField] private float weaponDamage = 1f;
+
 
         [SerializeField] Weapon weapon = null;
         private float missedDamage = 0f;
@@ -184,7 +183,7 @@ namespace Team5.Combat
             // attack with critical hit if lower than critPercent value
             if (Random.Range(0, 100) < CriticalChance)
             {
-                var totalAttackValue = weaponDamage * criticalDamageMultiplier;
+                var totalAttackValue = weapon.GetDamage() * criticalDamageMultiplier;
                 
                 if (target.CompareTag("Enemy"))
                 {
@@ -224,10 +223,10 @@ namespace Team5.Combat
                     //Debug.Log($"{this.name}'s {accuracyPercent}% accuracy > {accuracyChance}0% chance");
                     if (target.CompareTag("Enemy"))
                     {
-                        Debug.Log($"{this.name} dealt {weaponDamage} damage to {target.name}");
+                        Debug.Log($"{this.name} dealt {weapon.GetDamage()} damage to {target.name}");
                     }
                     attackSound.Play();
-                    target.TakeDamage(weaponDamage);
+                    target.TakeDamage(weapon.GetDamage());
                 }
                 
                 //  misses attack due to low accuracy
@@ -259,7 +258,7 @@ namespace Team5.Combat
         
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weapon.GetRange();
         }
 
         
@@ -312,16 +311,17 @@ namespace Team5.Combat
             if (AccuracyChanceMOD != 0) accuracyPercentage += AccuracyChanceMOD * multiplier;
             if (CritChanceMod != 0) criticalChance += CritChanceMod * multiplier;
             if (CritDamageMod != 0) criticalDamageMultiplier += CritDamageMod * multiplier;
-            if (DamageMOD != 0) weaponDamage += DamageMOD * multiplier;
+            if (DamageMOD != 0) weapon.SetDamage(DamageMOD * multiplier);
             if (AttacKSpeedMOD != 0) timeBetweenAttacks += AttacKSpeedMOD * multiplier;
         }
 
         
 
-        public void EquipWeapon(WeaponItem weapon)
+        public void EquipWeapon(WeaponItem weaponitem)
         {
             // weaponRange = weapon.WeaponRange;
-            weaponRange += weapon.WeaponRangeComparedToFists;
+            //weaponRange += weapon.WeaponRangeComparedToFists;
+            weapon.SetRange(weaponitem.WeaponRangeComparedToFists);
 
             // todo: Set the model of the player and weapon after the model attached to the weapon.
             // todo: Set the animation of the player to the weapons animations.
@@ -331,7 +331,7 @@ namespace Team5.Combat
 
         public void UnEquipWeapon(WeaponItem weapon)
         {
-            weaponRange -= weapon.WeaponRangeComparedToFists;
+            //weaponRange -= weapon.WeaponRangeComparedToFists;
 
             // todo: Revert back to the standard unarmed animation.
             // todo: Revert back to not render the weapon, and only empty hands.
