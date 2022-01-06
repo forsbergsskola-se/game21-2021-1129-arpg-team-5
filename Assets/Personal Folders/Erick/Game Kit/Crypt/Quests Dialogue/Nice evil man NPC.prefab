@@ -1584,7 +1584,8 @@ GameObject:
   - component: {fileID: 6128377515917649961}
   - component: {fileID: 6128377515917649956}
   - component: {fileID: 6128377515917649959}
-  - component: {fileID: 6128377515917649954}
+  - component: {fileID: 7345774776164622823}
+  - component: {fileID: 928138831860231992}
   m_Layer: 0
   m_Name: Nice evil man NPC
   m_TagString: NPC
@@ -1691,7 +1692,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &6128377515917649954
+--- !u!114 &7345774776164622823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1700,21 +1701,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6692141307766726685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f38593b582af69429482e8268fab956, type: 3}
+  m_Script: {fileID: 11500000, guid: b2faad01ad8b5d24a8eff5be579892af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Kevin
+    sentences:
+    - Sentence 1
+    - Sentence 2
+    - Sentence 3
+--- !u!114 &928138831860231992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692141307766726685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1f2f5d22db8b44db48d3a7db64a735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToNPC: 0
   shopCursor: {fileID: 2800000, guid: 236ca8deccb569943bdbcbceffaf4b3f, type: 3}
-  npcName: Kevin
-  greetText: Psst... over here...
-  greetReply: What is it?
-  genericHello: Hey again fellow nice person
-  genericReply: Oh hai
-  firstLine: I'm not like the others
-  secondLine: Rituals are a bore....
-  thirdLine: ... I want to fingerpaint instead!
-  repeatButton: Repeat
-  exitButton: Exit
 --- !u!1 &7011836511625977336
 GameObject:
   m_ObjectHideFlags: 0
