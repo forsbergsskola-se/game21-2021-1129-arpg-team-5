@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
-    public float typingSpeed = 0.05f;
+    public float typingSpeed { get; private set; } = 0.05f;
     private Queue<string> sentences;
 
     void Awake() 
@@ -64,5 +64,22 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         FindObjectOfType<TalkingNPC>().StopTalk();
+    }
+    
+    public void SlowDialogue()
+    {
+        typingSpeed = 0.5f;
+    }
+    public void MediumDialogue()
+    {
+        typingSpeed = 0.1f;
+    }
+    public void FastDialogue()
+    {
+        typingSpeed = 0.05f;
+    }
+    public void VeryFastDialogue()
+    {
+        typingSpeed = 0.01f;
     }
 }
