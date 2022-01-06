@@ -5,6 +5,7 @@ using Team5.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = System.Object;
 
 namespace Team5.Ui
 {
@@ -34,8 +35,7 @@ namespace Team5.Ui
         public Button ContinueButton;
         public Button RepeatButton;
         //public GameObject SkullIcons;
-        //public GameObject DialogueHeadMain;
-        //public GameObject DialogueHeadNPC;
+        public Image DialogueHeadNPC;
         
         // Overlays
         public GameObject overlayController;
