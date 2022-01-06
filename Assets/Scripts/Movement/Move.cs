@@ -29,6 +29,7 @@ namespace Team5.Movement
         private static float newPlayerZAxis;
         private bool canPlaySound;
         public StudioEventEmitter MoveSound;
+        [SerializeField] private StudioEventEmitter validMoveTargetSound;
         
         private void Start()
         {
@@ -152,6 +153,8 @@ namespace Team5.Movement
                     
                     targetDest.transform.position = destination;
                     newPlayerRotation = oldPlayerRotation;
+
+                    validMoveTargetSound.Play();
                 }
             }
         }
