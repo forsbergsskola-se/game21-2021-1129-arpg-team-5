@@ -16,8 +16,8 @@ namespace Team5.Ui
 
         private void Awake()
         {
-            pauseMenu = GameObject.FindWithTag("Pause Menu");
-            optionsMenu = GameObject.FindWithTag("Options Menu");
+            pauseMenu = FindObjectOfType<HUD>().PauseMenu;
+            optionsMenu = FindObjectOfType<HUD>().OptionsMenu;
         }
         
         // resume game and load scene via name
