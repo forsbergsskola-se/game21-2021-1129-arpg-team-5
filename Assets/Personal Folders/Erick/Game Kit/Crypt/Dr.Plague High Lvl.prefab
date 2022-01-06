@@ -1276,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSound: {fileID: 6985246525161119413}
+  validMoveTargetSound: {fileID: 0}
 --- !u!114 &6914784486547225752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,9 +1335,10 @@ MonoBehaviour:
   killCount: 0
   baseAccuracyPercentage: 85
   baseCriticalChance: 30
-  criticalDamageMultiplier: 1.3
   timeBetweenAttacks: 1
   defaultweapon: {fileID: 11400000, guid: 6dda6bf28a187e04b94137e9db9fe1eb, type: 2}
+  currentWeapon: {fileID: 0}
+  criticalDamageMultiplier: 1.3
   handTransform: {fileID: 6906893651004936626}
   attackSound: {fileID: 7186338222013085975}
 --- !u!114 &8670397084905533021
@@ -1363,8 +1365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7dae7f53e549647a02c044d192f7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 10
-  suspicionTime: 2
+  chaseDistance: 8
+  suspicionTime: 1
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointWaitingTime: 0.5
@@ -1381,9 +1383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  BaseMaxHealth: 335
-  BaseArmor: 0
-  BaseMovementSpeed: 3
+  BaseMaxHealth: 300
+  BaseArmor: 15
+  BaseMovementSpeed: 2
   BaseDamageCooldown: 0.5
   EntityLevelValueMuliplier: 0
   MouseTexture: {fileID: 2800000, guid: 988a4fc2c36d5864f97e02fc0f796c6e, type: 3}
@@ -1391,7 +1393,7 @@ MonoBehaviour:
   damageTextDecayTime: 0.7
   dustSpawnTime: 0
   corpseStayTime: 0
-  DefaultKillXp: 5
+  DefaultKillXp: 30
   missText: Miss!
 --- !u!114 &6985246525161119413
 MonoBehaviour:
