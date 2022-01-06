@@ -8,17 +8,16 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public float typingSpeed;
     private Queue<string> sentences;
 
-    void Start () 
+    void Awake() 
     {
         sentences = new Queue<string>();
     }
-
+    
     public void StartDialogue (Dialogue dialogue)
     {
         nameText.text = dialogue.name;
@@ -34,7 +33,13 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence ()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 1)
+        {
+            FindObjectOfType<TalkingNPC>().ReplayOption();
+
+        }
+        
+        else if (sentences.Count == 0)
         {
             EndDialogue();
             return;
