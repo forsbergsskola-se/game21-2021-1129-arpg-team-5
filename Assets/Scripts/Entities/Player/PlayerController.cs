@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
 using Team5.Combat;
+using TMPro;
 using UnityEngine.UI;
 
 namespace Team5.Entities.Player
@@ -28,7 +30,18 @@ namespace Team5.Entities.Player
         public Image veryLowHealthEffect;
         private float currentHealthBar;
         private bool lowHealth;
-
+        
+        //TODO To put Ui stuff here.
+        // public float accuracyPercentage;
+        // public float criticalDamageMultiplier;
+        // public float weaponDamage;
+        // public TextMeshProUGUI HealthText;
+        // public TextMeshProUGUI ArmorText;
+        // public TextMeshProUGUI AccuracyText;
+        // public TextMeshProUGUI CriticalChansText;
+        // public TextMeshProUGUI CriticalDamageText;
+        // public TextMeshProUGUI DamageText;
+        // public TextMeshProUGUI SpeedText;
         public int killCount;
 
         protected override void Awake()
@@ -37,14 +50,19 @@ namespace Team5.Entities.Player
             animator = GetComponent<Animator>();
             base.Awake();
             agent.speed = MovementSpeed;
-            
             // UI game start settings
             healthBar.fillAmount = 1;
             currentHealthBar = 1;
             healthEffects.SetActive(true);
             lowHealthEffect.enabled = false;
             veryLowHealthEffect.enabled = false;
+            
+            //TODO Add GetComponent for the UI here.
+            // criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
+            // accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
+            // weaponDamage = GetComponent<Fighter>().currentWeapon.GetDamage();
         }
+        
 
         void Update()
         {
@@ -57,7 +75,17 @@ namespace Team5.Entities.Player
             // }
             
             // sets Healthbar fill
-
+            
+            //TODO Add the UI Stats here
+            // HealthText.text = "Max Health: " + MaxHealth;
+            // ArmorText.text = "Armor: " + Armor;
+            // CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
+            // SpeedText.text = "Movement Speed: " + MovementSpeed;
+            //
+            // AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
+            // DamageText.text = " Damage: " + weaponDamage;
+            // CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
+            
             currentHealthBar = this.Health / this.MaxHealth;
             healthBar.fillAmount = currentHealthBar;
 
