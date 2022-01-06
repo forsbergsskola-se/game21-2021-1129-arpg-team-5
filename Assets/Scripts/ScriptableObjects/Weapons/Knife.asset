@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72143f005f53a7e46b6d0afbeaf61943, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  itemID: 4fba590e-ee22-40e5-af01-9e0fbdff7db4
+  displayName: Sharp Knife
+  description: Grab this and slice them Up!
+  icon: {fileID: 21300000, guid: 9927aebd4c989784bb824a34f98e836c, type: 3}
+  pickup: {fileID: -483700759124425098, guid: 2d247592ea06bd84581c5b24ce97b22f, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
+  overrideAnim: {fileID: 22100000, guid: a1f3065d9f6793a4e8920b70e22bb58c, type: 2}
+  equippedPrefab: {fileID: 5605198179342550686, guid: 57c4500c9509382498a85c384d3d9e7a, type: 3}
+  weaponRange: 2
+  weaponDamage: 50
