@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2899094109106625462}
   - component: {fileID: 2899094109106625460}
   - component: {fileID: 2270636795469859057}
+  - component: {fileID: 2395287606403073968}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -119,9 +120,38 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   cursorMode: 0
   hotSpot: {x: 0, y: 0, z: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  invalidCursor: {fileID: 0}
+  invalidLocationSound: {fileID: 2395287606403073968}
+--- !u!114 &2395287606403073968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899094109106625458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1364193485
+      Data2: 1131440589
+      Data3: -1951791940
+      Data4: 1800507172
+    Path: event:/Incorrect_Sound_Effects_All_Sounds
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4787296059843616502
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +163,7 @@ GameObject:
   - component: {fileID: 2521419144095144145}
   - component: {fileID: 6087897021646660613}
   - component: {fileID: 4759053241782415253}
+  - component: {fileID: 2344462235610264509}
   m_Layer: 0
   m_Name: Follow_Camera
   m_TagString: Untagged
@@ -183,3 +214,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!114 &2344462235610264509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787296059843616502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -745935350
+      Data2: 1172914599
+      Data3: -816624227
+      Data4: -1142146889
+    Path: event:/Team_5_-_Crypt
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

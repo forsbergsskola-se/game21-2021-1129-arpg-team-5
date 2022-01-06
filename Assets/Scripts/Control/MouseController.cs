@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Team5.Core;
 using Team5.Entities.Player;
 using Team5.Inventories.Control.sample;
@@ -34,8 +35,10 @@ namespace Team5.Control
         [SerializeField] private Texture2D invalidCursor;
 
         PlayerController player;
-        
-        
+
+        [SerializeField] private StudioEventEmitter invalidLocationSound;
+
+
         private void Start()
         {
             player = GetComponent<PlayerController>();
@@ -71,8 +74,18 @@ namespace Team5.Control
                 }
             }
             SetCursorTexture(invalidCursor);
-            
+            TryPlaySound();
         }
+
+
+
+        private void TryPlaySound()
+        {
+            if (mouseClicked)
+                invalidLocationSound.Play();
+        }
+        
+        
         
         bool InteractWithUI()
         {
@@ -83,6 +96,8 @@ namespace Team5.Control
             return false;
         }
 
+        
+        
         private void CheckMouseButton()
         {
             if (Input.GetMouseButtonDown(0))
@@ -98,9 +113,9 @@ namespace Team5.Control
                 mouseClicked = false;
             }
         }
-
-        // public LayerMask mask;
         
+        
+
         private bool TryCastRaySuccess()
         {
             // Ignore layer 13 and 2. Layer 13 is used for the transparency tester, which also casts rays, but from the player towards the camera. And they need to react to different hitboxes. Layer 2 is IgnoreRaycast.
@@ -113,6 +128,7 @@ namespace Team5.Control
             if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
             {
                 SetCursorTexture(invalidCursor);
+                TryPlaySound();
                 return false;
             }
 
@@ -183,6 +199,8 @@ namespace Team5.Control
         {
             Cursor.SetCursor(texture, hotSpot, cursorMode);
         }
+        
+        
 
         private bool InteractWithComponent()
         {
