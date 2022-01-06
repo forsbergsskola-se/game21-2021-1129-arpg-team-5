@@ -12,10 +12,11 @@ public class TalkingNPC : MonoBehaviour, IInteractable
     private GameObject player;
     private Vector3 TargetPosition;
     private GameObject DialogueButton;
+    private GameObject DialogueBox;
     
-    private GameObject button1;
-    private GameObject button2;
-    private GameObject button3;
+    private GameObject Button1;
+    private GameObject Button2;
+    private GameObject Button3;
 
     // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
@@ -26,12 +27,12 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         player = GameObject.FindGameObjectWithTag("Player");
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
-        var dialogueBox =  FindObjectOfType<HUD>().ShopDialogue.gameObject;
-        
-        DialogueButton = dialogueBox.transform.Find("Continue Button").gameObject;
-        button1 = dialogueBox.transform.Find("Button 1").gameObject;
-        button2 = dialogueBox.transform.Find("Button 2").gameObject;
-        button3 = dialogueBox.transform.Find("Button 3").gameObject;
+
+        DialogueBox = FindObjectOfType<HUD>().ShopUI.gameObject;
+        DialogueButton = FindObjectOfType<HUD>().ContinueButton.gameObject;
+        Button1 = FindObjectOfType<HUD>().Button1.gameObject;
+        Button2 = FindObjectOfType<HUD>().Button2.gameObject;
+        Button3 = FindObjectOfType<HUD>().Button3.gameObject;
     }
     
     private void OnCollisionEnter(Collision other)
@@ -90,11 +91,17 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToNPC)
             GameObject.Find("Player").GetComponent<Move>().StartMoveAction(TargetPosition);
     }
+
+    public void StopTalk()
+    {
+        DialogueButton.SetActive(false);
+        FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
+    }
     
     private void buttonActive(bool buttonOne, bool buttonTwo, bool buttonThree)
     {
-        button1.SetActive(buttonOne);
-        button2.SetActive(buttonTwo);
-        button3.SetActive(buttonThree);
+        Button1.SetActive(buttonOne);
+        Button2.SetActive(buttonTwo);
+        Button3.SetActive(buttonThree);
     }
 }
