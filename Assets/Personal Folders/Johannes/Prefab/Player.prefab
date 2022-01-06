@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 2205058682175292376}
   - component: {fileID: 2205058682175292379}
   - component: {fileID: 2205058682175292378}
+  - component: {fileID: 5533977650813524868}
   - component: {fileID: 2205058682175292381}
   - component: {fileID: 2205058682175292380}
   - component: {fileID: 2205058682175292192}
@@ -385,9 +386,10 @@ MonoBehaviour:
   killCount: 0
   baseAccuracyPercentage: 90
   baseCriticalChance: 25
-  criticalDamageMultiplier: 1.25
   timeBetweenAttacks: 1
   defaultweapon: {fileID: 11400000, guid: 1362f4f1a0f85b64a9c50345c5f73280, type: 2}
+  currentWeapon: {fileID: 0}
+  criticalDamageMultiplier: 1.25
   handTransform: {fileID: 2608305121316846215}
   attackSound: {fileID: 2205058682175292378}
 --- !u!114 &2205058682175292374
@@ -511,6 +513,36 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &5533977650813524868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321974586143131068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -599188908
+      Data2: 1090688362
+      Data3: 1454314632
+      Data4: 1995302204
+    Path: event:/Correct_Sound_Effects_All_Sounds
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &2205058682175292381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSound: {fileID: 2205058682175292379}
+  validMoveTargetSound: {fileID: 5533977650813524868}
 --- !u!195 &2205058682175292194
 NavMeshAgent:
   m_ObjectHideFlags: 0
