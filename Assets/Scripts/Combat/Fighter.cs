@@ -19,7 +19,7 @@ namespace Team5.Combat
         [SerializeField] private float timeBetweenAttacks = 1f;
 
 
-        [SerializeField] Weapon defaultweapon = null;
+        public Weapon defaultweapon = null;
         public Weapon currentWeapon = null;
         private float missedDamage = 0f;
         public float criticalDamageMultiplier;
@@ -62,6 +62,7 @@ namespace Team5.Combat
             {
                 equipment.equipmentUpdated += UpdateWeapon;
             }
+            EquipWeapon(defaultweapon);
         }
 
         private void Start()

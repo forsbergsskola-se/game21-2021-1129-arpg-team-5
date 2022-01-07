@@ -32,16 +32,16 @@ namespace Team5.Entities.Player
         //private bool lowHealth; - could be used for ui warnings/ damage multipliers
         
         //TODO To put Ui stuff here.
-        // public float accuracyPercentage;
-        // public float criticalDamageMultiplier;
-        // public float weaponDamage;
-        // public TextMeshProUGUI HealthText;
-        // public TextMeshProUGUI ArmorText;
-        // public TextMeshProUGUI AccuracyText;
-        // public TextMeshProUGUI CriticalChansText;
-        // public TextMeshProUGUI CriticalDamageText;
-        // public TextMeshProUGUI DamageText;
-        // public TextMeshProUGUI SpeedText;
+        public float accuracyPercentage;
+        public float criticalDamageMultiplier;
+        public float weaponDamage;
+        public TextMeshProUGUI HealthText;
+        public TextMeshProUGUI ArmorText;
+        public TextMeshProUGUI AccuracyText;
+        public TextMeshProUGUI CriticalChansText;
+        public TextMeshProUGUI CriticalDamageText;
+        public TextMeshProUGUI DamageText;
+        public TextMeshProUGUI SpeedText;
         public int killCount;
 
         protected override void Awake()
@@ -58,14 +58,16 @@ namespace Team5.Entities.Player
             veryLowHealthEffect.enabled = false;
             
             //TODO Add GetComponent for the UI here.
-            // criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
-            // accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
-            // weaponDamage = GetComponent<Fighter>().currentWeapon.GetDamage();
+            criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
+            accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
+            weaponDamage = GetComponent<Fighter>().defaultweapon.GetDamage();
+            Debug.Log(weaponDamage.ToString());
         }
-        
+
 
         void Update()
         {
+            Debug.Log(weaponDamage.ToString());
             // suggestion for how lowHealth bool can be utilized
             
             // TODO: Do NOT spam debug logs!
