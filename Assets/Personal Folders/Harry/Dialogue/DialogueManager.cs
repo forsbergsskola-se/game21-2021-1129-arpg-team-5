@@ -18,12 +18,19 @@ public class DialogueManager : MonoBehaviour
 
     private bool killQuestActive = false;
     private bool collectQuestActive;
+    private bool reset = false;
     private int killTarget;
     private GameObject player;
     private int playerKills;
 
-    
-    public float typingSpeed { get; private set; } = 0.05f;
+    public float slowTypeSpeed = 0.1f;
+    public float mediumTypeSpeed = 0.05f;
+    public float fastTypeSpeed = 0.03f;
+    public float veryFastTypeSpeed = 0.01f;
+
+
+
+    public float typingSpeed { get; private set; } = 0.03f;
     private Queue<string> sentences;
 
     void Awake()
@@ -33,15 +40,18 @@ public class DialogueManager : MonoBehaviour
         CollectQuest = FindObjectOfType<DialogueTrigger>().CollectQuest;
         killTarget = FindObjectOfType<DialogueTrigger>().KillTarget;
         player = GameObject.FindGameObjectWithTag("Player");
+        typingSpeed = fastTypeSpeed;
 
         
         sentences = new Queue<string>();
-        typingSpeed = 0.05f;
         button = FindObjectOfType<HUD>().ContinueButton.GetComponentInChildren<TMP_Text>();
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
+        killQuestActive = false;
+        reset = false;
+        
         nameText.text = dialogue.name;
         button.text = "Continue >>";
         sentences.Clear();
@@ -71,12 +81,6 @@ public class DialogueManager : MonoBehaviour
             button.text = "Leave";
         }
         
-        else if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-        
         playerKills = player.GetComponent<PlayerController>().killCount;
         string kills = $"You have killed {playerKills} out of {killTarget}";
 
@@ -91,6 +95,18 @@ public class DialogueManager : MonoBehaviour
             string sentence = sentences.Dequeue();
             StartCoroutine(TypeSentence(sentence));
         }
+        
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        if (sentences.Count == 1 && reset == true)
+        {
+            EndDialogue();
+            return;
+        }
     }
 
   
@@ -104,7 +120,11 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
-        killQuestActive = false;
+
+        if (killQuestActive)
+        {
+            reset = true;
+        }
     }
 
     IEnumerator KillDialogue(string sentence)
@@ -124,18 +144,18 @@ public class DialogueManager : MonoBehaviour
     
     public void SlowDialogue()
     {
-        typingSpeed = 0.1f;
+        typingSpeed = slowTypeSpeed;
     }
     public void MediumDialogue()
     {
-        typingSpeed = 0.05f;
+        typingSpeed = mediumTypeSpeed;
     }
     public void FastDialogue()
     {
-        typingSpeed = 0.03f;
+        typingSpeed = fastTypeSpeed;
     }
     public void VeryFastDialogue()
     {
-        typingSpeed = 0.01f;
+        typingSpeed = veryFastTypeSpeed;
     }
 }
