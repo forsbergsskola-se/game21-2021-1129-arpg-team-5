@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour {
 
+    public bool NPCDialogue = false;
+    public bool KillQuest = false;
+    public bool CollectQuest = false;
+    public int KillTarget;
     public Dialogue dialogue;
     private Image head;
 
