@@ -38,7 +38,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
     
     // bools
     private bool firstVisit = true;
-    private bool canPurchase = false;
+    //private bool canPurchase = false;
     
     // First Encounter
 
@@ -221,7 +221,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
             if (playerMoney >= item1cost)
             {
                 buttonActive(true, true, false);
-                canPurchase = true;
+                //canPurchase = true;
                 
                 Dialogue.text = $"So you want to buy {item1} for {item1cost} coins? \n" + 
                                 $"You will have {(playerMoney - item1cost)} coins left.";
@@ -243,7 +243,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
             if (playerMoney >= item2cost)
             {
                 buttonActive(true, true, false);
-                canPurchase = true;
+                //canPurchase = true;
                 
                 Dialogue.text = $"So you want to buy {item2} for {item2cost} coins? \n" + 
                                 $"You will have {(playerMoney - item2cost)} coins left.";
@@ -265,7 +265,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
             if (playerMoney >= item3cost)
             {
                 buttonActive(true, true, false);
-                canPurchase = true;
+                //canPurchase = true;
                 
                 Dialogue.text = $"So you want to buy {item3} for {item3cost} coins? \n" + 
                                 $"You will have {(playerMoney - item3cost)} coins left.";
@@ -287,7 +287,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
             if (playerMoney >= item4cost)
             {
                 buttonActive(true, true, false);
-                canPurchase = true;
+                //canPurchase = true;
                 
                 Dialogue.text = $"So you want to buy {item4} for {item4cost} coins? \n" + 
                                 $"You will have {(playerMoney - item4cost)} coins left.";
@@ -307,7 +307,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
 
     private void NotEnoughMoney()
     {
-        canPurchase = false;
+        //canPurchase = false;
         buttonActive(true, false, false);
         Dialogue.text = $"{notEnoughMoney}";
         Button1.onClick.AddListener( () => ParameterOnClickYes($"{nameof(Button1)} was pressed!"));
