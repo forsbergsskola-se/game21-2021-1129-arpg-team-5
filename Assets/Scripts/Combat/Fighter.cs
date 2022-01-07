@@ -38,6 +38,8 @@ namespace Team5.Combat
         private GameObject enemyIndicator;
         private Entity target;
 
+        private float bonusDamage;
+
         Equipment equipment;
 
         private static readonly int Attack1 = Animator.StringToHash("attack");
@@ -213,7 +215,7 @@ namespace Team5.Combat
             // attack with critical hit if lower than critPercent value
             if (Random.Range(0, 100) < CriticalChance)
             {
-                var totalAttackValue = currentWeapon.GetDamage() * criticalDamageMultiplier;
+                var totalAttackValue = (currentWeapon.GetDamage() + bonusDamage) * criticalDamageMultiplier;
                 
                 if (target.CompareTag("Enemy"))
                 {
@@ -256,7 +258,7 @@ namespace Team5.Combat
                         Debug.Log($"{this.name} dealt {currentWeapon.GetDamage()} damage to {target.name}");
                     }
                     attackSound.Play();
-                    target.TakeDamage(currentWeapon.GetDamage());
+                    target.TakeDamage(currentWeapon.GetDamage() + bonusDamage);
                 }
                 
                 //  misses attack due to low accuracy
@@ -341,7 +343,8 @@ namespace Team5.Combat
             if (AccuracyChanceMOD != 0) accuracyPercentage += AccuracyChanceMOD * multiplier;
             if (CritChanceMod != 0) criticalChance += CritChanceMod * multiplier;
             if (CritDamageMod != 0) criticalDamageMultiplier += CritDamageMod * multiplier;
-            if (DamageMOD != 0) currentWeapon.SetDamage(DamageMOD * multiplier);
+            // if (DamageMOD != 0) currentWeapon.SetDamage(DamageMOD * multiplier);
+            if (DamageMOD != 0) bonusDamage += DamageMOD * multiplier;
             if (AttacKSpeedMOD != 0) timeBetweenAttacks += AttacKSpeedMOD * multiplier;
         }
 
