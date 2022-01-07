@@ -13,6 +13,7 @@ public class DialogueTrigger : MonoBehaviour {
     public bool KillQuest = false;
     public bool CollectQuest = false;
     public int KillTarget;
+    public int EggTarget;
     public Dialogue dialogue;
     private Image head;
 
