@@ -32,16 +32,21 @@ namespace Team5.Entities.Player
         //private bool lowHealth; - could be used for ui warnings/ damage multipliers
         
         //TODO To put Ui stuff here.
-        // public float accuracyPercentage;
-        // public float criticalDamageMultiplier;
-        // public float weaponDamage;
-        // public TextMeshProUGUI HealthText;
-        // public TextMeshProUGUI ArmorText;
-        // public TextMeshProUGUI AccuracyText;
-        // public TextMeshProUGUI CriticalChansText;
-        // public TextMeshProUGUI CriticalDamageText;
-        // public TextMeshProUGUI DamageText;
-        // public TextMeshProUGUI SpeedText;
+        public TextMeshProUGUI HealthText;
+        public TextMeshProUGUI ArmorText;
+        public TextMeshProUGUI AccuracyText;
+        public TextMeshProUGUI CriticalChansText;
+        public TextMeshProUGUI CriticalDamageText;
+        public TextMeshProUGUI DamageText;
+        public TextMeshProUGUI SpeedText;
+
+
+
+        private Fighter fighter;
+        
+        
+        
+        
         public int killCount;
 
         protected override void Awake()
@@ -60,12 +65,45 @@ namespace Team5.Entities.Player
             //TODO Add GetComponent for the UI here.
             // criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
             // accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
-            // weaponDamage = GetComponent<Fighter>().currentWeapon.GetDamage();
+            // weaponDamage = GetComponent<Fighter>().defaultweapon.GetDamage();
+            // Debug.Log(weaponDamage.ToString());
+
+
+            fighter = GetComponent<Fighter>();
         }
-        
+
 
         void Update()
         {
+            // TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            float[] f = new float[7];
+
+            f[0] = MaxHealth;
+            f[1] = Armor;
+            f[2] = MovementSpeed;
+            f[3] = fighter.AccuracyPercentage;
+            f[4] = fighter.CriticalChance;
+            f[5] = fighter.criticalDamageMultiplier * fighter.GetTotalDamage();
+            f[6] = fighter.defaultweapon.GetDamage() + fighter.BonusDamage;
+
+            HealthText.text = MaxHealth.ToString();
+            ArmorText.text = Armor.ToString();
+            SpeedText.text = MovementSpeed.ToString();
+            AccuracyText.text = fighter.AccuracyPercentage.ToString();
+            CriticalChansText.text = fighter.CriticalChance.ToString();
+            CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
+            DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
+            
+            
+            
+
+
+
+            Debug.Log($"Values: {f[0]} | {f[1]} | {f[2]} | {f[3]} | {f[4]} | {f[5]} | {f[6]} ");
+            
+            
+            
+            // Debug.Log(weaponDamage.ToString());
             // suggestion for how lowHealth bool can be utilized
             
             // TODO: Do NOT spam debug logs!
