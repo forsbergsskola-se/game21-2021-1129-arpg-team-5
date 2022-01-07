@@ -16,7 +16,8 @@ namespace Team5.Ui
         public GameObject MoneyUI;
         public GameObject ShopUI;
         public TMP_Text CoinText;
-        public TMP_Text KillCountText;
+        public TMP_Text EggUiText;
+        //public TMP_Text KillCountText;
         public TMP_Text LvlText;
         //public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
