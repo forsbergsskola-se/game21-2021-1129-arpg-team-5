@@ -116,12 +116,7 @@ namespace Team5.Entities
                 movementSpeed = value;
                 if (TryGetComponent(out NavMeshAgent navMeshAgent))
                 {
-                    Debug.Log("modified speed");
                     navMeshAgent.speed = movementSpeed;
-                }
-                else
-                {
-                    Debug.Log("Could not change speed. No agent found.");
                 }
             }
         }
