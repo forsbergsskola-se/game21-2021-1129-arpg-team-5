@@ -15,20 +15,26 @@ namespace Team5.Entities.Objects.DestroyableObject
         public GameObject Nametag;
         public int DestroyXp;
 
+        private ItemSpawner itemSpawner;
+
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
             Vector3.Distance(player.transform.position, transform.position);
+
+            TryGetComponent(out itemSpawner);
         }
         
         protected override void OnDeath()
         {
-            //Nametag.SetActive(false);
             gameObject.SetActive(false);
             Instantiate(SmokeSystem, transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
             IsDead = true;
             player.GetComponent<ExpSystem>().DestroyExp(DestroyXp);
+
+            if (itemSpawner != null)
+                itemSpawner.SpawnItem();
         }
         
         public void OnHoverExit()

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3720335640779852993, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
       propertyPath: m_Name
-      value: Vase
+      value: VaseItem low
       objectReference: {fileID: 0}
     - target: {fileID: 4101258778817123963, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4566685602811334387, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 8235034666637157812}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
+--- !u!1 &3426416406214756256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 798398061309386227, guid: f86df8df6ebf7354d9bfbe7a0b3c6ba4, type: 3}
+  m_PrefabInstance: {fileID: 2637254916912224851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8235034666637157812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426416406214756256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f137f544e543c4598f4e5eff56f196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: 7a10ce2c5185e9d4282cd34c90b644ea, type: 2}
+  editorColor: {r: 0.030437868, g: 0.33962262, b: 0.15917988, a: 0}

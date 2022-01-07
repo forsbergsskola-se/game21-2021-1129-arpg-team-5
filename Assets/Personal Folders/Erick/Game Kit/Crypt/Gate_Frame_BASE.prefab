@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138c72851384973458a991f78d169316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToOpen: 2.5
+  distanceToOpen: 3.5
   timeToGoUp: 1.5
 --- !u!114 &1764236469307331722
 MonoBehaviour:
@@ -147,16 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db612e3916ede244296ba3e1a28dfb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedDoor:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   lockedCursor: {fileID: 2800000, guid: bf68233415e240c41b98988c7b546703, type: 3}
   unlockedCursor: {fileID: 2800000, guid: 7468ec26e0a28ac4f8db9947c0e94286, type: 3}
   distanceToOpenDoor: 1
+  LockedDoorSound: {fileID: 0}
+  ConnectedRoom1: {fileID: 0}
+  ConnectedRoom2: {fileID: 0}
 --- !u!114 &336141096104397164
 MonoBehaviour:
   m_ObjectHideFlags: 0

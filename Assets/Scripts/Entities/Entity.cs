@@ -116,12 +116,7 @@ namespace Team5.Entities
                 movementSpeed = value;
                 if (TryGetComponent(out NavMeshAgent navMeshAgent))
                 {
-                    Debug.Log("modified speed");
                     navMeshAgent.speed = movementSpeed;
-                }
-                else
-                {
-                    Debug.Log("Could not change speed. No agent found.");
                 }
             }
         }
@@ -157,7 +152,7 @@ namespace Team5.Entities
             
                 var bonusMaxHealth = MaxHealth - BaseMaxHealth * oldMultiplier;
                 var bonusArmor = Armor - BaseArmor * oldMultiplier;
-                var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier;
+                var bonusMovementSpeed = MovementSpeed - BaseMovementSpeed * oldMultiplier/2;
 
 
                 // TODO: FINISH THIS: ----------------------------------------------------------------------------------
@@ -166,7 +161,7 @@ namespace Team5.Entities
             
                 MaxHealth = BaseMaxHealth * multiplier + bonusMaxHealth;
                 Armor = BaseArmor * multiplier + bonusArmor;
-                MovementSpeed = BaseMovementSpeed * multiplier + bonusMovementSpeed;
+                MovementSpeed = BaseMovementSpeed * multiplier/2 + bonusMovementSpeed;
 
                 level = value;
             }
