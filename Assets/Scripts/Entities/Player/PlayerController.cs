@@ -42,6 +42,9 @@ namespace Team5.Entities.Player
         public TextMeshProUGUI CriticalDamageText;
         public TextMeshProUGUI DamageText;
         public TextMeshProUGUI SpeedText;
+        
+        
+        
         public int killCount;
 
         protected override void Awake()
@@ -58,16 +61,16 @@ namespace Team5.Entities.Player
             veryLowHealthEffect.enabled = false;
             
             //TODO Add GetComponent for the UI here.
-            criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
-            accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
-            weaponDamage = GetComponent<Fighter>().defaultweapon.GetDamage();
-            Debug.Log(weaponDamage.ToString());
+            // criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
+            // accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
+            // weaponDamage = GetComponent<Fighter>().defaultweapon.GetDamage();
+            // Debug.Log(weaponDamage.ToString());
         }
 
 
         void Update()
         {
-            Debug.Log(weaponDamage.ToString());
+            // Debug.Log(weaponDamage.ToString());
             // suggestion for how lowHealth bool can be utilized
             
             // TODO: Do NOT spam debug logs!
@@ -79,14 +82,14 @@ namespace Team5.Entities.Player
             // sets Healthbar fill
             
             //TODO Add the UI Stats here
-            HealthText.text = "Max Health: " + MaxHealth;
-            ArmorText.text = "Armor: " + Armor;
-            CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
-            SpeedText.text = "Movement Speed: " + MovementSpeed;
-            
-            AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
-            DamageText.text = " Damage: " + weaponDamage;
-            CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
+            // HealthText.text = "Max Health: " + MaxHealth;
+            // ArmorText.text = "Armor: " + Armor;
+            // CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
+            // SpeedText.text = "Movement Speed: " + MovementSpeed;
+            //
+            // AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
+            // DamageText.text = " Damage: " + weaponDamage;
+            // CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
             
             currentHealthBar = this.Health / this.MaxHealth;
             healthBar.fillAmount = currentHealthBar;
