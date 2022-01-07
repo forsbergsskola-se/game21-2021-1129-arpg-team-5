@@ -78,7 +78,6 @@ public class DialogueManager : MonoBehaviour
         }
         
         playerKills = player.GetComponent<PlayerController>().killCount;
-
         string kills = $"You have killed {playerKills} out of {killTarget}";
 
         StopAllCoroutines();
@@ -105,6 +104,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
+        killQuestActive = false;
     }
 
     IEnumerator KillDialogue(string sentence)
