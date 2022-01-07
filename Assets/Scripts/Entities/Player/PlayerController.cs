@@ -32,9 +32,6 @@ namespace Team5.Entities.Player
         //private bool lowHealth; - could be used for ui warnings/ damage multipliers
         
         //TODO To put Ui stuff here.
-        public float accuracyPercentage;
-        public float criticalDamageMultiplier;
-        public float weaponDamage;
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI ArmorText;
         public TextMeshProUGUI AccuracyText;
@@ -88,6 +85,15 @@ namespace Team5.Entities.Player
             f[4] = fighter.CriticalChance;
             f[5] = fighter.criticalDamageMultiplier * fighter.GetTotalDamage();
             f[6] = fighter.defaultweapon.GetDamage() + fighter.BonusDamage;
+
+            HealthText.text = MaxHealth.ToString();
+            ArmorText.text = Armor.ToString();
+            SpeedText.text = MovementSpeed.ToString();
+            AccuracyText.text = fighter.AccuracyPercentage.ToString();
+            CriticalChansText.text = fighter.CriticalChance.ToString();
+            CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
+            DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
+            
             
             
 
