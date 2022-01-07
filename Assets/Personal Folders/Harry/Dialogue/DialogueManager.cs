@@ -12,15 +12,15 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     private TMP_Text button;
-    private bool NPCDialogue;
-    private bool KillQuest;
-    private bool CollectQuest;
+    //private bool NPCDialogue;
+    //private bool KillQuest;
+    //private bool CollectQuest;
 
-    private bool killQuestActive = false;
-    private bool collectQuestActive;
-    private bool reset = false;
-    private int killTarget;
-    private GameObject player;
+    //private bool killQuestActive = false;
+    //private bool collectQuestActive;
+    //private bool reset = false;
+    //private int killTarget;
+    //private GameObject player;
     private int playerKills;
 
     public float slowTypeSpeed = 0.1f;
@@ -35,11 +35,11 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        NPCDialogue = FindObjectOfType<DialogueTrigger>().NPCDialogue;
-        KillQuest = FindObjectOfType<DialogueTrigger>().KillQuest;
-        CollectQuest = FindObjectOfType<DialogueTrigger>().CollectQuest;
-        killTarget = FindObjectOfType<DialogueTrigger>().KillTarget;
-        player = GameObject.FindGameObjectWithTag("Player");
+        //NPCDialogue = FindObjectOfType<DialogueTrigger>().NPCDialogue;
+        //KillQuest = FindObjectOfType<DialogueTrigger>().KillQuest;
+        //CollectQuest = FindObjectOfType<DialogueTrigger>().CollectQuest;
+        //killTarget = FindObjectOfType<DialogueTrigger>().KillTarget;
+        //player = GameObject.FindGameObjectWithTag("Player");
         typingSpeed = fastTypeSpeed;
 
         
@@ -49,8 +49,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue (Dialogue dialogue)
     {
-        killQuestActive = false;
-        reset = false;
+        //killQuestActive = false;
+        //reset = false;
         
         nameText.text = dialogue.name;
         button.text = "Continue >>";
@@ -60,7 +60,6 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        
         DisplayNextSentence();
     }
     
@@ -68,32 +67,10 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence ()
     {
-        if (sentences.Count == 1 && NPCDialogue == true)
+        if (sentences.Count == 1)
         {
             FindObjectOfType<TalkingNPC>().ReplayOption();
             button.text = "Leave";
-        }
-        
-        if (sentences.Count == 1 && KillQuest == true)
-        {
-            killQuestActive = true;
-            FindObjectOfType<TalkingNPC>().ReplayOption();
-            button.text = "Leave";
-        }
-        
-        playerKills = player.GetComponent<PlayerController>().killCount;
-        string kills = $"You have killed {playerKills} out of {killTarget}";
-
-        StopAllCoroutines();
-
-        if (killQuestActive == true)
-        {
-            StartCoroutine(TypeSentence(kills));
-        }
-        else
-        {
-            string sentence = sentences.Dequeue();
-            StartCoroutine(TypeSentence(sentence));
         }
         
         if (sentences.Count == 0)
@@ -101,12 +78,26 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
-        if (sentences.Count == 1 && reset == true)
+        
+        /*if (sentences.Count == 1 && KillQuest == true)
         {
-            EndDialogue();
-            return;
+            killQuestActive = true;
+            FindObjectOfType<TalkingNPC>().ReplayOption();
+            button.text = "Leave";
         }
+        
+        playerKills = player.GetComponent<PlayerController>().killCount;
+        string kills = $"You have killed {playerKills} out of {killTarget}";*/
+
+        StopAllCoroutines();
+
+        /*if (killQuestActive == true)
+        {
+            StartCoroutine(TypeSentence(kills));
+        }*/
+        
+        string sentence = sentences.Dequeue(); 
+        StartCoroutine(TypeSentence(sentence));
     }
 
   
@@ -121,10 +112,10 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
 
-        if (killQuestActive)
+        /*if (killQuestActive)
         {
             reset = true;
-        }
+        }*/
     }
 
     IEnumerator KillDialogue(string sentence)
