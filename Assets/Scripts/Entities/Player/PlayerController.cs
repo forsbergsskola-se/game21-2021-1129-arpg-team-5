@@ -29,7 +29,7 @@ namespace Team5.Entities.Player
         public Image lowHealthEffect;
         public Image veryLowHealthEffect;
         private float currentHealthBar;
-        private bool lowHealth;
+        //private bool lowHealth; - could be used for ui warnings/ damage multipliers
         
         //TODO To put Ui stuff here.
         // public float accuracyPercentage;
@@ -92,7 +92,7 @@ namespace Team5.Entities.Player
             // sets Healthbar colour to red if health is low
             if (currentHealthBar < 0.333)
             {
-                lowHealth = true;
+                //lowHealth = true;
                 healthBar.color = Color.red;
 
                 // triggers low Health overlay
@@ -112,7 +112,7 @@ namespace Team5.Entities.Player
             // sets Healthbar colour to green if health is high
             else if (currentHealthBar > 0.666)
             {
-                lowHealth = false;
+                //lowHealth = false;
                 healthBar.color = Color.green;
                 lowHealthEffect.enabled = false;
                 veryLowHealthEffect.enabled = false;
@@ -121,7 +121,7 @@ namespace Team5.Entities.Player
             // sets Healthbar colour to orange if health is in-between high & low
             else
             {
-                lowHealth = false;
+                //lowHealth = false;
                 healthBar.color = Color.yellow;
                 lowHealthEffect.enabled = false;
                 veryLowHealthEffect.enabled = false;
