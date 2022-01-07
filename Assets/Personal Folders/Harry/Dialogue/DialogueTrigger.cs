@@ -31,9 +31,24 @@ public class DialogueTrigger : MonoBehaviour {
     public Sprite EnemyPurpleSprite;
     public Sprite EnemyRedSprite;
     public Sprite EnemyYellowSprite;
+    private GameObject Dialogue;
+
+    private void Awake()
+    {
+        Dialogue = FindObjectOfType<HUD>().ShopDialogue.gameObject;
+    }
     
-    // Assigns character dialogue head sprite and disables others
+    // Only checks sprite when Dialogue triggered
     private void Update()
+    {
+        if (Dialogue.activeInHierarchy)
+        {
+            AssignSprite();
+        }
+    }
+
+    // Assigns character dialogue head sprite and disables others
+    private void AssignSprite()
     {
         if (CrowBlack == true)
         {
@@ -75,11 +90,9 @@ public class DialogueTrigger : MonoBehaviour {
             Disable(false,false,false,false,false,true);
 
         }
-        
     }
     
     // mass enable/ disable method
-    
     private void Disable(bool one, bool two, bool three, bool four, bool five, bool six)
     {
         CrowBlack = one;
