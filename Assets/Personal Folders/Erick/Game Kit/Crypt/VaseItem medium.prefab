@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1673123348174608018, guid: dfd5b49ce1f0fa442a24adb426ba68b6, type: 3}
       propertyPath: m_Name
-      value: VaseItem low
+      value: VaseItem medium
       objectReference: {fileID: 0}
     - target: {fileID: 2050246681687772200, guid: dfd5b49ce1f0fa442a24adb426ba68b6, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8235034666637157812, guid: dfd5b49ce1f0fa442a24adb426ba68b6, type: 3}
+      propertyPath: lootTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b185866e0242374ca768b1a2a23ae64, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd5b49ce1f0fa442a24adb426ba68b6, type: 3}
