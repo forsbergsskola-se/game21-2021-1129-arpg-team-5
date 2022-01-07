@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Team5.Entities.Player;
 using Team5.Ui;
 using TMPro;
 using UnityEngine;
@@ -11,11 +12,29 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     private TMP_Text button;
+    private bool NPCDialogue;
+    private bool KillQuest;
+    private bool CollectQuest;
+
+    private bool killQuestActive = false;
+    private bool collectQuestActive;
+    private int killTarget;
+    private GameObject player;
+    private int playerKills;
+
+    
     public float typingSpeed { get; private set; } = 0.05f;
     private Queue<string> sentences;
 
-    void Awake() 
+    void Awake()
     {
+        NPCDialogue = FindObjectOfType<DialogueTrigger>().NPCDialogue;
+        KillQuest = FindObjectOfType<DialogueTrigger>().KillQuest;
+        CollectQuest = FindObjectOfType<DialogueTrigger>().CollectQuest;
+        killTarget = FindObjectOfType<DialogueTrigger>().KillTarget;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        
         sentences = new Queue<string>();
         typingSpeed = 0.05f;
         button = FindObjectOfType<HUD>().ContinueButton.GetComponentInChildren<TMP_Text>();
@@ -34,11 +53,20 @@ public class DialogueManager : MonoBehaviour
         
         DisplayNextSentence();
     }
+    
+
 
     public void DisplayNextSentence ()
     {
-        if (sentences.Count == 1)
+        if (sentences.Count == 1 && NPCDialogue == true)
         {
+            FindObjectOfType<TalkingNPC>().ReplayOption();
+            button.text = "Leave";
+        }
+        
+        if (sentences.Count == 1 && KillQuest == true)
+        {
+            killQuestActive = true;
             FindObjectOfType<TalkingNPC>().ReplayOption();
             button.text = "Leave";
         }
@@ -48,11 +76,26 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+        
+        playerKills = player.GetComponent<PlayerController>().killCount;
 
-        string sentence = sentences.Dequeue();
+        string kills = $"You have killed {playerKills} out of {killTarget}";
+
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+
+        if (killQuestActive == true)
+        {
+            StartCoroutine(TypeSentence(kills));
+        }
+        else
+        {
+            string sentence = sentences.Dequeue();
+            StartCoroutine(TypeSentence(sentence));
+        }
     }
+
+  
+
 
     IEnumerator TypeSentence (string sentence)
     {
@@ -63,6 +106,16 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
     }
+
+    IEnumerator KillDialogue(string sentence)
+    {
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+    }
+
 
     void EndDialogue()
     {
