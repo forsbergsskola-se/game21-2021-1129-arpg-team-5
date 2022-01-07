@@ -13,13 +13,14 @@ namespace Team5.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         [HideInInspector] public int killCount;
+        [HideInInspector] public float BonusDamage;
         
         [SerializeField] private float baseAccuracyPercentage;
         [SerializeField] private float baseCriticalChance;
         [SerializeField] private float timeBetweenAttacks = 1f;
 
 
-        [SerializeField] Weapon defaultweapon = null;
+        public Weapon defaultweapon = null;
         public Weapon currentWeapon = null;
         private float missedDamage = 0f;
         public float criticalDamageMultiplier;
@@ -37,6 +38,8 @@ namespace Team5.Combat
         private Entity thisEntity;
         private GameObject enemyIndicator;
         private Entity target;
+
+        
 
         Equipment equipment;
 
@@ -68,6 +71,7 @@ namespace Team5.Combat
             {
                 equipment.equipmentUpdated += UpdateWeapon;
             }
+            EquipWeapon(defaultweapon);
         }
 
         private void Start()
@@ -212,7 +216,7 @@ namespace Team5.Combat
             // attack with critical hit if lower than critPercent value
             if (Random.Range(0, 100) < CriticalChance)
             {
-                var totalAttackValue = currentWeapon.GetDamage() * criticalDamageMultiplier;
+                var totalAttackValue = (currentWeapon.GetDamage() + BonusDamage) * criticalDamageMultiplier;
                 
                 if (target.CompareTag("Enemy"))
                 {
@@ -255,7 +259,7 @@ namespace Team5.Combat
                         Debug.Log($"{this.name} dealt {currentWeapon.GetDamage()} damage to {target.name}");
                     }
                     attackSound.Play();
-                    target.TakeDamage(currentWeapon.GetDamage());
+                    target.TakeDamage(currentWeapon.GetDamage() + BonusDamage);
                 }
                 
                 //  misses attack due to low accuracy
@@ -340,7 +344,8 @@ namespace Team5.Combat
             if (AccuracyChanceMOD != 0) accuracyPercentage += AccuracyChanceMOD * multiplier;
             if (CritChanceMod != 0) criticalChance += CritChanceMod * multiplier;
             if (CritDamageMod != 0) criticalDamageMultiplier += CritDamageMod * multiplier;
-            if (DamageMOD != 0) currentWeapon.SetDamage(DamageMOD * multiplier);
+            // if (DamageMOD != 0) currentWeapon.SetDamage(DamageMOD * multiplier);
+            if (DamageMOD != 0) BonusDamage += DamageMOD * multiplier;
             if (AttacKSpeedMOD != 0) timeBetweenAttacks += AttacKSpeedMOD * multiplier;
         }
 
@@ -369,6 +374,12 @@ namespace Team5.Combat
         }
 
 
+
+        public float GetTotalDamage()
+        {
+            return BonusDamage + currentWeapon.GetDamage();
+        }
+
         //Set enemy indicator active
         // public void EnemyIndicatorActive()
         // {
@@ -386,9 +397,9 @@ namespace Team5.Combat
         //         enemyIndicator.SetActive(true);    
         //     }
         // }
-        
-        
-        
+
+
+
         //Set enemy indicator inactive
         // public void EnemyIndicatorInactive()
         // {
@@ -398,9 +409,9 @@ namespace Team5.Combat
         //         enemyIndicator.SetActive(false);
         //     } 
         // }
-        
-        
-        
+
+
+
         // public void EnemyIndicatorInactiveTarget()
         // {
         //     if (target.CompareTag("Enemy"))
