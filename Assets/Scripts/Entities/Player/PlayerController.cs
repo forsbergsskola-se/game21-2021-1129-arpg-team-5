@@ -86,8 +86,8 @@ namespace Team5.Entities.Player
             f[2] = MovementSpeed;
             f[3] = fighter.AccuracyPercentage;
             f[4] = fighter.CriticalChance;
-            f[5] = fighter.criticalDamageMultiplier;
-            f[6] = fighter.defaultweapon.GetDamage();
+            f[5] = fighter.criticalDamageMultiplier * fighter.GetTotalDamage();
+            f[6] = fighter.defaultweapon.GetDamage() + fighter.BonusDamage;
             
             
 
