@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9da9adaea3c531498524d22f738606c, type: 3}
+  m_Name: LootTable High
+  m_EditorClassIdentifier: 
+  Table:
+  - Item: {fileID: 11400000, guid: 99d64a7a82168ec49a18f69c61ef1f91, type: 2}
+    Weight: 1
+    rangeHigh: 1
+    rangeLow: 0
+  - Item: {fileID: 11400000, guid: 38f1e08582529084894bdfe5aa701d8d, type: 2}
+    Weight: 1
+    rangeHigh: 2
+    rangeLow: 1
+  - Item: {fileID: 11400000, guid: 36ffba7745bd9e548becd07a566cdd99, type: 2}
+    Weight: 1
+    rangeHigh: 3
+    rangeLow: 2
+  - Item: {fileID: 11400000, guid: 3f9983b2402b7534bac6903efd834960, type: 2}
+    Weight: 1
+    rangeHigh: 4
+    rangeLow: 3
+  - Item: {fileID: 11400000, guid: eae0fd5fa54f281438c27f82a73d8437, type: 2}
+    Weight: 4
+    rangeHigh: 8
+    rangeLow: 4
