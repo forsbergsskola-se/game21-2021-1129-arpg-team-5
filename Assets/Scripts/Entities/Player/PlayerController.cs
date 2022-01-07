@@ -39,14 +39,9 @@ namespace Team5.Entities.Player
         public TextMeshProUGUI CriticalDamageText;
         public TextMeshProUGUI DamageText;
         public TextMeshProUGUI SpeedText;
-
-
-
+        
         private Fighter fighter;
-        
-        
-        
-        
+
         public int killCount;
 
         protected override void Awake()
@@ -61,13 +56,6 @@ namespace Team5.Entities.Player
             healthEffects.SetActive(true);
             lowHealthEffect.enabled = false;
             veryLowHealthEffect.enabled = false;
-            
-            //TODO Add GetComponent for the UI here.
-            // criticalDamageMultiplier = GetComponent<Fighter>().criticalDamageMultiplier;
-            // accuracyPercentage = GetComponent<Fighter>().AccuracyPercentage;
-            // weaponDamage = GetComponent<Fighter>().defaultweapon.GetDamage();
-            // Debug.Log(weaponDamage.ToString());
-
 
             fighter = GetComponent<Fighter>();
         }
@@ -75,16 +63,7 @@ namespace Team5.Entities.Player
 
         void Update()
         {
-            // TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            float[] f = new float[7];
 
-            f[0] = MaxHealth;
-            f[1] = Armor;
-            f[2] = MovementSpeed;
-            f[3] = fighter.AccuracyPercentage;
-            f[4] = fighter.CriticalChance;
-            f[5] = fighter.criticalDamageMultiplier * fighter.GetTotalDamage();
-            f[6] = fighter.defaultweapon.GetDamage() + fighter.BonusDamage;
 
             HealthText.text = MaxHealth.ToString();
             ArmorText.text = Armor.ToString();
@@ -93,16 +72,9 @@ namespace Team5.Entities.Player
             CriticalChansText.text = fighter.CriticalChance.ToString();
             CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
             DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
-            
-            
-            
 
 
 
-            Debug.Log($"Values: {f[0]} | {f[1]} | {f[2]} | {f[3]} | {f[4]} | {f[5]} | {f[6]} ");
-            
-            
-            
             // Debug.Log(weaponDamage.ToString());
             // suggestion for how lowHealth bool can be utilized
             
@@ -113,17 +85,7 @@ namespace Team5.Entities.Player
             // }
             
             // sets Healthbar fill
-            
-            //TODO Add the UI Stats here
-            // HealthText.text = "Max Health: " + MaxHealth;
-            // ArmorText.text = "Armor: " + Armor;
-            // CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
-            // SpeedText.text = "Movement Speed: " + MovementSpeed;
-            //
-            // AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
-            // DamageText.text = " Damage: " + weaponDamage;
-            // CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
-            
+
             currentHealthBar = this.Health / this.MaxHealth;
             healthBar.fillAmount = currentHealthBar;
 
