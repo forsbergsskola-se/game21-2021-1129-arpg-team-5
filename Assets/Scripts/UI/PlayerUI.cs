@@ -14,7 +14,7 @@ namespace Team5.Ui
     public class PlayerUI : MonoBehaviour
     {
         private TMP_Text reviveText;
-        private TMP_Text killText;
+        //private TMP_Text killText;
         private TMP_Text lvlText;
         private TMP_Text skullText;
         
@@ -38,7 +38,7 @@ namespace Team5.Ui
             fighter = this.GetComponent<Fighter>();
             
             //reviveText = FindObjectOfType<HUD>().ReviveText;
-            killText = FindObjectOfType<HUD>().KillCountText;
+            //killText = FindObjectOfType<HUD>().KillCountText;
             lvlText = FindObjectOfType<HUD>().LvlText;
             //skullText = FindObjectOfType<HUD>().SkullCounter;
         }
@@ -48,7 +48,7 @@ namespace Team5.Ui
             reviveCount = this.GetComponent<PlayerController>().reviveCounter;
             reviveText.text = "Revivals: " + reviveCount;
             
-            killText.text = "Kills: " + fighter.killCount;
+            //killText.text = "Kills: " + fighter.killCount;
 
             lvlText.text = "EXP LVL: " + entity.EntityLevel;
 
