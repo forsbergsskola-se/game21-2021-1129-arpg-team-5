@@ -79,14 +79,14 @@ namespace Team5.Entities.Player
             // sets Healthbar fill
             
             //TODO Add the UI Stats here
-            // HealthText.text = "Max Health: " + MaxHealth;
-            // ArmorText.text = "Armor: " + Armor;
-            // CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
-            // SpeedText.text = "Movement Speed: " + MovementSpeed;
-            //
-            // AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
-            // DamageText.text = " Damage: " + weaponDamage;
-            // CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
+            HealthText.text = "Max Health: " + MaxHealth;
+            ArmorText.text = "Armor: " + Armor;
+            CriticalChansText.text = "Critical Damage : " + criticalDamageMultiplier;
+            SpeedText.text = "Movement Speed: " + MovementSpeed;
+            
+            AccuracyText.text = "Accuracy Percentage " + accuracyPercentage;
+            DamageText.text = " Damage: " + weaponDamage;
+            CriticalDamageText.text = "Critical Damage: " + weaponDamage * criticalDamageMultiplier;
             
             currentHealthBar = this.Health / this.MaxHealth;
             healthBar.fillAmount = currentHealthBar;
