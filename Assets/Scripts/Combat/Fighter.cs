@@ -43,18 +43,24 @@ namespace Team5.Combat
         private static readonly int Attack1 = Animator.StringToHash("attack");
         private static readonly int StopAttack1 = Animator.StringToHash("stopAttack");
 
+        
+        // The following removed code "set's" are to prevent issues with equippables.
         public float CriticalChance
         {
             get => criticalChance;
-            set => criticalChance = Mathf.Min(value, 100);
+            set => criticalChance = value;
+            // set => criticalChance = Mathf.Min(value, 100);
         }
         
         public float AccuracyPercentage
         {
             get => accuracyPercentage;
-            set => accuracyPercentage = Mathf.Min(value, 100);
+            set => accuracyPercentage = value;
+            // set => accuracyPercentage = Mathf.Min(value, 100);
         }
 
+        
+        
         private void Awake()
         {
             equipment = GetComponent<Equipment>();
