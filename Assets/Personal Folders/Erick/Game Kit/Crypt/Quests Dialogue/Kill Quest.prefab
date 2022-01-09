@@ -542,14 +542,20 @@ MonoBehaviour:
   KillQuest: 1
   CollectQuest: 0
   KillTarget: 5
+  EggTarget: 0
   dialogue:
     name: Kill Quest Crow
     sentences:
-    - WHAT?! It's Impossible! You were dead, I.. I saw it with my own eyes!
-    - Hmm, this must be a sign of our great god Garuda!
-    - Or I'm just going crazy...
-    - I think I need to rest...
-    - ALWAYS KEEP AN EXTRA SENTENCE LIKE THIS
+    - 'Ah, so you''ve woken with a lust for cultist blood have you? '
+    - 'Tell me detective, is it vengeance that you use to morally justify this? '
+    - Or are you "cleaning the streets" to protect that darling innocent child?
+    - It's handy they wear masks right so you don't have to see the horrific shock
+      in their eyes when you plunge that blade deep into their chests.
+    - Whatever the case you're motivations are dull, but I do have an offer for you
+      if you're going to keep up this act....
+    - Kill a few more and report to back to me when you're done, then I may have
+      something that will help make all the killing even sweeter...
+    - LEAVE BLANK
   CrowBlack: 1
   CrowWhite: 0
   EnemyGreen: 0
