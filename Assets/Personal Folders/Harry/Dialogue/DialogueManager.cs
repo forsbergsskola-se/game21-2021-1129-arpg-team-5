@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
         //CollectQuest = FindObjectOfType<DialogueTrigger>().CollectQuest;
         //killTarget = FindObjectOfType<DialogueTrigger>().KillTarget;
         //player = GameObject.FindGameObjectWithTag("Player");
-        typingSpeed = fastTypeSpeed;
+        typingSpeed = veryFastTypeSpeed;
 
         
         sentences = new Queue<string>();
