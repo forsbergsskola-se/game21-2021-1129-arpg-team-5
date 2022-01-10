@@ -30,7 +30,7 @@ public class MusicEnableAndDisable : MonoBehaviour
              BossMusicStop();
              enabled = false;
          }
-         else if (Vector3.Distance(Player.position, Boss.position) <= 70)
+         else if (Vector3.Distance(Player.position, Boss.position) <= 15)
          {
              BossMusicStart();
          }
