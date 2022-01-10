@@ -51,24 +51,27 @@ namespace Team5.Movement
 
         private void Update()
         {
-            if (CheckAttackRange() && fighter.CanAttack(player))
+            if (!entity.IsDead)
             {
-                AttackBehaviour();
-            }
-            else if (timeSinceLastSawPlayer < suspicionTime)
-            {
-                GetComponent<ActionScheduler>().CancelCurrentAction();
+                if (CheckAttackRange() && fighter.CanAttack(player))
+                {
+                    AttackBehaviour();
+                }
+                else if (timeSinceLastSawPlayer < suspicionTime)
+                {
+                    GetComponent<ActionScheduler>().CancelCurrentAction();
                 
-                if (enemyIndicator == enabled)
-                    enemyIndicator.SetActive(false);
+                    if (enemyIndicator == enabled)
+                        enemyIndicator.SetActive(false);
+                }
+                else
+                {
+                    PatrolBehaviour();
+                    if (enemyIndicator2 == enabled)
+                        enemyIndicator2.SetActive(false);
+                }
+                UpdateTimer();
             }
-            else
-            {
-                PatrolBehaviour();
-                if (enemyIndicator2 == enabled)
-                    enemyIndicator2.SetActive(false);
-            }
-            UpdateTimer();
         }
 
         private void AttackBehaviour()
