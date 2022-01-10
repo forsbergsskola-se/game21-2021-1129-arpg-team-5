@@ -112,8 +112,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
       propertyPath: dialogue.name
-      value: Purple
+      value: Talon
       objectReference: {fileID: 0}
     - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
