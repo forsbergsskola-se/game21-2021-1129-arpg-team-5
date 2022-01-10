@@ -16,6 +16,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: headSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d7608d10bf9b4e4f8c91c05377ae147, type: 3}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
       propertyPath: EnemyPurple
       value: 0
       objectReference: {fileID: 0}
@@ -24,8 +28,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
       propertyPath: dialogue.name
-      value: Yellow
+      value: Rapio
       objectReference: {fileID: 0}
     - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
