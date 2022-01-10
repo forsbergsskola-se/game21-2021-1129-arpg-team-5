@@ -28,6 +28,7 @@ namespace Team5.Ui
             }
         }
 
+        // logic for space bar intro video skip 
         private void Update()
         {
             Scene scene = SceneManager.GetActiveScene();
@@ -40,7 +41,16 @@ namespace Team5.Ui
                     Debug.Log("next scene loaded");                }
             }
         }
+        
+        // load scene
 
+        public void LoadScene(string sceneName)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(sceneName);
+            Debug.Log($"{sceneName} loaded");
+        }
+        
         // quit game (works in build)
     
         public void QuitGame()
