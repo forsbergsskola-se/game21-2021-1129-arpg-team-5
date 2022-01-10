@@ -86,13 +86,13 @@ namespace Team5.Entities.Player
             f[5] = fighter.criticalDamageMultiplier * fighter.GetTotalDamage();
             f[6] = fighter.defaultweapon.GetDamage() + fighter.BonusDamage;
 
-            HealthText.text = MaxHealth.ToString();
-            ArmorText.text = Armor.ToString();
-            SpeedText.text = MovementSpeed.ToString();
-            AccuracyText.text = fighter.AccuracyPercentage.ToString();
-            CriticalChansText.text = fighter.CriticalChance.ToString();
-            CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
-            DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
+            // HealthText.text = MaxHealth.ToString();
+            // ArmorText.text = Armor.ToString();
+            // SpeedText.text = MovementSpeed.ToString();
+            // AccuracyText.text = fighter.AccuracyPercentage.ToString();
+            // CriticalChansText.text = fighter.CriticalChance.ToString();
+            // CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
+            // DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
             
             
             
