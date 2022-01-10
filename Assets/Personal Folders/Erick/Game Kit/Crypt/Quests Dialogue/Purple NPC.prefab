@@ -111,6 +111,26 @@ PrefabInstance:
       propertyPath: EnemyPurple
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogue.name
+      value: Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Purple 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Purple 2\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Purple 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345774776164622823, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: Purple 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8755114267313183146, guid: f4c667d950021454c876d582da698ca7, type: 3}
       propertyPath: m_Color.b
       value: 1

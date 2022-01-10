@@ -83,5 +83,33 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fa22bc362a5aebf4abadcd84f2322540, type: 2}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: EnemyRed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: EnemyPurple
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogue.name
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Red 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: Red 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Red 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: Red 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}

@@ -11,6 +11,38 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e3a26a20a83379d498664b8f22d00acb, type: 2}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: EnemyRed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: EnemyPurple
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: EnemyYellow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogue.name
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Yellow 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: Yellow 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Yellow 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 452218263211602164, guid: 86b37e81828744c40810664be711d481, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: Yellow 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1889153571741681849, guid: 86b37e81828744c40810664be711d481, type: 3}
       propertyPath: m_Color.g
       value: 1
@@ -73,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4569102139558572302, guid: 86b37e81828744c40810664be711d481, type: 3}
       propertyPath: m_Name
-      value: Yellow NPC
+      value: Yellow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86b37e81828744c40810664be711d481, type: 3}
