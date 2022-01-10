@@ -99,10 +99,10 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764236469307331723}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.3, z: 0.5}
+  m_Extents: {x: 0.5, y: 0.3, z: 0.05}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -119,7 +119,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5132256, y: 1, z: 6.3910294}
+  m_Size: {x: 1.5132256, y: 1, z: 5.2}
   m_Center: {x: -0.009409189, y: 0, z: -0.09238288}
 --- !u!114 &1764236469307331733
 MonoBehaviour:
@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 5737805520704552540}
   - component: {fileID: 9116831119407160008}
   - component: {fileID: 3495429480739303904}
+  - component: {fileID: 6686462005707243796}
   m_Layer: 0
   m_Name: GateObject
   m_TagString: Untagged
@@ -362,6 +363,22 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!208 &6686462005707243796
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855983988731188269}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 0.05, z: 3.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6906755894494188516
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +457,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 12, y: 14, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &2577671785592667960
 PrefabInstance:
   m_ObjectHideFlags: 0

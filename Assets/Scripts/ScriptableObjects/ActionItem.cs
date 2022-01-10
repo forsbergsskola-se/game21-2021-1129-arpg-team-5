@@ -15,12 +15,8 @@ namespace Team5.Inventories
         
         public virtual bool Use(GameObject user)
         {
-            Debug.Log("Using action: " + this);
-            
             if (pickup.TryGetComponent(out IConsumable consumable))
             {
-                Debug.Log("EatEateateat nomnomnom");
-                
                 return consumable.Consume(user);
             }
 

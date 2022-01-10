@@ -1602,7 +1602,7 @@ Transform:
   m_GameObject: {fileID: 6692141307766726685}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 106, y: 0.5, z: 65}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5000001, y: 1.5, z: 1.5000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1897136366245335468}
@@ -1708,6 +1708,7 @@ MonoBehaviour:
   KillQuest: 0
   CollectQuest: 0
   KillTarget: 5
+  EggTarget: 0
   dialogue:
     name: Kevin
     sentences:
@@ -1715,7 +1716,6 @@ MonoBehaviour:
     - Hmm, this must be a sign of our great god Garuda!
     - Or I'm just going crazy...
     - I think I need to rest...
-    - ALWAYS KEEP AN EXTRA SENTENCE LIKE THIS
   CrowBlack: 0
   CrowWhite: 0
   EnemyGreen: 1
