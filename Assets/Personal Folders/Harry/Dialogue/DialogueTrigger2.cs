@@ -44,7 +44,7 @@ public class DialogueTrigger2 : MonoBehaviour {
 
     public void TriggerDialogue()
     {
-        head.sprite = this.gameObject.GetComponent<DialogueTrigger>().headSprite;
+        head.sprite = this.gameObject.GetComponent<DialogueTrigger2>().headSprite;
         nameText.text = Name;
         Debug.Log($"Starting conversation with {Name}: via {this.name}");
         button.text = "Continue >>";
