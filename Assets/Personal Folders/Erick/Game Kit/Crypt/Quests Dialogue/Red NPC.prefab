@@ -88,12 +88,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: headSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bca43ffa1f293ee48ac2e8404d00e190, type: 3}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
       propertyPath: EnemyPurple
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 544052983045260304, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
+    - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
       propertyPath: dialogue.name
-      value: Red
+      value: Tarsus
       objectReference: {fileID: 0}
     - target: {fileID: 4513435185694492138, guid: fdc697281f18fce4ea3ce9861f099a13, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
