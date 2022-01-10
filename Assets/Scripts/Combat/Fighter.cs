@@ -27,7 +27,7 @@ namespace Team5.Combat
         
         [SerializeField] Transform handTransform = null;
 
-        
+        private const int BossSize = 5;
 
         private float accuracyPercentage;
         private float criticalChance;
@@ -38,6 +38,8 @@ namespace Team5.Combat
         private Entity thisEntity;
         private GameObject enemyIndicator;
         private Entity target;
+        private GameObject boss;
+        
 
         
 
@@ -76,6 +78,7 @@ namespace Team5.Combat
 
         private void Start()
         {
+            boss = GameObject.Find("Crow Boss");
             player = GameObject.FindWithTag("Player");
             thisEntity = GetComponent<Entity>();
 
@@ -291,6 +294,11 @@ namespace Team5.Combat
         
         private bool GetIsInRange()
         {
+            if (target.gameObject==boss)
+            {
+                Debug.Log("Am I getting the Boss Range");
+                return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange()+BossSize;
+            }
             return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
@@ -420,5 +428,6 @@ namespace Team5.Combat
         //         enemyIndicator.SetActive(false);
         //     }
         // }
+        
     }
 }
