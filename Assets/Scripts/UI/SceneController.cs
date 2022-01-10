@@ -5,29 +5,42 @@ using Team5.Control;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Windows.WebCam;
 
 namespace Team5.Ui
 {
     public class SceneController : MonoBehaviour
     {
+        private string Scene;
         private GameObject pauseMenu;
         private GameObject optionsMenu;
         private string sceneName;
 
-        private void Awake()
+        private void OnGUI()
         {
-            pauseMenu = FindObjectOfType<HUD>().PauseMenu;
-            optionsMenu = FindObjectOfType<HUD>().OptionsMenu;
+            Scene scene = SceneManager.GetActiveScene();
+
+            
+            if (scene.name == "Build_Test")
+            {
+                pauseMenu = FindObjectOfType<HUD>().PauseMenu;
+                optionsMenu = FindObjectOfType<HUD>().OptionsMenu;
+            }
         }
-        
-        // resume game and load scene via name
-        public void LoadScene(string sceneName)
+
+        private void Update()
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(sceneName);
-            Debug.Log($"{sceneName} loaded");
+            Scene scene = SceneManager.GetActiveScene();
+
+            if (scene.name == "Video_Intro")
+            {
+                if (Input.GetKeyDown("space"))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    Debug.Log("next scene loaded");                }
+            }
         }
-        
+
         // quit game (works in build)
     
         public void QuitGame()
