@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 760700071255127633}
   - component: {fileID: 4761819137638410333}
   - component: {fileID: 5218728011333917887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436755563970509762}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3762802508027329288}
   - component: {fileID: 3762802508027329289}
   - component: {fileID: 3762802508027329291}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Glowing Golden Egg
   m_TagString: Egg
   m_Icon: {fileID: 0}
@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Egg Glow
       objectReference: {fileID: 0}
+    - target: {fileID: 1058143371322516311, guid: e30efc1062adf0d4384204fa3718aef5, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5705943294612947121, guid: e30efc1062adf0d4384204fa3718aef5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -185,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705943294612947121, guid: e30efc1062adf0d4384204fa3718aef5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 5705943294612947121, guid: e30efc1062adf0d4384204fa3718aef5, type: 3}
       propertyPath: m_LocalPosition.z

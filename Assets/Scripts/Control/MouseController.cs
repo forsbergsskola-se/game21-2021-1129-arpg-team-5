@@ -50,31 +50,33 @@ namespace Team5.Control
         private void Update()
         {
             CheckMouseButton();
-            InteractWithComponent();
-
-            if (InteractWithUI()) return;
-
-            if (TryCastRaySuccess())
+            
+            if (!InteractWithComponent())
             {
-                if (TargetHasChanged())
+                if (InteractWithUI()) return;
+
+                if (TryCastRaySuccess())
                 {
-                    SendOldTargetOnHoverExit();
-                    
-                    if (TryGetInteractableSuccess())
+                    if (TargetHasChanged())
                     {
-                        SendOnHoverEnter();
+                        SendOldTargetOnHoverExit();
+                    
+                        if (TryGetInteractableSuccess())
+                        {
+                            SendOnHoverEnter();
+                        }
+                    }
+
+                    if (targetInteractable != null)
+                    {
+                        TrySendOnClick();
+                        SetCursorTexture(targetInteractable.mouseTexture);
+                        return;
                     }
                 }
-
-                if (targetInteractable != null)
-                {
-                    TrySendOnClick();
-                    SetCursorTexture(targetInteractable.mouseTexture);
-                    return;
-                }
+                SetCursorTexture(invalidCursor);
+                TryPlaySound();
             }
-            SetCursorTexture(invalidCursor);
-            TryPlaySound();
         }
 
 
