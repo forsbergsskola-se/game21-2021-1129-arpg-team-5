@@ -1019,11 +1019,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1183526997265781246, guid: b464f45716150de499e497269b4bed7b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.59092987
+      value: 0.4071045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183526997265781246, guid: b464f45716150de499e497269b4bed7b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.95384365
       objectReference: {fileID: 0}
     - target: {fileID: 1183526997265781246, guid: b464f45716150de499e497269b4bed7b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11.066
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183526997265781246, guid: b464f45716150de499e497269b4bed7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1183526997797395840, guid: b464f45716150de499e497269b4bed7b, type: 3}
       propertyPath: m_Name
@@ -1234,6 +1242,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 43918807769716966, guid: ea260ebbc277a72448cf16442b3831c7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0468132
+      objectReference: {fileID: 0}
+    - target: {fileID: 43918807769716966, guid: ea260ebbc277a72448cf16442b3831c7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43918807769716966, guid: ea260ebbc277a72448cf16442b3831c7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea260ebbc277a72448cf16442b3831c7, type: 3}
 --- !u!224 &6208712260213551994 stripped
@@ -1428,11 +1448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3068334541238477218, guid: 454bad118d2147748a40002ae41201f3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62.00049
+      value: 2675
       objectReference: {fileID: 0}
     - target: {fileID: 3068334541238477218, guid: 454bad118d2147748a40002ae41201f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -103.500244
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 3068334541238477218, guid: 454bad118d2147748a40002ae41201f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1449,6 +1469,14 @@ PrefabInstance:
     - target: {fileID: 3068334541238477219, guid: 454bad118d2147748a40002ae41201f3, type: 3}
       propertyPath: m_Name
       value: Money UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068334542058835596, guid: 454bad118d2147748a40002ae41201f3, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068334542058835597, guid: 454bad118d2147748a40002ae41201f3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 249.46118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454bad118d2147748a40002ae41201f3, type: 3}
@@ -1480,6 +1508,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6208712260236347150}
     m_Modifications:
+    - target: {fileID: 1146408122567171604, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146408122567171605, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 204
+      objectReference: {fileID: 0}
     - target: {fileID: 1146408123902456122, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1546,11 +1582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146408123902456122, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62.00049
+      value: 2920
       objectReference: {fileID: 0}
     - target: {fileID: 1146408123902456122, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -294.00024
+      value: -487.00006
       objectReference: {fileID: 0}
     - target: {fileID: 1146408123902456122, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1567,6 +1603,14 @@ PrefabInstance:
     - target: {fileID: 1146408123902456123, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
       propertyPath: m_Name
       value: Egg UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971469509093579482, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971469509425194452, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 337.99988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c69bf66c34bc2e04d868bacb57873f10, type: 3}
