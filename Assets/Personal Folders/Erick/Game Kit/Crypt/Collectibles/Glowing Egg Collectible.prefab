@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5968779713630298436}
   - component: {fileID: 6389650993932768678}
   - component: {fileID: 6266047120668949928}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4769655684024981877}
   - component: {fileID: 925879661007725146}
   - component: {fileID: 8995445135062332074}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2663901383488454849}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Glowing Egg Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 2663901383095169552}
   - component: {fileID: 2663901383095169554}
   - component: {fileID: 6597581054727698236}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Golden Egg
   m_TagString: Egg
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2898486236747016327}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117612452368085517}
   - component: {fileID: 5191692189224153415}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Egg Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8688042299535179324}
   - component: {fileID: 8688042299535179299}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Crownest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8347968212728341638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
