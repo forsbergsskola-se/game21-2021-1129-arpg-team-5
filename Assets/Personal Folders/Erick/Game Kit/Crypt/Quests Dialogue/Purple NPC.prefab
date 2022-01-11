@@ -7,6 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1632351589493709736, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: m_Name
+      value: Purple NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: OutlineColor.b
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: OutlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: OutlineColor.r
+      value: 0.30002624
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: AlternateOutlineColor.b
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: AlternateOutlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266536494107022225, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: AlternateOutlineColor.r
+      value: 0.3019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744864059042718239, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744864059042718239, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744864059042718239, guid: f4c667d950021454c876d582da698ca7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3019608
+      objectReference: {fileID: 0}
     - target: {fileID: 6128377515917649954, guid: f4c667d950021454c876d582da698ca7, type: 3}
       propertyPath: Button1
       value: 
@@ -147,5 +187,38 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6156863
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3425386854506519122, guid: f4c667d950021454c876d582da698ca7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4c667d950021454c876d582da698ca7, type: 3}
+--- !u!1 &5617353510129631141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1632351589493709736, guid: f4c667d950021454c876d582da698ca7, type: 3}
+  m_PrefabInstance: {fileID: 6580777607707550733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &781324596782889128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5617353510129631141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2449576a98340e46b17c1be9c7a22fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Talon
+    sentences:
+    - "Wait, what on Earth are you doing here? \nIf you're up and on your feet then
+      that means..."
+    - "No..          \nthere's no way that could be the case... but...   "
+    - 'Eh, what do I care? I was slacking off anyway. '
+    - To be honest this isn't really my scene. I was just getting a lot of pressure
+      to do something with my days.
+    - Hey, you know what? I won't say that I saw you if you pretend that you never
+      saw me here?
+    - ...       ...       ...
+    - "I'll take your deadly silence to mean you don't care...       \nAlright, great!                       
+      \nThat's a done deal, then."
+  sprite: {fileID: 21300000, guid: 7938d634b3fe87d4d86ac6cccaf42427, type: 3}
