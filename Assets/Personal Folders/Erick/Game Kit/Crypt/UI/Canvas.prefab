@@ -201,6 +201,9 @@ MonoBehaviour:
   EggUiText: {fileID: 8749892486369493424}
   LvlText: {fileID: 4726667158627888819}
   InventoryMenu: {fileID: 0}
+  HealthBar: {fileID: 0}
+  ExpBar: {fileID: 0}
+  PlayerIcon: {fileID: 0}
   PauseMenu: {fileID: 6208712260768090068}
   OptionsMenu: {fileID: 5917641295587413889}
   MainMenu: {fileID: 6208712259027498541}
@@ -336,6 +339,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6208712260700528126}
     m_Modifications:
+    - target: {fileID: 6315649342904717763, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649342904717763, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649342904717765, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -350,19 +365,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_SizeDelta.x
@@ -402,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.000046832865
       objectReference: {fileID: 0}
     - target: {fileID: 6315649343878734446, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -423,6 +438,22 @@ PrefabInstance:
     - target: {fileID: 6315649343878734449, guid: 818cff2732cef7545a909852e6762095, type: 3}
       propertyPath: m_Name
       value: OverlayController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649343878734449, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649344525159126, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649344525159126, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315649344525159128, guid: 818cff2732cef7545a909852e6762095, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818cff2732cef7545a909852e6762095, type: 3}
