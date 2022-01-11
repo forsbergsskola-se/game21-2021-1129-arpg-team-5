@@ -11,8 +11,6 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     private TMP_Text button;
-    private Image head;
-    public Sprite DialogueHead;
 
     public float slowTypeSpeed = 0.1f;
     public float mediumTypeSpeed = 0.05f;
@@ -26,14 +24,12 @@ public class DialogueManager : MonoBehaviour
     {
         typingSpeed = veryFastTypeSpeed;
         button = FindObjectOfType<HUD>().ContinueButton.GetComponentInChildren<TMP_Text>();
-        head = FindObjectOfType<HUD>().DialogueHeadNPC;
         sentences = new Queue<string>();
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         dialogueText.text = "";
-        head.sprite = DialogueHead;
         nameText.text = dialogue.name;
         button.text = "Continue >>";
         sentences.Clear();
@@ -49,13 +45,15 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 1)
+        // causes a glitch atm where other dialogues can replace it
+        
+        /*if (sentences.Count == 1)
         {
             FindObjectOfType<TalkingNPC>().ReplayOption();
             button.text = "Leave";
-        }
+        }*/
                 
-        else if (sentences.Count == 0)
+        if (sentences.Count == 0)
         {
             EndDialogue();
             return;
@@ -81,6 +79,7 @@ public class DialogueManager : MonoBehaviour
     {
         FindObjectOfType<TalkingNPC>().StopTalk();
     }
+
     
     public void SlowDialogue()
     {
