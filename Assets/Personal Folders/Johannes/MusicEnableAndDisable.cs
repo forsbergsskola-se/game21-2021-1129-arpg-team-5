@@ -14,6 +14,7 @@ public class MusicEnableAndDisable : MonoBehaviour
      public Transform Player;
 
      public Transform Boss;
+     public float distanceToMusic;
 
      private bool isRunning;
      // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class MusicEnableAndDisable : MonoBehaviour
              BossMusicStop();
              enabled = false;
          }
-         else if (Vector3.Distance(Player.position, Boss.position) <= 15)
+         else if (Vector3.Distance(Player.position, Boss.position) <= distanceToMusic)
          {
              BossMusicStart();
          }
