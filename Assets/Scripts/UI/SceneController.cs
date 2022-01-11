@@ -108,8 +108,9 @@ namespace Team5.Ui
 
         public void CreditsClose()
         {
-            var Credits = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Credits Menu").gameObject;
-            Credits.SetActive(false);
+            var CreditsMenu = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Credits Menu").gameObject;
+            CreditsMenu.SetActive(false);
+            FindObjectOfType<Credits>().Hide();
         }
 
 

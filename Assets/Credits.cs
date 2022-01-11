@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Credits : MonoBehaviour
 {
+    public GameObject CreditsMenu;
     public GameObject Grumpkin;
+    public GameObject Dog;
 
     void Update()
     {
         if (Input.GetKeyDown("p"))
         {
-            if (Grumpkin.activeInHierarchy)
+            if (Grumpkin.activeInHierarchy == true)
             {
                 Grumpkin.SetActive(false);
             }
@@ -22,5 +24,25 @@ public class Credits : MonoBehaviour
             }
             
         }
+        
+        if (Input.GetKeyDown("g"))
+        {
+            if (Dog.activeInHierarchy == true)
+            {
+                Dog.SetActive(false);
+            }
+
+            else
+            {
+                Dog.SetActive(true);
+            }
+            
+        }
+    }
+    
+    public void Hide()
+    {
+        Grumpkin.SetActive(false);
+        Dog.SetActive(false);
     }
 }
