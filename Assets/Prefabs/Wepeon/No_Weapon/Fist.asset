@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72143f005f53a7e46b6d0afbeaf61943, type: 3}
   m_Name: Fist
   m_EditorClassIdentifier: 
+  itemID: 3a756f59-b0c2-45f9-a61d-742e7767f605
+  displayName: 
+  description: 
+  icon: {fileID: 0}
+  pickup: {fileID: 0}
+  stackable: 0
+  allowedEquipLocation: 5
   overrideAnim: {fileID: 0}
   equippedPrefab: {fileID: 0}
   weaponRange: 2
-  weaponDamage: 5
+  weaponDamage: 25
