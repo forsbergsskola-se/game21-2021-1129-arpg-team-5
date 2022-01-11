@@ -17,6 +17,7 @@ namespace Team5.World.Interactables
         private bool isOpen;
         private float movementUpPerFrame;
         private float totalAnimationFrames;
+        public StudioEventEmitter OpenGate;
         
     
     
@@ -36,7 +37,7 @@ namespace Team5.World.Interactables
             if (isOpen)
                 return;
             StartCoroutine(OpeningAnimation());
-            GetComponent<StudioEventEmitter>().Play();
+            OpenGate.Play();
         }
 
     
