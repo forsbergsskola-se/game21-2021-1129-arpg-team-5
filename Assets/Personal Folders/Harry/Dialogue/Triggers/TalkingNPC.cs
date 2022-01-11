@@ -63,6 +63,16 @@ public class TalkingNPC : MonoBehaviour, IInteractable
         {
             FindObjectOfType<TriggerPurple>().TriggerDialogue();
         }
+        
+        else if (this.CompareTag("Red NPC"))
+        {
+            FindObjectOfType<TriggerRed>().TriggerDialogue();
+        }
+        
+        else if (this.CompareTag("Yellow NPC"))
+        {
+            FindObjectOfType<TriggerYellow>().TriggerDialogue();
+        }
     }
     
     // When walking away from shop
