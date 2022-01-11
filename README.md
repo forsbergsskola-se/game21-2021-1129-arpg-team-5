@@ -25,7 +25,7 @@ Programming:
 - [Toofan](https://github.com/toofantah): [LinkedIn](https://www.linkedin.com/in/toofantah)
 
 Music & SFX:
-- Raphael Wolde Selassie
+- Raphael Wolde-Selassie: [LinkedIn](https://www.linkedin.com/in/raphael-w-selassie-5a308a229/)
 
 ## Design Documents
 
