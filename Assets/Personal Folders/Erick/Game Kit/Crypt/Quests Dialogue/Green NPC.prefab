@@ -1705,21 +1705,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2faad01ad8b5d24a8eff5be579892af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCDialogue: 1
-  KillQuest: 0
-  CollectQuest: 0
-  KillTarget: 5
-  EggTarget: 0
   dialogue:
-    name: Tar
+    name: Salvador
     sentences:
     - WHAT?! It's Impossible! You were dead, I.. I saw it with my own eyes!
     - Hmm, this must be a sign of our great god Garuda!
     - Or I'm just going crazy...
     - I think I need to rest...
-  nameText: {fileID: 0}
-  dialogueText: {fileID: 0}
-  headSprite: {fileID: 21300000, guid: 18a8670021c667f47a32432baf608f71, type: 3}
 --- !u!114 &928138831860231992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,6 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
   dialogueText: {fileID: 0}
+  DialogueHead: {fileID: 21300000, guid: 18a8670021c667f47a32432baf608f71, type: 3}
   slowTypeSpeed: 0.1
   mediumTypeSpeed: 0.05
   fastTypeSpeed: 0.03
