@@ -8,52 +8,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour {
-
-    public bool NPCDialogue = false;
-    public bool KillQuest = false;
-    public bool CollectQuest = false;
-    public int KillTarget;
-    public int EggTarget;
+    
     public Dialogue dialogue;
-    private Image head;
+
 
     public void TriggerDialogue ()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        head = FindObjectOfType<HUD>().DialogueHeadNPC;
     }
     
-    public bool CrowBlack = false;
-    public bool CrowWhite = false;
-    public bool EnemyGreen = false;
-    public bool EnemyPurple = false;
-    public bool EnemyRed = false;
-    public bool EnemyYellow = false;
-    
-    public Sprite CrowBlackSprite;
-    public Sprite CrowWhiteSprite;
-    public Sprite EnemyGreenSprite;
-    public Sprite EnemyPurpleSprite;
-    public Sprite EnemyRedSprite;
-    public Sprite EnemyYellowSprite;
-    private GameObject Dialogue;
-
-    private void Awake()
-    {
-        Dialogue = FindObjectOfType<HUD>().ShopDialogue.gameObject;
-    }
-    
-    // Only checks sprite when Dialogue triggered
-    private void Update()
-    {
-        if (Dialogue.activeInHierarchy)
-        {
-            AssignSprite();
-        }
-    }
 
     // Assigns character dialogue head sprite and disables others
-    private void AssignSprite()
+    /*private void AssignSprite()
     {
         if (CrowBlack == true)
         {
@@ -106,5 +72,5 @@ public class DialogueTrigger : MonoBehaviour {
         EnemyPurple = four;
         EnemyRed = five;
         EnemyYellow = six;
-    }
+    }*/
 }
