@@ -17,7 +17,7 @@ namespace Team5.Movement
         private GameObject targetDest;
         private GameObject player;
 
-        private AudioSource audio;
+        private AudioSource movementAudio;
         Animator animator;
         NavMeshAgent agent;
         private Entity entity;
