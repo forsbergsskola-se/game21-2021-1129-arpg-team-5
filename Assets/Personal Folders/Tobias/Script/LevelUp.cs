@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System.Collections;
 using Team5.Control;
 using Team5.Core;
 using Team5.Ui;
@@ -34,8 +33,7 @@ public class LevelUp : MonoBehaviour
         {
             experience += 100;
         }
-            
-      }
+    }
 
     void RankUp()
     {
