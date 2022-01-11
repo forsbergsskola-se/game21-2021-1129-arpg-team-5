@@ -1595,6 +1595,7 @@ MonoBehaviour:
   Name: Valek
   Head: {fileID: 21300000, guid: 96aa15c88f4087b47863caa6fbd9341c, type: 3}
   EggTarget: 6
+  RewardMoney: 0
   shopCursor: {fileID: 2800000, guid: bcba0e19b1b98064ea978aaaae44465d, type: 3}
   greetText: Collect my eggs or I'll munch your face! Oh wait, you're not the usual
     riff-raff from around here. *Ahem* fancy helping me find my eggs and I'll do
@@ -1612,16 +1613,20 @@ MonoBehaviour:
   rulesAccept: Yes
   rulesReject: No
   rulesOptOut: Leave
-  rules1: 
-  rules2: 
+  rules1: If you want to have that big iron gate opened, you'll have to collect all
+    my eggs for me.
   rulesUnderstood: Okay.
-  questNotFinished: 
-  questFinished: 
+  questNotFinished: You still need to collect more. Come back when you're done.
+  questFinished: 'You found them all! Stick around for the hatching will you? No? '
+  alreadyWon: Thanks again, the hatching is always a bloody good spectacle.
   hearRulesAgain: Rules please
   exit: Exit
+  congratulations: Well the gate's open now. Here's some coins too
+  congratsReply: Open up
   byeQuestAccepted: I'll be waiting.
   byeQuestRejected: Okay, but you'll need my help to get out of here y'know. See
     you when you come crawling back...
+  byeQuestFinished: See you around, human.
 --- !u!1 &5988093334519643588
 GameObject:
   m_ObjectHideFlags: 0
