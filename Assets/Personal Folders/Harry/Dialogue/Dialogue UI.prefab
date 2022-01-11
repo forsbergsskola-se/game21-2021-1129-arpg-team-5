@@ -1438,7 +1438,7 @@ RectTransform:
   m_GameObject: {fileID: 8401545561304425750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 1.7500001, z: 2}
+  m_LocalScale: {x: 1.75, y: 1.225, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8401545561327306505}
@@ -1561,7 +1561,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Placeholder text
+  m_text: 'Placeholder text
+
+    Placeholder text
+
+    Placeholder text
+
+    Placeholder
+    text
+
+    Placeholder text
+
+    Placeholder text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fe9420ca39348643bb308b941bf3abf, type: 2}
   m_sharedMaterial: {fileID: 8803331328980651380, guid: 4fe9420ca39348643bb308b941bf3abf, type: 2}
@@ -1588,8 +1599,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
-  m_fontSizeBase: 23
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1598,7 +1609,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 5
+  m_characterSpacing: 4
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
