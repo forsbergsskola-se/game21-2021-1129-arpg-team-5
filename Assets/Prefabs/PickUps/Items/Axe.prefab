@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: -3613725947525137618}
   - component: {fileID: 6124731899601324682}
   - component: {fileID: 5988871956525328211}
+  - component: {fileID: 2502900593133135523}
+  - component: {fileID: 7267257595514571409}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -172,9 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealthBoost: 0
   MovementSpeedBoost: -2
-  ArmorBoost: 35
+  DefenceBoost: 35
   AccuracyChanceBoost: -10
   CriticalChanceBoost: 30
+  CriticalDamageMultiplierBoost: 0
   DamageBoost: 20
   AttackSpeedBoostSeconds: -0.3
   IsWeapon: 1
@@ -192,3 +195,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponModel: {fileID: 0}
   WeaponRangeComparedToFists: 1
+--- !u!114 &2502900593133135523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358781865085340163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &7267257595514571409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358781865085340163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9d51aeaa599204e9f6225eb4174d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  OutlineColor: {r: 0.42114633, g: 0.8548395, b: 0.9811321, a: 1}
+  OutlineWidth: 2.42
