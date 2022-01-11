@@ -53,7 +53,7 @@ namespace Team5.Movement
             UpdateAnimator();
             
             // indicates player has reached destinaton with sound and visual
-            if (CompareTag("Player"))
+            if (CompareTag("Player") && !entity.IsDead)
             {
                 if (agent.isStopped || DistanceToMarker() < 0.2f)
                 {
@@ -132,7 +132,7 @@ namespace Team5.Movement
                 {
                     targetDest.SetActive(false);
                 }
-                //Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
+                Debug.Log(name + " is dead and can't move. <color=cyan>[ Why is move called when this entity is dead? ]</color>");
             }
             // can't move if reviving and standing up
             else if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Revive"))
