@@ -242,7 +242,7 @@ namespace Team5.Entities.Player
         public IEnumerator WaitBeforeRevive()
         {
             IsDead = true;
-            yield return new WaitForSeconds(7);
+            yield return new WaitForSeconds(8);
             IsDead = false;
         }
     }
