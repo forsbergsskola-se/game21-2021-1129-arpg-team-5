@@ -12,22 +12,23 @@ namespace Team5.Ui
     public class HUD : MonoBehaviour
     {
         // HUD UI
-        //public TMP_Text ReviveText;
         public GameObject MoneyUI;
         public GameObject ShopUI;
         public TMP_Text CoinText;
         public TMP_Text EggUiText;
         public TMP_Text KillCountText;
         public TMP_Text LvlText;
-        //public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
         public GameObject HealthBar;
         public GameObject ExpBar;
         public GameObject PlayerIcon;
+        
+        //Menu UI
         public GameObject PauseMenu;
         public GameObject OptionsMenu;
         public GameObject MainMenu;
         private Button MainMenuButton;
+        public GameObject ControlMasterMenu;
 
         // Shop UI
         public GameObject ShopText;
@@ -38,7 +39,6 @@ namespace Team5.Ui
         public Button Button3;
         public Button ContinueButton;
         public Button RepeatButton;
-        //public GameObject SkullIcons;
         public Image DialogueHeadNPC;
         
         // Overlays
@@ -79,6 +79,18 @@ namespace Team5.Ui
             }
         }
 
+        public void ControlToggle()
+        {
+            if (ControlMasterMenu.activeInHierarchy)
+            {
+                ControlMasterMenu.SetActive(false);
+            }
+            else
+            {
+                ControlMasterMenu.SetActive(true);
+            }
+        }
+
         public void HudUIActive(bool overlays, bool inventory, bool playerIcon, bool exp, 
             bool health, bool moneyUI, bool shopUI, bool dialogueBox)
         
@@ -91,14 +103,6 @@ namespace Team5.Ui
             ShopUI.SetActive(shopUI);
             ShopText.SetActive(dialogueBox);
             InventoryMenu.SetActive(inventory);
-        }
-        
-        public void ConversationUIActive(bool headPlayer, bool headNpc )
-        {
-            // May need multiple heads here for conversations
-            // Can be updated for shop objects UI
-            //DialogueHeadMain.SetActive(headPlayer);
-            //DialogueHeadNPC.SetActive(headNpc);
         }
     }
 } 
