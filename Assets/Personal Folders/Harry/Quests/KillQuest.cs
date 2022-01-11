@@ -116,6 +116,8 @@ public class KillQuest : MonoBehaviour, IInteractable
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         
+        
+        
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
         
