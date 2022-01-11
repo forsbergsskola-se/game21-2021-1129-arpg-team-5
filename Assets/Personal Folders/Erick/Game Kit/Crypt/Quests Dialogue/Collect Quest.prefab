@@ -631,7 +631,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2aa4de452dc6d6142a225ab06ca94f43, type: 2}
+  - {fileID: 2100000, guid: 8a6dff5a4b656c44cb40e8f7e96aa106, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1489,8 +1489,7 @@ GameObject:
   - component: {fileID: 5988093333504999879}
   - component: {fileID: 5988093333504999878}
   - component: {fileID: 5988093333504999877}
-  - component: {fileID: 5267185747796273992}
-  - component: {fileID: 8435100759798727330}
+  - component: {fileID: 3933912066171125928}
   m_Layer: 0
   m_Name: Collect Quest
   m_TagString: NPC
@@ -1580,7 +1579,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &5267185747796273992
+--- !u!114 &3933912066171125928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1589,36 +1588,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 5988093333504999883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2faad01ad8b5d24a8eff5be579892af, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f86469e0d76c5343ab4bf656160b2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCDialogue: 0
-  KillQuest: 0
-  CollectQuest: 1
-  KillTarget: 0
-  EggTarget: 5
-  dialogue:
-    name: Valek
-    sentences:
-    - Collect my eggs or I'll munch your face
-    - Yupp yupp
-  nameText: {fileID: 0}
-  dialogueText: {fileID: 0}
-  headSprite: {fileID: 21300000, guid: 96aa15c88f4087b47863caa6fbd9341c, type: 3}
---- !u!114 &8435100759798727330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5988093333504999883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b1f2f5d22db8b44db48d3a7db64a735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToNPC: 0
-  shopCursor: {fileID: 2800000, guid: 236ca8deccb569943bdbcbceffaf4b3f, type: 3}
+  distanceToShop: 0
+  Name: Valek
+  Head: {fileID: 21300000, guid: 96aa15c88f4087b47863caa6fbd9341c, type: 3}
+  EggTarget: 6
+  shopCursor: {fileID: 2800000, guid: bcba0e19b1b98064ea978aaaae44465d, type: 3}
+  greetText: Collect my eggs or I'll munch your face! Oh wait, you're not the usual
+    riff-raff from around here. *Ahem* fancy helping me find my eggs and I'll do
+    something for you in return?
+  greetAccept: Sure
+  greetReject: No
+  genericHello: Hey again! How's the egg hunting going?
+  helloAccept: 
+  helloReject: 
+  questOffer: 
+  questAccept: 
+  questReject: 
+  rulesOffer: 
+  rulesAccept: 
+  rulesReject: 
+  rulesOptOut: 
+  rules1: 
+  rules2: 
+  rulesUnderstood: 
+  questNotFinished: 
+  questFinished: 
+  hearRulesAgain: 
+  exit: 
+  byeQuestAccepted: 
+  byeQuestRejected: 
 --- !u!1 &5988093334519643588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5988093335113367584}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000023841855}
-  m_LocalPosition: {x: -6.6033382, y: -11.383332, z: -25}
+  m_LocalPosition: {x: 1.3951049, y: -11.383332, z: -14.502985}
   m_LocalScale: {x: 1.6666651, y: 1.6666665, z: 1.6666651}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1757,7 +1758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5988093335155221036}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000032782552}
-  m_LocalPosition: {x: 1.3, y: -11.383332, z: -25}
+  m_LocalPosition: {x: 1.3950851, y: -11.383332, z: -14.502991}
   m_LocalScale: {x: 1.6666651, y: 1.6666665, z: 1.6666651}
   m_ConstrainProportionsScale: 0
   m_Children: []
