@@ -46,8 +46,8 @@ namespace Team5.World.Interactables
         private IEnumerator GoToAndActivate()
         {
             player.GetComponent<Move>().StartMoveAction(playerMoveTarget);
-            
-            while (true)
+            // while (true)
+            for (int i = 0; i < 100; i++)
             {
                 yield return new WaitForSeconds(0.25f);
 
@@ -92,6 +92,7 @@ namespace Team5.World.Interactables
             
             if (player.GetComponent<Move>().TargetReachable(playerMoveTarget))
             {
+                goToAndActivate = GoToAndActivate();
                 StartCoroutine(goToAndActivate);
             }
         }
