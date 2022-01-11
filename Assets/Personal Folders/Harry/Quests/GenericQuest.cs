@@ -282,13 +282,16 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Once finished criteria is set up
     private void ParameterOnClickYesFinished(string test)
     {
-        Coins = player.GetComponent<Wallet>().Coins;
+        // Coins = player.GetComponent<Wallet>().Coins;
         buttonActive(false, true, false);
 
         allDone = true;
         Dialogue.text = $"{congratulations}";
         button2Text.text = $"{exit}";
-        Coins += RewardMoney;
+        // Coins += RewardMoney;
+        
+        
+        
         Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
