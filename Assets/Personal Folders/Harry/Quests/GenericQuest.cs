@@ -22,7 +22,9 @@ public class GenericQuest : MonoBehaviour, IInteractable
     public Sprite Head;
     private Image HeadUI;
     public int EggTarget;
+    public int RewardMoney;
     private int PlayerEggs;
+    private int Coins;
    
     // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
@@ -48,6 +50,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private bool QuestRulesRead;
     private bool QuestAccepted;
     private bool finishedQuest;
+    private bool allDone;
     
     // DIALOGUE OPTIONS
     
@@ -79,30 +82,34 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Rules
 
     public string rules1;
-    public string rules2;
     public string rulesUnderstood;
     
     // Main Quest
 
     public string questNotFinished;
     public string questFinished;
+    public string alreadyWon;
     public string hearRulesAgain;
     public string exit;
 
+    // Quest win
+    
+    public string congratulations;
+    public string congratsReply;
+    
     // Goodbye
 
     public string byeQuestAccepted;
     public string byeQuestRejected;
+    public string byeQuestFinished;
 
     
     private void Awake()
     {
-        finishedQuest = false;
         player = GameObject.FindGameObjectWithTag("Player");
         Dialogue = FindObjectOfType<HUD>().ShopDialogue;
         NameTag = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>();
         HeadUI = FindObjectOfType<HUD>().DialogueHeadNPC.GetComponent<Image>();
-        PlayerEggs = player.GetComponent<Collectibles>().Eggs;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
@@ -121,6 +128,9 @@ public class GenericQuest : MonoBehaviour, IInteractable
         
         QuestRulesRead = false;
         QuestAccepted = false;
+        allDone = false;
+        finishedQuest = false;
+
     }
     
     // Activated when Player enters invisible collider
@@ -249,29 +259,55 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Rules text 2
     private void ParameterOnClickYesRules2(string test)
     {
-        QuestRulesRead = true;
-        
-        Dialogue.text = $"{rules2}";
-        button1Text.text = $"{rulesUnderstood}";
+        PlayerEggs = player.GetComponent<Collectibles>().Eggs;
 
+        QuestRulesRead = true;
+
+        if (PlayerEggs < EggTarget)
+        {
+            Dialogue.text = $"You have collected {PlayerEggs} out of {EggTarget}. " +
+                            $"You still need to find {(EggTarget - PlayerEggs)} more eggs.";
+        }
+
+        else
+        {
+            Dialogue.text = $"You've already found all {EggTarget} eggs!";
+        }
+       
+        
+        button1Text.text = $"{rulesUnderstood}";
         Button1.onClick.AddListener( () => ParameterOnClickYesStart($"{nameof(Button1)} was pressed!"));
     }
     
     // Once finished criteria is set up
     private void ParameterOnClickYesFinished(string test)
     {
-        Dialogue.text = $"{questFinished}";
-        
-        if (finishedQuest == false)
-        {
-            finishedQuest = true;
-        }
+        Coins = player.GetComponent<Wallet>().Coins;
+        buttonActive(false, true, false);
+
+        allDone = true;
+        Dialogue.text = $"{congratulations}";
+        button2Text.text = $"{exit}";
+        Coins += RewardMoney;
+        Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
     // Main Quest Interaction
     private void Scenario()
     {
+        PlayerEggs = player.GetComponent<Collectibles>().Eggs;
+
         buttonActive(false, false, false);
+
+        if (PlayerEggs < EggTarget)
+        {
+            finishedQuest = false;
+        }
+        
+        else if (PlayerEggs >= EggTarget)
+        {
+            finishedQuest = true;
+        }
         
         if (finishedQuest != true)
         {
@@ -281,7 +317,24 @@ public class GenericQuest : MonoBehaviour, IInteractable
             button1Text.text = $"{hearRulesAgain}";
             button2Text.text = $"{exit}";
 
-            Button1.onClick.AddListener( () => ParameterOnClickYesRules($"{nameof(Button1)} was pressed!"));
+            Button1.onClick.AddListener( () => ParameterOnClickYesRules2($"{nameof(Button1)} was pressed!"));
+            Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
+        }
+        
+        else if (finishedQuest == true && allDone == false)
+        {
+            buttonActive(true, true, false);
+
+            Dialogue.text = $"{questFinished}";
+            button1Text.text = $"{congratsReply}";
+            Button1.onClick.AddListener( () => ParameterOnClickYesFinished($"{nameof(Button1)} was pressed!"));
+        }
+
+        else
+        {
+            buttonActive(false, true, false);
+            Dialogue.text = $"{alreadyWon}";
+            button2Text.text = $"{exit}";
             Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
         }
     }
@@ -332,13 +385,18 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Exit goodbyes
     private void WaitExit()
     {
-        if (QuestAccepted == false)
+        if (QuestAccepted == false && finishedQuest == false)
         {
             QuestAccepted = false;
             Dialogue.text = $"{byeQuestRejected}";
         }
-        
-        else
+
+        else if (finishedQuest == true)
+        {
+            Dialogue.text = $"{byeQuestFinished}";
+        }
+            
+        else if (QuestAccepted == true && finishedQuest == false)
         {
             Dialogue.text = $"{byeQuestAccepted}";
         }
