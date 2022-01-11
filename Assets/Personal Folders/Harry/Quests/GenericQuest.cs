@@ -4,6 +4,7 @@ using Team5.Control;
 using Team5.Core;
 using Team5.Movement;
 using Team5.Ui;
+using Team5.World.Interactables;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,11 +26,11 @@ public class GenericQuest : MonoBehaviour, IInteractable
     public int RewardMoney;
     private int PlayerEggs;
     private int Coins;
-   
+
     // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
     [SerializeField] private Texture2D shopCursor;
-    
+
     // interactions
     private TMP_Text Dialogue;
     private TMP_Text NameTag;
@@ -44,15 +45,18 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private TMP_Text button1Text;
     private TMP_Text button2Text;
     private TMP_Text button3Text;
-    
+
     // bools
     private bool firstVisit = true;
     private bool QuestRulesRead;
     private bool QuestAccepted;
     private bool finishedQuest;
     private bool allDone;
+
+    [SerializeField] private InteractableBarrierController connectedBarrier;
     
-    // DIALOGUE OPTIONS
+    
+    // DIALOGUE OPTIONS 
     
     // First Encounter
 
@@ -130,9 +134,13 @@ public class GenericQuest : MonoBehaviour, IInteractable
         QuestAccepted = false;
         allDone = false;
         finishedQuest = false;
-
     }
-    
+
+    private void Start()
+    {
+        connectedBarrier.IsLocked = true;
+    }
+
     // Activated when Player enters invisible collider
 
     private void OnCollisionEnter(Collision other)
@@ -290,7 +298,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
         button2Text.text = $"{exit}";
         // Coins += RewardMoney;
         
-        
+        connectedBarrier.IsLocked = false;
         
         Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
