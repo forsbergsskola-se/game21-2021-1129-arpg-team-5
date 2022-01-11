@@ -15,6 +15,10 @@ namespace Team5.Ui
         public int SilverCoins { get; private set; } = 0;
         public int GoldCoins { get; private set; } = 0;
 
+        public int BronzeValue = 1;
+        public int SilverValue = 5;
+        public int GoldValue = 10;
+
         void Start()
         {
             CoinCounter = FindObjectOfType<HUD>().CoinText;
@@ -40,17 +44,17 @@ namespace Team5.Ui
             switch (other.gameObject.tag)
             {
                 case "BronzeCoin":
-                    Coins += 1;
+                    Coins += BronzeValue;
                     BronzeCoins += 1;
                     pickedUp = true;
                     break;
                 case "SilverCoin":
-                    Coins += 5;
+                    Coins += SilverValue;
                     SilverCoins += 1;
                     pickedUp = true;
                     break;
                 case "GoldCoin":
-                    Coins += 10;
+                    Coins += GoldValue;
                     GoldCoins += 1;
                     pickedUp = true;
                     break;
