@@ -123,7 +123,8 @@ public class GenericQuest : MonoBehaviour, IInteractable
             Refresh();
             
             // multiple HUD elements enabled and disabled onEnter
-            FindObjectOfType<HUD>().HudUIActive(false,false, false, false, true, false);
+            FindObjectOfType<HUD>().HudUIActive(false,false, false,
+                false,false, true, false, false);            
             buttonActive(true, true, false);
 
             // Only first time dialogue
@@ -155,8 +156,8 @@ public class GenericQuest : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             // Activates and deactivates HUD elements onExit
-            FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
-        }
+            FindObjectOfType<HUD>().HudUIActive(true,true, true,
+                true,true, true, false, false);        }
     }
 
     

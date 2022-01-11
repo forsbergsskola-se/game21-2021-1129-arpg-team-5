@@ -131,7 +131,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
             Refresh();
             
             // multiple HUD elements enabled and disabled onEnter
-            FindObjectOfType<HUD>().HudUIActive(false,false, true, false, true, false);
+            //FindObjectOfType<HUD>().HudUIActive(false,false, true, false, true, false);
             buttonActive(true, true, false);
 
             // Only first time dialogue
@@ -163,7 +163,7 @@ public class SimpleShop : MonoBehaviour, IInteractable
         if (other.gameObject == player)
         {
             // Activates and deactivates HUD elements onExit
-            FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
+            //FindObjectOfType<HUD>().HudUIActive(true,true, true,false,false, true);
         }
     }
     
