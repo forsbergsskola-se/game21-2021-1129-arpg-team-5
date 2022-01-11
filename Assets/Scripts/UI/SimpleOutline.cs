@@ -1,18 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleUi : MonoBehaviour
+namespace Team5.Ui
 {
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(Outline))]
+    public class SimpleOutline : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Outline.Mode outlineMode;
+        [SerializeField] private Color OutlineColor = Color.red;
+        [SerializeField, Range(0f, 10f)] private float OutlineWidth = 5f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            var outline = GetComponent<Outline>();
+            
+            outline.OutlineMode = outlineMode;
+            outline.OutlineColor = OutlineColor;
+            outline.OutlineWidth = OutlineWidth;
+        }
     }
 }
