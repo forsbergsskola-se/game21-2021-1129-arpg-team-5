@@ -119,7 +119,7 @@ public class InteractableBarrierController : MonoBehaviour, IInteractable
             TargetPosition = playerTargetPositionTwo.position;
 
         // #############################################################################################################
-        
+        goToAndOpen = GoToAndOpen();
         StartCoroutine(goToAndOpen);
         
         if (Vector3.Distance(player.transform.position, TargetPosition) > distanceToOpenDoor)
