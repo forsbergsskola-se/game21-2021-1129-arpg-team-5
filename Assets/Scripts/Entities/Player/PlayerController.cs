@@ -56,15 +56,13 @@ namespace Team5.Entities.Player
             healthEffects.SetActive(true);
             lowHealthEffect.enabled = false;
             veryLowHealthEffect.enabled = false;
-
             fighter = GetComponent<Fighter>();
+            StartCoroutine(WaitBeforeRevive());
         }
 
 
         void Update()
         {
-
-
             HealthText.text = MaxHealth.ToString();
             ArmorText.text = Armor.ToString();
             SpeedText.text = MovementSpeed.ToString();
@@ -240,6 +238,12 @@ namespace Team5.Entities.Player
             yield return new WaitForSeconds(7);
             IsDead = false;
             
+        }
+        public IEnumerator WaitBeforeRevive()
+        {
+            IsDead = true;
+            yield return new WaitForSeconds(7);
+            IsDead = false;
         }
     }
 }
