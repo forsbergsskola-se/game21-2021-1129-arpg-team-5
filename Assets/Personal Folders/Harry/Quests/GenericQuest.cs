@@ -17,6 +17,11 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private Transform playerTargetPositionTwo;
     private GameObject player;
     private Vector3 TargetPosition;
+
+    public string Name;
+    public Image Head;
+    public int EggTarget;
+    private int PlayerEggs;
    
     // mouse cursor logic
     public Texture2D mouseTexture => shopCursor;
@@ -93,7 +98,8 @@ public class GenericQuest : MonoBehaviour, IInteractable
     {
         finishedQuest = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        Dialogue = FindObjectOfType<HUD>().ShopDialogue;
+        Name = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>().text;
+        PlayerEggs = player.GetComponent<Collectibles>().Eggs;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
         playerTargetPositionTwo = transform.Find("PlayerTargetPositionTwo").transform;
@@ -112,6 +118,9 @@ public class GenericQuest : MonoBehaviour, IInteractable
         
         QuestRulesRead = false;
         QuestAccepted = false;
+        
+        Head = FindObjectOfType<HUD>().DialogueHeadNPC.GetComponent<Image>();
+        Name = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>().text;
     }
     
     // Activated when Player enters invisible collider
@@ -120,11 +129,11 @@ public class GenericQuest : MonoBehaviour, IInteractable
     {
         if (other.gameObject == player)
         {
-            Refresh();
-            
+
             // multiple HUD elements enabled and disabled onEnter
             FindObjectOfType<HUD>().HudUIActive(false,false, false,
-                false,false, true, false, false);            
+                false,false, true, true, true);      
+            
             buttonActive(true, true, false);
 
             // Only first time dialogue
@@ -187,7 +196,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Triggers exit text
     private void ParameterOnClickNoStart(string test)
     {
-        Refresh();
         buttonActive(false, false, false);
         WaitExit();
     }
@@ -260,7 +268,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
     // Main Quest Interaction
     private void Scenario()
     {
-        Refresh();
         buttonActive(false, false, false);
         
         if (finishedQuest != true)
@@ -332,11 +339,5 @@ public class GenericQuest : MonoBehaviour, IInteractable
         {
             Dialogue.text = $"{byeQuestAccepted}";
         }
-    }
-
-    // Formatting soft reset
-    private void Refresh()
-    {
-        Dialogue.fontSize = 40;
     }
 }
