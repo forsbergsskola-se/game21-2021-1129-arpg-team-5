@@ -1602,24 +1602,26 @@ MonoBehaviour:
   greetAccept: Sure
   greetReject: No
   genericHello: Hey again! How's the egg hunting going?
-  helloAccept: 
-  helloReject: 
-  questOffer: 
-  questAccept: 
-  questReject: 
-  rulesOffer: 
-  rulesAccept: 
-  rulesReject: 
-  rulesOptOut: 
+  helloAccept: Alright
+  helloReject: Not now
+  questOffer: Soon it'll be time for the hatching and I need to be there when it
+    happens. If you help me I can open up the exit gate up ahead.
+  questAccept: Okay!
+  questReject: Not now
+  rulesOffer: Want to hear the rules?
+  rulesAccept: Yes
+  rulesReject: No
+  rulesOptOut: Leave
   rules1: 
   rules2: 
-  rulesUnderstood: 
+  rulesUnderstood: Okay.
   questNotFinished: 
   questFinished: 
-  hearRulesAgain: 
-  exit: 
-  byeQuestAccepted: 
-  byeQuestRejected: 
+  hearRulesAgain: Rules please
+  exit: Exit
+  byeQuestAccepted: I'll be waiting.
+  byeQuestRejected: Okay, but you'll need my help to get out of here y'know. See
+    you when you come crawling back...
 --- !u!1 &5988093334519643588
 GameObject:
   m_ObjectHideFlags: 0
