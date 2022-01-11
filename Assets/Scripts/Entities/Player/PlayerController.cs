@@ -50,7 +50,7 @@ namespace Team5.Entities.Player
 
         protected override void Awake()
         {
-            //killCounter = FindObjectOfType<HUD>().KillCountText;
+            killCounter = FindObjectOfType<HUD>().KillCountText;
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             base.Awake();
@@ -75,8 +75,8 @@ namespace Team5.Entities.Player
             CriticalChansText.text = fighter.CriticalChance.ToString();
             CriticalDamageText.text = (fighter.criticalDamageMultiplier * fighter.GetTotalDamage()).ToString();
             DamageText.text = (fighter.currentWeapon.GetDamage() + fighter.BonusDamage).ToString();
-            //killText = $"Kills: " + $"{killCount}";
-            //killCounter.text = killText;
+            killText = $"Kills: " + $"{killCount}";
+            killCounter.text = killText;
 
             // Debug.Log(weaponDamage.ToString());
             // suggestion for how lowHealth bool can be utilized

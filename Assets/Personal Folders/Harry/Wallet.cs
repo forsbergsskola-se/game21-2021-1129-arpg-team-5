@@ -71,5 +71,10 @@ namespace Team5.Ui
         {
             Coins = (Coins - amount);
         }
+        
+        public void AddMoney(int amount)
+        {
+            Coins = (Coins + amount);
+        }
     }
 }
