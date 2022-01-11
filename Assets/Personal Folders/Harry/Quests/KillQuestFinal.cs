@@ -289,7 +289,7 @@ public class KillQuestFinal : MonoBehaviour, IInteractable
         allDone = true;
         Dialogue.text = $"{congratulations}";
         button2Text.text = $"{exit}";
-        Coins += RewardMoney;
+        player.GetComponent<Wallet>().AddMoney(RewardMoney);
         Button2.onClick.AddListener( () => ParameterOnClickNoStart($"{nameof(Button2)} was pressed!"));
     }
     
