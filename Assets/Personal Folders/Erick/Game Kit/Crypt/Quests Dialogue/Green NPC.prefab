@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 5087217473501009037}
   m_Layer: 0
   m_Name: Green NPC
-  m_TagString: NPC
+  m_TagString: Green NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,6 +395,8 @@ MonoBehaviour:
     - Hmm, this must be a sign of our great god Garuda!
     - Or I'm just going crazy...
     - I think I need to rest...
+  sprite: {fileID: 21300000, guid: 18a8670021c667f47a32432baf608f71, type: 3}
+  purple: 0
 --- !u!114 &5087217473501009037
 MonoBehaviour:
   m_ObjectHideFlags: 0

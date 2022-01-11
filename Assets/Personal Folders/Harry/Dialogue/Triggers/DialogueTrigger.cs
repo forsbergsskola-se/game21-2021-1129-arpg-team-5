@@ -9,7 +9,6 @@ public class DialogueTrigger : MonoBehaviour {
     private DialogueManager dialogueManager;
     private Image head;
     public Sprite sprite;
-    public bool purple;
 
     private void Awake()
     {
