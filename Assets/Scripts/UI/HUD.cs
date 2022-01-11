@@ -21,6 +21,9 @@ namespace Team5.Ui
         public TMP_Text LvlText;
         //public TMP_Text SkullCounter;
         public GameObject InventoryMenu;
+        public GameObject HealthBar;
+        public GameObject ExpBar;
+        public GameObject PlayerIcon;
         public GameObject PauseMenu;
         public GameObject OptionsMenu;
         public GameObject MainMenu;
@@ -76,12 +79,14 @@ namespace Team5.Ui
             }
         }
 
-        public void HudUIActive(bool overlays, bool level, bool moneyUI, 
-                                bool shopUI, bool dialogueBox, bool inventory)
+        public void HudUIActive(bool overlays, bool inventory, bool playerIcon, bool exp, 
+            bool health, bool moneyUI, bool shopUI, bool dialogueBox)
         
         {
             overlayController.SetActive(overlays);
-            LvlText.enabled = level;
+            PlayerIcon.SetActive(playerIcon);
+            HealthBar.SetActive(health);
+            ExpBar.SetActive(exp);
             MoneyUI.SetActive(moneyUI);
             ShopUI.SetActive(shopUI);
             ShopText.SetActive(dialogueBox);
