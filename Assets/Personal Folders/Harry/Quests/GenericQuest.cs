@@ -19,7 +19,8 @@ public class GenericQuest : MonoBehaviour, IInteractable
     private Vector3 TargetPosition;
 
     public string Name;
-    public Image Head;
+    public Sprite Head;
+    private Image HeadUI;
     public int EggTarget;
     private int PlayerEggs;
    
@@ -29,6 +30,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     
     // interactions
     private TMP_Text Dialogue;
+    private TMP_Text NameTag;
     private Button Button1;
     private Button Button2;
     private Button Button3;
@@ -86,8 +88,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
     public string questFinished;
     public string hearRulesAgain;
     public string exit;
-    
-    
+
     // Goodbye
 
     public string byeQuestAccepted;
@@ -98,7 +99,9 @@ public class GenericQuest : MonoBehaviour, IInteractable
     {
         finishedQuest = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        Name = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>().text;
+        Dialogue = FindObjectOfType<HUD>().ShopDialogue;
+        NameTag = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>();
+        HeadUI = FindObjectOfType<HUD>().DialogueHeadNPC.GetComponent<Image>();
         PlayerEggs = player.GetComponent<Collectibles>().Eggs;
         
         playerTargetPosition = transform.Find("PlayerTargetPosition").transform;
@@ -118,9 +121,6 @@ public class GenericQuest : MonoBehaviour, IInteractable
         
         QuestRulesRead = false;
         QuestAccepted = false;
-        
-        Head = FindObjectOfType<HUD>().DialogueHeadNPC.GetComponent<Image>();
-        Name = FindObjectOfType<HUD>().NPCName.GetComponent<TMP_Text>().text;
     }
     
     // Activated when Player enters invisible collider
@@ -129,7 +129,10 @@ public class GenericQuest : MonoBehaviour, IInteractable
     {
         if (other.gameObject == player)
         {
-
+            Dialogue.text = "";
+            NameTag.text = $"{Name}";
+            HeadUI.sprite = Head;
+            
             // multiple HUD elements enabled and disabled onEnter
             FindObjectOfType<HUD>().HudUIActive(false,false, false,
                 false,false, true, true, true);      
@@ -137,7 +140,7 @@ public class GenericQuest : MonoBehaviour, IInteractable
             buttonActive(true, true, false);
 
             // Only first time dialogue
-            if (firstVisit == true)
+            if (firstVisit)
             {
                 firstVisit = false;
                 Dialogue.text = $"{greetText}";
