@@ -38,6 +38,11 @@ Music & SFX:
 ## Media
 
 ![Main_Menu_BG](https://user-images.githubusercontent.com/90158105/148471445-42f6e471-5c70-4732-a4ab-b7a0efb88933.png)
+![Start](https://user-images.githubusercontent.com/90158105/149351930-6b55fbd3-df6e-4066-8f5b-8cac5752180d.png)
+![Main Hall](https://user-images.githubusercontent.com/90158105/149351950-8006ae05-e664-4f26-a349-994784de1bd8.png)
+![Fight](https://user-images.githubusercontent.com/90158105/149351966-eaff1870-a93a-4b52-aed9-c3f02463415e.png)
+![Items](https://user-images.githubusercontent.com/90158105/149351977-e4eea32a-0dc2-4913-b7d3-b28d7868f713.png)
+![NPC Quest](https://user-images.githubusercontent.com/90158105/149351994-fe2bfc41-18d2-4e76-80eb-7e98d09330f1.png)
 ![Game Kit 1](https://user-images.githubusercontent.com/90158105/149139434-d7882d0e-df39-4c44-9da4-248e1bc80d1a.jpg)
 ![Game Kit 2](https://user-images.githubusercontent.com/90158105/149139467-53e8df0a-4e90-4583-9ca4-5db7f1372f98.jpg)
 ![Characters](https://user-images.githubusercontent.com/90158105/149138845-13476936-e8eb-4eae-89e1-7190b8b7ddd6.jpg)
