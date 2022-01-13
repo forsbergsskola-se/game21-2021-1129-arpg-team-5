@@ -1,6 +1,6 @@
 ![Main_Menu_logo](https://user-images.githubusercontent.com/90158105/148471443-55b2e340-4eaa-4e29-b9db-b2bb80975c2d.png)
 
-Gameplay Trailer:
+## Gameplay Trailer:
 
 [![Watch the video](https://img.youtube.com/vi/1qky8sTbhvc/maxresdefault.jpg)](https://youtu.be/1qky8sTbhvc)
 
