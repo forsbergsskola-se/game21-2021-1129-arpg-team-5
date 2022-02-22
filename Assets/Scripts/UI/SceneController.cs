@@ -5,7 +5,6 @@ using Team5.Control;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows.WebCam;
 
 namespace Team5.Ui
 {
